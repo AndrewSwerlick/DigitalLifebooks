@@ -149,6 +149,9 @@
     <Compile Include="Admin\Create\NewChild.aspx.designer.cs">
       <DependentUpon>NewChild.aspx</DependentUpon>
     </Compile>
+    <Compile Include="BaseDLBPage.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

@@ -8,7 +8,7 @@ using DigitalLifeBooks.Models;
 
 namespace DigitalLifeBooks.Albums
 {
-    public partial class AlbumLoader : System.Web.UI.Page
+    public partial class AlbumLoader : BaseDLBPage
     {
         protected void Page_Load(object sender, EventArgs e)
         {

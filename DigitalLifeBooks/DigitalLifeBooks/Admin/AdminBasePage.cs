@@ -5,7 +5,7 @@ using System.Web;
 
 namespace DigitalLifeBooks.Admin
 {
-    public class AdminBasePage : System.Web.UI.Page
+    public class AdminBasePage : BaseDLBPage
     {
         protected override void OnInit(EventArgs e)
         {

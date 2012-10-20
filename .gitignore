@@ -1,2 +1,6 @@
 # git ignore file
 */obj/*
+*.cache
+*.suo
+*.dll
+*.pdb

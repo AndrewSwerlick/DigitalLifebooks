@@ -10,7 +10,7 @@ using DigitalLifeBooks.AssetManagement;
 
 namespace DigitalLifeBooks.Albums
 {
-    public partial class Upload : System.Web.UI.Page
+    public partial class Upload : BaseDLBPage
     {
         Album album { get; set; }
 
