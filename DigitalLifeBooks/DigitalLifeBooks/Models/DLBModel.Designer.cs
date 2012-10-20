@@ -194,11 +194,15 @@ namespace DigitalLifeBooks.Models
         /// </summary>
         /// <param name="id">Initial value of the ID property.</param>
         /// <param name="childId">Initial value of the ChildId property.</param>
-        public static Album CreateAlbum(global::System.Int64 id, global::System.Int64 childId)
+        /// <param name="isImportanDocumentsAlbum">Initial value of the IsImportanDocumentsAlbum property.</param>
+        /// <param name="isProfilePictureAlbum">Initial value of the IsProfilePictureAlbum property.</param>
+        public static Album CreateAlbum(global::System.Int64 id, global::System.Int64 childId, global::System.Boolean isImportanDocumentsAlbum, global::System.Boolean isProfilePictureAlbum)
         {
             Album album = new Album();
             album.ID = id;
             album.ChildId = childId;
+            album.IsImportanDocumentsAlbum = isImportanDocumentsAlbum;
+            album.IsProfilePictureAlbum = isProfilePictureAlbum;
             return album;
         }
 
@@ -351,6 +355,54 @@ namespace DigitalLifeBooks.Models
         private global::System.Int64 _ChildId;
         partial void OnChildIdChanging(global::System.Int64 value);
         partial void OnChildIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Boolean IsImportanDocumentsAlbum
+        {
+            get
+            {
+                return _IsImportanDocumentsAlbum;
+            }
+            set
+            {
+                OnIsImportanDocumentsAlbumChanging(value);
+                ReportPropertyChanging("IsImportanDocumentsAlbum");
+                _IsImportanDocumentsAlbum = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("IsImportanDocumentsAlbum");
+                OnIsImportanDocumentsAlbumChanged();
+            }
+        }
+        private global::System.Boolean _IsImportanDocumentsAlbum;
+        partial void OnIsImportanDocumentsAlbumChanging(global::System.Boolean value);
+        partial void OnIsImportanDocumentsAlbumChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Boolean IsProfilePictureAlbum
+        {
+            get
+            {
+                return _IsProfilePictureAlbum;
+            }
+            set
+            {
+                OnIsProfilePictureAlbumChanging(value);
+                ReportPropertyChanging("IsProfilePictureAlbum");
+                _IsProfilePictureAlbum = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("IsProfilePictureAlbum");
+                OnIsProfilePictureAlbumChanged();
+            }
+        }
+        private global::System.Boolean _IsProfilePictureAlbum;
+        partial void OnIsProfilePictureAlbumChanging(global::System.Boolean value);
+        partial void OnIsProfilePictureAlbumChanged();
 
         #endregion
     

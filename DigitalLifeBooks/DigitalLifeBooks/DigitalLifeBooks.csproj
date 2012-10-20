@@ -66,6 +66,7 @@
     <Content Include="Albums\NewOrEditAlbum.aspx" />
     <Content Include="Albums\Upload.aspx" />
     <Content Include="Admin\Create\NewChild.aspx" />
+    <Content Include="ChildProfile\Dashboard.aspx" />
     <Content Include="email.txt" />
     <Content Include="Scripts\init.js" />
     <Content Include="Scripts\initTooltips.js" />
@@ -210,6 +211,13 @@
     <Compile Include="BaseDLBPage.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="ChildProfile\Dashboard.aspx.cs">
+      <DependentUpon>Dashboard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ChildProfile\Dashboard.aspx.designer.cs">
+      <DependentUpon>Dashboard.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -236,6 +244,7 @@
     <Compile Include="Masterpages\Site.Master.designer.cs">
       <DependentUpon>Site.Master</DependentUpon>
     </Compile>
+    <Compile Include="ServerControls\SecurityTrimmedPanel.cs" />
     <Compile Include="Services\Delete.asmx.cs">
       <DependentUpon>Delete.asmx</DependentUpon>
       <SubType>Component</SubType>
@@ -257,7 +266,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Child\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Account\Web.config" />

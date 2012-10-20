@@ -60,16 +60,9 @@ namespace DigitalLifeBooks.Albums
             DataContext.Assets.DeleteObject(asset);
             return;
         }
-        private Child LoadChild(Guid Id)
-        {
-            return new Child();
-        }
         private Album LoadAlbum(long Id)
-        {
-            using (var context = new DigitalLifeBooksEntities())
-            {
-                return context.Albums.Single(a => a.ID == Id);
-            }
+        {           
+            return DataContext.Albums.Single(a => a.ID == Id);            
         }
 
     }

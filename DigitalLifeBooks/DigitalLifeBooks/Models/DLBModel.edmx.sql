@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
 -- --------------------------------------------------
--- Date Created: 10/20/2012 17:05:05
+-- Date Created: 10/20/2012 18:21:01
 -- Generated from EDMX file: C:\Projects\DigitalLifebooks\DigitalLifebooks\DigitalLifeBooks\DigitalLifeBooks\Models\DLBModel.edmx
 -- --------------------------------------------------
 
@@ -72,7 +72,9 @@ CREATE TABLE [dbo].[Albums] (
     [DateCreated] datetime  NULL,
     [Description] varchar(max)  NULL,
     [EventDate] datetime  NULL,
-    [ChildId] bigint  NOT NULL
+    [ChildId] bigint  NOT NULL,
+    [IsImportanDocumentsAlbum] bit  NOT NULL,
+    [IsProfilePictureAlbum] bit  NOT NULL
 );
 GO
 

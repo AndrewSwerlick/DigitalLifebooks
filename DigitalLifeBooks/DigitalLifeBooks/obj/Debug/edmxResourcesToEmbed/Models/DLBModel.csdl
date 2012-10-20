@@ -41,6 +41,8 @@
     <NavigationProperty Name="Assets" Relationship="DigitalLifeBooksModel.AssetAlbum" FromRole="Album" ToRole="Asset" />
     <NavigationProperty Name="Child" Relationship="DigitalLifeBooksModel.ChildAlbum" FromRole="Album" ToRole="Child" />
     <Property Type="Int64" Name="ChildId" Nullable="false" />
+    <Property Type="Boolean" Name="IsImportanDocumentsAlbum" Nullable="false" />
+    <Property Type="Boolean" Name="IsProfilePictureAlbum" Nullable="false" />
   </EntityType>
   <Association Name="AssetAlbum">
     <End Type="DigitalLifeBooksModel.Asset" Role="Asset" Multiplicity="*" />

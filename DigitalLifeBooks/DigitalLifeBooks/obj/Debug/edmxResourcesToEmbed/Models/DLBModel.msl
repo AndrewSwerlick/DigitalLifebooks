@@ -21,6 +21,8 @@
           <ScalarProperty Name="Description" ColumnName="Description" />
           <ScalarProperty Name="EventDate" ColumnName="EventDate" />
           <ScalarProperty Name="ChildId" ColumnName="ChildId" />
+          <ScalarProperty Name="IsImportanDocumentsAlbum" ColumnName="IsImportanDocumentsAlbum" />
+          <ScalarProperty Name="IsProfilePictureAlbum" ColumnName="IsProfilePictureAlbum" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

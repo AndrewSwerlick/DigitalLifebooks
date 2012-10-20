@@ -49,6 +49,8 @@
     <Property Name="Description" Type="varchar(max)" Nullable="true" />
     <Property Name="EventDate" Type="datetime" Nullable="true" />
     <Property Name="ChildId" Type="bigint" Nullable="false" />
+    <Property Name="IsImportanDocumentsAlbum" Type="bit" Nullable="false" />
+    <Property Name="IsProfilePictureAlbum" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="Users">
     <Key>
@@ -181,6 +183,8 @@
           <NavigationProperty Name="Assets" Relationship="DigitalLifeBooksModel.AssetAlbum" FromRole="Album" ToRole="Asset" />
           <NavigationProperty Name="Child" Relationship="DigitalLifeBooksModel.ChildAlbum" FromRole="Album" ToRole="Child" />
           <Property Type="Int64" Name="ChildId" Nullable="false" />
+          <Property Type="Boolean" Name="IsImportanDocumentsAlbum" Nullable="false" />
+          <Property Type="Boolean" Name="IsProfilePictureAlbum" Nullable="false" />
         </EntityType>
         <Association Name="AssetAlbum">
           <End Type="DigitalLifeBooksModel.Asset" Role="Asset" Multiplicity="*" />
@@ -261,6 +265,8 @@
           <ScalarProperty Name="Description" ColumnName="Description" />
           <ScalarProperty Name="EventDate" ColumnName="EventDate" />
           <ScalarProperty Name="ChildId" ColumnName="ChildId" />
+          <ScalarProperty Name="IsImportanDocumentsAlbum" ColumnName="IsImportanDocumentsAlbum" />
+          <ScalarProperty Name="IsProfilePictureAlbum" ColumnName="IsProfilePictureAlbum" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -333,7 +339,7 @@
     <Diagrams>
       <Diagram Name="DLBModel" ZoomLevel="83">
         <EntityTypeShape EntityType="DigitalLifeBooksModel.Asset" Width="1.5" PointX="1" PointY="5" Height="1.9210009765624996" />
-        <EntityTypeShape EntityType="DigitalLifeBooksModel.Album" Width="1.5" PointX="4.75" PointY="6.5" Height="1.9210009765624996" />
+        <EntityTypeShape EntityType="DigitalLifeBooksModel.Album" Width="1.5" PointX="4.75" PointY="6.5" Height="2.5783902994791674" />
         <AssociationConnector Association="DigitalLifeBooksModel.AssetAlbum">
           <ConnectorPoint PointX="2.5" PointY="6.71050048828125" />
           <ConnectorPoint PointX="4.75" PointY="6.71050048828125" />
