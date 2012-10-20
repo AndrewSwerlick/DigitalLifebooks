@@ -37,7 +37,7 @@ namespace DigitalLifeBooks.AssetManagement
 
         private string BuildAssetPath(Asset asset)
         {
-            return string.Format("/{0}/{1}", ASSET_FOLDER_PATH, asset.Id);
+            return string.Format("/{0}/{1}", ASSET_FOLDER_PATH, asset.ID);
         }
 
         private void CreatePath(string assetPath)

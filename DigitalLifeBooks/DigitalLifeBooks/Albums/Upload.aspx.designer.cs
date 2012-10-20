@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DigitalLifeBooks.AssetManagement {
+namespace DigitalLifeBooks.Albums {
     
     
     public partial class Upload {

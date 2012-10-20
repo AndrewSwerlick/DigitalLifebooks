@@ -1,0 +1,354 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DigitalLifeBooksModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="DigitalLifeBooksModelStoreContainer">
+    <EntitySet Name="UserSibliings" EntityType="DigitalLifeBooksModel.Store.UserSibliings" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Assets" EntityType="DigitalLifeBooksModel.Store.Assets" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Albums" EntityType="DigitalLifeBooksModel.Store.Albums" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Users" EntityType="DigitalLifeBooksModel.Store.Users" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="UserAssets" EntityType="DigitalLifeBooksModel.Store.UserAssets" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_UserSibliing_Users" Association="DigitalLifeBooksModel.Store.FK_UserSibliing_Users">
+      <End Role="User" EntitySet="Users" />
+      <End Role="UserSibliing" EntitySet="UserSibliings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserAssets_Asset" Association="DigitalLifeBooksModel.Store.FK_UserAssets_Asset">
+      <End Role="Asset" EntitySet="Assets" />
+      <End Role="UserAssets" EntitySet="UserAssets" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserAssets_User" Association="DigitalLifeBooksModel.Store.FK_UserAssets_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="UserAssets" EntitySet="UserAssets" />
+    </AssociationSet>
+    <AssociationSet Name="AssetAlbum" Association="DigitalLifeBooksModel.Store.AssetAlbum">
+      <End Role="Asset" EntitySet="Assets" />
+      <End Role="Album" EntitySet="Albums" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="UserSibliings">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="SiblingName" Type="varchar(max)" Nullable="true" />
+    <Property Name="Relationship" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="UserID" Type="uniqueidentifier" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Assets">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="URL" Type="varchar" Nullable="true" MaxLength="255" />
+    <Property Name="Type" Type="varchar" Nullable="true" MaxLength="20" />
+    <Property Name="Location" Type="varchar" Nullable="true" MaxLength="255" />
+    <Property Name="Caption" Type="varchar(max)" Nullable="true" />
+    <Property Name="AlbumID" Type="bigint" Nullable="false" />
+    <Property Name="Album_ID" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Albums">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="varchar" Nullable="true" MaxLength="255" />
+    <Property Name="DateCreated" Type="datetime" Nullable="true" />
+    <Property Name="Description" Type="varchar(max)" Nullable="true" />
+    <Property Name="EventDate" Type="datetime" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="FirstName" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="LastName" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="UserType" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="Email" Type="varchar(max)" Nullable="true" />
+    <Property Name="PhoneNumber" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="DateOfBrith" Type="datetime" Nullable="true" />
+    <Property Name="City" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="State" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="Country" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="HospitalID" Type="uniqueidentifier" Nullable="true" />
+    <Property Name="BirthWeight" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="BirthLength" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="BirthMother" Type="varchar(max)" Nullable="true" />
+    <Property Name="LoginName" Type="varchar" Nullable="false" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="UserAssets">
+    <Key>
+      <PropertyRef Name="Assets_ID" />
+      <PropertyRef Name="Users_ID" />
+    </Key>
+    <Property Name="Assets_ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Users_ID" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_UserSibliing_Users">
+    <End Role="User" Type="DigitalLifeBooksModel.Store.Users" Multiplicity="0..1" />
+    <End Role="UserSibliing" Type="DigitalLifeBooksModel.Store.UserSibliings" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="UserSibliing">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="AssetAlbum">
+    <End Role="Asset" Type="DigitalLifeBooksModel.Store.Assets" Multiplicity="*" />
+    <End Role="Album" Type="DigitalLifeBooksModel.Store.Albums" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Album">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Asset">
+        <PropertyRef Name="Album_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserAssets_Asset">
+    <End Role="Asset" Type="DigitalLifeBooksModel.Store.Assets" Multiplicity="1" />
+    <End Role="UserAssets" Type="DigitalLifeBooksModel.Store.UserAssets" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Asset">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="UserAssets">
+        <PropertyRef Name="Assets_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserAssets_User">
+    <End Role="UserAssets" Type="DigitalLifeBooksModel.Store.UserAssets" Multiplicity="*" />
+    <End Role="User" Type="DigitalLifeBooksModel.Store.Users" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="UserAssets">
+        <PropertyRef Name="Users_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DigitalLifeBooksModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="DigitalLifeBooksEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="UserSibliings" EntityType="DigitalLifeBooksModel.UserSibliing" />
+          <EntitySet Name="Assets" EntityType="DigitalLifeBooksModel.Asset" />
+          <EntitySet Name="Albums" EntityType="DigitalLifeBooksModel.Album" />
+          <EntitySet Name="Users" EntityType="DigitalLifeBooksModel.User" />
+          <AssociationSet Name="FK_UserSibliing_Users" Association="DigitalLifeBooksModel.FK_UserSibliing_Users">
+            <End Role="User" EntitySet="Users" />
+            <End Role="UserSibliing" EntitySet="UserSibliings" />
+          </AssociationSet>
+          <AssociationSet Name="UserAssets" Association="DigitalLifeBooksModel.UserAssets">
+            <End Role="Asset" EntitySet="Assets" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="AssetAlbum" Association="DigitalLifeBooksModel.AssetAlbum">
+            <End Role="Asset" EntitySet="Assets" />
+            <End Role="Album" EntitySet="Albums" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="UserSibliing">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Guid" Nullable="false" />
+          <Property Name="SiblingName" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="Relationship" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="UserID" Type="Guid" />
+          <NavigationProperty Name="User" Relationship="DigitalLifeBooksModel.FK_UserSibliing_Users" FromRole="UserSibliing" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Asset">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Guid" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="URL" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Type" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Location" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Caption" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Users" Relationship="DigitalLifeBooksModel.UserAssets" FromRole="Asset" ToRole="User" />
+          <Property Type="Int64" Name="AlbumID" Nullable="false" />
+          <NavigationProperty Name="Album" Relationship="DigitalLifeBooksModel.AssetAlbum" FromRole="Asset" ToRole="Album" />
+        </EntityType>
+        <EntityType Name="Album">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Guid" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Title" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="DateCreated" />
+          <Property Type="String" Name="Description" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="EventDate" />
+          <NavigationProperty Name="Assets" Relationship="DigitalLifeBooksModel.AssetAlbum" FromRole="Album" ToRole="Asset" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Guid" Name="ID" Nullable="false" />
+          <Property Type="String" Name="FirstName" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="LastName" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="UserType" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Email" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="PhoneNumber" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="DateOfBrith" />
+          <Property Type="String" Name="City" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="State" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Country" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Guid" Name="HospitalID" />
+          <Property Type="String" Name="BirthWeight" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="BirthLength" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="BirthMother" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="LoginName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="UserSibliings" Relationship="DigitalLifeBooksModel.FK_UserSibliing_Users" FromRole="User" ToRole="UserSibliing" />
+          <NavigationProperty Name="Assets" Relationship="DigitalLifeBooksModel.UserAssets" FromRole="User" ToRole="Asset" />
+        </EntityType>
+        <Association Name="FK_UserSibliing_Users">
+          <End Type="DigitalLifeBooksModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="DigitalLifeBooksModel.UserSibliing" Role="UserSibliing" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="UserSibliing">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="UserAssets">
+          <End Type="DigitalLifeBooksModel.Asset" Role="Asset" Multiplicity="*" />
+          <End Type="DigitalLifeBooksModel.User" Role="User" Multiplicity="*" />
+        </Association>
+        <Association Name="AssetAlbum">
+          <End Type="DigitalLifeBooksModel.Asset" Role="Asset" Multiplicity="*" />
+          <End Type="DigitalLifeBooksModel.Album" Role="Album" Multiplicity="1" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DigitalLifeBooksModelStoreContainer" CdmEntityContainer="DigitalLifeBooksEntities">
+    <EntitySetMapping Name="UserSibliings">
+      <EntityTypeMapping TypeName="IsTypeOf(DigitalLifeBooksModel.UserSibliing)">
+        <MappingFragment StoreEntitySet="UserSibliings">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="SiblingName" ColumnName="SiblingName" />
+          <ScalarProperty Name="Relationship" ColumnName="Relationship" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Assets">
+      <EntityTypeMapping TypeName="IsTypeOf(DigitalLifeBooksModel.Asset)">
+        <MappingFragment StoreEntitySet="Assets">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="URL" ColumnName="URL" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Location" ColumnName="Location" />
+          <ScalarProperty Name="Caption" ColumnName="Caption" />
+          <ScalarProperty Name="AlbumID" ColumnName="AlbumID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Albums">
+      <EntityTypeMapping TypeName="IsTypeOf(DigitalLifeBooksModel.Album)">
+        <MappingFragment StoreEntitySet="Albums">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="EventDate" ColumnName="EventDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="IsTypeOf(DigitalLifeBooksModel.User)">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="UserType" ColumnName="UserType" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="DateOfBrith" ColumnName="DateOfBrith" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="HospitalID" ColumnName="HospitalID" />
+          <ScalarProperty Name="BirthWeight" ColumnName="BirthWeight" />
+          <ScalarProperty Name="BirthLength" ColumnName="BirthLength" />
+          <ScalarProperty Name="BirthMother" ColumnName="BirthMother" />
+          <ScalarProperty Name="LoginName" ColumnName="LoginName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="UserAssets" TypeName="DigitalLifeBooksModel.UserAssets" StoreEntitySet="UserAssets">
+      <EndProperty Name="Asset">
+        <ScalarProperty Name="ID" ColumnName="Assets_ID" />
+      </EndProperty>
+      <EndProperty Name="User">
+        <ScalarProperty Name="ID" ColumnName="Users_ID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="AssetAlbum" TypeName="DigitalLifeBooksModel.AssetAlbum" StoreEntitySet="Assets">
+      <EndProperty Name="Album">
+        <ScalarProperty Name="ID" ColumnName="Album_ID" />
+      </EndProperty>
+      <EndProperty Name="Asset">
+        <ScalarProperty Name="ID" ColumnName="ID" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="DLBModel">
+        <EntityTypeShape EntityType="DigitalLifeBooksModel.UserSibliing" Width="1.5" PointX="3" PointY="1.875" Height="1.7566536458333335" IsExpanded="true" />
+        <EntityTypeShape EntityType="DigitalLifeBooksModel.Asset" Width="1.5" PointX="0.75" PointY="5" Height="2.2496956380208326" />
+        <EntityTypeShape EntityType="DigitalLifeBooksModel.Album" Width="1.5" PointX="6.5" PointY="3.875" Height="1.9210009765624996" />
+        <EntityTypeShape EntityType="DigitalLifeBooksModel.User" Width="1.5" PointX="3" PointY="8.125" Height="3.7288216145833317" />
+        <AssociationConnector Association="DigitalLifeBooksModel.FK_UserSibliing_Users" >
+          <ConnectorPoint PointX="3.75" PointY="8.125" />
+          <ConnectorPoint PointX="3.75" PointY="3.6316536458333335" />
+        </AssociationConnector>
+        <AssociationConnector Association="DigitalLifeBooksModel.UserAssets" >
+          <ConnectorPoint PointX="1.5" PointY="7.2496956380208326" />
+          <ConnectorPoint PointX="1.5" PointY="9.9894108072916659" />
+          <ConnectorPoint PointX="3" PointY="9.9894108072916659" />
+        </AssociationConnector>
+        <AssociationConnector Association="DigitalLifeBooksModel.AssetAlbum">
+          <ConnectorPoint PointX="2.25" PointY="5.39800048828125" />
+          <ConnectorPoint PointX="3.6666666666666665" PointY="5.3980004882812489" />
+          <ConnectorPoint PointX="3.8333333333333335" PointY="5.39800048828125" />
+          <ConnectorPoint PointX="6.5" PointY="5.39800048828125" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

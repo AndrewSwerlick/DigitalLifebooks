@@ -1,5 +1,14 @@
+<<<<<<< HEAD
 C:\Users\Administrator\Documents\GitHub\DigitalLifebooks\DigitalLifeBooks\DigitalLifeBooks\bin\DigitalLifeBooks.dll
 C:\Users\Administrator\Documents\GitHub\DigitalLifebooks\DigitalLifeBooks\DigitalLifeBooks\bin\DigitalLifeBooks.pdb
 C:\Users\Administrator\Documents\GitHub\DigitalLifebooks\DigitalLifeBooks\DigitalLifeBooks\obj\Debug\ResolveAssemblyReference.cache
 C:\Users\Administrator\Documents\GitHub\DigitalLifebooks\DigitalLifeBooks\DigitalLifeBooks\obj\Debug\DigitalLifeBooks.dll
 C:\Users\Administrator\Documents\GitHub\DigitalLifebooks\DigitalLifeBooks\DigitalLifeBooks\obj\Debug\DigitalLifeBooks.pdb
+=======
+C:\Users\Administrator\Documents\GitHub\DigitalLifebooks\DigitalLifeBooks\DigitalLifeBooks\obj\Debug\ResolveAssemblyReference.cache
+C:\Projects\DigitalLifebooks\DigitalLifebooks\DigitalLifeBooks\DigitalLifeBooks\obj\Debug\ResolveAssemblyReference.cache
+C:\Projects\DigitalLifebooks\DigitalLifebooks\DigitalLifeBooks\DigitalLifeBooks\bin\DigitalLifeBooks.dll
+C:\Projects\DigitalLifebooks\DigitalLifebooks\DigitalLifeBooks\DigitalLifeBooks\bin\DigitalLifeBooks.pdb
+C:\Projects\DigitalLifebooks\DigitalLifebooks\DigitalLifeBooks\DigitalLifeBooks\obj\Debug\DigitalLifeBooks.dll
+C:\Projects\DigitalLifebooks\DigitalLifebooks\DigitalLifeBooks\DigitalLifeBooks\obj\Debug\DigitalLifeBooks.pdb
+>>>>>>> 8cae46061cce0dac84ed1d5c15eeb0da33b08d8e
