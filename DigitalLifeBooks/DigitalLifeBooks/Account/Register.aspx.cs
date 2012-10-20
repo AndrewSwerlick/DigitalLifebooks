@@ -5,10 +5,11 @@ using System.Web;
 using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using DigitalLifeBooks.Models;
 
 namespace DigitalLifeBooks.Account
 {
-    public partial class Register : System.Web.UI.Page
+    public partial class Register : BaseDLBPage
     {
 
         protected void Page_Load(object sender, EventArgs e)
@@ -18,6 +19,7 @@ namespace DigitalLifeBooks.Account
 
         protected void RegisterUser_CreatedUser(object sender, EventArgs e)
         {
+            AddUserToDatabase();
             FormsAuthentication.SetAuthCookie(RegisterUser.UserName, false /* createPersistentCookie */);
 
             string continueUrl = RegisterUser.ContinueDestinationPageUrl;
@@ -26,6 +28,26 @@ namespace DigitalLifeBooks.Account
                 continueUrl = "~/";
             }
             Response.Redirect(continueUrl);
+        }
+
+        public void RegisterNewUser_CreatingUser(object sender, System.EventArgs e)
+        {
+            CreateUserWizard cuw = (CreateUserWizard)sender;
+            cuw.Email = cuw.UserName;
+        }
+
+
+        private void AddUserToDatabase()
+        {
+            var userName = RegisterUser.UserName;
+            var user = new User()
+            {
+                LoginName = userName,
+                Email = userName
+            };
+
+            DataContext.Users.AddObject(user);
+            DataContext.SaveChanges();
         }
 
     }
