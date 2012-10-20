@@ -58,6 +58,7 @@
     <Content Include="Account\ChangePassword.aspx" />
     <Content Include="Account\ChangePasswordSuccess.aspx" />
     <Content Include="Account\Login.aspx" />
+    <Content Include="Account\PasswordRecovery.aspx" />
     <Content Include="Account\Register.aspx" />
     <Content Include="Admin\UserManagement\AddChildToUser.aspx" />
     <Content Include="Albums\AlbumLoader.aspx" />
@@ -65,6 +66,7 @@
     <Content Include="Albums\NewOrEditAlbum.aspx" />
     <Content Include="Albums\Upload.aspx" />
     <Content Include="Admin\Create\NewChild.aspx" />
+    <Content Include="email.txt" />
     <Content Include="Scripts\init.js" />
     <Content Include="Scripts\initTooltips.js" />
     <Content Include="Scripts\initWidgets.js" />
@@ -87,6 +89,10 @@
     <Content Include="Scripts\widgets.js" />
     <Content Include="Models\DLBModel.edmx.sql" />
     <Content Include="Services\DeleteAsset.asmx" />
+    <Content Include="Scripts\jquery.datepick.js" />
+    <Content Include="Styles\DLB.css" />
+    <Content Include="Styles\Images\calendar.gif" />
+    <Content Include="Services\Delete.asmx" />
     <Content Include="Styles\DLB.css" />
     <Content Include="Styles\Images\facebook_white.png" />
     <Content Include="Styles\Images\Logo_Color.png" />
@@ -141,15 +147,19 @@
     <Compile Include="Account\Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Account\PasswordRecovery.aspx.cs">
+      <DependentUpon>PasswordRecovery.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\PasswordRecovery.aspx.designer.cs">
+      <DependentUpon>PasswordRecovery.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Account\Register.aspx.cs">
       <DependentUpon>Register.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Account\Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Admin\AdminBasePage.cs">
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Admin\UserManagement\AddChildToUser.aspx.cs">
       <DependentUpon>AddChildToUser.aspx</DependentUpon>
@@ -229,6 +239,8 @@
     </Compile>
     <Compile Include="Services\DeleteAsset.asmx.cs">
       <DependentUpon>DeleteAsset.asmx</DependentUpon>
+    <Compile Include="Services\Delete.asmx.cs">
+      <DependentUpon>Delete.asmx</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="UserControls\AlbumRender.ascx.cs">

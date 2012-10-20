@@ -24,10 +24,17 @@ namespace DigitalLifeBooks
             }
         }
 
+        protected User CurrentUser
+        {
+            get
+            {
+                return DataContext.Users.Single(u => u.LoginName == HttpContext.Current.User.Identity.Name);
+            }
+        }
+
         public void ProcessRequest(HttpContext context)
         {
-            var userName = context.User.Identity.Name;
-            var user = new User();
+            var user = CurrentUser;
             var assetId = context.Request.QueryString["Id"];
             var assetManager = new LocalDiskAssetManager(context);
             var asset = LoadAsset(long.Parse(assetId));
