@@ -3,3 +3,8 @@ C:\givecamp\DigitalLifeBooks\DigitalLifeBooks\bin\DigitalLifeBooks.pdb
 C:\givecamp\DigitalLifeBooks\DigitalLifeBooks\obj\Debug\ResolveAssemblyReference.cache
 C:\givecamp\DigitalLifeBooks\DigitalLifeBooks\obj\Debug\DigitalLifeBooks.dll
 C:\givecamp\DigitalLifeBooks\DigitalLifeBooks\obj\Debug\DigitalLifeBooks.pdb
+C:\Projects\DigitalLifebooks\DigitalLifebooks\DigitalLifeBooks\DigitalLifeBooks\bin\DigitalLifeBooks.dll
+C:\Projects\DigitalLifebooks\DigitalLifebooks\DigitalLifeBooks\DigitalLifeBooks\bin\DigitalLifeBooks.pdb
+C:\Projects\DigitalLifebooks\DigitalLifebooks\DigitalLifeBooks\DigitalLifeBooks\obj\Debug\ResolveAssemblyReference.cache
+C:\Projects\DigitalLifebooks\DigitalLifebooks\DigitalLifeBooks\DigitalLifeBooks\obj\Debug\DigitalLifeBooks.dll
+C:\Projects\DigitalLifebooks\DigitalLifebooks\DigitalLifeBooks\DigitalLifeBooks\obj\Debug\DigitalLifeBooks.pdb
