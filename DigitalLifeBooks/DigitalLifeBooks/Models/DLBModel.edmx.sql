@@ -2,8 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
 -- --------------------------------------------------
--- Date Created: 10/20/2012 16:00:10
--- Generated from EDMX file: C:\Users\Administrator\Documents\GitHub\DigitalLifebooks\DigitalLifeBooks\DigitalLifeBooks\Models\DLBModel.edmx
+-- Date Created: 10/20/2012 16:53:43
+-- Generated from EDMX file: C:\Projects\DigitalLifebooks\DigitalLifebooks\DigitalLifeBooks\DigitalLifeBooks\Models\DLBModel.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -20,23 +20,20 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_AssetAlbum]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Assets] DROP CONSTRAINT [FK_AssetAlbum];
 GO
-IF OBJECT_ID(N'[dbo].[FK_UserSibliing_Users]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[UserSibliings] DROP CONSTRAINT [FK_UserSibliing_Users];
-GO
 IF OBJECT_ID(N'[dbo].[FK_ChildUser_Child]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[ChildUser] DROP CONSTRAINT [FK_ChildUser_Child];
 GO
 IF OBJECT_ID(N'[dbo].[FK_ChildUser_User]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[ChildUser] DROP CONSTRAINT [FK_ChildUser_User];
 GO
+IF OBJECT_ID(N'[dbo].[FK_ChildAlbum]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Albums] DROP CONSTRAINT [FK_ChildAlbum];
+GO
 
 -- --------------------------------------------------
 -- Dropping existing tables
 -- --------------------------------------------------
 
-IF OBJECT_ID(N'[dbo].[UserSibliings]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[UserSibliings];
-GO
 IF OBJECT_ID(N'[dbo].[Assets]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Assets];
 GO
@@ -56,15 +53,6 @@ GO
 -- --------------------------------------------------
 -- Creating all tables
 -- --------------------------------------------------
-
--- Creating table 'UserSibliings'
-CREATE TABLE [dbo].[UserSibliings] (
-    [ID] uniqueidentifier  NOT NULL,
-    [SiblingName] varchar(max)  NULL,
-    [Relationship] varchar(50)  NULL,
-    [UserID] uniqueidentifier  NULL
-);
-GO
 
 -- Creating table 'Assets'
 CREATE TABLE [dbo].[Assets] (
@@ -91,7 +79,7 @@ GO
 
 -- Creating table 'Users'
 CREATE TABLE [dbo].[Users] (
-    [ID] uniqueidentifier  NOT NULL,
+    [ID] bigint  NOT NULL,
     [FirstName] varchar(50)  NOT NULL,
     [LastName] varchar(50)  NOT NULL,
     [UserType] varchar(50)  NOT NULL,
@@ -122,19 +110,13 @@ GO
 -- Creating table 'ChildUser'
 CREATE TABLE [dbo].[ChildUser] (
     [Children_Id] bigint  NOT NULL,
-    [Users_ID] uniqueidentifier  NOT NULL
+    [Users_ID] bigint  NOT NULL
 );
 GO
 
 -- --------------------------------------------------
 -- Creating all PRIMARY KEY constraints
 -- --------------------------------------------------
-
--- Creating primary key on [ID] in table 'UserSibliings'
-ALTER TABLE [dbo].[UserSibliings]
-ADD CONSTRAINT [PK_UserSibliings]
-    PRIMARY KEY CLUSTERED ([ID] ASC);
-GO
 
 -- Creating primary key on [ID] in table 'Assets'
 ALTER TABLE [dbo].[Assets]
@@ -182,20 +164,6 @@ ADD CONSTRAINT [FK_AssetAlbum]
 CREATE INDEX [IX_FK_AssetAlbum]
 ON [dbo].[Assets]
     ([Album_ID]);
-GO
-
--- Creating foreign key on [UserID] in table 'UserSibliings'
-ALTER TABLE [dbo].[UserSibliings]
-ADD CONSTRAINT [FK_UserSibliing_Users]
-    FOREIGN KEY ([UserID])
-    REFERENCES [dbo].[Users]
-        ([ID])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-
--- Creating non-clustered index for FOREIGN KEY 'FK_UserSibliing_Users'
-CREATE INDEX [IX_FK_UserSibliing_Users]
-ON [dbo].[UserSibliings]
-    ([UserID]);
 GO
 
 -- Creating foreign key on [Children_Id] in table 'ChildUser'

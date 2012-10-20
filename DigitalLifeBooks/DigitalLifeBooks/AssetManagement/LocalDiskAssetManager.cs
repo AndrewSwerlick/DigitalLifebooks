@@ -32,7 +32,7 @@ namespace DigitalLifeBooks.AssetManagement
         public void Delete(Asset asset)
         {
             var assetPath = BuildAssetPath(asset);
-            File.Delete(assetPath);            
+            File.Delete(_context.Server.MapPath(assetPath));            
         }
 
         private string BuildAssetPath(Asset asset)
