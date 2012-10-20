@@ -195,9 +195,9 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Type="Int64" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="FirstName" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Type="String" Name="LastName" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Type="String" Name="UserType" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Type="String" Name="FirstName" MaxLength="50" FixedLength="false" Unicode="false" Nullable="true" />
+          <Property Type="String" Name="LastName" MaxLength="50" FixedLength="false" Unicode="false" Nullable="true" />
+          <Property Type="String" Name="UserType" MaxLength="50" FixedLength="false" Unicode="false" Nullable="true" />
           <Property Type="String" Name="Email" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="true" />
           <Property Type="String" Name="PhoneNumber" MaxLength="50" FixedLength="false" Unicode="false" Nullable="true" />
           <Property Type="String" Name="City" MaxLength="50" FixedLength="false" Unicode="false" Nullable="true" />

@@ -1,10 +1,13 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="AlbumViewer.aspx.cs" Inherits="DigitalLifeBooks.Albums.AlbumViewer"
-%><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head id="Head1" runat="server">
-    <title>View Album</title>
-</head>
-<body>
-<asp:Literal runat="server" ID="BodyMatter"></asp:Literal>
-</body>
-</html>
+﻿<%@ Page Language="C#" MasterPageFile="~/Masterpages/Site.master" AutoEventWireup="true" CodeBehind="AlbumViewer.aspx.cs" Inherits="DigitalLifeBooks.Albums.AlbumViewer"%>
+<%@ Register Src="~/UserControls/AlbumRender.ascx" TagName="AlbumRender" TagPrefix="dlb" %>
+
+<asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
+</asp:Content>
+
+<asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
+    <div>
+        <dlb:AlbumRender runat="server" Id="AlbumRender"></dlb:AlbumRender>
+        <a href="#">Next</a>
+        <a href="#">Prev</a>
+    </div>
+</asp:Content>

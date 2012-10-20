@@ -1027,17 +1027,11 @@ namespace DigitalLifeBooks.Models
         /// Create a new User object.
         /// </summary>
         /// <param name="id">Initial value of the ID property.</param>
-        /// <param name="firstName">Initial value of the FirstName property.</param>
-        /// <param name="lastName">Initial value of the LastName property.</param>
-        /// <param name="userType">Initial value of the UserType property.</param>
         /// <param name="loginName">Initial value of the LoginName property.</param>
-        public static User CreateUser(global::System.Int64 id, global::System.String firstName, global::System.String lastName, global::System.String userType, global::System.String loginName)
+        public static User CreateUser(global::System.Int64 id, global::System.String loginName)
         {
             User user = new User();
             user.ID = id;
-            user.FirstName = firstName;
-            user.LastName = lastName;
-            user.UserType = userType;
             user.LoginName = loginName;
             return user;
         }
@@ -1075,7 +1069,7 @@ namespace DigitalLifeBooks.Models
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String FirstName
         {
@@ -1087,7 +1081,7 @@ namespace DigitalLifeBooks.Models
             {
                 OnFirstNameChanging(value);
                 ReportPropertyChanging("FirstName");
-                _FirstName = StructuralObject.SetValidValue(value, false);
+                _FirstName = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("FirstName");
                 OnFirstNameChanged();
             }
@@ -1099,7 +1093,7 @@ namespace DigitalLifeBooks.Models
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String LastName
         {
@@ -1111,7 +1105,7 @@ namespace DigitalLifeBooks.Models
             {
                 OnLastNameChanging(value);
                 ReportPropertyChanging("LastName");
-                _LastName = StructuralObject.SetValidValue(value, false);
+                _LastName = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("LastName");
                 OnLastNameChanged();
             }
@@ -1123,7 +1117,7 @@ namespace DigitalLifeBooks.Models
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String UserType
         {
@@ -1135,7 +1129,7 @@ namespace DigitalLifeBooks.Models
             {
                 OnUserTypeChanging(value);
                 ReportPropertyChanging("UserType");
-                _UserType = StructuralObject.SetValidValue(value, false);
+                _UserType = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("UserType");
                 OnUserTypeChanged();
             }
