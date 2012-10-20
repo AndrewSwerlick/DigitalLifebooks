@@ -43,5 +43,18 @@ namespace DigitalLifeBooks
 
         }
 
+        void Application_BeginRequest(object sender, EventArgs e)
+        {
+            HttpContext myContext = HttpContext.Current;
+            myContext.Items["DataContext"] = "";            
+
+        }
+
+        void Application_EndRequest(object sender, EventArgs e)
+        {
+            HttpContext myContext = HttpContext.Current;
+            myContext.Items["DataContext"] = "";
+            //Dispsoe
+        }
     }
 }

@@ -1,2 +1,289 @@
-﻿body {
+﻿/* =============================================================================
+   HTML5 Boilerplate CSS: h5bp.com/css
+   ========================================================================== */
+
+article, aside, details, figcaption, figure, footer, header, hgroup, nav, section { display: block; }
+
+audio, canvas, video { display: inline-block; *display: inline; *zoom: 1; }
+
+    audio:not([controls]) { display: none; }
+
+[hidden] { display: none; }
+
+html { font-size: 100%; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
+
+html, button, input, select, textarea { font-family: sans-serif; color: #222; }
+
+body { margin: 0; font-size: 1em; line-height: 1.4; }
+
+::-moz-selection { background: #fe57a1; color: #fff; text-shadow: none; }
+
+::selection { background: #fe57a1; color: #fff; text-shadow: none; }
+
+a { color: #00e; }
+
+    a:visited { color: #551a8b; }
+
+    a:hover { color: #06e; }
+
+    a:focus { outline: thin dotted; }
+
+    a:hover, a:active { outline: 0; }
+
+abbr[title] { border-bottom: 1px dotted; }
+
+b, strong { font-weight: bold; }
+
+blockquote { margin: 1em 40px; }
+
+dfn { font-style: italic; }
+
+hr { display: block; height: 1px; border: 0; border-top: 1px solid #ccc; margin: 1em 0; padding: 0; }
+
+ins { background: #ff9; color: #000; text-decoration: none; }
+
+mark { background: #ff0; color: #000; font-style: italic; font-weight: bold; }
+
+pre, code, kbd, samp { font-family: monospace, serif; _font-family: 'courier new', monospace; font-size: 1em; }
+
+pre { white-space: pre; white-space: pre-wrap; word-wrap: break-word; }
+
+q { quotes: none; }
+
+    q:before, q:after { content: ""; content: none; }
+
+small { font-size: 85%; }
+
+sub, sup { font-size: 75%; line-height: 0; position: relative; vertical-align: baseline; }
+
+sup { top: -0.5em; }
+
+sub { bottom: -0.25em; }
+
+ul, ol { margin: 1em 0; padding: 0 0 0 40px; }
+
+dd { margin: 0 0 0 40px; }
+
+nav ul, nav ol { list-style: none; list-style-image: none; margin: 0; padding: 0; }
+
+img { border: 0; -ms-interpolation-mode: bicubic; vertical-align: middle; }
+
+svg:not(:root) { overflow: hidden; }
+
+figure { margin: 0; }
+
+form { margin: 0; }
+
+fieldset { border: 0; margin: 0; padding: 0; }
+
+label { cursor: pointer; }
+
+legend { border: 0; *margin-left: -7px; padding: 0; white-space: normal; }
+
+button, input, select, textarea { font-size: 100%; margin: 0; vertical-align: baseline; *vertical-align: middle; }
+
+button, input { line-height: normal; }
+
+    button, input[type="button"], input[type="reset"], input[type="submit"] { cursor: pointer; -webkit-appearance: button; *overflow: visible; }
+
+        button[disabled], input[disabled] { cursor: default; }
+
+    input[type="checkbox"], input[type="radio"] { box-sizing: border-box; padding: 0; *width: 13px; *height: 13px; }
+
+    input[type="search"] { -webkit-appearance: textfield; -moz-box-sizing: content-box; -webkit-box-sizing: content-box; box-sizing: content-box; }
+
+        input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-search-cancel-button { -webkit-appearance: none; }
+
+    button::-moz-focus-inner, input::-moz-focus-inner { border: 0; padding: 0; }
+
+textarea { overflow: auto; vertical-align: top; resize: vertical; }
+
+    input:valid, textarea:valid { }
+
+    input:invalid, textarea:invalid { background-color: #f0dddd; }
+
+table { border-collapse: collapse; border-spacing: 0; }
+
+td { vertical-align: top; }
+
+.chromeframe { margin: 0.2em 0; background: #ccc; color: black; padding: 0.2em 0; }
+
+
+
+/* ===== Primary Styles ========================================================
+   Author:
+   ========================================================================== */
+
+
+
+
+
+
+
+
+
+
+
+/* =============================================================================
+   Media Queries
+   ========================================================================== */
+
+@media only screen and (min-width: 35em) {
+    /* Style adjustments for viewports that meet the condition */
 }
+
+/* =============================================================================
+   Non-Semantic Helper Classes
+   ========================================================================== */
+
+.ir { display: block; border: 0; text-indent: -999em; overflow: hidden; background-color: transparent; background-repeat: no-repeat; text-align: left; direction: ltr; *line-height: 0; }
+
+    .ir br { display: none; }
+
+.hidden { display: none !important; visibility: hidden; }
+
+.visuallyhidden { border: 0; clip: rect(0 0 0 0); height: 1px; margin: -1px; overflow: hidden; padding: 0; position: absolute; width: 1px; }
+
+    .visuallyhidden.focusable:active, .visuallyhidden.focusable:focus { clip: auto; height: auto; margin: 0; overflow: visible; position: static; width: auto; }
+
+.invisible { visibility: hidden; }
+
+.clearfix:before, .clearfix:after { content: ""; display: table; }
+
+.clearfix:after { clear: both; }
+
+.clearfix { *zoom: 1; }
+
+/* =============================================================================
+   Print Styles
+   ========================================================================== */
+
+@media print {
+    * { background: transparent !important; color: black !important; box-shadow: none !important; text-shadow: none !important; filter: none !important; -ms-filter: none !important; }
+    /* Black prints faster: h5bp.com/s */
+    a, a:visited { text-decoration: underline; }
+
+        a[href]:after { content: " (" attr(href) ")"; }
+
+    abbr[title]:after { content: " (" attr(title) ")"; }
+
+    .ir a:after, a[href^="javascript:"]:after, a[href^="#"]:after { content: ""; }
+    /* Don't show links for images, or javascript/internal links */
+    pre, blockquote { border: 1px solid #999; page-break-inside: avoid; }
+
+    thead { display: table-header-group; }
+    /* h5bp.com/t */
+    tr, img { page-break-inside: avoid; }
+
+    img { max-width: 100% !important; }
+
+    @page { margin: 0.5cm; }
+
+    p, h2, h3 { orphans: 3; widows: 3; }
+
+    h2, h3 { page-break-after: avoid; }
+}
+
+
+#Body { background-color: #f5f5f5; }
+
+#SkinBody { border-top: 10px solid #f04e30; margin: 0 auto; display: block; width: 1200px; background-color: #fafafa; }
+
+#HeaderGroup { padding: 5px 10px 10px 60px; position: relative; }
+
+#dnnNavContainer { float: right; }
+
+#FooterGroup { margin: 40px 0 0; padding: 10px; color: #fcfcfc; background-color: #f04e30; }
+#footerImages { display: inline-block; width: 920px; text-align: center; }
+
+#digLifeBooks { background: url("images/logo_white.png") no-repeat; width: 237px; height: 41px; display: inline-block; }
+#facebook { background: url("images/facebook_white.png") no-repeat; width: 237px; height: 41px; display: inline-block; }
+#twitter { background: url("images/twitter_white.png") no-repeat; width: 237px; height: 41px; display: inline-block; }
+
+#donate { display: inline-block; width: 112px; height: 27px; position: absolute; right: 0; bottom: 0; font-size: 1.5em; font-weight: bold; padding: 0px 10px 5px 30px; margin: 30px -10px 10px 10px; color: #FAFAFA; background-color: #F04E30; text-shadow: 0px 1px 2px #BBB; box-shadow: 0px 2px 4px #888; text-transform: uppercase; }
+    #donate:hover { text-decoration: none; }
+    #donate:before { content: ' '; position: absolute; width: 0; height: 0; right: 130px; top: -2px; border-color: transparent transparent transparent #FAFAFA; border-width: 18px 12px; border-style: solid; }
+
+    #donate:after { content: ' '; position: absolute; width: 0; height: 0; right: 0px; top: 100%; border-width: 5px 5px; border-style: solid; border-color: #666 transparent transparent #666; }
+    #donate > span { display: inline-block; width: 100%; height: 100%; background: url(images/donate.png) no-repeat; }
+
+
+/* =============================================================================
+   Menu
+   ========================================================================== */
+
+#dnnNavContainer > * { vertical-align: top; display: inline-block; height: 22px; color: #f04e30; }
+#dnnNavContainer a { font-size: 10pt; font-weight: normal; color: #f04e30; text-transform: uppercase; }
+#dnnNavContainer ul { display: inline-block; }
+    #dnnNavContainer ul li { display: inline-block; margin: 0 4px; }
+        #dnnNavContainer ul li a { font-family: sans-serif; font-size: 10pt; }
+        
+/* Footer Menu */
+
+#FooterGroup a { font-size: 10pt; font-weight: normal; color: #fcfcfc; text-transform: uppercase; }
+#FooterGroup nav { display: inline-block; border-right: 1px solid #FCFCFC; padding: 20px 30px 20px 50px; margin: 20px 20px 0 0; vertical-align: middle;}
+#FooterGroup ul {  line-height: 1.0em;}
+    #FooterGroup ul li { display: block; margin: 4px; }
+        #FooterGroup ul li a { font-family: sans-serif; }
+
+
+/* =============================================================================
+   Home
+   ========================================================================== */
+
+
+.BannerPane { margin-top: 40px; position: relative; }
+    .BannerPane .DNNModuleContent { width: 753px; margin: 0 auto; padding: 10px; -moz-box-shadow: 10px 10px 5px #888; -webkit-box-shadow: 10px 10px 5px #888; box-shadow: 0px 0px 20px #666; }
+.ContentPane { margin-top: 20px; margin-bottom: 40px; }
+.bottomLeftPane { float: left; width: 310px; padding: 0 20px 0 75px; }
+.bottomRightPane { float: right; width: 310px; padding: 0 75px 0 20px; }
+.bottomCenterPane { padding: 0px 20px; margin: 0px 406px; border-left: 1px solid #f04e30; border-right: 1px solid #f04e30; }
+
+/* Banner */
+
+ul.RotatorNav { padding: 0; }
+.RotatorLeft { background: url('images/leftnav.png'); height: 70px; width: 35px; position: absolute; top: 110px; left: 177px; }
+.RotatorRight { background: url('images/rightnav.png'); height: 70px; width: 35px; position: absolute; top: 110px; right: 178px; }
+
+/* =============================================================================
+   Container and Rotator (Delete?)
+   ========================================================================== */
+
+.c_home .dnnModuleActions { display: inline-block; width: 19px; height: 19px; float: left; }
+
+.c_home .Head { color: #f04e30; font-weight: bold; font-size: 24pt; text-transform: uppercase; }
+.c_home .Title { margin: 0 0 .5em 0; text-align: left; }
+.c_home .DNNModuleContent { text-align: left; font-size: 16pt; color: #808080; }
+    .c_home .DNNModuleContent .Normal { font-size: 14pt; color: #909090; font-weight: bold; }
+
+.c_home.c_center .Title { text-align: center; }
+.c_home.c_center .DNNModuleContent { text-align: center; }
+
+.c_home.c_right .Title { text-align: right; }
+.c_home.c_right .DNNModuleContent { text-align: right; }
+
+.c_standard .Head { color: #f04e30; font-weight: bold; font-size: 18pt; text-transform: uppercase; }
+.c_standard .Title { margin: 0 0 .5em 0; text-align: left; }
+.c_standard .DNNModuleContent .Normal { font-size: 11pt; color: #444; }
+
+.c_secondary .Head { color: #909090; font-weight: bold; font-size: 15pt; text-transform: capitalize; }
+.c_secondary .Title { margin: 0 0 .5em 0; text-align: left; }
+.c_secondary .DNNModuleContent .Normal { font-size: 11pt; color: #444; }
+
+.AdminActions input, .AdminActions a.CommandButton { text-decoration: none; }
+
+/*  Banner Rotator
+    -- Banners will automatically cycle along with navigation by inserting 
+    -- the desired images into a Text/HTML module using the Banner Container. */
+
+/* Set height of div.Normal to equal the height of banners + 34px for shadow */
+.RotatorWrapper div.DNNModuleContent > div.Normal { height: 339px; background: url(images/Slide-Shadow.png) no-repeat 0 bottom; }
+
+    /* Set width and height of banners within div.Normal img */
+    .RotatorWrapper div.DNNModuleContent > div.Normal img { width: 960px; height: 305px; }
+
+.RotatorNav { position: absolute; z-index: 20; width: 960px; height: 40px; background: url(images/50black.png) repeat top left; margin: -74px 0 0; padding: 0; list-style: none; }
+    .RotatorNav li { float: left; }
+        .RotatorNav li a { padding: 0 10px; display: block; color: #b8b8b8; line-height: 40px; text-decoration: none; }
+            .RotatorNav li a:hover { text-decoration: underline; }
+        .RotatorNav li.activeSlide a { color: #fff; }
