@@ -4,9 +4,17 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head runat="server">
     <title></title>
-    <link href="~/Styles/Site.css" rel="stylesheet" type="text/css" />
+    <link href="/Styles/Site.css" rel="stylesheet" type="text/css" />
+    <script src="/Scripts/jquery-1.4.1.min.js"></script>
+    <script src="/Scripts/jquery.datepick.js"></script>
     <asp:ContentPlaceHolder ID="HeadContent" runat="server">
     </asp:ContentPlaceHolder>
+    <script type="text/javascript">
+            $(".txtDates").datepick({ showOnFocus: false, showTrigger: "#caltrigger", dateFormat: "mm/d/yyyy" });
+    </script>
+    <style type="text/css">
+        #caltrigger{ display:none;  }
+    </style>
 </head>
 <body>
     <form runat="server">

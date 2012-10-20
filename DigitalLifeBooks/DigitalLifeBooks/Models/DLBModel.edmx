@@ -10,7 +10,13 @@
     <EntitySet Name="Assets" EntityType="DigitalLifeBooksModel.Store.Assets" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Albums" EntityType="DigitalLifeBooksModel.Store.Albums" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Users" EntityType="DigitalLifeBooksModel.Store.Users" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Children" EntityType="DigitalLifeBooksModel.Store.Children" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="UserAssets" EntityType="DigitalLifeBooksModel.Store.UserAssets" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ChildUser" EntityType="DigitalLifeBooksModel.Store.ChildUser" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="AssetAlbum" Association="DigitalLifeBooksModel.Store.AssetAlbum">
+      <End Role="Asset" EntitySet="Assets" />
+      <End Role="Album" EntitySet="Albums" />
+    </AssociationSet>
     <AssociationSet Name="FK_UserSibliing_Users" Association="DigitalLifeBooksModel.Store.FK_UserSibliing_Users">
       <End Role="User" EntitySet="Users" />
       <End Role="UserSibliing" EntitySet="UserSibliings" />
@@ -23,9 +29,13 @@
       <End Role="User" EntitySet="Users" />
       <End Role="UserAssets" EntitySet="UserAssets" />
     </AssociationSet>
-    <AssociationSet Name="AssetAlbum" Association="DigitalLifeBooksModel.Store.AssetAlbum">
-      <End Role="Asset" EntitySet="Assets" />
-      <End Role="Album" EntitySet="Albums" />
+    <AssociationSet Name="FK_ChildUser_Child" Association="DigitalLifeBooksModel.Store.FK_ChildUser_Child">
+      <End Role="Child" EntitySet="Children" />
+      <End Role="ChildUser" EntitySet="ChildUser" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ChildUser_User" Association="DigitalLifeBooksModel.Store.FK_ChildUser_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="ChildUser" EntitySet="ChildUser" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="UserSibliings">
@@ -64,20 +74,30 @@
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
-    <Property Name="FirstName" Type="varchar" Nullable="true" MaxLength="50" />
-    <Property Name="LastName" Type="varchar" Nullable="true" MaxLength="50" />
-    <Property Name="UserType" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="FirstName" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="LastName" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="UserType" Type="varchar" Nullable="false" MaxLength="50" />
     <Property Name="Email" Type="varchar(max)" Nullable="true" />
     <Property Name="PhoneNumber" Type="varchar" Nullable="true" MaxLength="50" />
-    <Property Name="DateOfBrith" Type="datetime" Nullable="true" />
     <Property Name="City" Type="varchar" Nullable="true" MaxLength="50" />
     <Property Name="State" Type="varchar" Nullable="true" MaxLength="50" />
-    <Property Name="Country" Type="varchar" Nullable="true" MaxLength="50" />
-    <Property Name="HospitalID" Type="uniqueidentifier" Nullable="true" />
-    <Property Name="BirthWeight" Type="varchar" Nullable="true" MaxLength="50" />
-    <Property Name="BirthLength" Type="varchar" Nullable="true" MaxLength="50" />
-    <Property Name="BirthMother" Type="varchar(max)" Nullable="true" />
     <Property Name="LoginName" Type="varchar" Nullable="false" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Children">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="LastName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="DateOfBirth" Type="datetime" Nullable="false" />
+    <Property Name="City" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="State" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Country" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="HospitalID" Type="bigint" Nullable="true" />
+    <Property Name="BirthWeight" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="BirthLength" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Last4SSN" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
   <EntityType Name="UserAssets">
     <Key>
@@ -87,18 +107,14 @@
     <Property Name="Assets_ID" Type="uniqueidentifier" Nullable="false" />
     <Property Name="Users_ID" Type="uniqueidentifier" Nullable="false" />
   </EntityType>
-  <Association Name="FK_UserSibliing_Users">
-    <End Role="User" Type="DigitalLifeBooksModel.Store.Users" Multiplicity="0..1" />
-    <End Role="UserSibliing" Type="DigitalLifeBooksModel.Store.UserSibliings" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="User">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="UserSibliing">
-        <PropertyRef Name="UserID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
+  <EntityType Name="ChildUser">
+    <Key>
+      <PropertyRef Name="Children_Id" />
+      <PropertyRef Name="Users_ID" />
+    </Key>
+    <Property Name="Children_Id" Type="bigint" Nullable="false" />
+    <Property Name="Users_ID" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
   <Association Name="AssetAlbum">
     <End Role="Asset" Type="DigitalLifeBooksModel.Store.Assets" Multiplicity="*" />
     <End Role="Album" Type="DigitalLifeBooksModel.Store.Albums" Multiplicity="1" />
@@ -108,6 +124,18 @@
       </Principal>
       <Dependent Role="Asset">
         <PropertyRef Name="Album_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserSibliing_Users">
+    <End Role="User" Type="DigitalLifeBooksModel.Store.Users" Multiplicity="0..1" />
+    <End Role="UserSibliing" Type="DigitalLifeBooksModel.Store.UserSibliings" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="UserSibliing">
+        <PropertyRef Name="UserID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -135,6 +163,30 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_ChildUser_Child">
+    <End Role="Child" Type="DigitalLifeBooksModel.Store.Children" Multiplicity="1" />
+    <End Role="ChildUser" Type="DigitalLifeBooksModel.Store.ChildUser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Child">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ChildUser">
+        <PropertyRef Name="Children_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ChildUser_User">
+    <End Role="ChildUser" Type="DigitalLifeBooksModel.Store.ChildUser" Multiplicity="*" />
+    <End Role="User" Type="DigitalLifeBooksModel.Store.Users" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ChildUser">
+        <PropertyRef Name="Users_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
@@ -143,6 +195,10 @@
           <EntitySet Name="UserSibliings" EntityType="DigitalLifeBooksModel.UserSibliing" />
           <EntitySet Name="Assets" EntityType="DigitalLifeBooksModel.Asset" />
           <EntitySet Name="Albums" EntityType="DigitalLifeBooksModel.Album" />
+          <AssociationSet Name="AssetAlbum" Association="DigitalLifeBooksModel.AssetAlbum">
+            <End Role="Asset" EntitySet="Assets" />
+            <End Role="Album" EntitySet="Albums" />
+          </AssociationSet>
           <EntitySet Name="Users" EntityType="DigitalLifeBooksModel.User" />
           <AssociationSet Name="FK_UserSibliing_Users" Association="DigitalLifeBooksModel.FK_UserSibliing_Users">
             <End Role="User" EntitySet="Users" />
@@ -152,11 +208,12 @@
             <End Role="Asset" EntitySet="Assets" />
             <End Role="User" EntitySet="Users" />
           </AssociationSet>
-          <AssociationSet Name="AssetAlbum" Association="DigitalLifeBooksModel.AssetAlbum">
-            <End Role="Asset" EntitySet="Assets" />
-            <End Role="Album" EntitySet="Albums" />
+          <EntitySet Name="Children" EntityType="DigitalLifeBooksModel.Child" />
+          <AssociationSet Name="ChildUser" Association="DigitalLifeBooksModel.ChildUser">
+            <End Role="Child" EntitySet="Children" />
+            <End Role="User" EntitySet="Users" />
           </AssociationSet>
-        </EntityContainer>
+          </EntityContainer>
         <EntityType Name="UserSibliing">
           <Key>
             <PropertyRef Name="ID" />
@@ -176,9 +233,9 @@
           <Property Type="String" Name="Type" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Type="String" Name="Location" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Type="String" Name="Caption" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Users" Relationship="DigitalLifeBooksModel.UserAssets" FromRole="Asset" ToRole="User" />
           <Property Type="Int64" Name="AlbumID" Nullable="false" />
           <NavigationProperty Name="Album" Relationship="DigitalLifeBooksModel.AssetAlbum" FromRole="Asset" ToRole="Album" />
+          <NavigationProperty Name="Users" Relationship="DigitalLifeBooksModel.UserAssets" FromRole="Asset" ToRole="User" />
         </EntityType>
         <EntityType Name="Album">
           <Key>
@@ -191,27 +248,26 @@
           <Property Type="DateTime" Name="EventDate" />
           <NavigationProperty Name="Assets" Relationship="DigitalLifeBooksModel.AssetAlbum" FromRole="Album" ToRole="Asset" />
         </EntityType>
+        <Association Name="AssetAlbum">
+          <End Type="DigitalLifeBooksModel.Asset" Role="Asset" Multiplicity="*" />
+          <End Type="DigitalLifeBooksModel.Album" Role="Album" Multiplicity="1" />
+        </Association>
         <EntityType Name="User">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Type="Guid" Name="ID" Nullable="false" />
-          <Property Type="String" Name="FirstName" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="LastName" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="UserType" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="Email" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="PhoneNumber" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Type="DateTime" Name="DateOfBrith" />
-          <Property Type="String" Name="City" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="State" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="Country" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Type="Guid" Name="HospitalID" />
-          <Property Type="String" Name="BirthWeight" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="BirthLength" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="BirthMother" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="FirstName" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Type="String" Name="LastName" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Type="String" Name="UserType" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Type="String" Name="Email" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="true" />
+          <Property Type="String" Name="PhoneNumber" MaxLength="50" FixedLength="false" Unicode="false" Nullable="true" />
+          <Property Type="String" Name="City" MaxLength="50" FixedLength="false" Unicode="false" Nullable="true" />
+          <Property Type="String" Name="State" MaxLength="50" FixedLength="false" Unicode="false" Nullable="true" />
           <Property Type="String" Name="LoginName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="UserSibliings" Relationship="DigitalLifeBooksModel.FK_UserSibliing_Users" FromRole="User" ToRole="UserSibliing" />
           <NavigationProperty Name="Assets" Relationship="DigitalLifeBooksModel.UserAssets" FromRole="User" ToRole="Asset" />
+          <NavigationProperty Name="Children" Relationship="DigitalLifeBooksModel.ChildUser" FromRole="User" ToRole="Child" />
         </EntityType>
         <Association Name="FK_UserSibliing_Users">
           <End Type="DigitalLifeBooksModel.User" Role="User" Multiplicity="0..1" />
@@ -229,11 +285,28 @@
           <End Type="DigitalLifeBooksModel.Asset" Role="Asset" Multiplicity="*" />
           <End Type="DigitalLifeBooksModel.User" Role="User" Multiplicity="*" />
         </Association>
-        <Association Name="AssetAlbum">
-          <End Type="DigitalLifeBooksModel.Asset" Role="Asset" Multiplicity="*" />
-          <End Type="DigitalLifeBooksModel.Album" Role="Album" Multiplicity="1" />
+        <EntityType Name="Child">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="FirstName" Nullable="false" />
+          <Property Type="String" Name="LastName" Nullable="false" />
+          <Property Type="DateTime" Name="DateOfBirth" Nullable="false" />
+          <Property Type="String" Name="City" Nullable="true" />
+          <Property Type="String" Name="State" Nullable="true" />
+          <Property Type="String" Name="Country" Nullable="true" />
+          <Property Type="Int64" Name="HospitalID" Nullable="true" />
+          <Property Type="String" Name="BirthWeight" Nullable="true" />
+          <Property Type="String" Name="BirthLength" Nullable="true" />
+          <Property Type="String" Name="Last4SSN" Nullable="false" />
+          <NavigationProperty Name="Users" Relationship="DigitalLifeBooksModel.ChildUser" FromRole="Child" ToRole="User" />
+        </EntityType>
+        <Association Name="ChildUser">
+          <End Type="DigitalLifeBooksModel.Child" Role="Child" Multiplicity="*" />
+          <End Type="DigitalLifeBooksModel.User" Role="User" Multiplicity="*" />
         </Association>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -281,18 +354,37 @@
           <ScalarProperty Name="UserType" ColumnName="UserType" />
           <ScalarProperty Name="Email" ColumnName="Email" />
           <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
-          <ScalarProperty Name="DateOfBrith" ColumnName="DateOfBrith" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="LoginName" ColumnName="LoginName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Children">
+      <EntityTypeMapping TypeName="IsTypeOf(DigitalLifeBooksModel.Child)">
+        <MappingFragment StoreEntitySet="Children">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
           <ScalarProperty Name="City" ColumnName="City" />
           <ScalarProperty Name="State" ColumnName="State" />
           <ScalarProperty Name="Country" ColumnName="Country" />
           <ScalarProperty Name="HospitalID" ColumnName="HospitalID" />
           <ScalarProperty Name="BirthWeight" ColumnName="BirthWeight" />
           <ScalarProperty Name="BirthLength" ColumnName="BirthLength" />
-          <ScalarProperty Name="BirthMother" ColumnName="BirthMother" />
-          <ScalarProperty Name="LoginName" ColumnName="LoginName" />
+          <ScalarProperty Name="Last4SSN" ColumnName="Last4SSN" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <AssociationSetMapping Name="AssetAlbum" TypeName="DigitalLifeBooksModel.AssetAlbum" StoreEntitySet="Assets">
+      <EndProperty Name="Album">
+        <ScalarProperty Name="ID" ColumnName="Album_ID" />
+      </EndProperty>
+      <EndProperty Name="Asset">
+        <ScalarProperty Name="ID" ColumnName="ID" />
+      </EndProperty>
+    </AssociationSetMapping>
     <AssociationSetMapping Name="UserAssets" TypeName="DigitalLifeBooksModel.UserAssets" StoreEntitySet="UserAssets">
       <EndProperty Name="Asset">
         <ScalarProperty Name="ID" ColumnName="Assets_ID" />
@@ -301,12 +393,12 @@
         <ScalarProperty Name="ID" ColumnName="Users_ID" />
       </EndProperty>
     </AssociationSetMapping>
-    <AssociationSetMapping Name="AssetAlbum" TypeName="DigitalLifeBooksModel.AssetAlbum" StoreEntitySet="Assets">
-      <EndProperty Name="Album">
-        <ScalarProperty Name="ID" ColumnName="Album_ID" />
+    <AssociationSetMapping Name="ChildUser" TypeName="DigitalLifeBooksModel.ChildUser" StoreEntitySet="ChildUser">
+      <EndProperty Name="Child">
+        <ScalarProperty Name="Id" ColumnName="Children_Id" />
       </EndProperty>
-      <EndProperty Name="Asset">
-        <ScalarProperty Name="ID" ColumnName="ID" />
+      <EndProperty Name="User">
+        <ScalarProperty Name="ID" ColumnName="Users_ID" />
       </EndProperty>
     </AssociationSetMapping>
   </EntityContainerMapping>
@@ -329,24 +421,26 @@
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
       <Diagram Name="DLBModel">
-        <EntityTypeShape EntityType="DigitalLifeBooksModel.UserSibliing" Width="1.5" PointX="3" PointY="1.875" Height="1.7566536458333335" IsExpanded="true" />
-        <EntityTypeShape EntityType="DigitalLifeBooksModel.Asset" Width="1.5" PointX="0.75" PointY="5" Height="2.2496956380208326" />
-        <EntityTypeShape EntityType="DigitalLifeBooksModel.Album" Width="1.5" PointX="6.5" PointY="3.875" Height="1.9210009765624996" />
-        <EntityTypeShape EntityType="DigitalLifeBooksModel.User" Width="1.5" PointX="3" PointY="8.125" Height="3.7288216145833317" />
+        <EntityTypeShape EntityType="DigitalLifeBooksModel.UserSibliing" Width="1.5" PointX="4.75" PointY="0.5" Height="1.7566536458333335" IsExpanded="true" />
+        <EntityTypeShape EntityType="DigitalLifeBooksModel.Asset" Width="1.5" PointX="1" PointY="5" Height="2.2496956380208326" />
+        <EntityTypeShape EntityType="DigitalLifeBooksModel.Album" Width="1.5" PointX="4.75" PointY="5.375" Height="1.9210009765624996" />
+        <AssociationConnector Association="DigitalLifeBooksModel.AssetAlbum">
+          <ConnectorPoint PointX="2.5" PointY="6.3123478190104159" />
+          <ConnectorPoint PointX="4.75" PointY="6.3123478190104159" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="DigitalLifeBooksModel.User" Width="1.5" PointX="1" PointY="1.5" Height="2.7427376302083335" />
         <AssociationConnector Association="DigitalLifeBooksModel.FK_UserSibliing_Users" >
-          <ConnectorPoint PointX="3.75" PointY="8.125" />
-          <ConnectorPoint PointX="3.75" PointY="3.6316536458333335" />
+          <ConnectorPoint PointX="2.5" PointY="1.8783268229166668" />
+          <ConnectorPoint PointX="4.75" PointY="1.8783268229166668" />
         </AssociationConnector>
         <AssociationConnector Association="DigitalLifeBooksModel.UserAssets" >
-          <ConnectorPoint PointX="1.5" PointY="7.2496956380208326" />
-          <ConnectorPoint PointX="1.5" PointY="9.9894108072916659" />
-          <ConnectorPoint PointX="3" PointY="9.9894108072916659" />
+          <ConnectorPoint PointX="1.75" PointY="5" />
+          <ConnectorPoint PointX="1.75" PointY="4.2427376302083335" />
         </AssociationConnector>
-        <AssociationConnector Association="DigitalLifeBooksModel.AssetAlbum">
-          <ConnectorPoint PointX="2.25" PointY="5.39800048828125" />
-          <ConnectorPoint PointX="3.6666666666666665" PointY="5.3980004882812489" />
-          <ConnectorPoint PointX="3.8333333333333335" PointY="5.39800048828125" />
-          <ConnectorPoint PointX="6.5" PointY="5.39800048828125" />
+        <EntityTypeShape EntityType="DigitalLifeBooksModel.Child" Width="1.5" PointX="4.75" PointY="2.375" Height="2.7427376302083326" />
+        <AssociationConnector Association="DigitalLifeBooksModel.ChildUser">
+          <ConnectorPoint PointX="4.75" PointY="3.39104248046875" />
+          <ConnectorPoint PointX="2.5" PointY="3.39104248046875" />
         </AssociationConnector>
       </Diagram>
     </Diagrams>

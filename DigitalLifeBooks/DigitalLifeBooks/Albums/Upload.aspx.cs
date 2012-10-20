@@ -16,11 +16,11 @@ namespace DigitalLifeBooks.Albums
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            var user = CurrentUser;
-            var albumId = new Guid(Request.QueryString["AlbumId"]);
-            album = LoadAlbum(albumId);
-            if(!album.Child.UserIsAuthorizedForChild(user))
-                throw new UnauthorizedAccessException();           
+                var user = CurrentUser;
+                var albumId = new Guid(Request.QueryString["AlbumId"]);
+                album = LoadAlbum(albumId);
+                if (!album.Child.UserIsAuthorizedForChild(user))
+                    throw new UnauthorizedAccessException();          
         }
 
         public void FileUpload_Click(object sender, EventArgs e)
@@ -60,7 +60,10 @@ namespace DigitalLifeBooks.Albums
         }
         private Album LoadAlbum(Guid Id)
         {
-            return DataContext.Albums.Single(a => a.ID == Id);
+            using (var context = new DigitalLifeBooksEntities())
+            {
+                return context.Albums.Single(a => a.ID == Id);
+            }
         }
 
     }
