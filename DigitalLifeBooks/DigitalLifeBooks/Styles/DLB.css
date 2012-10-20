@@ -186,7 +186,8 @@ td { vertical-align: top; }
 
 .SkinObject{font-weight:bold;font-size:8.5pt;text-decoration:none;}
 a.SkinObject:link, a.SkinObject:visited, a.SkinObject:hover, a.SkinObject:active{text-decoration:none;}
-span.copyright {float:right;}
+
+div.DNNAlignright {text-align:right;}
 
 #Body { background-color: #f5f5f5; }
 

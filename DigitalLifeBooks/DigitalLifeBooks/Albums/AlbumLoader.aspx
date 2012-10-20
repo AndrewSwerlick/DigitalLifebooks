@@ -1,17 +1,11 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="AlbumLoader.aspx.cs" Inherits="DigitalLifeBooks.Albums.AlbumLoader" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/Masterpages/Site.master" AutoEventWireup="true" CodeBehind="AlbumLoader.aspx.cs" Inherits="DigitalLifeBooks.Albums.AlbumLoader" %>
 <%@ Register Src="~/UserControls/AlbumRender.ascx" TagName="AlbumRender" TagPrefix="dlb" %>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
+</asp:Content>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title></title>
-</head>
-<body>
-    <form id="form1" runat="server">
+<asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
     <div>
         <dlb:AlbumRender runat="server" Id="AlbumRender"></dlb:AlbumRender>
     </div>
-    </form>
-</body>
-</html>
+</asp:Content>
