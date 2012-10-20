@@ -19,7 +19,6 @@ using System.Runtime.Serialization;
 #region EDM Relationship Metadata
 
 [assembly: EdmRelationshipAttribute("DigitalLifeBooksModel", "AssetAlbum", "Asset", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DigitalLifeBooks.Models.Asset), "Album", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DigitalLifeBooks.Models.Album))]
-[assembly: EdmRelationshipAttribute("DigitalLifeBooksModel", "FK_UserSibliing_Users", "User", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DigitalLifeBooks.Models.User), "UserSibliing", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DigitalLifeBooks.Models.UserSibliing), true)]
 [assembly: EdmRelationshipAttribute("DigitalLifeBooksModel", "ChildUser", "Child", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DigitalLifeBooks.Models.Child), "User", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DigitalLifeBooks.Models.User))]
 [assembly: EdmRelationshipAttribute("DigitalLifeBooksModel", "ChildAlbum", "Child", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DigitalLifeBooks.Models.Child), "Album", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DigitalLifeBooks.Models.Album), true)]
 
@@ -72,22 +71,6 @@ namespace DigitalLifeBooks.Models
         #endregion
     
         #region ObjectSet Properties
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        public ObjectSet<UserSibliing> UserSibliings
-        {
-            get
-            {
-                if ((_UserSibliings == null))
-                {
-                    _UserSibliings = base.CreateObjectSet<UserSibliing>("UserSibliings");
-                }
-                return _UserSibliings;
-            }
-        }
-        private ObjectSet<UserSibliing> _UserSibliings;
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -155,14 +138,6 @@ namespace DigitalLifeBooks.Models
 
         #endregion
         #region AddTo Methods
-    
-        /// <summary>
-        /// Deprecated Method for adding a new object to the UserSibliings EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddToUserSibliings(UserSibliing userSibliing)
-        {
-            base.AddObject("UserSibliings", userSibliing);
-        }
     
         /// <summary>
         /// Deprecated Method for adding a new object to the Assets EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
@@ -1030,7 +1005,7 @@ namespace DigitalLifeBooks.Models
         /// <param name="lastName">Initial value of the LastName property.</param>
         /// <param name="userType">Initial value of the UserType property.</param>
         /// <param name="loginName">Initial value of the LoginName property.</param>
-        public static User CreateUser(global::System.Guid id, global::System.String firstName, global::System.String lastName, global::System.String userType, global::System.String loginName)
+        public static User CreateUser(global::System.Int64 id, global::System.String firstName, global::System.String lastName, global::System.String userType, global::System.String loginName)
         {
             User user = new User();
             user.ID = id;
@@ -1049,7 +1024,7 @@ namespace DigitalLifeBooks.Models
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.Guid ID
+        public global::System.Int64 ID
         {
             get
             {
@@ -1067,8 +1042,8 @@ namespace DigitalLifeBooks.Models
                 }
             }
         }
-        private global::System.Guid _ID;
-        partial void OnIDChanging(global::System.Guid value);
+        private global::System.Int64 _ID;
+        partial void OnIDChanging(global::System.Int64 value);
         partial void OnIDChanged();
     
         /// <summary>
@@ -1273,28 +1248,6 @@ namespace DigitalLifeBooks.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("DigitalLifeBooksModel", "FK_UserSibliing_Users", "UserSibliing")]
-        public EntityCollection<UserSibliing> UserSibliings
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<UserSibliing>("DigitalLifeBooksModel.FK_UserSibliing_Users", "UserSibliing");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<UserSibliing>("DigitalLifeBooksModel.FK_UserSibliing_Users", "UserSibliing", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("DigitalLifeBooksModel", "ChildUser", "Child")]
         public EntityCollection<Child> Children
         {
@@ -1307,174 +1260,6 @@ namespace DigitalLifeBooks.Models
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Child>("DigitalLifeBooksModel.ChildUser", "Child", value);
-                }
-            }
-        }
-
-        #endregion
-    }
-    
-    /// <summary>
-    /// No Metadata Documentation available.
-    /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="DigitalLifeBooksModel", Name="UserSibliing")]
-    [Serializable()]
-    [DataContractAttribute(IsReference=true)]
-    public partial class UserSibliing : EntityObject
-    {
-        #region Factory Method
-    
-        /// <summary>
-        /// Create a new UserSibliing object.
-        /// </summary>
-        /// <param name="id">Initial value of the ID property.</param>
-        public static UserSibliing CreateUserSibliing(global::System.Guid id)
-        {
-            UserSibliing userSibliing = new UserSibliing();
-            userSibliing.ID = id;
-            return userSibliing;
-        }
-
-        #endregion
-        #region Primitive Properties
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Guid ID
-        {
-            get
-            {
-                return _ID;
-            }
-            set
-            {
-                if (_ID != value)
-                {
-                    OnIDChanging(value);
-                    ReportPropertyChanging("ID");
-                    _ID = StructuralObject.SetValidValue(value);
-                    ReportPropertyChanged("ID");
-                    OnIDChanged();
-                }
-            }
-        }
-        private global::System.Guid _ID;
-        partial void OnIDChanging(global::System.Guid value);
-        partial void OnIDChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public global::System.String SiblingName
-        {
-            get
-            {
-                return _SiblingName;
-            }
-            set
-            {
-                OnSiblingNameChanging(value);
-                ReportPropertyChanging("SiblingName");
-                _SiblingName = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("SiblingName");
-                OnSiblingNameChanged();
-            }
-        }
-        private global::System.String _SiblingName;
-        partial void OnSiblingNameChanging(global::System.String value);
-        partial void OnSiblingNameChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public global::System.String Relationship
-        {
-            get
-            {
-                return _Relationship;
-            }
-            set
-            {
-                OnRelationshipChanging(value);
-                ReportPropertyChanging("Relationship");
-                _Relationship = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("Relationship");
-                OnRelationshipChanged();
-            }
-        }
-        private global::System.String _Relationship;
-        partial void OnRelationshipChanging(global::System.String value);
-        partial void OnRelationshipChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public Nullable<global::System.Guid> UserID
-        {
-            get
-            {
-                return _UserID;
-            }
-            set
-            {
-                OnUserIDChanging(value);
-                ReportPropertyChanging("UserID");
-                _UserID = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("UserID");
-                OnUserIDChanged();
-            }
-        }
-        private Nullable<global::System.Guid> _UserID;
-        partial void OnUserIDChanging(Nullable<global::System.Guid> value);
-        partial void OnUserIDChanged();
-
-        #endregion
-    
-        #region Navigation Properties
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("DigitalLifeBooksModel", "FK_UserSibliing_Users", "User")]
-        public User User
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<User>("DigitalLifeBooksModel.FK_UserSibliing_Users", "User").Value;
-            }
-            set
-            {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<User>("DigitalLifeBooksModel.FK_UserSibliing_Users", "User").Value = value;
-            }
-        }
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [BrowsableAttribute(false)]
-        [DataMemberAttribute()]
-        public EntityReference<User> UserReference
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<User>("DigitalLifeBooksModel.FK_UserSibliing_Users", "User");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<User>("DigitalLifeBooksModel.FK_UserSibliing_Users", "User", value);
                 }
             }
         }

@@ -1,7 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="DigitalLifeBooksModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
   <EntityContainer Name="DigitalLifeBooksEntities" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="UserSibliings" EntityType="DigitalLifeBooksModel.UserSibliing" />
     <EntitySet Name="Assets" EntityType="DigitalLifeBooksModel.Asset" />
     <EntitySet Name="Albums" EntityType="DigitalLifeBooksModel.Album" />
     <AssociationSet Name="AssetAlbum" Association="DigitalLifeBooksModel.AssetAlbum">
@@ -9,10 +8,6 @@
       <End Role="Album" EntitySet="Albums" />
     </AssociationSet>
     <EntitySet Name="Users" EntityType="DigitalLifeBooksModel.User" />
-    <AssociationSet Name="FK_UserSibliing_Users" Association="DigitalLifeBooksModel.FK_UserSibliing_Users">
-      <End Role="User" EntitySet="Users" />
-      <End Role="UserSibliing" EntitySet="UserSibliings" />
-    </AssociationSet>
     <EntitySet Name="Children" EntityType="DigitalLifeBooksModel.Child" />
     <AssociationSet Name="ChildUser" Association="DigitalLifeBooksModel.ChildUser">
       <End Role="Child" EntitySet="Children" />
@@ -23,16 +18,6 @@
       <End Role="Album" EntitySet="Albums" />
     </AssociationSet>
   </EntityContainer>
-  <EntityType Name="UserSibliing">
-    <Key>
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Name="ID" Type="Guid" Nullable="false" />
-    <Property Name="SiblingName" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
-    <Property Name="Relationship" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
-    <Property Name="UserID" Type="Guid" />
-    <NavigationProperty Name="User" Relationship="DigitalLifeBooksModel.FK_UserSibliing_Users" FromRole="UserSibliing" ToRole="User" />
-  </EntityType>
   <EntityType Name="Asset">
     <Key>
       <PropertyRef Name="ID" />
@@ -66,7 +51,7 @@
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Type="Guid" Name="ID" Nullable="false" />
+    <Property Type="Int64" Name="ID" Nullable="false" />
     <Property Type="String" Name="FirstName" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Type="String" Name="LastName" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Type="String" Name="UserType" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
@@ -75,21 +60,8 @@
     <Property Type="String" Name="City" MaxLength="50" FixedLength="false" Unicode="false" Nullable="true" />
     <Property Type="String" Name="State" MaxLength="50" FixedLength="false" Unicode="false" Nullable="true" />
     <Property Type="String" Name="LoginName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="UserSibliings" Relationship="DigitalLifeBooksModel.FK_UserSibliing_Users" FromRole="User" ToRole="UserSibliing" />
     <NavigationProperty Name="Children" Relationship="DigitalLifeBooksModel.ChildUser" FromRole="User" ToRole="Child" />
   </EntityType>
-  <Association Name="FK_UserSibliing_Users">
-    <End Type="DigitalLifeBooksModel.User" Role="User" Multiplicity="0..1" />
-    <End Type="DigitalLifeBooksModel.UserSibliing" Role="UserSibliing" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="User">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="UserSibliing">
-        <PropertyRef Name="UserID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <EntityType Name="Child">
     <Key>
       <PropertyRef Name="Id" />
