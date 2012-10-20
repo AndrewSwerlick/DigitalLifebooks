@@ -62,7 +62,7 @@
     <Content Include="Admin\UserManagement\AddChildToUser.aspx" />
     <Content Include="Albums\AlbumLoader.aspx" />
     <Content Include="Albums\EditAsset.aspx" />
-    <Content Include="Albums\NewAlbum.aspx" />
+    <Content Include="Albums\NewOrEditAlbum.aspx" />
     <Content Include="Albums\Upload.aspx" />
     <Content Include="Admin\Create\NewChild.aspx" />
     <Content Include="Scripts\init.js" />
@@ -171,12 +171,12 @@
     <Compile Include="Albums\EditAsset.aspx.designer.cs">
       <DependentUpon>EditAsset.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Albums\NewAlbum.aspx.cs">
-      <DependentUpon>NewAlbum.aspx</DependentUpon>
+    <Compile Include="Albums\NewOrEditAlbum.aspx.cs">
+      <DependentUpon>NewOrEditAlbum.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Albums\NewAlbum.aspx.designer.cs">
-      <DependentUpon>NewAlbum.aspx</DependentUpon>
+    <Compile Include="Albums\NewOrEditAlbum.aspx.designer.cs">
+      <DependentUpon>NewOrEditAlbum.aspx</DependentUpon>
     </Compile>
     <Compile Include="AssetManagement\IAssetManager.cs" />
     <Compile Include="AssetManagement\LocalDiskAssetManager.cs" />
