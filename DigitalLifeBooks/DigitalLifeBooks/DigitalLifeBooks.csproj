@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -63,6 +63,7 @@
     <Content Include="Admin\UserManagement\AddChildToUser.aspx" />
     <Content Include="Albums\AlbumLoader.aspx" />
     <Content Include="Albums\EditAsset.aspx" />
+    <Content Include="Albums\AlbumViewer.aspx" />
     <Content Include="Albums\NewOrEditAlbum.aspx" />
     <Content Include="Albums\Upload.aspx" />
     <Content Include="Admin\Create\NewChild.aspx" />
@@ -187,6 +188,13 @@
     <Compile Include="Albums\EditAsset.aspx.designer.cs">
       <DependentUpon>EditAsset.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Albums\AlbumViewer.aspx.cs">
+      <DependentUpon>AlbumViewer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+      <Compile Include="Albums\AlbumViewer.aspx.designer.cs">
+          <DependentUpon>AlbumViewer.aspx</DependentUpon>
+      </Compile>
     <Compile Include="Albums\NewOrEditAlbum.aspx.cs">
       <DependentUpon>NewOrEditAlbum.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

@@ -1,13 +1,19 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 C:\Users\Administrator\Documents\GitHub\DigitalLifebooks\DigitalLifeBooks\DigitalLifeBooks\bin\DigitalLifeBooks.dll
 C:\Users\Administrator\Documents\GitHub\DigitalLifebooks\DigitalLifeBooks\DigitalLifeBooks\bin\DigitalLifeBooks.pdb
 C:\Users\Administrator\Documents\GitHub\DigitalLifebooks\DigitalLifeBooks\DigitalLifeBooks\obj\Debug\ResolveAssemblyReference.cache
 C:\Users\Administrator\Documents\GitHub\DigitalLifebooks\DigitalLifeBooks\DigitalLifeBooks\obj\Debug\DigitalLifeBooks.dll
 C:\Users\Administrator\Documents\GitHub\DigitalLifebooks\DigitalLifeBooks\DigitalLifeBooks\obj\Debug\DigitalLifeBooks.pdb
 =======
+=======
+>>>>>>> 627d0a2513aa8b0f4008c6a27a3733e85e1e35f2
 C:\Projects\DigitalLifebooks\DigitalLifebooks\DigitalLifeBooks\DigitalLifeBooks\bin\DigitalLifeBooks.dll
 C:\Projects\DigitalLifebooks\DigitalLifebooks\DigitalLifeBooks\DigitalLifeBooks\bin\DigitalLifeBooks.pdb
 C:\Projects\DigitalLifebooks\DigitalLifebooks\DigitalLifeBooks\DigitalLifeBooks\obj\Debug\ResolveAssemblyReference.cache
 C:\Projects\DigitalLifebooks\DigitalLifebooks\DigitalLifeBooks\DigitalLifeBooks\obj\Debug\DigitalLifeBooks.dll
 C:\Projects\DigitalLifebooks\DigitalLifebooks\DigitalLifeBooks\DigitalLifeBooks\obj\Debug\DigitalLifeBooks.pdb
+<<<<<<< HEAD
 >>>>>>> 37021996e71100c7a9e7a6a8fa8b5b9a7758dab1
+=======
+>>>>>>> 627d0a2513aa8b0f4008c6a27a3733e85e1e35f2

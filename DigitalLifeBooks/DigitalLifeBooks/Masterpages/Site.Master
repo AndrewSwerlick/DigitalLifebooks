@@ -2,8 +2,12 @@
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<<<<<<< HEAD
 
 <head runat="server" id="Head">
+=======
+<head runat="server">
+>>>>>>> 627d0a2513aa8b0f4008c6a27a3733e85e1e35f2
     <title>Digital Lifebooks</title>
     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
     <meta content="text/javascript" http-equiv="Content-Script-Type" />
