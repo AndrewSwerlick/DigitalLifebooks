@@ -1,13 +1,10 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="AddChildToUser.aspx.cs" Inherits="DigitalLifeBooks.Admin.UserManagement.AddChildToUser" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/Masterpages/Site.master" AutoEventWireup="true" CodeBehind="AddChildToUser.aspx.cs" Inherits="DigitalLifeBooks.Admin.UserManagement.AddChildToUser" %>
 <%@ Import Namespace="DigitalLifeBooks.Models" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title></title>
-</head>
-<body>
-    <form id="form1" runat="server">
+<asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
+</asp:Content>
+
+<asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
     <div>
         <asp:Panel ID="EditForm" runat="server">
             <asp:RadioButtonList runat="server" ID="NewOrExistingRadioChoices">
@@ -23,6 +20,4 @@
             <asp:Literal ID="ConfirmationMessage" runat="server"></asp:Literal>
         </asp:Panel>
     </div>
-    </form>
-</body>
-</html>
+</asp:Content>
