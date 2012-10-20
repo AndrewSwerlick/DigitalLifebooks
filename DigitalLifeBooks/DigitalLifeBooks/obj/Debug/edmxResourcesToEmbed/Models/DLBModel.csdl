@@ -27,7 +27,6 @@
     <Property Type="String" Name="Type" MaxLength="20" FixedLength="false" Unicode="false" />
     <Property Type="String" Name="Location" MaxLength="255" FixedLength="false" Unicode="false" />
     <Property Type="String" Name="Caption" MaxLength="Max" FixedLength="false" Unicode="false" />
-    <Property Type="Int64" Name="AlbumID" Nullable="false" />
     <NavigationProperty Name="Album" Relationship="DigitalLifeBooksModel.AssetAlbum" FromRole="Asset" ToRole="Album" />
   </EntityType>
   <EntityType Name="Album">
@@ -51,7 +50,7 @@
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Type="Int64" Name="ID" Nullable="false" />
+    <Property Type="Int64" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Type="String" Name="FirstName" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Type="String" Name="LastName" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Type="String" Name="UserType" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />

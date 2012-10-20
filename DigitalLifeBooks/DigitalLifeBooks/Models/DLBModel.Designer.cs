@@ -433,12 +433,10 @@ namespace DigitalLifeBooks.Models
         /// Create a new Asset object.
         /// </summary>
         /// <param name="id">Initial value of the ID property.</param>
-        /// <param name="albumID">Initial value of the AlbumID property.</param>
-        public static Asset CreateAsset(global::System.Int64 id, global::System.Int64 albumID)
+        public static Asset CreateAsset(global::System.Int64 id)
         {
             Asset asset = new Asset();
             asset.ID = id;
-            asset.AlbumID = albumID;
             return asset;
         }
 
@@ -567,30 +565,6 @@ namespace DigitalLifeBooks.Models
         private global::System.String _Caption;
         partial void OnCaptionChanging(global::System.String value);
         partial void OnCaptionChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Int64 AlbumID
-        {
-            get
-            {
-                return _AlbumID;
-            }
-            set
-            {
-                OnAlbumIDChanging(value);
-                ReportPropertyChanging("AlbumID");
-                _AlbumID = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("AlbumID");
-                OnAlbumIDChanged();
-            }
-        }
-        private global::System.Int64 _AlbumID;
-        partial void OnAlbumIDChanging(global::System.Int64 value);
-        partial void OnAlbumIDChanged();
 
         #endregion
     

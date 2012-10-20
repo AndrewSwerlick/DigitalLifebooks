@@ -43,6 +43,9 @@ namespace DigitalLifeBooks.Services
                 if (EntityType == "Asset")
                     DeleteAsset(id);
 
+                if (EntityType == "Album")
+                    DeleteAlbum(id);
+
                 if (EntityType == "Child")
                     DeleteChild(id);
 
@@ -52,6 +55,19 @@ namespace DigitalLifeBooks.Services
             {
                 return "error";
             }
+        }
+
+        private void DeleteAlbum(long id)
+        {
+            var album = DataContext.Albums.Single(a => a.ID == id);
+
+            for (int j = 0; j < album.Assets.Count; j++)
+            {
+                var asset = album.Assets.ElementAt(j);
+                AssetManager.Delete(asset);
+                DataContext.Assets.DeleteObject(asset);
+            }
+            DataContext.Albums.DeleteObject(album);        
         }
 
         private void DeleteUser(long EnityID)
@@ -70,10 +86,12 @@ namespace DigitalLifeBooks.Services
         private void DeleteChild(long EnityID)
         {
             var child = DataContext.Children.Single(a => a.Id == EnityID);
-            foreach (Album album in child.Albums)
+            for (int i=0; i < child.Albums.Count; i++)
             {
-                foreach (Asset asset in album.Assets)
+                var album = child.Albums.ElementAt(i);
+                for (int j=0; j < album.Assets.Count; j++)
                 {
+                    var asset = album.Assets.ElementAt(j);
                     AssetManager.Delete(asset);
                     DataContext.Assets.DeleteObject(asset);
                 }
