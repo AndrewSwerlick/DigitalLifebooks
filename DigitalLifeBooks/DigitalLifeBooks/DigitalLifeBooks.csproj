@@ -58,7 +58,7 @@
     <Content Include="Account\Register.aspx" />
     <Content Include="Admin\UserManagement\AddChildToUser.aspx" />
     <Content Include="Albums\AlbumLoader.aspx" />
-    <Content Include="AssetManagement\Upload.aspx" />
+    <Content Include="Albums\Upload.aspx" />
     <Content Include="Admin\Create\NewChild.aspx" />
     <Content Include="Styles\DLB.css" />
     <Content Include="Styles\Site.css" />
@@ -132,11 +132,11 @@
     </Compile>
     <Compile Include="AssetManagement\IAssetManager.cs" />
     <Compile Include="AssetManagement\LocalDiskAssetManager.cs" />
-    <Compile Include="AssetManagement\Upload.aspx.cs">
+    <Compile Include="Albums\Upload.aspx.cs">
       <DependentUpon>Upload.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="AssetManagement\Upload.aspx.designer.cs">
+    <Compile Include="Albums\Upload.aspx.designer.cs">
       <DependentUpon>Upload.aspx</DependentUpon>
     </Compile>
     <Compile Include="Assets.ashx.cs">
@@ -188,6 +188,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Child\" />
     <Folder Include="Styles\Images\" />
   </ItemGroup>
   <ItemGroup>

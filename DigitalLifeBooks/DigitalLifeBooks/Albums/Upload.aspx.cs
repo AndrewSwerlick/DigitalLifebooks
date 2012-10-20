@@ -6,8 +6,9 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using DigitalLifeBooks.Models;
 using System.IO;
+using DigitalLifeBooks.AssetManagement;
 
-namespace DigitalLifeBooks.AssetManagement
+namespace DigitalLifeBooks.Albums
 {
     public partial class Upload : System.Web.UI.Page
     {
