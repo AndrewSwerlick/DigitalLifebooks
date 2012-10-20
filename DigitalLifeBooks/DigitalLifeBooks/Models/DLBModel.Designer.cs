@@ -20,8 +20,8 @@ using System.Runtime.Serialization;
 
 [assembly: EdmRelationshipAttribute("DigitalLifeBooksModel", "AssetAlbum", "Asset", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DigitalLifeBooks.Models.Asset), "Album", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DigitalLifeBooks.Models.Album))]
 [assembly: EdmRelationshipAttribute("DigitalLifeBooksModel", "FK_UserSibliing_Users", "User", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DigitalLifeBooks.Models.User), "UserSibliing", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DigitalLifeBooks.Models.UserSibliing), true)]
-[assembly: EdmRelationshipAttribute("DigitalLifeBooksModel", "UserAssets", "Asset", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DigitalLifeBooks.Models.Asset), "User", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DigitalLifeBooks.Models.User))]
 [assembly: EdmRelationshipAttribute("DigitalLifeBooksModel", "ChildUser", "Child", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DigitalLifeBooks.Models.Child), "User", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DigitalLifeBooks.Models.User))]
+[assembly: EdmRelationshipAttribute("DigitalLifeBooksModel", "ChildAlbum", "Child", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DigitalLifeBooks.Models.Child), "Album", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DigitalLifeBooks.Models.Album), true)]
 
 #endregion
 
@@ -218,10 +218,12 @@ namespace DigitalLifeBooks.Models
         /// Create a new Album object.
         /// </summary>
         /// <param name="id">Initial value of the ID property.</param>
-        public static Album CreateAlbum(global::System.Int64 id)
+        /// <param name="childId">Initial value of the ChildId property.</param>
+        public static Album CreateAlbum(global::System.Int64 id, global::System.Int64 childId)
         {
             Album album = new Album();
             album.ID = id;
+            album.ChildId = childId;
             return album;
         }
 
@@ -350,6 +352,30 @@ namespace DigitalLifeBooks.Models
         private Nullable<global::System.DateTime> _EventDate;
         partial void OnEventDateChanging(Nullable<global::System.DateTime> value);
         partial void OnEventDateChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int64 ChildId
+        {
+            get
+            {
+                return _ChildId;
+            }
+            set
+            {
+                OnChildIdChanging(value);
+                ReportPropertyChanging("ChildId");
+                _ChildId = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ChildId");
+                OnChildIdChanged();
+            }
+        }
+        private global::System.Int64 _ChildId;
+        partial void OnChildIdChanging(global::System.Int64 value);
+        partial void OnChildIdChanged();
 
         #endregion
     
@@ -373,6 +399,44 @@ namespace DigitalLifeBooks.Models
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Asset>("DigitalLifeBooksModel.AssetAlbum", "Asset", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DigitalLifeBooksModel", "ChildAlbum", "Child")]
+        public Child Child
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Child>("DigitalLifeBooksModel.ChildAlbum", "Child").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Child>("DigitalLifeBooksModel.ChildAlbum", "Child").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Child> ChildReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Child>("DigitalLifeBooksModel.ChildAlbum", "Child");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Child>("DigitalLifeBooksModel.ChildAlbum", "Child", value);
                 }
             }
         }
@@ -591,28 +655,6 @@ namespace DigitalLifeBooks.Models
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Album>("DigitalLifeBooksModel.AssetAlbum", "Album", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("DigitalLifeBooksModel", "UserAssets", "User")]
-        public EntityCollection<User> Users
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<User>("DigitalLifeBooksModel.UserAssets", "User");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<User>("DigitalLifeBooksModel.UserAssets", "User", value);
                 }
             }
         }
@@ -944,6 +986,28 @@ namespace DigitalLifeBooks.Models
                 }
             }
         }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DigitalLifeBooksModel", "ChildAlbum", "Album")]
+        public EntityCollection<Album> Albums
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Album>("DigitalLifeBooksModel.ChildAlbum", "Album");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Album>("DigitalLifeBooksModel.ChildAlbum", "Album", value);
+                }
+            }
+        }
 
         #endregion
     }
@@ -1221,28 +1285,6 @@ namespace DigitalLifeBooks.Models
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<UserSibliing>("DigitalLifeBooksModel.FK_UserSibliing_Users", "UserSibliing", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("DigitalLifeBooksModel", "UserAssets", "Asset")]
-        public EntityCollection<Asset> Assets
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Asset>("DigitalLifeBooksModel.UserAssets", "Asset");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Asset>("DigitalLifeBooksModel.UserAssets", "Asset", value);
                 }
             }
         }

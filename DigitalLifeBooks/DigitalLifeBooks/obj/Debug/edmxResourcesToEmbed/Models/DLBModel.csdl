@@ -13,14 +13,14 @@
       <End Role="User" EntitySet="Users" />
       <End Role="UserSibliing" EntitySet="UserSibliings" />
     </AssociationSet>
-    <AssociationSet Name="UserAssets" Association="DigitalLifeBooksModel.UserAssets">
-      <End Role="Asset" EntitySet="Assets" />
-      <End Role="User" EntitySet="Users" />
-    </AssociationSet>
     <EntitySet Name="Children" EntityType="DigitalLifeBooksModel.Child" />
     <AssociationSet Name="ChildUser" Association="DigitalLifeBooksModel.ChildUser">
       <End Role="Child" EntitySet="Children" />
       <End Role="User" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="ChildAlbum" Association="DigitalLifeBooksModel.ChildAlbum">
+      <End Role="Child" EntitySet="Children" />
+      <End Role="Album" EntitySet="Albums" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="UserSibliing">
@@ -44,7 +44,6 @@
     <Property Type="String" Name="Caption" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Type="Int64" Name="AlbumID" Nullable="false" />
     <NavigationProperty Name="Album" Relationship="DigitalLifeBooksModel.AssetAlbum" FromRole="Asset" ToRole="Album" />
-    <NavigationProperty Name="Users" Relationship="DigitalLifeBooksModel.UserAssets" FromRole="Asset" ToRole="User" />
   </EntityType>
   <EntityType Name="Album">
     <Key>
@@ -56,6 +55,8 @@
     <Property Type="String" Name="Description" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Type="DateTime" Name="EventDate" />
     <NavigationProperty Name="Assets" Relationship="DigitalLifeBooksModel.AssetAlbum" FromRole="Album" ToRole="Asset" />
+    <NavigationProperty Name="Child" Relationship="DigitalLifeBooksModel.ChildAlbum" FromRole="Album" ToRole="Child" />
+    <Property Type="Int64" Name="ChildId" Nullable="false" />
   </EntityType>
   <Association Name="AssetAlbum">
     <End Type="DigitalLifeBooksModel.Asset" Role="Asset" Multiplicity="*" />
@@ -75,7 +76,6 @@
     <Property Type="String" Name="State" MaxLength="50" FixedLength="false" Unicode="false" Nullable="true" />
     <Property Type="String" Name="LoginName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="UserSibliings" Relationship="DigitalLifeBooksModel.FK_UserSibliing_Users" FromRole="User" ToRole="UserSibliing" />
-    <NavigationProperty Name="Assets" Relationship="DigitalLifeBooksModel.UserAssets" FromRole="User" ToRole="Asset" />
     <NavigationProperty Name="Children" Relationship="DigitalLifeBooksModel.ChildUser" FromRole="User" ToRole="Child" />
   </EntityType>
   <Association Name="FK_UserSibliing_Users">
@@ -89,10 +89,6 @@
         <PropertyRef Name="UserID" />
       </Dependent>
     </ReferentialConstraint>
-  </Association>
-  <Association Name="UserAssets">
-    <End Type="DigitalLifeBooksModel.Asset" Role="Asset" Multiplicity="*" />
-    <End Type="DigitalLifeBooksModel.User" Role="User" Multiplicity="*" />
   </Association>
   <EntityType Name="Child">
     <Key>
@@ -110,9 +106,22 @@
     <Property Type="String" Name="BirthLength" Nullable="true" />
     <Property Type="String" Name="Last4SSN" Nullable="false" />
     <NavigationProperty Name="Users" Relationship="DigitalLifeBooksModel.ChildUser" FromRole="Child" ToRole="User" />
+    <NavigationProperty Name="Albums" Relationship="DigitalLifeBooksModel.ChildAlbum" FromRole="Child" ToRole="Album" />
   </EntityType>
   <Association Name="ChildUser">
     <End Type="DigitalLifeBooksModel.Child" Role="Child" Multiplicity="*" />
     <End Type="DigitalLifeBooksModel.User" Role="User" Multiplicity="*" />
+  </Association>
+  <Association Name="ChildAlbum">
+    <End Type="DigitalLifeBooksModel.Child" Role="Child" Multiplicity="1" />
+    <End Type="DigitalLifeBooksModel.Album" Role="Album" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Child">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Album">
+        <PropertyRef Name="ChildId" />
+      </Dependent>
+    </ReferentialConstraint>
   </Association>
 </Schema>

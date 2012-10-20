@@ -16,19 +16,11 @@ namespace DigitalLifeBooks.Albums
 
         protected void Page_Load(object sender, EventArgs e)
         {
-<<<<<<< HEAD
-                var user = CurrentUser;
-                var albumId = new Guid(Request.QueryString["AlbumId"]);
-                album = LoadAlbum(albumId);
-                if (!album.Child.UserIsAuthorizedForChild(user))
-                    throw new UnauthorizedAccessException();          
-=======
             var user = CurrentUser;
             var albumId = long.Parse(Request.QueryString["AlbumId"]);
             album = LoadAlbum(albumId);
             if(!album.Child.UserIsAuthorizedForChild(user))
                 throw new UnauthorizedAccessException();           
->>>>>>> 1d7f230df3291155adfcfa370fdaea55c9baeeda
         }
 
         public void FileUpload_Click(object sender, EventArgs e)
