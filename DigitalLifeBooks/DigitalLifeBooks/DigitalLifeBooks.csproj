@@ -61,6 +61,7 @@
     <Content Include="Account\Register.aspx" />
     <Content Include="Admin\UserManagement\AddChildToUser.aspx" />
     <Content Include="Albums\AlbumLoader.aspx" />
+    <Content Include="Albums\EditAsset.aspx" />
     <Content Include="Albums\AlbumViewer.aspx" />
     <Content Include="Albums\Upload.aspx" />
     <Content Include="Admin\Create\NewChild.aspx" />
@@ -163,6 +164,13 @@
     <Compile Include="Albums\AlbumLoader.aspx.designer.cs">
       <DependentUpon>AlbumLoader.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Albums\EditAsset.aspx.cs">
+      <DependentUpon>EditAsset.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Albums\EditAsset.aspx.designer.cs">
+      <DependentUpon>EditAsset.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Albums\AlbumViewer.aspx.cs">
       <DependentUpon>AlbumViewer.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -236,6 +244,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Child\" />
+    <Folder Include="Styles\Images\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Account\Web.config" />

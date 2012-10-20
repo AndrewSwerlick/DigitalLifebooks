@@ -2,8 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
 -- --------------------------------------------------
--- Date Created: 10/20/2012 10:45:02
--- Generated from EDMX file: C:\Projects\DigitalLifebooks\DigitalLifebooks\DigitalLifeBooks\DigitalLifeBooks\Models\DLBModel.edmx
+-- Date Created: 10/20/2012 13:40:10
+-- Generated from EDMX file: C:\Users\Cameron\SWOGC\Git\DigitalLifebooks\DigitalLifeBooks\DigitalLifeBooks\Models\DLBModel.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -17,34 +17,37 @@ GO
 -- Dropping existing FOREIGN KEY constraints
 -- --------------------------------------------------
 
-IF OBJECT_ID(N'[DigitalLifeBooksModelStoreContainer].[FK_Assets_UserAssets]', 'F') IS NOT NULL
-    ALTER TABLE [DigitalLifeBooksModelStoreContainer].[UserAssets] DROP CONSTRAINT [FK_Assets_UserAssets];
-GO
-IF OBJECT_ID(N'[DigitalLifeBooksModelStoreContainer].[FK_Users_UserAssets]', 'F') IS NOT NULL
-    ALTER TABLE [DigitalLifeBooksModelStoreContainer].[UserAssets] DROP CONSTRAINT [FK_Users_UserAssets];
-GO
 IF OBJECT_ID(N'[dbo].[FK_UserSibliing_Users]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[UserSibliings] DROP CONSTRAINT [FK_UserSibliing_Users];
+GO
+IF OBJECT_ID(N'[dbo].[FK_UserAssets_Asset]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[UserAssets] DROP CONSTRAINT [FK_UserAssets_Asset];
+GO
+IF OBJECT_ID(N'[dbo].[FK_UserAssets_User]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[UserAssets] DROP CONSTRAINT [FK_UserAssets_User];
+GO
+IF OBJECT_ID(N'[dbo].[FK_AssetAlbum]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Assets] DROP CONSTRAINT [FK_AssetAlbum];
 GO
 
 -- --------------------------------------------------
 -- Dropping existing tables
 -- --------------------------------------------------
 
-IF OBJECT_ID(N'[dbo].[Albums]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[Albums];
+IF OBJECT_ID(N'[dbo].[UserSibliings]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[UserSibliings];
 GO
 IF OBJECT_ID(N'[dbo].[Assets]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Assets];
 GO
-IF OBJECT_ID(N'[DigitalLifeBooksModelStoreContainer].[UserAssets]', 'U') IS NOT NULL
-    DROP TABLE [DigitalLifeBooksModelStoreContainer].[UserAssets];
+IF OBJECT_ID(N'[dbo].[Albums]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Albums];
 GO
 IF OBJECT_ID(N'[dbo].[Users]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Users];
 GO
-IF OBJECT_ID(N'[dbo].[UserSibliings]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[UserSibliings];
+IF OBJECT_ID(N'[dbo].[UserAssets]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[UserAssets];
 GO
 
 -- --------------------------------------------------
@@ -62,19 +65,19 @@ GO
 
 -- Creating table 'Assets'
 CREATE TABLE [dbo].[Assets] (
-    [ID] uniqueidentifier  NOT NULL,
+    [ID] bigint IDENTITY(1,1) NOT NULL,
     [URL] varchar(255)  NULL,
     [Type] varchar(20)  NULL,
     [Location] varchar(255)  NULL,
     [Caption] varchar(max)  NULL,
     [AlbumID] bigint  NOT NULL,
-    [Album_ID] uniqueidentifier  NOT NULL
+    [Album_ID] bigint  NOT NULL
 );
 GO
 
 -- Creating table 'Albums'
 CREATE TABLE [dbo].[Albums] (
-    [ID] uniqueidentifier  NOT NULL,
+    [ID] bigint IDENTITY(1,1) NOT NULL,
     [Title] varchar(255)  NULL,
     [DateCreated] datetime  NULL,
     [Description] varchar(max)  NULL,
@@ -104,7 +107,7 @@ GO
 
 -- Creating table 'UserAssets'
 CREATE TABLE [dbo].[UserAssets] (
-    [Assets_ID] uniqueidentifier  NOT NULL,
+    [Assets_ID] bigint  NOT NULL,
     [Users_ID] uniqueidentifier  NOT NULL
 );
 GO

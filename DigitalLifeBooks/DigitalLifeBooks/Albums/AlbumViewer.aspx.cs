@@ -9,7 +9,7 @@ using DigitalLifeBooks.Models;
 
 namespace DigitalLifeBooks.Albums
 {
-    public partial class AlbumViewer : System.Web.UI.Page
+    public partial class AlbumViewer : BaseDLBPage
     {
         string _albumId { get; set; }
         Album _album { get; set; }
@@ -20,7 +20,7 @@ namespace DigitalLifeBooks.Albums
             _albumId = Request.QueryString["AlbumId"];
             if (string.IsNullOrWhiteSpace(_albumId)) return;
 
-            _album = LoadAlbum(_albumId);
+            _album = GetAlbumByID(_albumId);
             if (_album == null) return;
 
             _child = _album.Child;
@@ -34,8 +34,18 @@ namespace DigitalLifeBooks.Albums
             return String.Format("{0} {1}", child.FirstName, child.LastName);
         }
 
-        private Album LoadAlbum(string albumID)
+        private Album GetAlbumByID(string albumID)
         {
+            long albumID_numeric;
+            if (!long.TryParse(albumID, out albumID_numeric)) return null;
+            try
+            {
+                return DataContext.Albums.SingleOrDefault(a => a.ID == albumID_numeric);
+            }
+            catch (Exception ex)
+            {
+                // log the exception
+            }
             return null;
         }
     }

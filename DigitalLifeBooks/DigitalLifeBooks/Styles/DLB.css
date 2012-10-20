@@ -20,15 +20,15 @@ body { margin: 0; font-size: 1em; line-height: 1.4; }
 
 ::selection { background: #fe57a1; color: #fff; text-shadow: none; }
 
-a { color: #00e; }
+a { color: #00e; text-decoration:none; }
 
-    a:visited { color: #551a8b; }
+    a:visited { color: #551a8b; text-decoration:none; }
 
-    a:hover { color: #06e; }
+    a:hover { color: #06e; text-decoration:underline; }
 
     a:focus { outline: thin dotted; }
 
-    a:hover, a:active { outline: 0; }
+    a:hover, a:active { outline: 0; text-decoration:underline; }
 
 abbr[title] { border-bottom: 1px dotted; }
 
@@ -184,6 +184,10 @@ td { vertical-align: top; }
     h2, h3 { page-break-after: avoid; }
 }
 
+.SkinObject{font-weight:bold;font-size:8.5pt;text-decoration:none;}
+a.SkinObject:link, a.SkinObject:visited, a.SkinObject:hover, a.SkinObject:active{text-decoration:none;}
+
+div.DNNAlignright {text-align:right;}
 
 #Body { background-color: #f5f5f5; }
 
