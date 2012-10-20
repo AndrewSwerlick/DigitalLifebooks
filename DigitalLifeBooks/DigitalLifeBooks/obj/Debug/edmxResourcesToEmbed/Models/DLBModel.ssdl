@@ -32,7 +32,6 @@
     <Property Name="Type" Type="varchar" Nullable="true" MaxLength="20" />
     <Property Name="Location" Type="varchar" Nullable="true" MaxLength="255" />
     <Property Name="Caption" Type="varchar(max)" Nullable="true" />
-    <Property Name="AlbumID" Type="bigint" Nullable="false" />
     <Property Name="Album_ID" Type="bigint" Nullable="false" />
   </EntityType>
   <EntityType Name="Albums">
@@ -50,7 +49,7 @@
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Name="ID" Type="bigint" Nullable="false" />
+    <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="FirstName" Type="varchar" Nullable="false" MaxLength="50" />
     <Property Name="LastName" Type="varchar" Nullable="false" MaxLength="50" />
     <Property Name="UserType" Type="varchar" Nullable="false" MaxLength="50" />

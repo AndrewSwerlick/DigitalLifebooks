@@ -37,7 +37,6 @@
     <Property Name="Type" Type="varchar" Nullable="true" MaxLength="20" />
     <Property Name="Location" Type="varchar" Nullable="true" MaxLength="255" />
     <Property Name="Caption" Type="varchar(max)" Nullable="true" />
-    <Property Name="AlbumID" Type="bigint" Nullable="false" />
     <Property Name="Album_ID" Type="bigint" Nullable="false" />
   </EntityType>
   <EntityType Name="Albums">
@@ -55,7 +54,7 @@
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Name="ID" Type="bigint" Nullable="false" />
+    <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="FirstName" Type="varchar" Nullable="false" MaxLength="50" />
     <Property Name="LastName" Type="varchar" Nullable="false" MaxLength="50" />
     <Property Name="UserType" Type="varchar" Nullable="false" MaxLength="50" />
@@ -168,7 +167,6 @@
           <Property Type="String" Name="Type" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Type="String" Name="Location" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Type="String" Name="Caption" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Type="Int64" Name="AlbumID" Nullable="false" />
           <NavigationProperty Name="Album" Relationship="DigitalLifeBooksModel.AssetAlbum" FromRole="Asset" ToRole="Album" />
         </EntityType>
         <EntityType Name="Album">
@@ -192,7 +190,7 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Type="Int64" Name="ID" Nullable="false" />
+          <Property Type="Int64" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="String" Name="FirstName" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Type="String" Name="LastName" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Type="String" Name="UserType" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
@@ -251,7 +249,6 @@
           <ScalarProperty Name="Type" ColumnName="Type" />
           <ScalarProperty Name="Location" ColumnName="Location" />
           <ScalarProperty Name="Caption" ColumnName="Caption" />
-          <ScalarProperty Name="AlbumID" ColumnName="AlbumID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -335,11 +332,11 @@
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
       <Diagram Name="DLBModel" ZoomLevel="83">
-        <EntityTypeShape EntityType="DigitalLifeBooksModel.Asset" Width="1.5" PointX="1" PointY="5" Height="2.2496956380208326" />
+        <EntityTypeShape EntityType="DigitalLifeBooksModel.Asset" Width="1.5" PointX="1" PointY="5" Height="1.9210009765624996" />
         <EntityTypeShape EntityType="DigitalLifeBooksModel.Album" Width="1.5" PointX="4.75" PointY="6.5" Height="1.9210009765624996" />
         <AssociationConnector Association="DigitalLifeBooksModel.AssetAlbum">
-          <ConnectorPoint PointX="2.5" PointY="6.7926741536458337" />
-          <ConnectorPoint PointX="4.75" PointY="6.7926741536458337" />
+          <ConnectorPoint PointX="2.5" PointY="6.71050048828125" />
+          <ConnectorPoint PointX="4.75" PointY="6.71050048828125" />
         </AssociationConnector>
         <EntityTypeShape EntityType="DigitalLifeBooksModel.User" Width="1.5" PointX="1" PointY="1.5" Height="2.7427376302083335" />
         <EntityTypeShape EntityType="DigitalLifeBooksModel.Child" Width="1.5" PointX="4.75" PointY="2.375" Height="2.7427376302083326" />

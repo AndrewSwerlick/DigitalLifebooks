@@ -9,7 +9,6 @@
           <ScalarProperty Name="Type" ColumnName="Type" />
           <ScalarProperty Name="Location" ColumnName="Location" />
           <ScalarProperty Name="Caption" ColumnName="Caption" />
-          <ScalarProperty Name="AlbumID" ColumnName="AlbumID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
