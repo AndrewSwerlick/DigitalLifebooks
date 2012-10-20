@@ -7,5 +7,11 @@ namespace DigitalLifeBooks.Models
 {
     public class Child
     {
+        public IEnumerable<User> Users { get; set; }
+
+        public bool UserIsAuthorizedForChild(User user)
+        {
+            return Users.Contains(user);
+        }
     }
 }
