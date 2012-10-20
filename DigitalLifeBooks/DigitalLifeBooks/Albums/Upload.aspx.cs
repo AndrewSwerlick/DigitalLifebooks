@@ -17,7 +17,7 @@ namespace DigitalLifeBooks.Albums
         protected void Page_Load(object sender, EventArgs e)
         {
             var user = CurrentUser;
-            var albumId = new Guid(Request.QueryString["AlbumId"]);
+            var albumId = long.Parse(Request.QueryString["AlbumId"]);
             album = LoadAlbum(albumId);
             if(!album.Child.UserIsAuthorizedForChild(user))
                 throw new UnauthorizedAccessException();           
@@ -44,7 +44,10 @@ namespace DigitalLifeBooks.Albums
         
         private Asset CreateAsset(Album album)
         {
-            var asset = new Asset();
+            var asset = new Asset()
+            {
+                Album = album
+            };
             DataContext.Assets.AddObject(asset);
             DataContext.SaveChanges();
             return asset;            
@@ -58,7 +61,7 @@ namespace DigitalLifeBooks.Albums
         {
             return new Child();
         }
-        private Album LoadAlbum(Guid Id)
+        private Album LoadAlbum(long Id)
         {
             return DataContext.Albums.Single(a => a.ID == Id);
         }

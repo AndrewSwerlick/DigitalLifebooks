@@ -8,5 +8,10 @@ namespace DigitalLifeBooks.Models
     public partial class Album
     {
         public Child Child { get; set; }
+
+        public Album()
+        {
+            Child = new Child();
+        }
     }
 }
