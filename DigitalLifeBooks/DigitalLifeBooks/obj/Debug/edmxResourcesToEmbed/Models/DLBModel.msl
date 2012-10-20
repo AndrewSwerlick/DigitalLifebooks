@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="DigitalLifeBooksModelStoreContainer" CdmEntityContainer="DigitalLifeBooksEntities">
@@ -73,80 +72,4 @@
       </EndProperty>
     </AssociationSetMapping>
   </EntityContainerMapping>
-=======
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="DigitalLifeBooksModelStoreContainer" CdmEntityContainer="DigitalLifeBooksEntities">
-    <EntitySetMapping Name="UserSibliings">
-      <EntityTypeMapping TypeName="IsTypeOf(DigitalLifeBooksModel.UserSibliing)">
-        <MappingFragment StoreEntitySet="UserSibliings">
-          <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="SiblingName" ColumnName="SiblingName" />
-          <ScalarProperty Name="Relationship" ColumnName="Relationship" />
-          <ScalarProperty Name="UserID" ColumnName="UserID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Assets">
-      <EntityTypeMapping TypeName="IsTypeOf(DigitalLifeBooksModel.Asset)">
-        <MappingFragment StoreEntitySet="Assets">
-          <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="URL" ColumnName="URL" />
-          <ScalarProperty Name="Type" ColumnName="Type" />
-          <ScalarProperty Name="Location" ColumnName="Location" />
-          <ScalarProperty Name="Caption" ColumnName="Caption" />
-          <ScalarProperty Name="AlbumID" ColumnName="AlbumID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Albums">
-      <EntityTypeMapping TypeName="IsTypeOf(DigitalLifeBooksModel.Album)">
-        <MappingFragment StoreEntitySet="Albums">
-          <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="Title" ColumnName="Title" />
-          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
-          <ScalarProperty Name="Description" ColumnName="Description" />
-          <ScalarProperty Name="EventDate" ColumnName="EventDate" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Users">
-      <EntityTypeMapping TypeName="IsTypeOf(DigitalLifeBooksModel.User)">
-        <MappingFragment StoreEntitySet="Users">
-          <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-          <ScalarProperty Name="LastName" ColumnName="LastName" />
-          <ScalarProperty Name="UserType" ColumnName="UserType" />
-          <ScalarProperty Name="Email" ColumnName="Email" />
-          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
-          <ScalarProperty Name="DateOfBrith" ColumnName="DateOfBrith" />
-          <ScalarProperty Name="City" ColumnName="City" />
-          <ScalarProperty Name="State" ColumnName="State" />
-          <ScalarProperty Name="Country" ColumnName="Country" />
-          <ScalarProperty Name="HospitalID" ColumnName="HospitalID" />
-          <ScalarProperty Name="BirthWeight" ColumnName="BirthWeight" />
-          <ScalarProperty Name="BirthLength" ColumnName="BirthLength" />
-          <ScalarProperty Name="BirthMother" ColumnName="BirthMother" />
-          <ScalarProperty Name="LoginName" ColumnName="LoginName" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <AssociationSetMapping Name="UserAssets" TypeName="DigitalLifeBooksModel.UserAssets" StoreEntitySet="UserAssets">
-      <EndProperty Name="Asset">
-        <ScalarProperty Name="ID" ColumnName="Assets_ID" />
-      </EndProperty>
-      <EndProperty Name="User">
-        <ScalarProperty Name="ID" ColumnName="Users_ID" />
-      </EndProperty>
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="AssetAlbum" TypeName="DigitalLifeBooksModel.AssetAlbum" StoreEntitySet="Assets">
-      <EndProperty Name="Album">
-        <ScalarProperty Name="ID" ColumnName="Album_ID" />
-      </EndProperty>
-      <EndProperty Name="Asset">
-        <ScalarProperty Name="ID" ColumnName="ID" />
-      </EndProperty>
-    </AssociationSetMapping>
-  </EntityContainerMapping>
->>>>>>> 7a0f67449542600465998c12302566f455d8db9e
 </Mapping>
