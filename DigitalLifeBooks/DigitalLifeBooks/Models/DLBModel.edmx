@@ -420,7 +420,7 @@
     </Options>
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
-      <Diagram Name="DLBModel">
+      <Diagram Name="DLBModel" ZoomLevel="83">
         <EntityTypeShape EntityType="DigitalLifeBooksModel.UserSibliing" Width="1.5" PointX="4.75" PointY="0.5" Height="1.7566536458333335" IsExpanded="true" />
         <EntityTypeShape EntityType="DigitalLifeBooksModel.Asset" Width="1.5" PointX="1" PointY="5" Height="2.2496956380208326" />
         <EntityTypeShape EntityType="DigitalLifeBooksModel.Album" Width="1.5" PointX="4.75" PointY="5.375" Height="1.9210009765624996" />
