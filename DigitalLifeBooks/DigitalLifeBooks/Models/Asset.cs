@@ -9,6 +9,8 @@ namespace DigitalLifeBooks.Models
     {
         public Guid Id { get; set; }
         public Album Album { get; set;}
+        public string Type { get; set; }
+        public string Title { get; set; }
 
 
         public bool UserHasAccessToAsset(User user)
