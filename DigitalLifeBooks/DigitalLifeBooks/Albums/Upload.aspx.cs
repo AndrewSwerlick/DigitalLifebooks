@@ -66,7 +66,10 @@ namespace DigitalLifeBooks.Albums
         }
         private Album LoadAlbum(long Id)
         {
-            return DataContext.Albums.Single(a => a.ID == Id);
+            using (var context = new DigitalLifeBooksEntities())
+            {
+                return context.Albums.Single(a => a.ID == Id);
+            }
         }
 
     }

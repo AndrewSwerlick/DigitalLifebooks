@@ -8,7 +8,7 @@ using DigitalLifeBooks.Models;
 
 namespace DigitalLifeBooks.Admin.UserManagement
 {
-    public partial class AddChildToUser : AdminBasePage
+    public partial class AddChildToUser : BaseDLBPage
     {
         string _userId { get; set; }
         User _user { get; set; }
