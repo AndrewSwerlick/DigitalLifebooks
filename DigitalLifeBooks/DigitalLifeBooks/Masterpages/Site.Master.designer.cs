@@ -13,6 +13,83 @@ namespace DigitalLifeBooks {
     public partial class SiteMaster {
         
         /// <summary>
+        /// Head control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+<<<<<<< HEAD
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder HeadContent;
+=======
+        protected global::System.Web.UI.HtmlControls.HtmlHead Head;
+        
+        /// <summary>
+        /// MetaDescription control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlMeta MetaDescription;
+>>>>>>> 1d7f230df3291155adfcfa370fdaea55c9baeeda
+        
+        /// <summary>
+        /// MetaKeywords control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+<<<<<<< HEAD
+        protected global::System.Web.UI.WebControls.LoginView HeadLoginView;
+        
+        /// <summary>
+        /// NavigationMenu control.
+=======
+        protected global::System.Web.UI.HtmlControls.HtmlMeta MetaKeywords;
+        
+        /// <summary>
+        /// MetaCopyright control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlMeta MetaCopyright;
+        
+        /// <summary>
+        /// MetaGenerator control.
+>>>>>>> 1d7f230df3291155adfcfa370fdaea55c9baeeda
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+<<<<<<< HEAD
+        protected global::System.Web.UI.WebControls.Menu NavigationMenu;
+=======
+        protected global::System.Web.UI.HtmlControls.HtmlMeta MetaGenerator;
+        
+        /// <summary>
+        /// MetaAuthor control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlMeta MetaAuthor;
+        
+        /// <summary>
+        /// MetaRobots control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlMeta MetaRobots;
+        
+        /// <summary>
         /// HeadContent control.
         /// </summary>
         /// <remarks>
@@ -20,24 +97,7 @@ namespace DigitalLifeBooks {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ContentPlaceHolder HeadContent;
-        
-        /// <summary>
-        /// HeadLoginView control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LoginView HeadLoginView;
-        
-        /// <summary>
-        /// NavigationMenu control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Menu NavigationMenu;
+>>>>>>> 1d7f230df3291155adfcfa370fdaea55c9baeeda
         
         /// <summary>
         /// MainContent control.

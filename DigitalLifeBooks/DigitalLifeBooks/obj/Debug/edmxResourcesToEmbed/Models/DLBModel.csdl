@@ -37,7 +37,7 @@
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Type="Guid" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int64" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Type="String" Name="URL" MaxLength="255" FixedLength="false" Unicode="false" />
     <Property Type="String" Name="Type" MaxLength="20" FixedLength="false" Unicode="false" />
     <Property Type="String" Name="Location" MaxLength="255" FixedLength="false" Unicode="false" />
@@ -50,7 +50,7 @@
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Type="Guid" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int64" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Type="String" Name="Title" MaxLength="255" FixedLength="false" Unicode="false" />
     <Property Type="DateTime" Name="DateCreated" />
     <Property Type="String" Name="Description" MaxLength="Max" FixedLength="false" Unicode="false" />

@@ -2,8 +2,13 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
 -- --------------------------------------------------
+<<<<<<< HEAD
 -- Date Created: 10/20/2012 14:06:16
 -- Generated from EDMX file: C:\Users\Administrator\Documents\GitHub\DigitalLifebooks\DigitalLifeBooks\DigitalLifeBooks\Models\DLBModel.edmx
+=======
+-- Date Created: 10/20/2012 12:26:38
+-- Generated from EDMX file: C:\Projects\DigitalLifebooks\DigitalLifebooks\DigitalLifeBooks\DigitalLifeBooks\Models\DLBModel.edmx
+>>>>>>> 1d7f230df3291155adfcfa370fdaea55c9baeeda
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -17,9 +22,12 @@ GO
 -- Dropping existing FOREIGN KEY constraints
 -- --------------------------------------------------
 
+<<<<<<< HEAD
 IF OBJECT_ID(N'[dbo].[FK_AssetAlbum]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Assets] DROP CONSTRAINT [FK_AssetAlbum];
 GO
+=======
+>>>>>>> 1d7f230df3291155adfcfa370fdaea55c9baeeda
 IF OBJECT_ID(N'[dbo].[FK_UserSibliing_Users]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[UserSibliings] DROP CONSTRAINT [FK_UserSibliing_Users];
 GO
@@ -29,11 +37,16 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_UserAssets_User]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[UserAssets] DROP CONSTRAINT [FK_UserAssets_User];
 GO
+<<<<<<< HEAD
 IF OBJECT_ID(N'[dbo].[FK_ChildUser_Child]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[ChildUser] DROP CONSTRAINT [FK_ChildUser_Child];
 GO
 IF OBJECT_ID(N'[dbo].[FK_ChildUser_User]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[ChildUser] DROP CONSTRAINT [FK_ChildUser_User];
+=======
+IF OBJECT_ID(N'[dbo].[FK_AssetAlbum]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Assets] DROP CONSTRAINT [FK_AssetAlbum];
+>>>>>>> 1d7f230df3291155adfcfa370fdaea55c9baeeda
 GO
 
 -- --------------------------------------------------
@@ -52,6 +65,7 @@ GO
 IF OBJECT_ID(N'[dbo].[Users]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Users];
 GO
+<<<<<<< HEAD
 IF OBJECT_ID(N'[dbo].[Children]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Children];
 GO
@@ -60,6 +74,10 @@ IF OBJECT_ID(N'[dbo].[UserAssets]', 'U') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[ChildUser]', 'U') IS NOT NULL
     DROP TABLE [dbo].[ChildUser];
+=======
+IF OBJECT_ID(N'[dbo].[UserAssets]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[UserAssets];
+>>>>>>> 1d7f230df3291155adfcfa370fdaea55c9baeeda
 GO
 
 -- --------------------------------------------------
@@ -77,19 +95,19 @@ GO
 
 -- Creating table 'Assets'
 CREATE TABLE [dbo].[Assets] (
-    [ID] uniqueidentifier  NOT NULL,
+    [ID] bigint IDENTITY(1,1) NOT NULL,
     [URL] varchar(255)  NULL,
     [Type] varchar(20)  NULL,
     [Location] varchar(255)  NULL,
     [Caption] varchar(max)  NULL,
     [AlbumID] bigint  NOT NULL,
-    [Album_ID] uniqueidentifier  NOT NULL
+    [Album_ID] bigint  NOT NULL
 );
 GO
 
 -- Creating table 'Albums'
 CREATE TABLE [dbo].[Albums] (
-    [ID] uniqueidentifier  NOT NULL,
+    [ID] bigint IDENTITY(1,1) NOT NULL,
     [Title] varchar(255)  NULL,
     [DateCreated] datetime  NULL,
     [Description] varchar(max)  NULL,
@@ -129,7 +147,7 @@ GO
 
 -- Creating table 'UserAssets'
 CREATE TABLE [dbo].[UserAssets] (
-    [Assets_ID] uniqueidentifier  NOT NULL,
+    [Assets_ID] bigint  NOT NULL,
     [Users_ID] uniqueidentifier  NOT NULL
 );
 GO

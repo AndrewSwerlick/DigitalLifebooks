@@ -15,17 +15,32 @@ namespace DigitalLifeBooks
     public class Assets : IHttpHandler
     {
 
+        protected DigitalLifeBooksEntities DataContext
+        {
+            get
+            {
+                HttpContext myContext = HttpContext.Current;
+                return myContext.Items["DataContext"] as DigitalLifeBooksEntities;
+            }
+        }
+
+        protected User CurrentUser
+        {
+            get
+            {
+                return DataContext.Users.Single(u => u.LoginName == HttpContext.Current.User.Identity.Name);
+            }
+        }
+
         public void ProcessRequest(HttpContext context)
         {
-            var userName = context.User.Identity.Name;
-            var user = new User();
+            var user = CurrentUser;
             var assetId = context.Request.QueryString["Id"];
             var assetManager = new LocalDiskAssetManager(context);
-            var asset = new Asset();
-            if (!asset.UserHasAccessToAsset(user))            
+            var asset = LoadAsset(long.Parse(assetId));
+            if (!asset.UserHasAccessToAsset(user))
                 throw new UnauthorizedAccessException();
             
-            asset.ID = new Guid("{c41afbc8-1ac2-4127-b7bc-a042e53a2576}");
             var stream = assetManager.GetAssetData(asset);
             context.Response.Clear();
             context.Response.ContentType = "image/jpg";
@@ -54,7 +69,12 @@ namespace DigitalLifeBooks
                     ms.Write(buffer, 0, read);
                 }
                 return ms.ToArray();
+            }
         }
-}
+
+        private Asset LoadAsset(long id)
+        {
+            return DataContext.Assets.Single(a => a.ID == id);
+        }
     }
 }

@@ -26,7 +26,7 @@ namespace DigitalLifeBooks.AssetManagement
         public void SaveAsset(Asset asset, Stream assetData)
         {
             var assetPath = BuildAssetPath(asset);
-            var fileStream = new FileStream(assetPath, FileMode.OpenOrCreate);
+            var fileStream = new FileStream(_context.Server.MapPath(assetPath), FileMode.OpenOrCreate);
             assetData.CopyTo(fileStream);
         }
         public void Delete(Asset asset)

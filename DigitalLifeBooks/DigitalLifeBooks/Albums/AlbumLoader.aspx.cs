@@ -16,21 +16,14 @@ namespace DigitalLifeBooks.Albums
             if (albumId == null)
                 return;
 
-            var album = LoadAlbum(albumId);
+            var album = LoadAlbum(long.Parse(albumId));
             AlbumRender.Album = album;
             AlbumRender.DataBind();
         }
 
-        private Album LoadAlbum(string albumId)
+        private Album LoadAlbum(long albumId)
         {
-            var album = new Album();
-            album.Assets.Add(new Asset()
-            {
-                ID = new Guid("c41afbc8-1ac2-4127-b7bc-a042e53a2576"),
-                Type = "Image"
-            });
-
-            return album;
+            return DataContext.Albums.Single(a => a.ID == albumId);
         }
     }
 }

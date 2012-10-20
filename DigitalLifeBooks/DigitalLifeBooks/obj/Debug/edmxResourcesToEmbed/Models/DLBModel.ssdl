@@ -46,19 +46,19 @@
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Name="ID" Type="uniqueidentifier" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="URL" Type="varchar" Nullable="true" MaxLength="255" />
     <Property Name="Type" Type="varchar" Nullable="true" MaxLength="20" />
     <Property Name="Location" Type="varchar" Nullable="true" MaxLength="255" />
     <Property Name="Caption" Type="varchar(max)" Nullable="true" />
     <Property Name="AlbumID" Type="bigint" Nullable="false" />
-    <Property Name="Album_ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Album_ID" Type="bigint" Nullable="false" />
   </EntityType>
   <EntityType Name="Albums">
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Name="ID" Type="uniqueidentifier" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Title" Type="varchar" Nullable="true" MaxLength="255" />
     <Property Name="DateCreated" Type="datetime" Nullable="true" />
     <Property Name="Description" Type="varchar(max)" Nullable="true" />
@@ -99,7 +99,7 @@
       <PropertyRef Name="Assets_ID" />
       <PropertyRef Name="Users_ID" />
     </Key>
-    <Property Name="Assets_ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Assets_ID" Type="bigint" Nullable="false" />
     <Property Name="Users_ID" Type="uniqueidentifier" Nullable="false" />
   </EntityType>
   <EntityType Name="ChildUser">
