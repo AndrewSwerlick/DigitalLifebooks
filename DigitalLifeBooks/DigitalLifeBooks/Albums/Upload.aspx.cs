@@ -27,7 +27,7 @@ namespace DigitalLifeBooks.Albums
         {
             if (fileUpload.HasFile)
             {
-                var asset = CreateAsset(album);
+                var asset = CreateAsset(album, fileUpload.FileName);
                 try
                 {
                     var manager = new LocalDiskAssetManager(HttpContext.Current);
@@ -39,14 +39,17 @@ namespace DigitalLifeBooks.Albums
                 {
                     DeleteAsset(asset);
                 }
+                Response.Redirect("EditAsset.aspx?Id=" + asset.ID);
             }                        
         }
         
-        private Asset CreateAsset(Album album)
+        private Asset CreateAsset(Album album, string fileName)
         {
+            var extension = fileName.Split('.')[1];
             var asset = new Asset()
             {
-                Album = album
+                Album = album,
+                Type = extension
             };
             DataContext.Assets.AddObject(asset);
             DataContext.SaveChanges();
