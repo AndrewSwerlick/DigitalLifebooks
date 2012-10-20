@@ -7,7 +7,7 @@
 
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
     
-    <div id="dnn_BannerPane" class="BannerPane">
+    <div id="dnn_BannerPane" class="BannerPane" style="margin-bottom:48px;">
 		    <div class="DnnModule DnnModule-DNN_HTML DnnModule-439"><a name="439"></a>
 				<div class="RotatorLeft" id="rotLeft439"></div>
 					<div id="dnn_ctr439_ContentPane"><!-- Start_Module_439 -->
@@ -42,6 +42,61 @@
 			    </script>
             </div>
         </div>
+
+        <div class="clearfix">
+                <div class="bottomLeftPane">
+					<div>
+					<a name="436"></a>
+						<div class="c_home c_right">
+							<h2 class="Title"><span class="Head">OUR MISSION</span></h2>
+							<div>
+								<div class="DNNModuleContent ModDNNHTMLC">
+									<div  class="Normal">
+										<div style="text-align: right;">Preserving a child&rsquo;s stories...<br />
+										</div>
+										<div style="text-align: right;">for an eternity.<br />
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+                <div id="dnn_bottomRightPane" class="bottomRightPane">
+					<div class="DnnModule DnnModule-DNN_HTML DnnModule-438">
+						<a name="438"></a>
+						<div class="c_home c_left">
+							<h2 class="Title"><span id="dnn_ctr438_dnnTITLE_titleLabel" class="Head">Why Lifebooks</span></h2>
+							<div id="dnn_ctr438_ContentPane">
+								<!-- Start_Module_438 -->
+								<div id="dnn_ctr438_ModuleContent" class="DNNModuleContent ModDNNHTMLC">
+									<div id="dnn_ctr438_HtmlModule_lblContent" class="Normal">
+										Children in-and-out of home care move an average of 7 times.&nbsp; With each move comes a greater likelihood that a child&rsquo;s belongings will be lost, left behind, or ruined.&nbsp; We don&rsquo;t let that happen.
+									</div>
+								</div><!-- End_Module_438 -->
+							</div>
+						</div>
+					</div>
+				</div>
+				
+                <div id="dnn_bottomCenterPane" class="bottomCenterPane">
+					<div class="DnnModule DnnModule-DNN_HTML DnnModule-437">
+						<a name="437"></a>
+						<div class="c_home c_center">
+							<h2 class="Title"><span id="dnn_ctr437_dnnTITLE_titleLabel" class="Head">About Lifebooks</span></h2>
+							<div id="dnn_ctr437_ContentPane">
+								<!-- Start_Module_437 -->
+								<div id="dnn_ctr437_ModuleContent" class="DNNModuleContent ModDNNHTMLC">
+									<div id="dnn_ctr437_HtmlModule_lblContent" class="Normal">
+										<p><em>Lifebooks</em> are the documents, stories, and pictures of foster and adoptive children.&nbsp; <strong>Digital LifeBooks</strong> provides secure virtual storage and retrieval of lifebooks to help nurture the well-being of these at-risk individuals.</p>
+									</div>
+								</div><!-- End_Module_437 -->
+							</div>
+						</div>
+					</div>
+				</div>
+            </div>
 
     
 </asp:Content>

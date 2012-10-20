@@ -117,7 +117,7 @@
                     <a href="https://twitter.com/dlifebooks"><span id="twitter"></span></a>
                 </div>
                 <div class="DNNAlignright">
-                    <span id="dnn_dnnCopyright_lblCopyright" class="SkinObject">Copyright 2012 by Digital LifeBooks Inc.</span>
+                    <span id="dnn_dnnCopyright_lblCopyright" class="SkinObject copyright">Copyright 2012 by Digital LifeBooks Inc.</span>
                 </div>
             </footer>
         </div>
