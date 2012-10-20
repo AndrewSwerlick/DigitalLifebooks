@@ -64,7 +64,6 @@
 	                    </li>
 	                    <li class="item">
 			                    <a href="http://digitallifebooks.org/AboutUs.aspx">About Us</a>
-		
 	                    </li>
 	                    <li class="item">
 			                    <a href="http://digitallifebooks.org/Resources.aspx">Resources</a>
@@ -77,11 +76,11 @@
                     <span>| </span>
                     <ul>
                         <li>
-                            <a id="dnn_dnnUser_registerLink" title="Register" class="SkinObject" href="#">Register</a>
+                            <a id="dnn_dnnUser_registerLink" title="Register" class="SkinObject" href="/Account/Register.aspx">Register</a>
                         <!--close registerGroup-->
                         </li>
                         <li>
-                            <a id="dnn_dnnLogin_loginLink" title="Login" class="SkinObject" href="#">Login</a>
+                            <a id="dnn_dnnLogin_loginLink" title="Login" class="SkinObject" href="/Account/Login.aspx">Login</a>
                         <!--close loginGroup-->
                         </li>
                     </ul>
