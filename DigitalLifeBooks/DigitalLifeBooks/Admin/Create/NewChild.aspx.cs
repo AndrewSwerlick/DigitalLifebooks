@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using DigitalLifeBooks.Models;
 using DigitalLifeBooks.Models;
 using System.Text;
+using DigitalLifeBooks.Models;
 
 namespace DigitalLifeBooks.Admin.Create
 {
@@ -24,20 +25,39 @@ namespace DigitalLifeBooks.Admin.Create
        
         public void On_Save_Click(object sender, EventArgs e)
         {
-            var DOB = DateTime.Parse(DateOfBirth.Text);
-
             var child = new Child()
             {
-                FirstName = FirstName.Text,
-                LastName = LastName.Text,
-                Last4OfSSN = Last4SSN.Text,
-                DateOfBirth = DOB
+                FirstName = txtFirstName.Text,
+                LastName = txtLastName.Text,
+                DateOfBirth = DateTime.Parse(txtDateOfBirth.Text),
+                City = txtCity.Text,
+                State = txtState.Text,
+                Country = txtCountry.Text,
+                HospitalID = Convert.ToInt64(txtHospitalID.Text),
+                BirthWeight = txtBirthWeight.Text,
+                BirthLength = txtBirthWeight.Text,
+                Last4SSN = txtLast4SSN.Text,
             };
 
             if (_user != null)
-                child.Users.Add(_user);
+            {
+                //Wire up database to save child
 
-            //Wire up database to save child
+                Child childuser = new Child();
+                childuser.FirstName = child.FirstName;
+                childuser.LastName = child.LastName;
+                childuser.DateOfBirth = child.DateOfBirth;
+                childuser.City = child.City;
+                childuser.State = child.State;
+                childuser.Country = child.Country;
+                childuser.HospitalID = child.HospitalID;
+                childuser.BirthWeight = child.BirthWeight;
+                childuser.BirthLength = child.BirthLength;
+                childuser.Last4SSN = child.Last4SSN;
+                DataContext.AddToChildren(childuser);
+                DataContext.SaveChanges();
+            }
+
             string redirectLocation = "ChildCreatedConfirmation.aspx?ChildId=" + child.Id;
             if (_user != null)
                 redirectLocation = redirectLocation + "&UserId=" + _userId;
@@ -57,7 +77,10 @@ namespace DigitalLifeBooks.Admin.Create
 
         private User LoadUser(string userId)
         {
-            return new User() { LoginName = "test" };
+            using (var context = new DigitalLifeBooksEntities())
+            {
+                return DataContext.Users.Single(a => a.LoginName == userId);
+            }
         }
     }
 }

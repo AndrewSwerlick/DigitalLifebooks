@@ -31,6 +31,7 @@
           <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
           <ScalarProperty Name="Description" ColumnName="Description" />
           <ScalarProperty Name="EventDate" ColumnName="EventDate" />
+          <ScalarProperty Name="ChildId" ColumnName="ChildId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -43,32 +44,43 @@
           <ScalarProperty Name="UserType" ColumnName="UserType" />
           <ScalarProperty Name="Email" ColumnName="Email" />
           <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
-          <ScalarProperty Name="DateOfBrith" ColumnName="DateOfBrith" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="LoginName" ColumnName="LoginName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Children">
+      <EntityTypeMapping TypeName="IsTypeOf(DigitalLifeBooksModel.Child)">
+        <MappingFragment StoreEntitySet="Children">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
           <ScalarProperty Name="City" ColumnName="City" />
           <ScalarProperty Name="State" ColumnName="State" />
           <ScalarProperty Name="Country" ColumnName="Country" />
           <ScalarProperty Name="HospitalID" ColumnName="HospitalID" />
           <ScalarProperty Name="BirthWeight" ColumnName="BirthWeight" />
           <ScalarProperty Name="BirthLength" ColumnName="BirthLength" />
-          <ScalarProperty Name="BirthMother" ColumnName="BirthMother" />
-          <ScalarProperty Name="LoginName" ColumnName="LoginName" />
+          <ScalarProperty Name="Last4SSN" ColumnName="Last4SSN" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <AssociationSetMapping Name="UserAssets" TypeName="DigitalLifeBooksModel.UserAssets" StoreEntitySet="UserAssets">
-      <EndProperty Name="Asset">
-        <ScalarProperty Name="ID" ColumnName="Assets_ID" />
-      </EndProperty>
-      <EndProperty Name="User">
-        <ScalarProperty Name="ID" ColumnName="Users_ID" />
-      </EndProperty>
-    </AssociationSetMapping>
     <AssociationSetMapping Name="AssetAlbum" TypeName="DigitalLifeBooksModel.AssetAlbum" StoreEntitySet="Assets">
       <EndProperty Name="Album">
         <ScalarProperty Name="ID" ColumnName="Album_ID" />
       </EndProperty>
       <EndProperty Name="Asset">
         <ScalarProperty Name="ID" ColumnName="ID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ChildUser" TypeName="DigitalLifeBooksModel.ChildUser" StoreEntitySet="ChildUser">
+      <EndProperty Name="Child">
+        <ScalarProperty Name="Id" ColumnName="Children_Id" />
+      </EndProperty>
+      <EndProperty Name="User">
+        <ScalarProperty Name="ID" ColumnName="Users_ID" />
       </EndProperty>
     </AssociationSetMapping>
   </EntityContainerMapping>

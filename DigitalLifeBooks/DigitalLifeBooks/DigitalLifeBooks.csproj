@@ -88,6 +88,9 @@
     <Content Include="Scripts\MSAJAX\v1.0.61025.0.txt" />
     <Content Include="Scripts\widgets.js" />
     <Content Include="Models\DLBModel.edmx.sql" />
+    <Content Include="Scripts\jquery.datepick.js" />
+    <Content Include="Styles\DLB.css" />
+    <Content Include="Styles\Images\calendar.gif" />
     <Content Include="Services\Delete.asmx" />
     <Content Include="Styles\DLB.css" />
     <Content Include="Styles\Images\facebook_white.png" />
