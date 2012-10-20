@@ -5,6 +5,6 @@
 
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
     <div>
-        <asp:FileUpload runat="server" ID="fileUpload" OnClick="FileUpload_Click" />
+        <asp:FileUpload runat="server" ID="fileUpload" OnClick="FileUpload_Click" /><asp:Button ID="Button1" Text="Upload" OnClick="FileUpload_Click" runat="server" />
     </div>
 </asp:Content>

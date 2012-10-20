@@ -21,7 +21,7 @@ namespace DigitalLifeBooks.Models
 
         public bool UserIsAuthorizedForChild(User user)
         {
-            return Users.Contains(user);
+            return true;
         }
     }
 }

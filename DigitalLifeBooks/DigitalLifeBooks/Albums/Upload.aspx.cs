@@ -17,7 +17,7 @@ namespace DigitalLifeBooks.Albums
         protected void Page_Load(object sender, EventArgs e)
         {
             var user = CurrentUser;
-            var albumId = new Guid(Request.QueryString["AlbumId"]);
+            var albumId = long.Parse(Request.QueryString["AlbumId"]);
             album = LoadAlbum(albumId);
             if(!album.Child.UserIsAuthorizedForChild(user))
                 throw new UnauthorizedAccessException();           
@@ -27,7 +27,7 @@ namespace DigitalLifeBooks.Albums
         {
             if (fileUpload.HasFile)
             {
-                var asset = CreateAsset(album);
+                var asset = CreateAsset(album, fileUpload.FileName);
                 try
                 {
                     var manager = new LocalDiskAssetManager(HttpContext.Current);
@@ -39,12 +39,18 @@ namespace DigitalLifeBooks.Albums
                 {
                     DeleteAsset(asset);
                 }
+                Response.Redirect("EditAsset.aspx?Id=" + asset.ID);
             }                        
         }
         
-        private Asset CreateAsset(Album album)
+        private Asset CreateAsset(Album album, string fileName)
         {
-            var asset = new Asset();
+            var extension = fileName.Split('.')[1];
+            var asset = new Asset()
+            {
+                Album = album,
+                Type = extension
+            };
             DataContext.Assets.AddObject(asset);
             DataContext.SaveChanges();
             return asset;            
@@ -58,7 +64,7 @@ namespace DigitalLifeBooks.Albums
         {
             return new Child();
         }
-        private Album LoadAlbum(Guid Id)
+        private Album LoadAlbum(long Id)
         {
             return DataContext.Albums.Single(a => a.ID == Id);
         }

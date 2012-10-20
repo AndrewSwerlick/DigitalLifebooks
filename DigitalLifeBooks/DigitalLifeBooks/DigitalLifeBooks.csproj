@@ -61,6 +61,7 @@
     <Content Include="Account\Register.aspx" />
     <Content Include="Admin\UserManagement\AddChildToUser.aspx" />
     <Content Include="Albums\AlbumLoader.aspx" />
+    <Content Include="Albums\EditAsset.aspx" />
     <Content Include="Albums\Upload.aspx" />
     <Content Include="Admin\Create\NewChild.aspx" />
     <Content Include="Scripts\init.js" />
@@ -161,6 +162,13 @@
     </Compile>
     <Compile Include="Albums\AlbumLoader.aspx.designer.cs">
       <DependentUpon>AlbumLoader.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Albums\EditAsset.aspx.cs">
+      <DependentUpon>EditAsset.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Albums\EditAsset.aspx.designer.cs">
+      <DependentUpon>EditAsset.aspx</DependentUpon>
     </Compile>
     <Compile Include="AssetManagement\IAssetManager.cs" />
     <Compile Include="AssetManagement\LocalDiskAssetManager.cs" />

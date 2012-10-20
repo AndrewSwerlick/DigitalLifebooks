@@ -193,7 +193,7 @@ namespace DigitalLifeBooks.Models
         /// Create a new Album object.
         /// </summary>
         /// <param name="id">Initial value of the ID property.</param>
-        public static Album CreateAlbum(global::System.Guid id)
+        public static Album CreateAlbum(global::System.Int64 id)
         {
             Album album = new Album();
             album.ID = id;
@@ -208,7 +208,7 @@ namespace DigitalLifeBooks.Models
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.Guid ID
+        public global::System.Int64 ID
         {
             get
             {
@@ -226,8 +226,8 @@ namespace DigitalLifeBooks.Models
                 }
             }
         }
-        private global::System.Guid _ID;
-        partial void OnIDChanging(global::System.Guid value);
+        private global::System.Int64 _ID;
+        partial void OnIDChanging(global::System.Int64 value);
         partial void OnIDChanged();
     
         /// <summary>
@@ -370,7 +370,7 @@ namespace DigitalLifeBooks.Models
         /// </summary>
         /// <param name="id">Initial value of the ID property.</param>
         /// <param name="albumID">Initial value of the AlbumID property.</param>
-        public static Asset CreateAsset(global::System.Guid id, global::System.Int64 albumID)
+        public static Asset CreateAsset(global::System.Int64 id, global::System.Int64 albumID)
         {
             Asset asset = new Asset();
             asset.ID = id;
@@ -386,7 +386,7 @@ namespace DigitalLifeBooks.Models
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.Guid ID
+        public global::System.Int64 ID
         {
             get
             {
@@ -404,8 +404,8 @@ namespace DigitalLifeBooks.Models
                 }
             }
         }
-        private global::System.Guid _ID;
-        partial void OnIDChanging(global::System.Guid value);
+        private global::System.Int64 _ID;
+        partial void OnIDChanging(global::System.Int64 value);
         partial void OnIDChanged();
     
         /// <summary>
