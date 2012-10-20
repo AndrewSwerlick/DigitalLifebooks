@@ -16,5 +16,13 @@ namespace DigitalLifeBooks
                 return myContext.Items["DataContext"] as DigitalLifeBooksEntities;
             }
         }
+
+        protected User CurrentUser
+        {
+            get
+            {
+                return DataContext.Users.Single(u => u.LoginName == HttpContext.Current.User.Identity.Name);
+            }                
+        }
     }
 }
