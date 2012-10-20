@@ -1,0 +1,5 @@
+C:\Users\Administrator\Documents\GitHub\DigitalLifebooks\DigitalLifeBooks\DigitalLifeBooks\bin\DigitalLifeBooks.dll
+C:\Users\Administrator\Documents\GitHub\DigitalLifebooks\DigitalLifeBooks\DigitalLifeBooks\bin\DigitalLifeBooks.pdb
+C:\Users\Administrator\Documents\GitHub\DigitalLifebooks\DigitalLifeBooks\DigitalLifeBooks\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Administrator\Documents\GitHub\DigitalLifebooks\DigitalLifeBooks\DigitalLifeBooks\obj\Debug\DigitalLifeBooks.dll
+C:\Users\Administrator\Documents\GitHub\DigitalLifebooks\DigitalLifeBooks\DigitalLifeBooks\obj\Debug\DigitalLifeBooks.pdb
