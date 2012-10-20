@@ -2,8 +2,8 @@
 <%@ Import Namespace="DigitalLifeBooks.UserControls" %>
 
 <asp:Panel ID="ImageRender" runat="server" Visible="false">
-    <img alt="<%= Asset.Title %>" src='<%= "/Assets?AssetId=" + Asset.Id %>' />
+    <img alt="<%= Asset.Title %>" src='<%= "/Assets.ashx?Id=" + Asset.Id %>' />
 </asp:Panel>
 <asp:Panel ID="DefaultRender" runat="server" Visible="false">
-    <a href='<%= "/Assets?AssetId=" + Asset.Id %>'><%= Asset.Title %></a>
+    <a href='<%= "/Assets.ashx?Id=" + Asset.Id %>'><%= Asset.Title %></a>
 </asp:Panel>

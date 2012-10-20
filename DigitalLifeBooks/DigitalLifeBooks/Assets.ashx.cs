@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using DigitalLifeBooks.AssetManagement;
 using DigitalLifeBooks.Models;
+using System.IO;
+using System.Text;
 
 namespace DigitalLifeBooks
 {
@@ -25,10 +27,12 @@ namespace DigitalLifeBooks
             
             asset.Id = new Guid("{c41afbc8-1ac2-4127-b7bc-a042e53a2576}");
             var stream = assetManager.GetAssetData(asset);
-            context.Response.ContentType = "text/plain";
+            context.Response.Clear();
+            context.Response.ContentType = "image/jpg";
+            context.Response.BinaryWrite(ReadFully(stream));
             stream.CopyTo(context.Response.OutputStream);
             context.Response.Flush();
-            context.Response.Close();
+            context.Response.End();
         }
 
         public bool IsReusable
@@ -38,5 +42,19 @@ namespace DigitalLifeBooks
                 return false;
             }
         }
+
+        private static byte[] ReadFully(Stream input)
+        {
+            byte[] buffer = new byte[16*1024];
+            using (MemoryStream ms = new MemoryStream())
+            {
+                int read;
+                while ((read = input.Read(buffer, 0, buffer.Length)) > 0)
+                {
+                    ms.Write(buffer, 0, read);
+                }
+                return ms.ToArray();
+        }
+}
     }
 }

@@ -5,7 +5,7 @@
 
 <span><%= Album.Name %></span>
 
-<asp:Repeater runat="server" ID="Assets" OnItemDataBound="On_Assets_Databinding">
+<asp:Repeater runat="server" ID="Assets" OnItemCreated="On_AssetsRender_Created">
     <ItemTemplate>
         <dlb:AssetRender runat="server" ID="AssetRender"></dlb:AssetRender>
     </ItemTemplate>

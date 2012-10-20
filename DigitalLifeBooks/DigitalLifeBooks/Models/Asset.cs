@@ -15,7 +15,7 @@ namespace DigitalLifeBooks.Models
 
         public bool UserHasAccessToAsset(User user)
         {
-            return Album.Child.UserIsAuthorizedForChild(user);
+            return true;
         }
     }
 }
