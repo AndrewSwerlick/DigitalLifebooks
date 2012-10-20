@@ -18,10 +18,9 @@ using System.Runtime.Serialization;
 [assembly: EdmSchemaAttribute()]
 #region EDM Relationship Metadata
 
-[assembly: EdmRelationshipAttribute("DigitalLifeBooksModel", "FK_Albums_AssetsAlbums", "Album", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DigitalLifeBooks.Models.Album), "AssetsAlbum", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DigitalLifeBooks.Models.AssetsAlbum), true)]
-[assembly: EdmRelationshipAttribute("DigitalLifeBooksModel", "FK_Assets_AssetsAlbums", "Asset", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DigitalLifeBooks.Models.Asset), "AssetsAlbum", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DigitalLifeBooks.Models.AssetsAlbum), true)]
 [assembly: EdmRelationshipAttribute("DigitalLifeBooksModel", "FK_UserSibliing_Users", "User", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DigitalLifeBooks.Models.User), "UserSibliing", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DigitalLifeBooks.Models.UserSibliing), true)]
 [assembly: EdmRelationshipAttribute("DigitalLifeBooksModel", "UserAssets", "Asset", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DigitalLifeBooks.Models.Asset), "User", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DigitalLifeBooks.Models.User))]
+[assembly: EdmRelationshipAttribute("DigitalLifeBooksModel", "AssetAlbum", "Asset", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DigitalLifeBooks.Models.Asset), "Album", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DigitalLifeBooks.Models.Album))]
 
 #endregion
 
@@ -124,22 +123,6 @@ namespace DigitalLifeBooks.Models
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        public ObjectSet<AssetsAlbum> AssetsAlbums
-        {
-            get
-            {
-                if ((_AssetsAlbums == null))
-                {
-                    _AssetsAlbums = base.CreateObjectSet<AssetsAlbum>("AssetsAlbums");
-                }
-                return _AssetsAlbums;
-            }
-        }
-        private ObjectSet<AssetsAlbum> _AssetsAlbums;
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
         public ObjectSet<User> Users
         {
             get
@@ -181,14 +164,6 @@ namespace DigitalLifeBooks.Models
         }
     
         /// <summary>
-        /// Deprecated Method for adding a new object to the AssetsAlbums EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddToAssetsAlbums(AssetsAlbum assetsAlbum)
-        {
-            base.AddObject("AssetsAlbums", assetsAlbum);
-        }
-    
-        /// <summary>
         /// Deprecated Method for adding a new object to the Users EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
         public void AddToUsers(User user)
@@ -218,7 +193,7 @@ namespace DigitalLifeBooks.Models
         /// Create a new Album object.
         /// </summary>
         /// <param name="id">Initial value of the ID property.</param>
-        public static Album CreateAlbum(global::System.Int64 id)
+        public static Album CreateAlbum(global::System.Guid id)
         {
             Album album = new Album();
             album.ID = id;
@@ -233,7 +208,7 @@ namespace DigitalLifeBooks.Models
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.Int64 ID
+        public global::System.Guid ID
         {
             get
             {
@@ -251,8 +226,8 @@ namespace DigitalLifeBooks.Models
                 }
             }
         }
-        private global::System.Int64 _ID;
-        partial void OnIDChanging(global::System.Int64 value);
+        private global::System.Guid _ID;
+        partial void OnIDChanging(global::System.Guid value);
         partial void OnIDChanged();
     
         /// <summary>
@@ -361,18 +336,18 @@ namespace DigitalLifeBooks.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("DigitalLifeBooksModel", "FK_Albums_AssetsAlbums", "AssetsAlbum")]
-        public EntityCollection<AssetsAlbum> AssetsAlbums
+        [EdmRelationshipNavigationPropertyAttribute("DigitalLifeBooksModel", "AssetAlbum", "Asset")]
+        public EntityCollection<Asset> Assets
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<AssetsAlbum>("DigitalLifeBooksModel.FK_Albums_AssetsAlbums", "AssetsAlbum");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Asset>("DigitalLifeBooksModel.AssetAlbum", "Asset");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<AssetsAlbum>("DigitalLifeBooksModel.FK_Albums_AssetsAlbums", "AssetsAlbum", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Asset>("DigitalLifeBooksModel.AssetAlbum", "Asset", value);
                 }
             }
         }
@@ -394,10 +369,12 @@ namespace DigitalLifeBooks.Models
         /// Create a new Asset object.
         /// </summary>
         /// <param name="id">Initial value of the ID property.</param>
-        public static Asset CreateAsset(global::System.Int64 id)
+        /// <param name="albumID">Initial value of the AlbumID property.</param>
+        public static Asset CreateAsset(global::System.Guid id, global::System.Int64 albumID)
         {
             Asset asset = new Asset();
             asset.ID = id;
+            asset.AlbumID = albumID;
             return asset;
         }
 
@@ -409,7 +386,7 @@ namespace DigitalLifeBooks.Models
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.Int64 ID
+        public global::System.Guid ID
         {
             get
             {
@@ -427,8 +404,8 @@ namespace DigitalLifeBooks.Models
                 }
             }
         }
-        private global::System.Int64 _ID;
-        partial void OnIDChanging(global::System.Int64 value);
+        private global::System.Guid _ID;
+        partial void OnIDChanging(global::System.Guid value);
         partial void OnIDChanged();
     
         /// <summary>
@@ -526,48 +503,34 @@ namespace DigitalLifeBooks.Models
         private global::System.String _Caption;
         partial void OnCaptionChanging(global::System.String value);
         partial void OnCaptionChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int64 AlbumID
+        {
+            get
+            {
+                return _AlbumID;
+            }
+            set
+            {
+                OnAlbumIDChanging(value);
+                ReportPropertyChanging("AlbumID");
+                _AlbumID = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("AlbumID");
+                OnAlbumIDChanged();
+            }
+        }
+        private global::System.Int64 _AlbumID;
+        partial void OnAlbumIDChanging(global::System.Int64 value);
+        partial void OnAlbumIDChanged();
 
         #endregion
     
         #region Navigation Properties
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("DigitalLifeBooksModel", "FK_Assets_AssetsAlbums", "AssetsAlbum")]
-        public AssetsAlbum AssetsAlbum
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<AssetsAlbum>("DigitalLifeBooksModel.FK_Assets_AssetsAlbums", "AssetsAlbum").Value;
-            }
-            set
-            {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<AssetsAlbum>("DigitalLifeBooksModel.FK_Assets_AssetsAlbums", "AssetsAlbum").Value = value;
-            }
-        }
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [BrowsableAttribute(false)]
-        [DataMemberAttribute()]
-        public EntityReference<AssetsAlbum> AssetsAlbumReference
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<AssetsAlbum>("DigitalLifeBooksModel.FK_Assets_AssetsAlbums", "AssetsAlbum");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<AssetsAlbum>("DigitalLifeBooksModel.FK_Assets_AssetsAlbums", "AssetsAlbum", value);
-                }
-            }
-        }
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -590,88 +553,6 @@ namespace DigitalLifeBooks.Models
                 }
             }
         }
-
-        #endregion
-    }
-    
-    /// <summary>
-    /// No Metadata Documentation available.
-    /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="DigitalLifeBooksModel", Name="AssetsAlbum")]
-    [Serializable()]
-    [DataContractAttribute(IsReference=true)]
-    public partial class AssetsAlbum : EntityObject
-    {
-        #region Factory Method
-    
-        /// <summary>
-        /// Create a new AssetsAlbum object.
-        /// </summary>
-        /// <param name="assetID">Initial value of the AssetID property.</param>
-        public static AssetsAlbum CreateAssetsAlbum(global::System.Int64 assetID)
-        {
-            AssetsAlbum assetsAlbum = new AssetsAlbum();
-            assetsAlbum.AssetID = assetID;
-            return assetsAlbum;
-        }
-
-        #endregion
-        #region Primitive Properties
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Int64 AssetID
-        {
-            get
-            {
-                return _AssetID;
-            }
-            set
-            {
-                if (_AssetID != value)
-                {
-                    OnAssetIDChanging(value);
-                    ReportPropertyChanging("AssetID");
-                    _AssetID = StructuralObject.SetValidValue(value);
-                    ReportPropertyChanged("AssetID");
-                    OnAssetIDChanged();
-                }
-            }
-        }
-        private global::System.Int64 _AssetID;
-        partial void OnAssetIDChanging(global::System.Int64 value);
-        partial void OnAssetIDChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public Nullable<global::System.Int64> AlbumID
-        {
-            get
-            {
-                return _AlbumID;
-            }
-            set
-            {
-                OnAlbumIDChanging(value);
-                ReportPropertyChanging("AlbumID");
-                _AlbumID = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("AlbumID");
-                OnAlbumIDChanged();
-            }
-        }
-        private Nullable<global::System.Int64> _AlbumID;
-        partial void OnAlbumIDChanging(Nullable<global::System.Int64> value);
-        partial void OnAlbumIDChanged();
-
-        #endregion
-    
-        #region Navigation Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -679,16 +560,16 @@ namespace DigitalLifeBooks.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("DigitalLifeBooksModel", "FK_Albums_AssetsAlbums", "Album")]
+        [EdmRelationshipNavigationPropertyAttribute("DigitalLifeBooksModel", "AssetAlbum", "Album")]
         public Album Album
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Album>("DigitalLifeBooksModel.FK_Albums_AssetsAlbums", "Album").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Album>("DigitalLifeBooksModel.AssetAlbum", "Album").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Album>("DigitalLifeBooksModel.FK_Albums_AssetsAlbums", "Album").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Album>("DigitalLifeBooksModel.AssetAlbum", "Album").Value = value;
             }
         }
         /// <summary>
@@ -700,51 +581,13 @@ namespace DigitalLifeBooks.Models
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Album>("DigitalLifeBooksModel.FK_Albums_AssetsAlbums", "Album");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Album>("DigitalLifeBooksModel.AssetAlbum", "Album");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Album>("DigitalLifeBooksModel.FK_Albums_AssetsAlbums", "Album", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("DigitalLifeBooksModel", "FK_Assets_AssetsAlbums", "Asset")]
-        public Asset Asset
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Asset>("DigitalLifeBooksModel.FK_Assets_AssetsAlbums", "Asset").Value;
-            }
-            set
-            {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Asset>("DigitalLifeBooksModel.FK_Assets_AssetsAlbums", "Asset").Value = value;
-            }
-        }
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [BrowsableAttribute(false)]
-        [DataMemberAttribute()]
-        public EntityReference<Asset> AssetReference
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Asset>("DigitalLifeBooksModel.FK_Assets_AssetsAlbums", "Asset");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Asset>("DigitalLifeBooksModel.FK_Assets_AssetsAlbums", "Asset", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Album>("DigitalLifeBooksModel.AssetAlbum", "Album", value);
                 }
             }
         }

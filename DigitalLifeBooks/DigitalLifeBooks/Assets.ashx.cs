@@ -25,7 +25,7 @@ namespace DigitalLifeBooks
             if (!asset.UserHasAccessToAsset(user))            
                 throw new UnauthorizedAccessException();
             
-            asset.Id = new Guid("{c41afbc8-1ac2-4127-b7bc-a042e53a2576}");
+            asset.ID = new Guid("{c41afbc8-1ac2-4127-b7bc-a042e53a2576}");
             var stream = assetManager.GetAssetData(asset);
             context.Response.Clear();
             context.Response.ContentType = "image/jpg";

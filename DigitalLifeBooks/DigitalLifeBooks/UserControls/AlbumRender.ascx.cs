@@ -29,7 +29,7 @@ namespace DigitalLifeBooks.UserControls
             var thereAreEnoughItems = Album.Assets.Count >= numberOfItemsToSkip;
 
             if(!thereAreEnoughItems){
-                var numberOfPages = Album.Assets.Count/ItemsPerPage.Value;
+                var numberOfPages = Album.Assets.Count / ItemsPerPage.Value;
                 numberOfItemsToSkip = (numberOfPages - 1) * ItemsPerPage.Value;
             }
 

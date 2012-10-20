@@ -4,15 +4,6 @@
     <EntitySet Name="UserSibliings" EntityType="DigitalLifeBooksModel.UserSibliing" />
     <EntitySet Name="Assets" EntityType="DigitalLifeBooksModel.Asset" />
     <EntitySet Name="Albums" EntityType="DigitalLifeBooksModel.Album" />
-    <EntitySet Name="AssetsAlbums" EntityType="DigitalLifeBooksModel.AssetsAlbum" />
-    <AssociationSet Name="FK_Albums_AssetsAlbums" Association="DigitalLifeBooksModel.FK_Albums_AssetsAlbums">
-      <End Role="Album" EntitySet="Albums" />
-      <End Role="AssetsAlbum" EntitySet="AssetsAlbums" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Assets_AssetsAlbums" Association="DigitalLifeBooksModel.FK_Assets_AssetsAlbums">
-      <End Role="Asset" EntitySet="Assets" />
-      <End Role="AssetsAlbum" EntitySet="AssetsAlbums" />
-    </AssociationSet>
     <EntitySet Name="Users" EntityType="DigitalLifeBooksModel.User" />
     <AssociationSet Name="FK_UserSibliing_Users" Association="DigitalLifeBooksModel.FK_UserSibliing_Users">
       <End Role="User" EntitySet="Users" />
@@ -21,6 +12,10 @@
     <AssociationSet Name="UserAssets" Association="DigitalLifeBooksModel.UserAssets">
       <End Role="Asset" EntitySet="Assets" />
       <End Role="User" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="AssetAlbum" Association="DigitalLifeBooksModel.AssetAlbum">
+      <End Role="Asset" EntitySet="Assets" />
+      <End Role="Album" EntitySet="Albums" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="UserSibliing">
@@ -37,58 +32,26 @@
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Type="Int64" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Guid" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Type="String" Name="URL" MaxLength="255" FixedLength="false" Unicode="false" />
     <Property Type="String" Name="Type" MaxLength="20" FixedLength="false" Unicode="false" />
     <Property Type="String" Name="Location" MaxLength="255" FixedLength="false" Unicode="false" />
     <Property Type="String" Name="Caption" MaxLength="Max" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="AssetsAlbum" Relationship="DigitalLifeBooksModel.FK_Assets_AssetsAlbums" FromRole="Asset" ToRole="AssetsAlbum" />
     <NavigationProperty Name="Users" Relationship="DigitalLifeBooksModel.UserAssets" FromRole="Asset" ToRole="User" />
+    <Property Type="Int64" Name="AlbumID" Nullable="false" />
+    <NavigationProperty Name="Album" Relationship="DigitalLifeBooksModel.AssetAlbum" FromRole="Asset" ToRole="Album" />
   </EntityType>
   <EntityType Name="Album">
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Type="Int64" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Guid" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Type="String" Name="Title" MaxLength="255" FixedLength="false" Unicode="false" />
     <Property Type="DateTime" Name="DateCreated" />
     <Property Type="String" Name="Description" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Type="DateTime" Name="EventDate" />
-    <NavigationProperty Name="AssetsAlbums" Relationship="DigitalLifeBooksModel.FK_Albums_AssetsAlbums" FromRole="Album" ToRole="AssetsAlbum" />
+    <NavigationProperty Name="Assets" Relationship="DigitalLifeBooksModel.AssetAlbum" FromRole="Album" ToRole="Asset" />
   </EntityType>
-  <EntityType Name="AssetsAlbum">
-    <Key>
-      <PropertyRef Name="AssetID" />
-    </Key>
-    <Property Type="Int64" Name="AssetID" Nullable="false" />
-    <Property Type="Int64" Name="AlbumID" />
-    <NavigationProperty Name="Album" Relationship="DigitalLifeBooksModel.FK_Albums_AssetsAlbums" FromRole="AssetsAlbum" ToRole="Album" />
-    <NavigationProperty Name="Asset" Relationship="DigitalLifeBooksModel.FK_Assets_AssetsAlbums" FromRole="AssetsAlbum" ToRole="Asset" />
-  </EntityType>
-  <Association Name="FK_Albums_AssetsAlbums">
-    <End Type="DigitalLifeBooksModel.Album" Role="Album" Multiplicity="0..1" />
-    <End Type="DigitalLifeBooksModel.AssetsAlbum" Role="AssetsAlbum" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Album">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="AssetsAlbum">
-        <PropertyRef Name="AlbumID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Assets_AssetsAlbums">
-    <End Type="DigitalLifeBooksModel.Asset" Role="Asset" Multiplicity="1" />
-    <End Type="DigitalLifeBooksModel.AssetsAlbum" Role="AssetsAlbum" Multiplicity="0..1" />
-    <ReferentialConstraint>
-      <Principal Role="Asset">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="AssetsAlbum">
-        <PropertyRef Name="AssetID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <EntityType Name="User">
     <Key>
       <PropertyRef Name="ID" />
@@ -126,5 +89,9 @@
   <Association Name="UserAssets">
     <End Type="DigitalLifeBooksModel.Asset" Role="Asset" Multiplicity="*" />
     <End Type="DigitalLifeBooksModel.User" Role="User" Multiplicity="*" />
+  </Association>
+  <Association Name="AssetAlbum">
+    <End Type="DigitalLifeBooksModel.Asset" Role="Asset" Multiplicity="*" />
+    <End Type="DigitalLifeBooksModel.Album" Role="Album" Multiplicity="1" />
   </Association>
 </Schema>

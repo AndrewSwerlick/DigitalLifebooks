@@ -24,8 +24,9 @@ namespace DigitalLifeBooks.Albums
         private Album LoadAlbum(string albumId)
         {
             var album = new Album();
-            album.Assets.Add(new Asset(){
-                Id = new Guid("c41afbc8-1ac2-4127-b7bc-a042e53a2576"),
+            album.Assets.Add(new Asset()
+            {
+                ID = new Guid("c41afbc8-1ac2-4127-b7bc-a042e53a2576"),
                 Type = "Image"
             });
 

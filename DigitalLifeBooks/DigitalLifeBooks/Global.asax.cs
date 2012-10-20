@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Security;
 using System.Web.SessionState;
+using DigitalLifeBooks.Models;
 
 namespace DigitalLifeBooks
 {
@@ -46,14 +47,16 @@ namespace DigitalLifeBooks
         void Application_BeginRequest(object sender, EventArgs e)
         {
             HttpContext myContext = HttpContext.Current;
-            myContext.Items["DataContext"] = "";            
-
+            var dataContext = new DigitalLifeBooksEntities();
+            myContext.Items["DataContext"] = new DigitalLifeBooksEntities();
         }
 
         void Application_EndRequest(object sender, EventArgs e)
         {
             HttpContext myContext = HttpContext.Current;
-            myContext.Items["DataContext"] = "";
+            DigitalLifeBooksEntities context = myContext.Items["DataContext"] as DigitalLifeBooksEntities;
+            context.SaveChanges();
+            context.Dispose();
             //Dispsoe
         }
     }

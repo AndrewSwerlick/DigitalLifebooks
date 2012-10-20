@@ -1,170 +1,132 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="DigitalLifeBooksModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
   <EntityContainer Name="DigitalLifeBooksModelStoreContainer">
-    <EntitySet Name="Albums" EntityType="DigitalLifeBooksModel.Store.Albums" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Assets" EntityType="DigitalLifeBooksModel.Store.Assets" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="AssetsAlbums" EntityType="DigitalLifeBooksModel.Store.AssetsAlbums" store:Type="Tables" store:Schema="dbo" store:Name="AssetsAlbums">
-      <DefiningQuery>SELECT 
-      [AssetsAlbums].[AssetID] AS [AssetID], 
-      [AssetsAlbums].[AlbumID] AS [AlbumID]
-      FROM [dbo].[AssetsAlbums] AS [AssetsAlbums]</DefiningQuery>
-    </EntitySet>
-    <EntitySet Name="UserAssets" EntityType="DigitalLifeBooksModel.Store.UserAssets" store:Type="Tables" store:Schema="dbo" store:Name="UserAssets">
-      <DefiningQuery>SELECT 
-      [UserAssets].[UserID] AS [UserID], 
-      [UserAssets].[AssetID] AS [AssetID]
-      FROM [dbo].[UserAssets] AS [UserAssets]</DefiningQuery>
-    </EntitySet>
-    <EntitySet Name="Users" EntityType="DigitalLifeBooksModel.Store.Users" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="UserSibliings" EntityType="DigitalLifeBooksModel.Store.UserSibliings" store:Type="Tables" Schema="dbo" />
-    <AssociationSet Name="FK_Albums_AssetsAlbums" Association="DigitalLifeBooksModel.Store.FK_Albums_AssetsAlbums">
-      <End Role="Albums" EntitySet="Albums" />
-      <End Role="AssetsAlbums" EntitySet="AssetsAlbums" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Assets_AssetsAlbums" Association="DigitalLifeBooksModel.Store.FK_Assets_AssetsAlbums">
-      <End Role="Assets" EntitySet="Assets" />
-      <End Role="AssetsAlbums" EntitySet="AssetsAlbums" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Assets_UserAssets" Association="DigitalLifeBooksModel.Store.FK_Assets_UserAssets">
-      <End Role="Assets" EntitySet="Assets" />
-      <End Role="UserAssets" EntitySet="UserAssets" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Users_UserAssets" Association="DigitalLifeBooksModel.Store.FK_Users_UserAssets">
-      <End Role="Users" EntitySet="Users" />
-      <End Role="UserAssets" EntitySet="UserAssets" />
-    </AssociationSet>
+    <EntitySet Name="Assets" EntityType="DigitalLifeBooksModel.Store.Assets" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Albums" EntityType="DigitalLifeBooksModel.Store.Albums" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Users" EntityType="DigitalLifeBooksModel.Store.Users" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="UserAssets" EntityType="DigitalLifeBooksModel.Store.UserAssets" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="FK_UserSibliing_Users" Association="DigitalLifeBooksModel.Store.FK_UserSibliing_Users">
-      <End Role="Users" EntitySet="Users" />
-      <End Role="UserSibliings" EntitySet="UserSibliings" />
+      <End Role="User" EntitySet="Users" />
+      <End Role="UserSibliing" EntitySet="UserSibliings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserAssets_Asset" Association="DigitalLifeBooksModel.Store.FK_UserAssets_Asset">
+      <End Role="Asset" EntitySet="Assets" />
+      <End Role="UserAssets" EntitySet="UserAssets" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserAssets_User" Association="DigitalLifeBooksModel.Store.FK_UserAssets_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="UserAssets" EntitySet="UserAssets" />
+    </AssociationSet>
+    <AssociationSet Name="AssetAlbum" Association="DigitalLifeBooksModel.Store.AssetAlbum">
+      <End Role="Asset" EntitySet="Assets" />
+      <End Role="Album" EntitySet="Albums" />
     </AssociationSet>
   </EntityContainer>
-  <EntityType Name="Albums">
+  <EntityType Name="UserSibliings">
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Name="ID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
-    <Property Name="Title" Type="varchar" MaxLength="255" />
-    <Property Name="DateCreated" Type="date" />
-    <Property Name="Description" Type="varchar(max)" />
-    <Property Name="EventDate" Type="date" />
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="SiblingName" Type="varchar(max)" Nullable="true" />
+    <Property Name="Relationship" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="UserID" Type="uniqueidentifier" Nullable="true" />
   </EntityType>
   <EntityType Name="Assets">
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Name="ID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
-    <Property Name="URL" Type="varchar" MaxLength="255" />
-    <Property Name="Type" Type="varchar" MaxLength="20" />
-    <Property Name="Location" Type="varchar" MaxLength="255" />
-    <Property Name="Caption" Type="varchar(max)" />
+    <Property Name="ID" Type="uniqueidentifier" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="URL" Type="varchar" Nullable="true" MaxLength="255" />
+    <Property Name="Type" Type="varchar" Nullable="true" MaxLength="20" />
+    <Property Name="Location" Type="varchar" Nullable="true" MaxLength="255" />
+    <Property Name="Caption" Type="varchar(max)" Nullable="true" />
+    <Property Name="AlbumID" Type="bigint" Nullable="false" />
+    <Property Name="Album_ID" Type="uniqueidentifier" Nullable="false" />
   </EntityType>
-  <!--Errors Found During Generation:
-      warning 6002: The table/view 'DigitalLifeBooks.dbo.AssetsAlbums' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
-      -->
-  <EntityType Name="AssetsAlbums">
+  <EntityType Name="Albums">
     <Key>
-      <PropertyRef Name="AssetID" />
+      <PropertyRef Name="ID" />
     </Key>
-    <Property Name="AssetID" Type="bigint" Nullable="false" />
-    <Property Name="AlbumID" Type="bigint" />
-  </EntityType>
-  <!--Errors Found During Generation:
-      warning 6002: The table/view 'DigitalLifeBooks.dbo.UserAssets' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
-      -->
-  <EntityType Name="UserAssets">
-    <Key>
-      <PropertyRef Name="UserID" />
-      <PropertyRef Name="AssetID" />
-    </Key>
-    <Property Name="UserID" Type="uniqueidentifier" Nullable="false" />
-    <Property Name="AssetID" Type="bigint" Nullable="false" />
+    <Property Name="ID" Type="uniqueidentifier" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="varchar" Nullable="true" MaxLength="255" />
+    <Property Name="DateCreated" Type="datetime" Nullable="true" />
+    <Property Name="Description" Type="varchar(max)" Nullable="true" />
+    <Property Name="EventDate" Type="datetime" Nullable="true" />
   </EntityType>
   <EntityType Name="Users">
     <Key>
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
-    <Property Name="FirstName" Type="varchar" MaxLength="50" />
-    <Property Name="LastName" Type="varchar" MaxLength="50" />
-    <Property Name="UserType" Type="varchar" MaxLength="50" />
-    <Property Name="Email" Type="varchar(max)" />
-    <Property Name="PhoneNumber" Type="varchar" MaxLength="50" />
-    <Property Name="DateOfBrith" Type="date" />
-    <Property Name="City" Type="varchar" MaxLength="50" />
-    <Property Name="State" Type="varchar" MaxLength="50" />
-    <Property Name="Country" Type="varchar" MaxLength="50" />
-    <Property Name="HospitalID" Type="uniqueidentifier" />
-    <Property Name="BirthWeight" Type="varchar" MaxLength="50" />
-    <Property Name="BirthLength" Type="varchar" MaxLength="50" />
-    <Property Name="BirthMother" Type="varchar(max)" />
+    <Property Name="FirstName" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="LastName" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="UserType" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="Email" Type="varchar(max)" Nullable="true" />
+    <Property Name="PhoneNumber" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="DateOfBrith" Type="datetime" Nullable="true" />
+    <Property Name="City" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="State" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="Country" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="HospitalID" Type="uniqueidentifier" Nullable="true" />
+    <Property Name="BirthWeight" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="BirthLength" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="BirthMother" Type="varchar(max)" Nullable="true" />
     <Property Name="LoginName" Type="varchar" Nullable="false" MaxLength="50" />
   </EntityType>
-  <EntityType Name="UserSibliings">
+  <EntityType Name="UserAssets">
     <Key>
-      <PropertyRef Name="ID" />
+      <PropertyRef Name="Assets_ID" />
+      <PropertyRef Name="Users_ID" />
     </Key>
-    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
-    <Property Name="SiblingName" Type="varchar(max)" />
-    <Property Name="Relationship" Type="varchar" MaxLength="50" />
-    <Property Name="UserID" Type="uniqueidentifier" />
+    <Property Name="Assets_ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Users_ID" Type="uniqueidentifier" Nullable="false" />
   </EntityType>
-  <Association Name="FK_Albums_AssetsAlbums">
-    <End Role="Albums" Type="DigitalLifeBooksModel.Store.Albums" Multiplicity="0..1" />
-    <End Role="AssetsAlbums" Type="DigitalLifeBooksModel.Store.AssetsAlbums" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Albums">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="AssetsAlbums">
-        <PropertyRef Name="AlbumID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Assets_AssetsAlbums">
-    <End Role="Assets" Type="DigitalLifeBooksModel.Store.Assets" Multiplicity="1" />
-    <End Role="AssetsAlbums" Type="DigitalLifeBooksModel.Store.AssetsAlbums" Multiplicity="0..1" />
-    <ReferentialConstraint>
-      <Principal Role="Assets">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="AssetsAlbums">
-        <PropertyRef Name="AssetID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Assets_UserAssets">
-    <End Role="Assets" Type="DigitalLifeBooksModel.Store.Assets" Multiplicity="1" />
-    <End Role="UserAssets" Type="DigitalLifeBooksModel.Store.UserAssets" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Assets">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="UserAssets">
-        <PropertyRef Name="AssetID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Users_UserAssets">
-    <End Role="Users" Type="DigitalLifeBooksModel.Store.Users" Multiplicity="1" />
-    <End Role="UserAssets" Type="DigitalLifeBooksModel.Store.UserAssets" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Users">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="UserAssets">
-        <PropertyRef Name="UserID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_UserSibliing_Users">
-    <End Role="Users" Type="DigitalLifeBooksModel.Store.Users" Multiplicity="0..1" />
-    <End Role="UserSibliings" Type="DigitalLifeBooksModel.Store.UserSibliings" Multiplicity="*" />
+    <End Role="User" Type="DigitalLifeBooksModel.Store.Users" Multiplicity="0..1" />
+    <End Role="UserSibliing" Type="DigitalLifeBooksModel.Store.UserSibliings" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="Users">
+      <Principal Role="User">
         <PropertyRef Name="ID" />
       </Principal>
-      <Dependent Role="UserSibliings">
+      <Dependent Role="UserSibliing">
         <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="AssetAlbum">
+    <End Role="Asset" Type="DigitalLifeBooksModel.Store.Assets" Multiplicity="*" />
+    <End Role="Album" Type="DigitalLifeBooksModel.Store.Albums" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Album">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Asset">
+        <PropertyRef Name="Album_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserAssets_Asset">
+    <End Role="Asset" Type="DigitalLifeBooksModel.Store.Assets" Multiplicity="1" />
+    <End Role="UserAssets" Type="DigitalLifeBooksModel.Store.UserAssets" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Asset">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="UserAssets">
+        <PropertyRef Name="Assets_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserAssets_User">
+    <End Role="UserAssets" Type="DigitalLifeBooksModel.Store.UserAssets" Multiplicity="*" />
+    <End Role="User" Type="DigitalLifeBooksModel.Store.Users" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="UserAssets">
+        <PropertyRef Name="Users_ID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
