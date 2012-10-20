@@ -186,8 +186,9 @@
       <DependentUpon>AlbumViewer.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Albums\AlbumViewer.aspx.designer.cs">
-      <DependentUpon>AlbumViewer.aspx</DependentUpon>
+      <Compile Include="Albums\AlbumViewer.aspx.designer.cs">
+          <DependentUpon>AlbumViewer.aspx</DependentUpon>
+      </Compile>
     <Compile Include="Albums\NewOrEditAlbum.aspx.cs">
       <DependentUpon>NewOrEditAlbum.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
