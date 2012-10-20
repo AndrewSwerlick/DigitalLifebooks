@@ -8,12 +8,12 @@ namespace DigitalLifeBooks.Models
     public class Asset
     {
         public Guid Id { get; set; }
-        public Child Child { get; set;}
+        public Album Album { get; set;}
 
 
         public bool UserHasAccessToAsset(User user)
         {
-            return Child.UserIsAuthorizedForChild(user);
+            return Album.Child.UserIsAuthorizedForChild(user);
         }
     }
 }
