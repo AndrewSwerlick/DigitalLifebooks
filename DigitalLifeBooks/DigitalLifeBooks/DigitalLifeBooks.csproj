@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -63,6 +63,7 @@
     <Content Include="Admin\UserManagement\AddChildToUser.aspx" />
     <Content Include="Albums\AlbumLoader.aspx" />
     <Content Include="Albums\EditAsset.aspx" />
+    <Content Include="Albums\AlbumViewer.aspx" />
     <Content Include="Albums\NewOrEditAlbum.aspx" />
     <Content Include="Albums\Upload.aspx" />
     <Content Include="Admin\Create\NewChild.aspx" />
@@ -82,11 +83,14 @@
     <Content Include="Scripts\jquery\jquery.tmpl.js" />
     <Content Include="Scripts\json2.js" />
     <Content Include="Scripts\knockout.js" />
+    <Content Include="Scripts\main.js" />
     <Content Include="Scripts\modernizr-2.5.3.min.js" />
     <Content Include="Scripts\MSAJAX\MicrosoftAjax.js" />
     <Content Include="Scripts\MSAJAX\MicrosoftAjaxTimer.js" />
     <Content Include="Scripts\MSAJAX\MicrosoftAjaxWebForms.js" />
     <Content Include="Scripts\MSAJAX\v1.0.61025.0.txt" />
+    <Content Include="Scripts\placeholder-polyfill.js" />
+    <Content Include="Scripts\plugins.js" />
     <Content Include="Scripts\widgets.js" />
     <Content Include="Models\DLBModel.edmx.sql" />
     <Content Include="Scripts\jquery.datepick.js" />
@@ -102,6 +106,9 @@
     <Content Include="Styles\Images\Slider\scroller3.png" />
     <Content Include="Styles\Images\Slider\scroller4.png" />
     <Content Include="Styles\Images\twitter_white.png" />
+    <Content Include="Styles\main.css" />
+    <Content Include="Styles\normalize.css" />
+    <Content Include="Styles\placeholder-polyfill.css" />
     <Content Include="Styles\Site.css" />
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
@@ -182,6 +189,13 @@
     <Compile Include="Albums\EditAsset.aspx.designer.cs">
       <DependentUpon>EditAsset.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Albums\AlbumViewer.aspx.cs">
+      <DependentUpon>AlbumViewer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+      <Compile Include="Albums\AlbumViewer.aspx.designer.cs">
+          <DependentUpon>AlbumViewer.aspx</DependentUpon>
+      </Compile>
     <Compile Include="Albums\NewOrEditAlbum.aspx.cs">
       <DependentUpon>NewOrEditAlbum.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
