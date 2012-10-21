@@ -71,6 +71,8 @@
 
                             <span>| </span>
                             <ul>
+                                <% if (!HttpContext.Current.User.Identity.IsAuthenticated)
+                                   { %>
                                 <li>
                                     <a id="dnn_dnnUser_registerLink" title="Register" class="SkinObject" href="/Account/Register.aspx">Register</a>
                                 <!--close registerGroup-->
@@ -79,6 +81,18 @@
                                     <a id="dnn_dnnLogin_loginLink" title="Login" class="SkinObject" href="/Account/Login.aspx">Login</a>
                                 <!--close loginGroup-->
                                 </li>
+                                <%} %>
+                                <% else
+                                   {  %>
+                                <li>
+                                    <a title="Profile" class="SkinObject" href="/Users/UserProfile.aspx">Profile</a>
+                                <!--close registerGroup-->
+                                </li>
+                                <li>
+                                    <asp:LinkButton ID="LinkButton1" class="SkinObject" runat="server" OnClick="SignOff_Click">SignOff</asp:LinkButton>
+                                <!--close registerGroup-->
+                                </li>
+                                <%} %>
                             </ul>
                         </div> <!-- end dnnNavContainer -->
                     </nav>
@@ -124,7 +138,7 @@
                         </nav>
                         <div id="footerImages">
                             <a href="/"><span id="digLifeBooks"></span></a>
-                            <a href="http://www.facebook.com/DLifebooks"><span id="facebook"></span></a>
+                            <a href="http://www.facebook.com/pages/Digital-LifeBooks"><span id="facebook"></span></a>
                             <a href="https://twitter.com/dlifebooks"><span id="twitter"></span></a>
                         </div>
                         <div class="DNNAlignright">

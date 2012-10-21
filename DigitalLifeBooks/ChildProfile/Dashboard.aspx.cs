@@ -16,13 +16,16 @@ namespace DigitalLifeBooks.ChildProfile
         public Album ImportantDocuments { get; set; }
 
         public string ProfilePicLink { get; set; }
-
+        
         protected void Page_Load(object sender, EventArgs e)
         {
             var childId = Request.QueryString["ChildId"];
             Child = LoadChild(childId);
             if (Child == null)
                 Response.Redirect("/Child/ChildNotFound.aspx");
+
+            if (!Child.UserIsAuthorizedForChild(CurrentUser))
+                throw new UnauthorizedAccessException();
 
             ImportantDocuments = Child.Albums.SingleOrDefault(a => a.IsImportanDocumentsAlbum);
             ProfilePicLink = Child.ProfilePickLink;            
