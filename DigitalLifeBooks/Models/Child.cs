@@ -24,6 +24,14 @@ namespace DigitalLifeBooks.Models
             }
         }
 
+        public string SearchString
+        {
+            get
+            {
+                return string.Format("{0} {1} {2}", FirstName, LastName, this.DateOfBirth.ToString("mdy") + Last4SSN);
+            }
+        }
+
         public bool UserIsAuthorizedForChild(User user)
         {
 #if DEBUG

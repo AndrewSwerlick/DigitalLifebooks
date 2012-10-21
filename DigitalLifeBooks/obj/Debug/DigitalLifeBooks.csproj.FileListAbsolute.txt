@@ -1,0 +1,5 @@
+C:\Projects\DigitalLifebooks\DigitalLifebooks\DigitalLifeBooks\obj\Debug\ResolveAssemblyReference.cache
+C:\Projects\DigitalLifebooks\DigitalLifebooks\DigitalLifeBooks\obj\Debug\DigitalLifeBooks.dll
+C:\Projects\DigitalLifebooks\DigitalLifebooks\DigitalLifeBooks\bin\DigitalLifeBooks.dll
+C:\Projects\DigitalLifebooks\DigitalLifebooks\DigitalLifeBooks\bin\DigitalLifeBooks.pdb
+C:\Projects\DigitalLifebooks\DigitalLifebooks\DigitalLifeBooks\obj\Debug\DigitalLifeBooks.pdb

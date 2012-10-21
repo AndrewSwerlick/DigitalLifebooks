@@ -14,13 +14,13 @@ namespace DigitalLifeBooks.Admin.Create
     public partial class NewChild : BaseDLBPage
     {
         string _userId { get; set; }
-        User _user { get; set; }
+        public User ProfileUser { get; set; }
 
         protected void Page_Load(object sender, EventArgs e)
         {
             _userId = Request.QueryString["UserId"];
             if (!string.IsNullOrEmpty(_userId))
-                _user = LoadUser(_userId);
+                ProfileUser = LoadUser(_userId);
         }
        
         public void On_Save_Click(object sender, EventArgs e)
@@ -38,7 +38,7 @@ namespace DigitalLifeBooks.Admin.Create
                 Last4SSN = txtLast4SSN.Text,
             };
 
-            if (_user != null)
+            if (ProfileUser != null)
             {
                 //Wire up database to save child
 
@@ -52,13 +52,13 @@ namespace DigitalLifeBooks.Admin.Create
                 childuser.BirthWeight = child.BirthWeight;
                 childuser.BirthLength = child.BirthLength;
                 childuser.Last4SSN = child.Last4SSN;
-                childuser.Users.Add(_user);
+                childuser.Users.Add(ProfileUser);
                 DataContext.AddToChildren(childuser);
                 DataContext.SaveChanges();
             }
 
             string redirectLocation = "ChildCreatedConfirmation.aspx?ChildId=" + child.Id;
-            if (_user != null)
+            if (ProfileUser != null)
                 redirectLocation = redirectLocation + "&UserId=" + _userId;
 
             var childId = Request.QueryString["ChildId"];
@@ -66,8 +66,8 @@ namespace DigitalLifeBooks.Admin.Create
 
             var confirmationMessageBuilder = new StringBuilder().AppendFormat("A new child {0} was created", child.FirstName + " " + child.LastName);
 
-            if (_user != null)
-                confirmationMessageBuilder.AppendFormat(" and associated with the user {0}", _user.LoginName);
+            if (ProfileUser != null)
+                confirmationMessageBuilder.AppendFormat(" and associated with the user {0}", ProfileUser.LoginName);
 
             NewForm.Visible = false;
             ConfirmationDialog.Visible = true;

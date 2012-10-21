@@ -211,12 +211,12 @@ namespace DigitalLifeBooks.Users {
         protected global::System.Web.UI.WebControls.TextBox txtState;
         
         /// <summary>
-        /// UserChildren1 control.
+        /// Save control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DigitalLifeBooks.Controls.UserChildren UserChildren1;
+        protected global::System.Web.UI.WebControls.LinkButton Save;
     }
 }

@@ -15,6 +15,7 @@ namespace DigitalLifeBooks.Controls
         public User User {get;set;}
         public bool DoNotUseCurrentUser { get; set; }
 
+
         protected DigitalLifeBooksEntities DataContext
         {
             get
@@ -39,7 +40,7 @@ namespace DigitalLifeBooks.Controls
             if (!DoNotUseCurrentUser)
                 User = CurrentUser;
 
-            rtChildren.DataSource = CurrentUser.Children;
+            rtChildren.DataSource = User.Children;
             rtChildren.DataBind();
         }
 

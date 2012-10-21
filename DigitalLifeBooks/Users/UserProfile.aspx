@@ -5,10 +5,10 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-<asp:Panel runat="server" ID="ProfileRead">
-    <div>
-        <div <h1><%= User.DisplayName %></h1><asp:LinkButton CssClass="editSettings" runat="server" OnClick="On_Edit_Click">edit data</asp:LinkButton></div>
-        <div id="userprofile">            
+<div id="userProfile">            
+    <asp:Panel runat="server" ID="ProfileRead">
+        <div><h1><%= User.DisplayName %></h1><asp:LinkButton CssClass="editSettings" runat="server" OnClick="On_Edit_Click">edit data</asp:LinkButton></div>
+        <div id="profile-data">
             <div>
                 <asp:Label ID="Label1" runat="server">First Name:</asp:Label>
                 <span><%= User.FirstName %></asp:Literal></span>
@@ -36,42 +36,41 @@
         </div>
         <dlb:SecurityTrimmedPanel runat="server" RoleToShowFor="Admin">
             <div id="children">
-                <dlb:UserChildren runat="server" DoNotUseCurrentUser="true" Id="UserChildren"></dlb:UserChildren>
+                <h3><%=User.DisplayName + "'s Children" %></h3>
+                <dlb:UserChildren runat="server" UseCurrentUser="false" Id="UserChildren"></dlb:UserChildren>
                 <a href="<%= "/Admin/UserManagement/AddChildToUser.aspx?UserId=" + User.LoginName  %>"  id="addNewChild">Add new child to this User</a>
             </div>
         </dlb:SecurityTrimmedPanel>
-    </div>
-</asp:Panel>
-<asp:Panel runat="server" ID="ProfileEdit" Visible="false">
-    <div>
-        <h1><%= User.DisplayName %></h1><asp:LinkButton ID="LinkButton1" CssClass="editSettings" runat="server" OnClick="On_Edit_Click"></asp:LinkButton>
-        <div id="userprofile">            
+    </asp:Panel>
+    <asp:Panel runat="server" ID="ProfileEdit" Visible="false">
+            <h1><%= User.DisplayName %></h1><asp:LinkButton ID="LinkButton1" CssClass="editSettings" runat="server" OnClick="On_Edit_Click"></asp:LinkButton>
             <div>
-                <div><asp:Label ID="Label10" runat="server">First Name</asp:Label></div>
-                <div><asp:TextBox runat="server" ID="txtFirstName"></asp:TextBox></div>
+                <div>
+                    <div><asp:Label ID="Label10" runat="server">First Name</asp:Label></div>
+                    <div><asp:TextBox runat="server" ID="txtFirstName"></asp:TextBox></div>
+                </div>
+                <div>
+                    <div><asp:Label ID="Label11" runat="server">Last Name</asp:Label></div>
+                    <div><asp:TextBox runat="server" ID="txtLastName"></asp:TextBox></div>
+                </div>          
+                <div>
+                    <div><asp:Label ID="Label13" runat="server">Email</asp:Label></div>
+                    <div><div><asp:TextBox runat="server" ID="txtEmail"></asp:TextBox></div>
+                </div>
+                <div>
+                    <div><asp:Label ID="Label14" runat="server">Phone Number</asp:Label></div>
+                    <div><div><asp:TextBox runat="server" ID="txtPhone"></asp:TextBox></div>
+                </div>
+                <div>
+                    <div><asp:Label ID="Label15" runat="server">City</asp:Label></div>
+                    <div><div><asp:TextBox runat="server" ID="txtCity"></asp:TextBox></div>
+                </div>
+                <div>
+                    <div><asp:Label ID="Label16" runat="server">State</asp:Label></div>
+                    <div><div><asp:TextBox runat="server" ID="txtState"></asp:TextBox></div>
+                </div>
+                <asp:LinkButton Text="Save" runat="server" ID="Save" OnClick="On_Save_Click"></asp:LinkButton>
             </div>
-            <div>
-                <div><asp:Label ID="Label11" runat="server">Last Name</asp:Label></div>
-                <div><asp:TextBox runat="server" ID="txtLastName"></asp:TextBox></div>
-            </div>          
-            <div>
-                <div><asp:Label ID="Label13" runat="server">Email</asp:Label></div>
-                <div><div><asp:TextBox runat="server" ID="txtEmail"></asp:TextBox></div>
-            </div>
-            <div>
-                <div><asp:Label ID="Label14" runat="server">Phone Number</asp:Label></div>
-                <div><div><asp:TextBox runat="server" ID="txtPhone"></asp:TextBox></div>
-            </div>
-            <div>
-                <div><asp:Label ID="Label15" runat="server">City</asp:Label></div>
-                <div><div><asp:TextBox runat="server" ID="txtCity"></asp:TextBox></div>
-            </div>
-            <div>
-                <div><asp:Label ID="Label16" runat="server">State</asp:Label></div>
-                <div><div><asp:TextBox runat="server" ID="txtState"></asp:TextBox></div>
-            </div>
-            <asp:LinkButton Text="Save" runat="server" ID="Save" OnClick="On_Save_Click"></asp:LinkButton>
-        </div>
-    </div>
-</asp:Panel>
+    </asp:Panel>
+</div>
 </asp:Content>

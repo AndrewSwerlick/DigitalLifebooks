@@ -15,7 +15,7 @@ button,
 input,
 select,
 textarea {
-    color: #FFFFFF;
+    color: #444444;
 }
 
 body {
@@ -235,6 +235,10 @@ textarea {
    Form Styles
    ========================================================================== */
    input{
+<<<<<<< HEAD
+=======
+        color:#444444;
+>>>>>>> 1985abc2de39bb8bfc4d4adf82dce5ad4383b1e6
         width:100%;
         margin-bottom:20px;
         height:20px;
@@ -251,6 +255,7 @@ textarea {
         transition: border linear 0.2s, box-shadow linear 0.2s;
    }
    textarea{
+        color:#444444;
         height:200px;
         width:100%;
         margin-bottom:20px;
@@ -315,7 +320,8 @@ textarea {
    .child-dashboard #sidebar{
 
    }
-   .child-dashboard #sidebar .foster-children{
+   .child-dashboard #sidebar .foster-children,
+   .child-dashboard #sidebar .menu{
     font-family: "freight-sans-pro",sans-serif;
     font-size:1em;
     font-style: normal;
@@ -330,15 +336,20 @@ textarea {
     padding-right: 0px;
     padding-top: 0px;
    }
-   .child-dashboard #sidebar .foster-children .foster-child{
+   .child-dashboard #sidebar .foster-children .foster-child,
+   .child-dashboard #sidebar .menu .menu-item{
     background-color:#909090;
     display: block;
     margin-top: 5px;
    }
-   .child-dashboard #sidebar .foster-children .foster-child.selected, .child-dashboard #sidebar .foster-children .foster-child:hover{
+   .child-dashboard #sidebar .foster-children .foster-child.selected, 
+   .child-dashboard #sidebar .foster-children .foster-child:hover,
+   .child-dashboard #sidebar .menu .menu-item:hover,
+   .child-dashboard #sidebar .menu .menu-item.selected{
     background-color:#F04E30;
    }
-   .child-dashboard #sidebar .foster-children .foster-child a{
+   .child-dashboard #sidebar .foster-children .foster-child a,
+   .child-dashboard #sidebar .menu .menu-item a{
     color:#FFFFFF;
     display: block;
     text-decoration: none;
@@ -408,8 +419,7 @@ textarea {
     display: block;
     word-wrap:break-word;
     color:#909090;
-   }
-   
+   }s
    div#content{
         color: rgb(34,34,34);
    }
@@ -418,10 +428,64 @@ textarea {
         width: 30em;	
    }
    
-/* =========================
-    Page/Section Specfic
+/* ====================================================================
+    User Profile
         
-==============================*/   
+============================================================================*/
+   div#userProfile {
+    width:50%;
+   }
+   div#userProfile a.editSettings {
+    float:right;
+   }
+   div#userProfile div#profile-data div{
+    border-bottom: 1px solid #EEEEEE;  
+   }
+   div#userProfile div#profile-data span{
+    margin-right:5px;
+    padding-top:3px;
+    padding-bottom:3px;
+    display:inline-block;
+    width:115px;
+   }
+   
+   div#userProfile div#children .foster-children{    
+    font-family: "freight-sans-pro",sans-serif;
+    font-size:1em;
+    font-style: normal;
+    font-weight: 300;
+    list-style-type: none;
+    margin-bottom: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-top: 0px;
+    padding-bottom: 0px;
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-top: 0px;
+    width:350px;
+   }
+   div#userProfile div#children .foster-children .foster-child{
+    background-color:#909090;
+    display: block;
+    margin-top: 5px;
+   }
+    div#userProfile div#children .foster-children .foster-child.selected, 
+    div#userProfile div#children .foster-children .foster-child:hover{
+    background-color:#F04E30;
+   }
+   div#userProfile div#children .foster-children .foster-child a{
+    color:#FFFFFF;
+    display: block;
+    text-decoration: none;
+    padding-bottom:4px;
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-top:4px;
+    font-size: 16px;
+    word-wrap:break-word;
+   }
+
 /* ==========================================================================
    Helper classes
    ========================================================================== */

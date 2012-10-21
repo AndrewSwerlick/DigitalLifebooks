@@ -1,6 +1,6 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="DigitalLifeBooks.SiteMaster" %>
 <%@ Register Src="~/UserControls/UserChildren.ascx" TagName="UserChildren" TagPrefix="dlb" %>
-
+<%@ Register Assembly="DigitalLifeBooks"  Namespace="DigitalLifeBooks.ServerControls" TagPrefix="dlb" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
@@ -90,6 +90,16 @@
                 </header>
                 <div id="sidebar" class="col-3">
                     <dlb:UserChildren runat="server" />
+                    <dlb:SecurityTrimmedPanel RoleToShowFor="Admin" runat="server">
+                        <ul class="menu">                              
+                            <li class="menu-item">
+                                <a href="/Admin/UserManagement/SearchForUser.aspx">Search for User</a>
+                            </li> 
+                            <li class="menu-item">
+                                <a href="/Admin/UserManagement/SearchForChild.aspx">Search for Child</a>
+                            </li> 
+                        </ul>
+                    </dlb:SecurityTrimmedPanel>
                 </div>    
 
                 <div id="content" class="col-9">
