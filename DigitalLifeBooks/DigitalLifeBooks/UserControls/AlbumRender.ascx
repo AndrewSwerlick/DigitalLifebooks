@@ -3,7 +3,7 @@
 <%@ Import Namespace="DigitalLifeBooks.Models" %>
 <%@ Register Src="~/UserControls/AssetRender.ascx" TagPrefix="dlb" TagName="AssetRender" %>
 
-<span><%= Album.Title %></span>
+<span><%= Title %></span>
 
 <asp:Repeater runat="server" ID="Assets" OnItemCreated="On_AssetsRender_Created">
     <ItemTemplate>

@@ -11,7 +11,7 @@ using DigitalLifeBooks.Models;
 
 namespace DigitalLifeBooks.Admin.Create
 {
-    public partial class NewChild : AdminBasePage
+    public partial class NewChild : BaseDLBPage
     {
         string _userId { get; set; }
         User _user { get; set; }

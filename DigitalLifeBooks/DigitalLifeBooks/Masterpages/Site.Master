@@ -2,7 +2,10 @@
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<<<<<<< HEAD
 
+=======
+>>>>>>> aefc7d0f84a1ddc11326aa28680665af91816377
 <head runat="server" id="Head">
     <title>Digital Lifebooks</title>
     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
@@ -25,7 +28,12 @@
     <script src="/Scripts/jquery/jquery.min.js?cdv=69" type="text/javascript" ></script>
     <script src="/Scripts/jquery/jquery-ui.min.js?cdv=69" type="text/javascript"></script>
     <script src="/Scripts/modernizr-2.5.3.min.js" type="text/javascript"></script>
+<<<<<<< HEAD
     <script src="/Scripts/jquery.datepick.js" type="text/javascript"></script>
+=======
+    <script src="/Scripts/jquery-1.4.1.min.js"></script>
+    <script src="/Scripts/jquery.datepick.js"></script>
+>>>>>>> aefc7d0f84a1ddc11326aa28680665af91816377
 
     <asp:ContentPlaceHolder ID="HeadContent" runat="server">
     </asp:ContentPlaceHolder>
@@ -56,7 +64,6 @@
 	                    </li>
 	                    <li class="item">
 			                    <a href="http://digitallifebooks.org/AboutUs.aspx">About Us</a>
-		
 	                    </li>
 	                    <li class="item">
 			                    <a href="http://digitallifebooks.org/Resources.aspx">Resources</a>
@@ -69,11 +76,11 @@
                     <span>| </span>
                     <ul>
                         <li>
-                            <a id="dnn_dnnUser_registerLink" title="Register" class="SkinObject" href="#">Register</a>
+                            <a id="dnn_dnnUser_registerLink" title="Register" class="SkinObject" href="/Account/Register.aspx">Register</a>
                         <!--close registerGroup-->
                         </li>
                         <li>
-                            <a id="dnn_dnnLogin_loginLink" title="Login" class="SkinObject" href="#">Login</a>
+                            <a id="dnn_dnnLogin_loginLink" title="Login" class="SkinObject" href="/Account/Login.aspx">Login</a>
                         <!--close loginGroup-->
                         </li>
                     </ul>

@@ -38,7 +38,7 @@ namespace DigitalLifeBooks.Albums
             if (string.IsNullOrEmpty(AlbumTitle.Text))
                 return;
 
-            var album = EditOrCreateAlbum(long.Parse(albumId));
+            var album = EditOrCreateAlbum(albumId);
             DataContext.SaveChanges();
 
             Response.Redirect("Album.aspx?Id" + album.ID);
@@ -48,9 +48,12 @@ namespace DigitalLifeBooks.Albums
         {
             return DataContext.Albums.SingleOrDefault(a => a.ID == id);
         }
-        private Album EditOrCreateAlbum(long id)
+        private Album EditOrCreateAlbum(string id)
         {
-            var album = LoadAlbum(id);
+            Album album = null;
+            
+            if(!string.IsNullOrEmpty(id))
+                album = LoadAlbum(long.Parse(id));
 
             if (album == null)
             {
@@ -68,7 +71,7 @@ namespace DigitalLifeBooks.Albums
 
         private Child LoadChild(long childId)
         {
-            return new Child();
+            return DataContext.Children.Single(c => c.Id == childId);
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -58,15 +58,19 @@
     <Content Include="Account\ChangePassword.aspx" />
     <Content Include="Account\ChangePasswordSuccess.aspx" />
     <Content Include="Account\Login.aspx" />
+    <Content Include="Account\PasswordRecovery.aspx" />
     <Content Include="Account\Register.aspx" />
     <Content Include="Admin\AdminChildSearch.aspx" />
     <Content Include="Admin\UserManagement\AddChildToUser.aspx" />
     <Content Include="Albums\AlbumLoader.aspx" />
     <Content Include="Albums\EditAsset.aspx" />
+    <Content Include="Albums\AlbumViewer.aspx" />
     <Content Include="Albums\NewOrEditAlbum.aspx" />
     <Content Include="Albums\Upload.aspx" />
     <Content Include="Admin\Create\NewChild.aspx" />
     <Content Include="UserControls\UserChildren.ascx" />
+    <Content Include="ChildProfile\Dashboard.aspx" />
+    <Content Include="email.txt" />
     <Content Include="Scripts\init.js" />
     <Content Include="Scripts\initTooltips.js" />
     <Content Include="Scripts\initWidgets.js" />
@@ -81,11 +85,14 @@
     <Content Include="Scripts\jquery\jquery.tmpl.js" />
     <Content Include="Scripts\json2.js" />
     <Content Include="Scripts\knockout.js" />
+    <Content Include="Scripts\main.js" />
     <Content Include="Scripts\modernizr-2.5.3.min.js" />
     <Content Include="Scripts\MSAJAX\MicrosoftAjax.js" />
     <Content Include="Scripts\MSAJAX\MicrosoftAjaxTimer.js" />
     <Content Include="Scripts\MSAJAX\MicrosoftAjaxWebForms.js" />
     <Content Include="Scripts\MSAJAX\v1.0.61025.0.txt" />
+    <Content Include="Scripts\placeholder-polyfill.js" />
+    <Content Include="Scripts\plugins.js" />
     <Content Include="Scripts\widgets.js" />
     <Content Include="Models\DLBModel.edmx.sql" />
     <Content Include="Scripts\jquery.datepick.js" />
@@ -101,6 +108,9 @@
     <Content Include="Styles\Images\Slider\scroller3.png" />
     <Content Include="Styles\Images\Slider\scroller4.png" />
     <Content Include="Styles\Images\twitter_white.png" />
+    <Content Include="Styles\main.css" />
+    <Content Include="Styles\normalize.css" />
+    <Content Include="Styles\placeholder-polyfill.css" />
     <Content Include="Styles\Site.css" />
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
@@ -147,6 +157,13 @@
     <Compile Include="Account\Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Account\PasswordRecovery.aspx.cs">
+      <DependentUpon>PasswordRecovery.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\PasswordRecovery.aspx.designer.cs">
+      <DependentUpon>PasswordRecovery.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Account\Register.aspx.cs">
       <DependentUpon>Register.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -185,6 +202,13 @@
     <Compile Include="Albums\EditAsset.aspx.designer.cs">
       <DependentUpon>EditAsset.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Albums\AlbumViewer.aspx.cs">
+      <DependentUpon>AlbumViewer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+      <Compile Include="Albums\AlbumViewer.aspx.designer.cs">
+          <DependentUpon>AlbumViewer.aspx</DependentUpon>
+      </Compile>
     <Compile Include="Albums\NewOrEditAlbum.aspx.cs">
       <DependentUpon>NewOrEditAlbum.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -220,6 +244,12 @@
     </Compile>
     <Compile Include="UserControls\UserChildren.ascx.designer.cs">
       <DependentUpon>UserChildren.ascx</DependentUpon>
+    <Compile Include="ChildProfile\Dashboard.aspx.cs">
+      <DependentUpon>Dashboard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ChildProfile\Dashboard.aspx.designer.cs">
+      <DependentUpon>Dashboard.aspx</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
@@ -247,6 +277,7 @@
     <Compile Include="Masterpages\Site.Master.designer.cs">
       <DependentUpon>Site.Master</DependentUpon>
     </Compile>
+    <Compile Include="ServerControls\SecurityTrimmedPanel.cs" />
     <Compile Include="Services\Delete.asmx.cs">
       <DependentUpon>Delete.asmx</DependentUpon>
       <SubType>Component</SubType>
@@ -275,7 +306,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Child\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Account\Web.config" />
