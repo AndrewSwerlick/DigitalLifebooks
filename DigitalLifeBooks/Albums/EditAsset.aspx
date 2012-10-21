@@ -5,11 +5,10 @@
 </asp:Content>
 
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
-    <div>
+    <div id="diveditasset">
         <dlb:AssetRender runat="server" ID="AssetRender" />
-
-        <asp:TextBox ID="Caption" runat="server"></asp:TextBox>
-
+        <label>Please enter a Caption</label>
+        <asp:TextBox ID="Caption" CssClass="commitasset" runat="server"></asp:TextBox>
         <asp:Button ID="Save"  CssClass="commitButton" runat="server" Text="Save" OnClick="On_Save_Click" />
     </div>
 </asp:Content>

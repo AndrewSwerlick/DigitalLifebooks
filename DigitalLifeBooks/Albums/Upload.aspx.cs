@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using DigitalLifeBooks.Models;
 using System.IO;
 using DigitalLifeBooks.AssetManagement;
+using System.Threading;
 
 namespace DigitalLifeBooks.Albums
 {

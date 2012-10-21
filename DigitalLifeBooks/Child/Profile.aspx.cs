@@ -13,6 +13,7 @@ namespace DigitalLifeBooks.ChildProfile
     {
         public Child Child { get; set; }
         public string ProfilePicPath { get; set; }
+        public string AlbumId { get; set; }
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -25,12 +26,15 @@ namespace DigitalLifeBooks.ChildProfile
                     long id = Convert.ToInt64(profileId);
 
                     Child = DataContext.Children.FirstOrDefault<Child>(x => x.Id == id);
-
+                    if (Child == null)
+                        Response.Redirect("/ChildProfile/ChildNotFound.aspx");
                     if (Child != null)
                     {
                         hdnId.Value = Child.Id.ToString();
 
                         ProfilePicPath = Child.ProfilePickLink;
+
+                        AlbumId = Child.ProfileAlbumId.ToString();
 
                         //load child details
                         FullName.Text = Child.FirstName;
@@ -156,6 +160,12 @@ namespace DigitalLifeBooks.ChildProfile
                     }
                 }
             }
+        }
+
+        protected void cancel_Click(object sender, EventArgs e)
+        {
+            long id = Convert.ToInt64(hdnId.Value);
+            Response.Redirect(string.Format("/ChildProfile/Dashboard.aspx?ChildId={0}", id));
         }
     }
 }

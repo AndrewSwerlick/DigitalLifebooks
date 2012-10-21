@@ -24,6 +24,15 @@ namespace DigitalLifeBooks.Models
             }
         }
 
+        public long ProfileAlbumId
+        {
+            get
+            {
+                var profilePicAlbum = Albums.SingleOrDefault(a => a.IsProfilePictureAlbum);
+                return profilePicAlbum.ID;
+            }
+        }
+
         public string Age
         {
             get
