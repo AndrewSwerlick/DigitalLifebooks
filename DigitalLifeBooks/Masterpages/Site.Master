@@ -85,7 +85,7 @@
                                 <% else
                                    {  %>
                                 <li>
-                                    <a title="Profile" class="SkinObject" href="/Users/Profile.aspx">Profile</a>
+                                    <a title="Profile" class="SkinObject" href="/Users/UserProfile.aspx">User Profile</a>
                                 <!--close registerGroup-->
                                 </li>
                                 <li>
@@ -154,7 +154,7 @@
                         </nav>
                         <div id="footerImages">
                             <a href="/"><span id="digLifeBooks"></span></a>
-                            <a href="http://www.facebook.com/DLifebooks"><span id="facebook"></span></a>
+                            <a href="http://www.facebook.com/pages/Digital-LifeBooks"><span id="facebook"></span></a>
                             <a href="https://twitter.com/dlifebooks"><span id="twitter"></span></a>
                         </div>
                         <div class="DNNAlignright">

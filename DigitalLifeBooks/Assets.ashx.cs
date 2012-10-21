@@ -46,7 +46,7 @@ namespace DigitalLifeBooks
             
             var stream = assetManager.GetAssetData(asset);
             context.Response.Clear();
-            context.Response.ContentType = "image/jpg";
+            context.Response.ContentType = asset.MimeType();
             context.Response.BinaryWrite(ReadFully(stream));
             stream.CopyTo(context.Response.OutputStream);
             stream.Dispose();

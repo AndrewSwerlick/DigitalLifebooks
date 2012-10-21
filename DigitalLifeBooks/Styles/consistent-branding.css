@@ -438,10 +438,15 @@ textarea {
     width:100%;
     height:auto;
    }
-   .child-dashboard #content #albums .col-album .album-caption{
+   /*.child-dashboard #content #albums .col-album */.album-caption{
     display: block;
     word-wrap:break-word;
     color:#909090;
+   }
+   
+   div.assetDelete{
+    margin:0px;
+    float:none;
    }
    div#content{
         color: rgb(34,34,34);
