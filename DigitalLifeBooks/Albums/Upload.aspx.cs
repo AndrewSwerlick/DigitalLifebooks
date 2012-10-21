@@ -64,7 +64,7 @@ namespace DigitalLifeBooks.Albums
             var asset = new Asset()
             {
                 Album = album,
-                Type = extension
+                Type = extension.ToLower()
             };
             DataContext.Assets.AddObject(asset);
             DataContext.SaveChanges();
