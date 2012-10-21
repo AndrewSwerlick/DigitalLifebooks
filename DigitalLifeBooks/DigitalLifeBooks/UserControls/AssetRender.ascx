@@ -2,7 +2,9 @@
 <%@ Import Namespace="DigitalLifeBooks.UserControls" %>
 
 <asp:Panel ID="ImageRender" runat="server" Visible="false">
-    <img alt="<%= Asset.Caption %>" src='<%= "/Assets.ashx?Id=" + Asset.ID %>' />
+    <a href="#" class="col-album">
+        <img class="album-asset" alt="<%= Asset.Caption %>" src='<%= "/Assets.ashx?Id=" + Asset.ID %>' />
+    </a>
 </asp:Panel>
 <asp:Panel ID="DefaultRender" runat="server" Visible="false">
         <a href='<%= "/Assets.ashx?Id=" + Asset.ID %>' class="col-document">
