@@ -45,7 +45,10 @@ namespace DigitalLifeBooks.Admin.UserManagement
                 Value = c.Id.ToString()
             });
             if (childrenListItems.Count() > 0)
+            {
+                ChildSearchResultChoices.Items.Clear();
                 ChildSearchResultChoices.Items.AddRange(childrenListItems.ToArray());
+            }
             else
                 NoResultsFound.Visible = true;
         }
