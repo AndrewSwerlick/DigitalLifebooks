@@ -9,12 +9,35 @@
             $("body").append(iframe);
             iframe.dialog();
 
-            window.closeIframe = function () 
-            {
+            window.closeIframe = function () {
                 iframe.dialog('close');
                 document.location.reload(true);
                 return false;
             }
+        });
+
+        $("a.newAlbum").click(function () {
+            var link = $(this);
+            var childId = link.attr("data-childId");
+            var iframe = $("<iframe src=/Albums/NewOrEditAlbum.aspx?ChildId=" + childId + "/>");
+            $("body").append(iframe);
+            iframe.dialog();
+
+            window.closeIframe = function () {
+                iframe.dialog('close');
+                document.location.reload(true);
+                return false;
+            }
+        });
+
+        $("a.delete").click(function () {
+            var link = $(this);
+            var id = link.attr("data-entityId");
+            var type = link.attr("data-entityType");
+
+            $.post('/Services/Delete.asmx/DeleteEntity', "EntityType=" + type + "&EnityID=" + id, function (data) {
+                document.location.reload(true);
+            });
         });
 
     });

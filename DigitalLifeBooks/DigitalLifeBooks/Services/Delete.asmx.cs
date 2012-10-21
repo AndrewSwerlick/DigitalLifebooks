@@ -31,37 +31,30 @@ namespace DigitalLifeBooks.Services
 
         [WebMethod]        
         public string DeleteEntity(string EntityType, string EnityID)
-        {
-            try
-            {
-                AssetManager = new LocalDiskAssetManager(HttpContext.Current);
-                var id = long.Parse(EnityID);
+        {           
+            AssetManager = new LocalDiskAssetManager(HttpContext.Current);
+            var id = long.Parse(EnityID);
 
-                if (EntityType == "User")
-                    DeleteUser(id);
+            if (EntityType == "User")
+                DeleteUser(id);
 
-                if (EntityType == "Asset")
-                    DeleteAsset(id);
+            if (EntityType == "Asset")
+                DeleteAsset(id);
 
-                if (EntityType == "Album")
-                    DeleteAlbum(id);
+            if (EntityType == "Album")
+                DeleteAlbum(id);
 
-                if (EntityType == "Child")
-                    DeleteChild(id);
+            if (EntityType == "Child")
+                DeleteChild(id);
 
-                return "sucess";
-            }
-            catch
-            {
-                return "error";
-            }
+            return "sucess";                        
         }
 
         private void DeleteAlbum(long id)
         {
             var album = DataContext.Albums.Single(a => a.ID == id);
 
-            for (int j = 0; j < album.Assets.Count; j++)
+            for (int j = 0; album.Assets.Count != 0;)
             {
                 var asset = album.Assets.ElementAt(j);
                 AssetManager.Delete(asset);
@@ -86,10 +79,10 @@ namespace DigitalLifeBooks.Services
         private void DeleteChild(long EnityID)
         {
             var child = DataContext.Children.Single(a => a.Id == EnityID);
-            for (int i=0; i < child.Albums.Count; i++)
+            for (int i = 0; child.Albums.Count != 0; i++ )
             {
                 var album = child.Albums.ElementAt(i);
-                for (int j=0; j < album.Assets.Count; j++)
+                for (int j = 0; album.Assets.Count != 0; j++)
                 {
                     var asset = album.Assets.ElementAt(j);
                     AssetManager.Delete(asset);
