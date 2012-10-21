@@ -56,7 +56,7 @@ namespace DigitalLifeBooks.ChildProfile
                     if (Child != null)
                     {
 
-                        if (!Child.UserIsAuthorizedForChild(CurrentUser))
+                        if (!Child.UserIsAuthorizedForChild(CurrentUser) && !HttpContext.Current.User.IsInRole("Admin"))
 
                             Response.Redirect("/UnAuthorized.aspx");
 

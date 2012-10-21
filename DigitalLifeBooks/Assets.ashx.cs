@@ -45,6 +45,8 @@ namespace DigitalLifeBooks
                 throw new UnauthorizedAccessException();
             
             var stream = assetManager.GetAssetData(asset);
+            context.Response.ClearHeaders();
+            context.Response.ClearContent();
             context.Response.Clear();
             context.Response.ContentType = asset.MimeType();
             context.Response.BinaryWrite(ReadFully(stream));

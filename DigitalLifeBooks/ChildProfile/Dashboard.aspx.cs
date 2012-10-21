@@ -24,8 +24,8 @@ namespace DigitalLifeBooks.ChildProfile
             if (Child == null)
                 Response.Redirect("/Child/ChildNotFound.aspx");
 
-            if (!Child.UserIsAuthorizedForChild(CurrentUser))
-                throw new UnauthorizedAccessException();
+            if (!Child.UserIsAuthorizedForChild(CurrentUser) && !HttpContext.Current.User.IsInRole("Admin"))
+                Response.Redirect("/UnAuthorized.aspx");
 
             ImportantDocuments = Child.Albums.SingleOrDefault(a => a.IsImportanDocumentsAlbum);
             ProfilePicLink = Child.ProfilePickLink;            
