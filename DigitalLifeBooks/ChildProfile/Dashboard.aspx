@@ -52,7 +52,7 @@
         </div>
     </header>
     <div id="main">
-        <div id="important-documents" class="album root" data-albumId='<%= (ImportantDocuments != null) ? ImportantDocuments.ID : -1 %>'>     
+        <div id="important-documents" class="album row" data-albumId='<%= (ImportantDocuments != null) ? ImportantDocuments.ID : -1 %>'>     
             <div class="row">
                 <div class="col-7 alpha">
                     <h2 class="header-2">Important Documents<h2>
@@ -78,7 +78,7 @@
                             </dlb:SecurityTrimmedPanel>
                             </div>
                         </div>                                             
-                        <dlb:AlbumRender runat="server" ID="AlbumRender"></dlb:AlbumRender>
+                        <dlb:AlbumRender runat="server" ID="AlbumRender" ItemsPerPage="10"></dlb:AlbumRender>
                         <div class="pagingButtons">
                             <a href="#" class="next">Next</a>
                             <a href="#" class="prev">Prev</a>

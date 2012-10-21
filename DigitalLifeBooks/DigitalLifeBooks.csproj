@@ -125,6 +125,7 @@
     <Content Include="UserControls\AlbumRender.ascx" />
     <Content Include="UserControls\AssetRender.ascx" />
     <Content Include="UserControls\UserChildren.ascx" />
+    <Content Include="Users\UserNotFound.aspx" />
     <Content Include="Users\UserProfile.aspx" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -335,6 +336,13 @@
     </Compile>
     <Compile Include="UserControls\UserChildren.ascx.designer.cs">
       <DependentUpon>UserChildren.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Users\UserNotFound.aspx.cs">
+      <DependentUpon>UserNotFound.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Users\UserNotFound.aspx.designer.cs">
+      <DependentUpon>UserNotFound.aspx</DependentUpon>
     </Compile>
     <Compile Include="Users\UserProfile.aspx.cs">
       <DependentUpon>UserProfile.aspx</DependentUpon>
