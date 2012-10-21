@@ -17,7 +17,12 @@ namespace DigitalLifeBooks.UserControls
         protected override void OnInit(EventArgs e)
         {
             typeToPanelMap = new Dictionary<string, Panel>{
-                {"jpg", ImageRender}
+                {"jpg", ImageRender},
+                {"jpeg", ImageRender},
+                {"gif", ImageRender},
+                {"png", ImageRender},
+                {"bmp", ImageRender},
+                {"tiff", ImageRender}
             };
             base.OnInit(e);
         }
