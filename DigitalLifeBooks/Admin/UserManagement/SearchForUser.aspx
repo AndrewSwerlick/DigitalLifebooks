@@ -3,7 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    <label>Search For User</label><asp:TextBox ID="Search" CssClass="inputsearch" runat="server"></asp:TextBox>
+    <label>Search For user by name or last 4 of SSN</label><asp:TextBox ID="Search" CssClass="inputsearch" runat="server"></asp:TextBox>    
     <asp:Button Text="Search" ID="SearchButton" CssClass="SearchButton" runat="server" OnClick="On_Search_Click" />
     <div>
         <asp:Repeater runat="server" ID="SearchResults">

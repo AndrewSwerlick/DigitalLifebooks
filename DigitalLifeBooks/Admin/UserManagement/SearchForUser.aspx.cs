@@ -15,7 +15,7 @@ namespace DigitalLifeBooks.Admin.UserManagement
             if (string.IsNullOrEmpty(searchTerm))
                 return;
 
-            var users = DataContext.Users.Where(u => u.FirstName.Contains(searchTerm) || u.LastName.Contains(searchTerm) || u.LoginName.Contains(searchTerm));
+            var users = DataContext.Children.Where(c => String.Concat(c.FirstName, " ", c.LastName).Contains(searchTerm) || c.Last4SSN.Contains(searchTerm));
             SearchResults.DataSource = users;
             SearchResults.DataBind();
         }
