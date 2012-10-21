@@ -15,6 +15,7 @@ namespace DigitalLifeBooks.Controls
         public User User {get;set;}
         public bool DoNotUseCurrentUser { get; set; }
 
+
         protected DigitalLifeBooksEntities DataContext
         {
             get
@@ -27,8 +28,10 @@ namespace DigitalLifeBooks.Controls
         {
             get
             {
-                //return DataContext.Users.Single(u => u.LoginName == HttpContext.Current.User.Identity.Name);
+#if DEBUG
                 return DataContext.Users.First();
+#endif
+                return DataContext.Users.Single(u => u.LoginName == HttpContext.Current.User.Identity.Name);
             }
         }
 
@@ -37,7 +40,7 @@ namespace DigitalLifeBooks.Controls
             if (!DoNotUseCurrentUser)
                 User = CurrentUser;
 
-            rtChildren.DataSource = CurrentUser.Children;
+            rtChildren.DataSource = User.Children;
             rtChildren.DataBind();
         }
 

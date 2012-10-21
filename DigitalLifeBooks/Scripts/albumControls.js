@@ -3,8 +3,13 @@
 (function () {
     $(document).ready(function () {
         $("div.album a.upload").on('click', function (e) {
-            var albumId = $(this).parent().data("albumId");
+            var albumId = $(this).closest("div.album.root").data("albumid");
             var iframe = $("<iframe src=/Albums/Upload.aspx?AlbumId=" + albumId + "/>");
+            window.closeIframe = function () {
+                iframe.dialog('close');
+                document.location.reload(true);
+                return false;
+            }
             $("body").append(iframe);
             iframe.dialog({
                 draggable: false,
@@ -12,14 +17,10 @@
                 width: 996,
                 modal: true,
                 resizable: false,
-                title: 'foo'
+                title: 'Upload'
             });
 
-            window.closeIframe = function () {
-                iframe.dialog('close');
-                document.location.reload(true);
-                return false;
-            }
+            
             e.preventDefault();
         });
 
@@ -27,6 +28,11 @@
             var link = $(this);
             var childId = $(this).data("childId");
             var iframe = $("<iframe src=/Albums/NewOrEditAlbum.aspx?ChildId=" + childId + "/>");
+            window.closeIframe = function () {
+                iframe.dialog('close');
+                document.location.reload(true);
+                return false;
+            }
             $("body").append(iframe);
             iframe.dialog({
                 draggable: false,
@@ -34,13 +40,9 @@
                 width: 996,
                 modal: true,
                 resizable: false,
-                title: 'foo'
+                title: 'Edit'
             });
-            window.closeIframe = function () {
-                iframe.dialog('close');
-                document.location.reload(true);
-                return false;
-            }
+            
             e.preventDefault();
         });
 

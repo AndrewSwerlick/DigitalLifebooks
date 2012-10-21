@@ -18,6 +18,7 @@
         </asp:Panel>
         <asp:Panel ID="ConfirmationDialog" Visible="false" runat="server">
             <asp:Literal ID="ConfirmationMessage" runat="server"></asp:Literal>
+            <a href="<%= "/Users/UserProfile.aspx?Id=" + ProfileUser.LoginName %>">Return to user page</a>
         </asp:Panel>
     </div>
 </asp:Content>

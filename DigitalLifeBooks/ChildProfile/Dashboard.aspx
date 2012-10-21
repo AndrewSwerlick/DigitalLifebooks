@@ -53,7 +53,7 @@
         <div id="albums">
             <asp:Repeater runat="server" ID="Albums"  OnItemCreated="On_AlbumRender_Created">
                 <ItemTemplate>
-                    <div runat ="server" class="album" data-albumId='<%# (Container.DataItem as Album).ID %>'>
+                    <div runat ="server" class="album root" data-albumId='<%# (Container.DataItem as Album).ID %>'>
                         <div class="row">
                             <div class="col-9 alpha omega">
                                 <h2 class="header-2"><%# (Container.DataItem as Album).Title %></h2>

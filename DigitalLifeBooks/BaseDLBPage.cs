@@ -21,8 +21,10 @@ namespace DigitalLifeBooks
         {
             get
             {
-                //return DataContext.Users.Single(u => u.LoginName == HttpContext.Current.User.Identity.Name);
+#if DEBUG
                 return DataContext.Users.First();
+#endif
+                return DataContext.Users.Single(u => u.LoginName == HttpContext.Current.User.Identity.Name);
             }                
         }
     }
