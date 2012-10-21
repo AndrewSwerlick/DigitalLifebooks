@@ -4,12 +4,15 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="DigitalLifeBooksModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+    <Schema Namespace="DigitalLifeBooksModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
   <EntityContainer Name="DigitalLifeBooksModelStoreContainer">
     <EntitySet Name="Assets" EntityType="DigitalLifeBooksModel.Store.Assets" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Albums" EntityType="DigitalLifeBooksModel.Store.Albums" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Users" EntityType="DigitalLifeBooksModel.Store.Users" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Children" EntityType="DigitalLifeBooksModel.Store.Children" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Hospitals" EntityType="DigitalLifeBooksModel.Store.Hospitals" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="FosterFamilies" EntityType="DigitalLifeBooksModel.Store.FosterFamilies" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Schools" EntityType="DigitalLifeBooksModel.Store.Schools" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="ChildUser" EntityType="DigitalLifeBooksModel.Store.ChildUser" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="AssetAlbum" Association="DigitalLifeBooksModel.Store.AssetAlbum">
       <End Role="Asset" EntitySet="Assets" />
@@ -26,6 +29,18 @@
     <AssociationSet Name="ChildAlbum" Association="DigitalLifeBooksModel.Store.ChildAlbum">
       <End Role="Child" EntitySet="Children" />
       <End Role="Album" EntitySet="Albums" />
+    </AssociationSet>
+    <AssociationSet Name="HospitalChild" Association="DigitalLifeBooksModel.Store.HospitalChild">
+      <End Role="Hospital" EntitySet="Hospitals" />
+      <End Role="Child" EntitySet="Children" />
+    </AssociationSet>
+    <AssociationSet Name="ChildFosterFamily" Association="DigitalLifeBooksModel.Store.ChildFosterFamily">
+      <End Role="Child" EntitySet="Children" />
+      <End Role="FosterFamily" EntitySet="FosterFamilies" />
+    </AssociationSet>
+    <AssociationSet Name="ChildSchool" Association="DigitalLifeBooksModel.Store.ChildSchool">
+      <End Role="Child" EntitySet="Children" />
+      <End Role="School" EntitySet="Schools" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="Assets">
@@ -81,6 +96,49 @@
     <Property Name="BirthWeight" Type="nvarchar(max)" Nullable="true" />
     <Property Name="BirthLength" Type="nvarchar(max)" Nullable="true" />
     <Property Name="Last4SSN" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="FosterFamilyId" Type="bigint" Nullable="true" />
+    <Property Name="SchoolId" Type="bigint" Nullable="true" />
+    <Property Name="BirthSibling" Type="nvarchar" Nullable="true" MaxLength="60" />
+    <Property Name="BirthSiblingRelationship" Type="nvarchar" Nullable="true" MaxLength="15" />
+    <Property Name="CaseWorker" Type="nvarchar" Nullable="true" MaxLength="60" />
+  </EntityType>
+  <EntityType Name="Hospitals">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="City" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="State" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Address" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Phone" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="FosterFamilies">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FatherName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="MotherName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="FosterSibling" Type="nvarchar" Nullable="true" MaxLength="60" />
+    <Property Name="City" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="State" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Address" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Country" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Phone" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="FosterSiblingRelationship" Type="nvarchar" Nullable="true" MaxLength="15" />
+  </EntityType>
+  <EntityType Name="Schools">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Address" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="City" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="State" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Country" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Phone" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
   <EntityType Name="ChildUser">
     <Key>
@@ -111,6 +169,42 @@
       </Principal>
       <Dependent Role="Album">
         <PropertyRef Name="ChildId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="HospitalChild">
+    <End Role="Hospital" Type="DigitalLifeBooksModel.Store.Hospitals" Multiplicity="0..1" />
+    <End Role="Child" Type="DigitalLifeBooksModel.Store.Children" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Hospital">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Child">
+        <PropertyRef Name="HospitalID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ChildFosterFamily">
+    <End Role="Child" Type="DigitalLifeBooksModel.Store.Children" Multiplicity="*" />
+    <End Role="FosterFamily" Type="DigitalLifeBooksModel.Store.FosterFamilies" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="FosterFamily">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Child">
+        <PropertyRef Name="FosterFamilyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ChildSchool">
+    <End Role="Child" Type="DigitalLifeBooksModel.Store.Children" Multiplicity="*" />
+    <End Role="School" Type="DigitalLifeBooksModel.Store.Schools" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="School">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Child">
+        <PropertyRef Name="SchoolId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -158,6 +252,21 @@
           <AssociationSet Name="ChildAlbum" Association="DigitalLifeBooksModel.ChildAlbum">
             <End Role="Child" EntitySet="Children" />
             <End Role="Album" EntitySet="Albums" />
+          </AssociationSet>
+          <EntitySet Name="Hospitals" EntityType="DigitalLifeBooksModel.Hospital" />
+          <EntitySet Name="FosterFamilies" EntityType="DigitalLifeBooksModel.FosterFamily" />
+          <AssociationSet Name="HospitalChild" Association="DigitalLifeBooksModel.HospitalChild">
+            <End Role="Hospital" EntitySet="Hospitals" />
+            <End Role="Child" EntitySet="Children" />
+          </AssociationSet>
+          <AssociationSet Name="ChildFosterFamily" Association="DigitalLifeBooksModel.ChildFosterFamily">
+            <End Role="Child" EntitySet="Children" />
+            <End Role="FosterFamily" EntitySet="FosterFamilies" />
+          </AssociationSet>
+          <EntitySet Name="Schools" EntityType="DigitalLifeBooksModel.School" />
+          <AssociationSet Name="ChildSchool" Association="DigitalLifeBooksModel.ChildSchool">
+            <End Role="Child" EntitySet="Children" />
+            <End Role="School" EntitySet="Schools" />
           </AssociationSet>
           </EntityContainer>
         <EntityType Name="Asset">
@@ -222,6 +331,14 @@
           <Property Type="String" Name="Last4SSN" Nullable="false" />
           <NavigationProperty Name="Users" Relationship="DigitalLifeBooksModel.ChildUser" FromRole="Child" ToRole="User" />
           <NavigationProperty Name="Albums" Relationship="DigitalLifeBooksModel.ChildAlbum" FromRole="Child" ToRole="Album" />
+          <Property Type="Int64" Name="FosterFamilyId" Nullable="true" />
+          <NavigationProperty Name="Hospital" Relationship="DigitalLifeBooksModel.HospitalChild" FromRole="Child" ToRole="Hospital" />
+          <NavigationProperty Name="FosterFamily" Relationship="DigitalLifeBooksModel.ChildFosterFamily" FromRole="Child" ToRole="FosterFamily" />
+          <NavigationProperty Name="School" Relationship="DigitalLifeBooksModel.ChildSchool" FromRole="Child" ToRole="School" />
+          <Property Type="Int64" Name="SchoolId" Nullable="true" />
+          <Property Type="String" Name="BirthSibling" MaxLength="60" Nullable="true" />
+          <Property Type="String" Name="BirthSiblingRelationship" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="CaseWorker" Nullable="true" MaxLength="60" />
         </EntityType>
         <Association Name="ChildUser">
           <End Type="DigitalLifeBooksModel.Child" Role="Child" Multiplicity="*" />
@@ -236,6 +353,83 @@
             </Principal>
             <Dependent Role="Album">
               <PropertyRef Name="ChildId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Hospital">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" />
+          <Property Type="String" Name="City" Nullable="false" />
+          <Property Type="String" Name="State" Nullable="false" />
+          <Property Type="String" Name="Address" Nullable="false" />
+          <Property Type="String" Name="Phone" Nullable="false" />
+          <NavigationProperty Name="Children" Relationship="DigitalLifeBooksModel.HospitalChild" FromRole="Hospital" ToRole="Child" />
+        </EntityType>
+        <EntityType Name="FosterFamily">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="FatherName" Nullable="false" />
+          <Property Type="String" Name="MotherName" Nullable="false" />
+          <Property Type="String" Name="FosterSibling" Nullable="true" MaxLength="60" />
+          <Property Type="String" Name="City" Nullable="false" />
+          <Property Type="String" Name="State" Nullable="false" />
+          <Property Type="String" Name="Address" Nullable="false" />
+          <Property Type="String" Name="Country" Nullable="false" />
+          <Property Type="String" Name="Phone" Nullable="false" />
+          <NavigationProperty Name="Children" Relationship="DigitalLifeBooksModel.ChildFosterFamily" FromRole="FosterFamily" ToRole="Child" />
+          <Property Type="String" Name="FosterSiblingRelationship" MaxLength="15" Nullable="true" />
+        </EntityType>
+        <Association Name="HospitalChild">
+          <End Type="DigitalLifeBooksModel.Hospital" Role="Hospital" Multiplicity="0..1" />
+          <End Type="DigitalLifeBooksModel.Child" Role="Child" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Hospital">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Child">
+              <PropertyRef Name="HospitalID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ChildFosterFamily">
+          <End Type="DigitalLifeBooksModel.Child" Role="Child" Multiplicity="*" />
+          <End Type="DigitalLifeBooksModel.FosterFamily" Role="FosterFamily" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="FosterFamily">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Child">
+              <PropertyRef Name="FosterFamilyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="School">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" />
+          <Property Type="String" Name="Address" Nullable="false" />
+          <Property Type="String" Name="City" Nullable="false" />
+          <Property Type="String" Name="State" Nullable="false" />
+          <Property Type="String" Name="Country" Nullable="false" />
+          <Property Type="String" Name="Phone" Nullable="false" />
+          <NavigationProperty Name="Children" Relationship="DigitalLifeBooksModel.ChildSchool" FromRole="School" ToRole="Child" />
+        </EntityType>
+        <Association Name="ChildSchool">
+          <End Type="DigitalLifeBooksModel.Child" Role="Child" Multiplicity="*" />
+          <End Type="DigitalLifeBooksModel.School" Role="School" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="School">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Child">
+              <PropertyRef Name="SchoolId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -299,6 +493,52 @@
           <ScalarProperty Name="BirthWeight" ColumnName="BirthWeight" />
           <ScalarProperty Name="BirthLength" ColumnName="BirthLength" />
           <ScalarProperty Name="Last4SSN" ColumnName="Last4SSN" />
+          <ScalarProperty Name="FosterFamilyId" ColumnName="FosterFamilyId" />
+          <ScalarProperty Name="SchoolId" ColumnName="SchoolId" />
+          <ScalarProperty Name="BirthSibling" ColumnName="BirthSibling" />
+          <ScalarProperty Name="BirthSiblingRelationship" ColumnName="BirthSiblingRelationship" />
+          <ScalarProperty Name="CaseWorker" ColumnName="CaseWorker" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Hospitals">
+      <EntityTypeMapping TypeName="IsTypeOf(DigitalLifeBooksModel.Hospital)">
+        <MappingFragment StoreEntitySet="Hospitals">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FosterFamilies">
+      <EntityTypeMapping TypeName="IsTypeOf(DigitalLifeBooksModel.FosterFamily)">
+        <MappingFragment StoreEntitySet="FosterFamilies">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="FatherName" ColumnName="FatherName" />
+          <ScalarProperty Name="MotherName" ColumnName="MotherName" />
+          <ScalarProperty Name="FosterSibling" ColumnName="FosterSibling" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="FosterSiblingRelationship" ColumnName="FosterSiblingRelationship" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Schools">
+      <EntityTypeMapping TypeName="IsTypeOf(DigitalLifeBooksModel.School)">
+        <MappingFragment StoreEntitySet="Schools">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -341,18 +581,45 @@
         <EntityTypeShape EntityType="DigitalLifeBooksModel.Asset" Width="1.5" PointX="1" PointY="5" Height="1.9210009765624996" />
         <EntityTypeShape EntityType="DigitalLifeBooksModel.Album" Width="1.5" PointX="4.75" PointY="6.5" Height="2.5783902994791674" />
         <AssociationConnector Association="DigitalLifeBooksModel.AssetAlbum">
+          <ConnectorPoint PointX="2.5" PointY="6.8362939453125" />
+          <ConnectorPoint PointX="4.75" PointY="6.8362939453125" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="DigitalLifeBooksModel.User" Width="1.5" PointX="1" PointY="1.5" Height="2.7427376302083335" />
+        <AssociationConnector Association="DigitalLifeBooksModel.FK_UserSibliing_Users" >
+          <ConnectorPoint PointX="2.5" PointY="1.9901432291666668" />
+          <ConnectorPoint PointX="4.75" PointY="1.9901432291666668" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="DigitalLifeBooksModel.Child" Width="1.5" PointX="4.75" PointY="2.375" Height="5.057109375" />
+        <!--<AssociationConnector>  
           <ConnectorPoint PointX="2.5" PointY="6.71050048828125" />
           <ConnectorPoint PointX="4.75" PointY="6.71050048828125" />
-        </AssociationConnector>
+        </AssociationConnector>-->
         <EntityTypeShape EntityType="DigitalLifeBooksModel.User" Width="1.5" PointX="1" PointY="1.5" Height="2.7427376302083335" />
         <EntityTypeShape EntityType="DigitalLifeBooksModel.Child" Width="1.5" PointX="4.75" PointY="2.375" Height="2.7427376302083326" />
         <AssociationConnector Association="DigitalLifeBooksModel.ChildUser">
-          <ConnectorPoint PointX="4.75" PointY="3.39104248046875" />
-          <ConnectorPoint PointX="2.5" PointY="3.39104248046875" />
+          <ConnectorPoint PointX="4.75" PointY="3.4083968098958328" />
+          <ConnectorPoint PointX="2.5" PointY="3.4083968098958328" />
         </AssociationConnector>
         <AssociationConnector Association="DigitalLifeBooksModel.ChildAlbum">
-          <ConnectorPoint PointX="5.5" PointY="5.4464322916666656" />
-          <ConnectorPoint PointX="5.5" PointY="6.5" />
+          <ConnectorPoint PointX="5.5" PointY="7.432109375" />
+          <ConnectorPoint PointX="5.5" PointY="9.6917936197916656" />
+          <ConnectorPoint PointX="5.5" PointY="9.6917936197916656" />
+          <ConnectorPoint PointX="5.5" PointY="9.4417936197916656" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="DigitalLifeBooksModel.Hospital" Width="1.5" PointX="7.5" PointY="1.625" Height="2.1725878906249996" />
+        <EntityTypeShape EntityType="DigitalLifeBooksModel.FosterFamily" Width="1.5" PointX="7.625" PointY="4.625" Height="3.1340950520833317" />
+        <AssociationConnector Association="DigitalLifeBooksModel.HospitalChild">
+          <ConnectorPoint PointX="7.5" PointY="3.1824446614583337" />
+          <ConnectorPoint PointX="6.25" PointY="3.1824446614583337" />
+        </AssociationConnector>
+        <AssociationConnector Association="DigitalLifeBooksModel.ChildFosterFamily">
+          <ConnectorPoint PointX="6.25" PointY="6.0285546875" />
+          <ConnectorPoint PointX="7.625" PointY="6.0285546875" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="DigitalLifeBooksModel.School" Width="1.5" PointX="9.875" PointY="4.125" Height="2.3648893229166656" />
+        <AssociationConnector Association="DigitalLifeBooksModel.ChildSchool">
+          <ConnectorPoint PointX="6.25" PointY="4.34375" />
+          <ConnectorPoint PointX="9.875" PointY="4.34375" />
         </AssociationConnector>
       </Diagram>
     </Diagrams>

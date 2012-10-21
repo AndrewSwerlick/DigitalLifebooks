@@ -8,12 +8,13 @@
 //------------------------------------------------------------------------------
 
 using System;
+using System.ComponentModel;
+using System.Data.EntityClient;
 using System.Data.Objects;
 using System.Data.Objects.DataClasses;
-using System.Data.EntityClient;
-using System.ComponentModel;
-using System.Xml.Serialization;
+using System.Linq;
 using System.Runtime.Serialization;
+using System.Xml.Serialization;
 
 [assembly: EdmSchemaAttribute()]
 #region EDM Relationship Metadata
@@ -21,6 +22,9 @@ using System.Runtime.Serialization;
 [assembly: EdmRelationshipAttribute("DigitalLifeBooksModel", "AssetAlbum", "Asset", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DigitalLifeBooks.Models.Asset), "Album", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DigitalLifeBooks.Models.Album))]
 [assembly: EdmRelationshipAttribute("DigitalLifeBooksModel", "ChildUser", "Child", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DigitalLifeBooks.Models.Child), "User", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DigitalLifeBooks.Models.User))]
 [assembly: EdmRelationshipAttribute("DigitalLifeBooksModel", "ChildAlbum", "Child", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DigitalLifeBooks.Models.Child), "Album", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DigitalLifeBooks.Models.Album), true)]
+[assembly: EdmRelationshipAttribute("DigitalLifeBooksModel", "HospitalChild", "Hospital", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DigitalLifeBooks.Models.Hospital), "Child", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DigitalLifeBooks.Models.Child), true)]
+[assembly: EdmRelationshipAttribute("DigitalLifeBooksModel", "ChildFosterFamily", "Child", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DigitalLifeBooks.Models.Child), "FosterFamily", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DigitalLifeBooks.Models.FosterFamily), true)]
+[assembly: EdmRelationshipAttribute("DigitalLifeBooksModel", "ChildSchool", "Child", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DigitalLifeBooks.Models.Child), "School", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DigitalLifeBooks.Models.School), true)]
 
 #endregion
 
@@ -135,8 +139,57 @@ namespace DigitalLifeBooks.Models
             }
         }
         private ObjectSet<Child> _Children;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<Hospital> Hospitals
+        {
+            get
+            {
+                if ((_Hospitals == null))
+                {
+                    _Hospitals = base.CreateObjectSet<Hospital>("Hospitals");
+                }
+                return _Hospitals;
+            }
+        }
+        private ObjectSet<Hospital> _Hospitals;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<FosterFamily> FosterFamilies
+        {
+            get
+            {
+                if ((_FosterFamilies == null))
+                {
+                    _FosterFamilies = base.CreateObjectSet<FosterFamily>("FosterFamilies");
+                }
+                return _FosterFamilies;
+            }
+        }
+        private ObjectSet<FosterFamily> _FosterFamilies;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<School> Schools
+        {
+            get
+            {
+                if ((_Schools == null))
+                {
+                    _Schools = base.CreateObjectSet<School>("Schools");
+                }
+                return _Schools;
+            }
+        }
+        private ObjectSet<School> _Schools;
 
         #endregion
+
         #region AddTo Methods
     
         /// <summary>
@@ -170,13 +223,37 @@ namespace DigitalLifeBooks.Models
         {
             base.AddObject("Children", child);
         }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the Hospitals EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToHospitals(Hospital hospital)
+        {
+            base.AddObject("Hospitals", hospital);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the FosterFamilies EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToFosterFamilies(FosterFamily fosterFamily)
+        {
+            base.AddObject("FosterFamilies", fosterFamily);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the Schools EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToSchools(School school)
+        {
+            base.AddObject("Schools", school);
+        }
 
         #endregion
+
     }
-    
 
     #endregion
-    
+
     #region Entities
     
     /// <summary>
@@ -207,6 +284,7 @@ namespace DigitalLifeBooks.Models
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -405,6 +483,7 @@ namespace DigitalLifeBooks.Models
         partial void OnIsProfilePictureAlbumChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -469,6 +548,7 @@ namespace DigitalLifeBooks.Models
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -493,6 +573,7 @@ namespace DigitalLifeBooks.Models
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -619,6 +700,7 @@ namespace DigitalLifeBooks.Models
         partial void OnCaptionChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -661,6 +743,7 @@ namespace DigitalLifeBooks.Models
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -693,6 +776,7 @@ namespace DigitalLifeBooks.Models
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -961,8 +1045,129 @@ namespace DigitalLifeBooks.Models
         private global::System.String _Last4SSN;
         partial void OnLast4SSNChanging(global::System.String value);
         partial void OnLast4SSNChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int64> FosterFamilyId
+        {
+            get
+            {
+                return _FosterFamilyId;
+            }
+            set
+            {
+                OnFosterFamilyIdChanging(value);
+                ReportPropertyChanging("FosterFamilyId");
+                _FosterFamilyId = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("FosterFamilyId");
+                OnFosterFamilyIdChanged();
+            }
+        }
+        private Nullable<global::System.Int64> _FosterFamilyId;
+        partial void OnFosterFamilyIdChanging(Nullable<global::System.Int64> value);
+        partial void OnFosterFamilyIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int64> SchoolId
+        {
+            get
+            {
+                return _SchoolId;
+            }
+            set
+            {
+                OnSchoolIdChanging(value);
+                ReportPropertyChanging("SchoolId");
+                _SchoolId = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("SchoolId");
+                OnSchoolIdChanged();
+            }
+        }
+        private Nullable<global::System.Int64> _SchoolId;
+        partial void OnSchoolIdChanging(Nullable<global::System.Int64> value);
+        partial void OnSchoolIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String BirthSibling
+        {
+            get
+            {
+                return _BirthSibling;
+            }
+            set
+            {
+                OnBirthSiblingChanging(value);
+                ReportPropertyChanging("BirthSibling");
+                _BirthSibling = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("BirthSibling");
+                OnBirthSiblingChanged();
+            }
+        }
+        private global::System.String _BirthSibling;
+        partial void OnBirthSiblingChanging(global::System.String value);
+        partial void OnBirthSiblingChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String BirthSiblingRelationship
+        {
+            get
+            {
+                return _BirthSiblingRelationship;
+            }
+            set
+            {
+                OnBirthSiblingRelationshipChanging(value);
+                ReportPropertyChanging("BirthSiblingRelationship");
+                _BirthSiblingRelationship = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("BirthSiblingRelationship");
+                OnBirthSiblingRelationshipChanged();
+            }
+        }
+        private global::System.String _BirthSiblingRelationship;
+        partial void OnBirthSiblingRelationshipChanging(global::System.String value);
+        partial void OnBirthSiblingRelationshipChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String CaseWorker
+        {
+            get
+            {
+                return _CaseWorker;
+            }
+            set
+            {
+                OnCaseWorkerChanging(value);
+                ReportPropertyChanging("CaseWorker");
+                _CaseWorker = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("CaseWorker");
+                OnCaseWorkerChanged();
+            }
+        }
+        private global::System.String _CaseWorker;
+        partial void OnCaseWorkerChanging(global::System.String value);
+        partial void OnCaseWorkerChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -1009,8 +1214,888 @@ namespace DigitalLifeBooks.Models
                 }
             }
         }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DigitalLifeBooksModel", "HospitalChild", "Hospital")]
+        public Hospital Hospital
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Hospital>("DigitalLifeBooksModel.HospitalChild", "Hospital").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Hospital>("DigitalLifeBooksModel.HospitalChild", "Hospital").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Hospital> HospitalReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Hospital>("DigitalLifeBooksModel.HospitalChild", "Hospital");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Hospital>("DigitalLifeBooksModel.HospitalChild", "Hospital", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DigitalLifeBooksModel", "ChildFosterFamily", "FosterFamily")]
+        public FosterFamily FosterFamily
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<FosterFamily>("DigitalLifeBooksModel.ChildFosterFamily", "FosterFamily").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<FosterFamily>("DigitalLifeBooksModel.ChildFosterFamily", "FosterFamily").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<FosterFamily> FosterFamilyReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<FosterFamily>("DigitalLifeBooksModel.ChildFosterFamily", "FosterFamily");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<FosterFamily>("DigitalLifeBooksModel.ChildFosterFamily", "FosterFamily", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DigitalLifeBooksModel", "ChildSchool", "School")]
+        public School School
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<School>("DigitalLifeBooksModel.ChildSchool", "School").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<School>("DigitalLifeBooksModel.ChildSchool", "School").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<School> SchoolReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<School>("DigitalLifeBooksModel.ChildSchool", "School");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<School>("DigitalLifeBooksModel.ChildSchool", "School", value);
+                }
+            }
+        }
 
         #endregion
+
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="DigitalLifeBooksModel", Name="FosterFamily")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class FosterFamily : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new FosterFamily object.
+        /// </summary>
+        /// <param name="id">Initial value of the Id property.</param>
+        /// <param name="fatherName">Initial value of the FatherName property.</param>
+        /// <param name="motherName">Initial value of the MotherName property.</param>
+        /// <param name="city">Initial value of the City property.</param>
+        /// <param name="state">Initial value of the State property.</param>
+        /// <param name="address">Initial value of the Address property.</param>
+        /// <param name="country">Initial value of the Country property.</param>
+        /// <param name="phone">Initial value of the Phone property.</param>
+        public static FosterFamily CreateFosterFamily(global::System.Int64 id, global::System.String fatherName, global::System.String motherName, global::System.String city, global::System.String state, global::System.String address, global::System.String country, global::System.String phone)
+        {
+            FosterFamily fosterFamily = new FosterFamily();
+            fosterFamily.Id = id;
+            fosterFamily.FatherName = fatherName;
+            fosterFamily.MotherName = motherName;
+            fosterFamily.City = city;
+            fosterFamily.State = state;
+            fosterFamily.Address = address;
+            fosterFamily.Country = country;
+            fosterFamily.Phone = phone;
+            return fosterFamily;
+        }
+
+        #endregion
+
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int64 Id
+        {
+            get
+            {
+                return _Id;
+            }
+            set
+            {
+                if (_Id != value)
+                {
+                    OnIdChanging(value);
+                    ReportPropertyChanging("Id");
+                    _Id = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("Id");
+                    OnIdChanged();
+                }
+            }
+        }
+        private global::System.Int64 _Id;
+        partial void OnIdChanging(global::System.Int64 value);
+        partial void OnIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String FatherName
+        {
+            get
+            {
+                return _FatherName;
+            }
+            set
+            {
+                OnFatherNameChanging(value);
+                ReportPropertyChanging("FatherName");
+                _FatherName = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("FatherName");
+                OnFatherNameChanged();
+            }
+        }
+        private global::System.String _FatherName;
+        partial void OnFatherNameChanging(global::System.String value);
+        partial void OnFatherNameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String MotherName
+        {
+            get
+            {
+                return _MotherName;
+            }
+            set
+            {
+                OnMotherNameChanging(value);
+                ReportPropertyChanging("MotherName");
+                _MotherName = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("MotherName");
+                OnMotherNameChanged();
+            }
+        }
+        private global::System.String _MotherName;
+        partial void OnMotherNameChanging(global::System.String value);
+        partial void OnMotherNameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String FosterSibling
+        {
+            get
+            {
+                return _FosterSibling;
+            }
+            set
+            {
+                OnFosterSiblingChanging(value);
+                ReportPropertyChanging("FosterSibling");
+                _FosterSibling = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("FosterSibling");
+                OnFosterSiblingChanged();
+            }
+        }
+        private global::System.String _FosterSibling;
+        partial void OnFosterSiblingChanging(global::System.String value);
+        partial void OnFosterSiblingChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String City
+        {
+            get
+            {
+                return _City;
+            }
+            set
+            {
+                OnCityChanging(value);
+                ReportPropertyChanging("City");
+                _City = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("City");
+                OnCityChanged();
+            }
+        }
+        private global::System.String _City;
+        partial void OnCityChanging(global::System.String value);
+        partial void OnCityChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String State
+        {
+            get
+            {
+                return _State;
+            }
+            set
+            {
+                OnStateChanging(value);
+                ReportPropertyChanging("State");
+                _State = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("State");
+                OnStateChanged();
+            }
+        }
+        private global::System.String _State;
+        partial void OnStateChanging(global::System.String value);
+        partial void OnStateChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Address
+        {
+            get
+            {
+                return _Address;
+            }
+            set
+            {
+                OnAddressChanging(value);
+                ReportPropertyChanging("Address");
+                _Address = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Address");
+                OnAddressChanged();
+            }
+        }
+        private global::System.String _Address;
+        partial void OnAddressChanging(global::System.String value);
+        partial void OnAddressChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Country
+        {
+            get
+            {
+                return _Country;
+            }
+            set
+            {
+                OnCountryChanging(value);
+                ReportPropertyChanging("Country");
+                _Country = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Country");
+                OnCountryChanged();
+            }
+        }
+        private global::System.String _Country;
+        partial void OnCountryChanging(global::System.String value);
+        partial void OnCountryChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Phone
+        {
+            get
+            {
+                return _Phone;
+            }
+            set
+            {
+                OnPhoneChanging(value);
+                ReportPropertyChanging("Phone");
+                _Phone = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Phone");
+                OnPhoneChanged();
+            }
+        }
+        private global::System.String _Phone;
+        partial void OnPhoneChanging(global::System.String value);
+        partial void OnPhoneChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String FosterSiblingRelationship
+        {
+            get
+            {
+                return _FosterSiblingRelationship;
+            }
+            set
+            {
+                OnFosterSiblingRelationshipChanging(value);
+                ReportPropertyChanging("FosterSiblingRelationship");
+                _FosterSiblingRelationship = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("FosterSiblingRelationship");
+                OnFosterSiblingRelationshipChanged();
+            }
+        }
+        private global::System.String _FosterSiblingRelationship;
+        partial void OnFosterSiblingRelationshipChanging(global::System.String value);
+        partial void OnFosterSiblingRelationshipChanged();
+
+        #endregion
+
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DigitalLifeBooksModel", "ChildFosterFamily", "Child")]
+        public EntityCollection<Child> Children
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Child>("DigitalLifeBooksModel.ChildFosterFamily", "Child");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Child>("DigitalLifeBooksModel.ChildFosterFamily", "Child", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="DigitalLifeBooksModel", Name="Hospital")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class Hospital : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new Hospital object.
+        /// </summary>
+        /// <param name="id">Initial value of the Id property.</param>
+        /// <param name="name">Initial value of the Name property.</param>
+        /// <param name="city">Initial value of the City property.</param>
+        /// <param name="state">Initial value of the State property.</param>
+        /// <param name="address">Initial value of the Address property.</param>
+        /// <param name="phone">Initial value of the Phone property.</param>
+        public static Hospital CreateHospital(global::System.Int64 id, global::System.String name, global::System.String city, global::System.String state, global::System.String address, global::System.String phone)
+        {
+            Hospital hospital = new Hospital();
+            hospital.Id = id;
+            hospital.Name = name;
+            hospital.City = city;
+            hospital.State = state;
+            hospital.Address = address;
+            hospital.Phone = phone;
+            return hospital;
+        }
+
+        #endregion
+
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int64 Id
+        {
+            get
+            {
+                return _Id;
+            }
+            set
+            {
+                if (_Id != value)
+                {
+                    OnIdChanging(value);
+                    ReportPropertyChanging("Id");
+                    _Id = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("Id");
+                    OnIdChanged();
+                }
+            }
+        }
+        private global::System.Int64 _Id;
+        partial void OnIdChanging(global::System.Int64 value);
+        partial void OnIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Name
+        {
+            get
+            {
+                return _Name;
+            }
+            set
+            {
+                OnNameChanging(value);
+                ReportPropertyChanging("Name");
+                _Name = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Name");
+                OnNameChanged();
+            }
+        }
+        private global::System.String _Name;
+        partial void OnNameChanging(global::System.String value);
+        partial void OnNameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String City
+        {
+            get
+            {
+                return _City;
+            }
+            set
+            {
+                OnCityChanging(value);
+                ReportPropertyChanging("City");
+                _City = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("City");
+                OnCityChanged();
+            }
+        }
+        private global::System.String _City;
+        partial void OnCityChanging(global::System.String value);
+        partial void OnCityChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String State
+        {
+            get
+            {
+                return _State;
+            }
+            set
+            {
+                OnStateChanging(value);
+                ReportPropertyChanging("State");
+                _State = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("State");
+                OnStateChanged();
+            }
+        }
+        private global::System.String _State;
+        partial void OnStateChanging(global::System.String value);
+        partial void OnStateChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Address
+        {
+            get
+            {
+                return _Address;
+            }
+            set
+            {
+                OnAddressChanging(value);
+                ReportPropertyChanging("Address");
+                _Address = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Address");
+                OnAddressChanged();
+            }
+        }
+        private global::System.String _Address;
+        partial void OnAddressChanging(global::System.String value);
+        partial void OnAddressChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Phone
+        {
+            get
+            {
+                return _Phone;
+            }
+            set
+            {
+                OnPhoneChanging(value);
+                ReportPropertyChanging("Phone");
+                _Phone = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Phone");
+                OnPhoneChanged();
+            }
+        }
+        private global::System.String _Phone;
+        partial void OnPhoneChanging(global::System.String value);
+        partial void OnPhoneChanged();
+
+        #endregion
+
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DigitalLifeBooksModel", "HospitalChild", "Child")]
+        public EntityCollection<Child> Children
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Child>("DigitalLifeBooksModel.HospitalChild", "Child");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Child>("DigitalLifeBooksModel.HospitalChild", "Child", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="DigitalLifeBooksModel", Name="School")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class School : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new School object.
+        /// </summary>
+        /// <param name="id">Initial value of the Id property.</param>
+        /// <param name="name">Initial value of the Name property.</param>
+        /// <param name="address">Initial value of the Address property.</param>
+        /// <param name="city">Initial value of the City property.</param>
+        /// <param name="state">Initial value of the State property.</param>
+        /// <param name="country">Initial value of the Country property.</param>
+        /// <param name="phone">Initial value of the Phone property.</param>
+        public static School CreateSchool(global::System.Int64 id, global::System.String name, global::System.String address, global::System.String city, global::System.String state, global::System.String country, global::System.String phone)
+        {
+            School school = new School();
+            school.Id = id;
+            school.Name = name;
+            school.Address = address;
+            school.City = city;
+            school.State = state;
+            school.Country = country;
+            school.Phone = phone;
+            return school;
+        }
+
+        #endregion
+
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int64 Id
+        {
+            get
+            {
+                return _Id;
+            }
+            set
+            {
+                if (_Id != value)
+                {
+                    OnIdChanging(value);
+                    ReportPropertyChanging("Id");
+                    _Id = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("Id");
+                    OnIdChanged();
+                }
+            }
+        }
+        private global::System.Int64 _Id;
+        partial void OnIdChanging(global::System.Int64 value);
+        partial void OnIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Name
+        {
+            get
+            {
+                return _Name;
+            }
+            set
+            {
+                OnNameChanging(value);
+                ReportPropertyChanging("Name");
+                _Name = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Name");
+                OnNameChanged();
+            }
+        }
+        private global::System.String _Name;
+        partial void OnNameChanging(global::System.String value);
+        partial void OnNameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Address
+        {
+            get
+            {
+                return _Address;
+            }
+            set
+            {
+                OnAddressChanging(value);
+                ReportPropertyChanging("Address");
+                _Address = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Address");
+                OnAddressChanged();
+            }
+        }
+        private global::System.String _Address;
+        partial void OnAddressChanging(global::System.String value);
+        partial void OnAddressChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String City
+        {
+            get
+            {
+                return _City;
+            }
+            set
+            {
+                OnCityChanging(value);
+                ReportPropertyChanging("City");
+                _City = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("City");
+                OnCityChanged();
+            }
+        }
+        private global::System.String _City;
+        partial void OnCityChanging(global::System.String value);
+        partial void OnCityChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String State
+        {
+            get
+            {
+                return _State;
+            }
+            set
+            {
+                OnStateChanging(value);
+                ReportPropertyChanging("State");
+                _State = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("State");
+                OnStateChanged();
+            }
+        }
+        private global::System.String _State;
+        partial void OnStateChanging(global::System.String value);
+        partial void OnStateChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Country
+        {
+            get
+            {
+                return _Country;
+            }
+            set
+            {
+                OnCountryChanging(value);
+                ReportPropertyChanging("Country");
+                _Country = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Country");
+                OnCountryChanged();
+            }
+        }
+        private global::System.String _Country;
+        partial void OnCountryChanging(global::System.String value);
+        partial void OnCountryChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Phone
+        {
+            get
+            {
+                return _Phone;
+            }
+            set
+            {
+                OnPhoneChanging(value);
+                ReportPropertyChanging("Phone");
+                _Phone = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Phone");
+                OnPhoneChanged();
+            }
+        }
+        private global::System.String _Phone;
+        partial void OnPhoneChanging(global::System.String value);
+        partial void OnPhoneChanged();
+
+        #endregion
+
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DigitalLifeBooksModel", "ChildSchool", "Child")]
+        public EntityCollection<Child> Children
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Child>("DigitalLifeBooksModel.ChildSchool", "Child");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Child>("DigitalLifeBooksModel.ChildSchool", "Child", value);
+                }
+            }
+        }
+
+        #endregion
+
     }
     
     /// <summary>
@@ -1037,6 +2122,7 @@ namespace DigitalLifeBooks.Models
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -1259,6 +2345,7 @@ namespace DigitalLifeBooks.Models
         partial void OnLoginNameChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -1285,8 +2372,10 @@ namespace DigitalLifeBooks.Models
         }
 
         #endregion
+
     }
 
     #endregion
+
     
 }
