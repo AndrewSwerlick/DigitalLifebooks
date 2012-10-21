@@ -397,6 +397,7 @@ textarea {
    }
    .child-dashboard #content .childDelete{
     float:right;
+    margin-top:-120px;
    }   
    .child-dashboard #content .albumDelete{
     float: right;

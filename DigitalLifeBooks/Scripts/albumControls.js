@@ -49,8 +49,8 @@
         });
 
         $("a.delete").on('click', function (e) {
-            var id = $(this).data("entityId");
-            var type = $(this).data("entityType");
+            var id = $(this).data("entityid");
+            var type = $(this).data("entitytype");
 
             $.post('/Services/Delete.asmx/DeleteEntity', "EntityType=" + type + "&EnityID=" + id, function (data) {
                 document.location.reload(true);
