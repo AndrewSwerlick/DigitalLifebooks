@@ -47,24 +47,35 @@ namespace DigitalLifeBooks.Users
         public User User { get; set; }
 
         protected void Page_Load(object sender, EventArgs e)
-        {
-
-            
+        {            
             _userId = Request.QueryString["UserId"];
             if (!string.IsNullOrEmpty(_userId) && HttpContext.Current.User.IsInRole("Admin"))
                 User = LoadUser(_userId);
             else
                 User = CurrentUser;
-
-                LoadProfileInfo(User);
+                if(!IsPostBack)
+                    LoadProfileInfo(User);
         }
 
+        public void On_Edit_Click(object sender, EventArgs e)
+        {
+            ProfileRead.Visible = false;
+            ProfileEdit.Visible = true;
+        }
+        public void On_Save_Click(object sender, EventArgs e)
+        {
+            User.FirstName = txtFirstName.Text;
+            User.LastName = txtLastName.Text;
+            User.Email = txtEmail.Text;
+            User.City = txtCity.Text;
+            User.State = txtState.Text;
+            DataContext.SaveChanges();
+            Response.Redirect(Request.RawUrl);
+        }
         private void LoadProfileInfo(User user)
         {
-            txtUserName.Text = user.LoginName;
             txtFirstName.Text = user.FirstName;
             txtLastName.Text = user.LastName;
-            txtusertype.Text = user.UserType;
             txtEmail.Text = user.Email;
             txtPhone.Text = user.PhoneNumber;
             txtCity.Text = user.City;

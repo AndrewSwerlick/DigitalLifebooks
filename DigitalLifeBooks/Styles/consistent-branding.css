@@ -270,25 +270,19 @@ textarea {
    Buttons
    ========================================================================== */
    .btn{
+    border-style: none;
+    border-color: inherit;
+    border-width: 0;
     position: relative;
     display: inline-block;
     overflow: visible;
-    margin: 0;
     padding: 10px 14px;
     margin-top: 8px;
     color:#FFFFFF;
     cursor: pointer;
     outline: 0;
-    border: 0;
     background-color: #FC664C;
-    background-image: -moz-linear-gradient(top,#FC664C,#ED6047);
-    background-image: -ms-linear-gradient(top,#FC664C,#ED6047);
-    background-image: -webkit-gradient(linear,0 0,0 100%,from(#FC664C),to(#ED6047));
-    background-image: -webkit-linear-gradient(top,#FC664C,#ED6047);
-    background-image: -o-linear-gradient(top,#FC664C,#ED6047);
-    background-image: linear-gradient(top,#FC664C,#ED6047);
     background-repeat: repeat-x;
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FC664C',endColorstr='#ED6047',GradientType=0);
     -webkit-background-clip: padding;
     -moz-background-clip: padding;
     background-clip: padding;
@@ -301,7 +295,11 @@ textarea {
     text-decoration: none;
     white-space: nowrap;
     vertical-align: inherit;
-   }
+    background-image: linear-gradient(top,#FC664C,#ED6047);
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+}
    .btn.big{
     height: 38px;
     font-size: 18px;
@@ -417,8 +415,13 @@ textarea {
    }
    
    div#content input{
-   width: 30em;	
+        width: 30em;	
    }
+   
+/* =========================
+    Page/Section Specfic
+        
+==============================*/   
 /* ==========================================================================
    Helper classes
    ========================================================================== */
