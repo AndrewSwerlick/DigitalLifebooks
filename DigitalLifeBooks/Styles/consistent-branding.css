@@ -374,8 +374,8 @@ textarea {
     text-transform:capitalize;
    }
    .child-dashboard #content #header #foster-child-image-container{
-    width:146px;
-    height:146px;
+    width:120px;
+    height:120px;
    }
    .child-dashboard #content #header #foster-child-image-container img{
     width:100%;
@@ -390,8 +390,20 @@ textarea {
    .child-dashboard #content .header-2{
     font-weight: 300;
     color:#F04E30;
-    font-size:3em;
-    margin-bottom: 10px;
+    font-size:2.5em;
+    margin-bottom: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-top: 10px;
+    text-transform:capitalize;
+    border-bottom: 1px solid #F04E30;
+   }
+   
+   .child-dashboard #content .header-3{
+    font-weight: 300;
+    color:#F04E30;
+    font-size:2em;
+    margin-bottom: 0px;
     margin-left: 0px;
     margin-right: 0px;
     margin-top: 10px;
@@ -430,7 +442,7 @@ textarea {
     display: block;
     word-wrap:break-word;
     color:#909090;
-   }s
+   }
    div#content{
         color: rgb(34,34,34);
    }

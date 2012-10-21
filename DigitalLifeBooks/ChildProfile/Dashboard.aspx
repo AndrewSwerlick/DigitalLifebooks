@@ -23,7 +23,7 @@
                 </dlb:SecurityTrimmedPanel>
             </div>
             <div class="col-2 omega">
-                <a class="btn big-button newAlbum" data-childid="<%= Child.Id %>" href="#">Add Album</a>
+<%--                <a class="btn big-button newAlbum" data-childid="<%= Child.Id %>" href="#">Add Album</a>--%>
             </div>
         </div>        
         <div id="foster-child-information" class="row">
@@ -55,37 +55,41 @@
         <div id="important-documents" class="album row" data-albumId='<%= (ImportantDocuments != null) ? ImportantDocuments.ID : -1 %>'>     
             <div class="row">
                 <div class="col-7 alpha">
-                    <h2 class="header-2">Important Documents<h2>
+                    <h2 class="header-2">Important Documents</h2><a class="btn big-button upload" href="#">Add Document</a>
                 </div>
                 <div class="col-2 omega">
-                    <a class="btn big-button upload" href="#">Add Document</a>
                 </div>
             </div>      
             <dlb:AlbumRender runat="server" ID="ImportantDocumentsRender" />
         </div>
         <div id="albums">
+        <div class="col-7 alpha">
+                    <h2 class="header-2">Albums</h2><a class="btn big-button newAlbum" data-childid=<%= Child.Id %> href="#">Add Album</a>
+                </div>
+                <div class="col-2 omega">      
+                </div>
+        </div>
             <asp:Repeater runat="server" ID="Albums"  OnItemCreated="On_AlbumRender_Created">
                 <ItemTemplate>
                     <div runat ="server" class="album row" data-albumId='<%# (Container.DataItem as Album).ID %>'>
                         <div class="row">
                             <div class="col-7 alpha">
-                                <h2 class="header-2"><%# (Container.DataItem as Album).Title %></h2>
-                            </div>
-                            <div class="col-2 omega">
-                               <a class="btn big-button upload" href="#">Upload</a>
-                            <dlb:SecurityTrimmedPanel CssClass="albumDelete" ID="SecurityTrimmedPanel1" runat="server" RoleToShowFor="Admin">
+                                <h3 class="header-3"><%# (Container.DataItem as Album).Title %></h3><dlb:SecurityTrimmedPanel CssClass="albumDelete" ID="SecurityTrimmedPanel1" runat="server" RoleToShowFor="Admin">
                                 <a class="btn big-button delete" data-entityId="<%# (Container.DataItem as Album).ID %>" data-entityType="Album" href="#">Delete</a>
                             </dlb:SecurityTrimmedPanel>
+                                <a class="btn big-button upload" href="#">Upload</a>
+                            </div>
+                            <div class="col-2 omega">                   
+                            
                             </div>
                         </div>                                             
-                        <dlb:AlbumRender runat="server" ID="AlbumRender" ItemsPerPage="10"></dlb:AlbumRender>
-                        <div class="pagingButtons">
+                        <dlb:AlbumRender runat="server" ID="AlbumRender"></dlb:AlbumRender>
+<%--                        <div class="pagingButtons">
                             <a href="#" class="next">Next</a>
                             <a href="#" class="prev">Prev</a>
-                        </div>
+                        </div>--%>
                     </div>
                 </ItemTemplate>
             </asp:Repeater>
         </div>
-    </div>
 </asp:Content>
