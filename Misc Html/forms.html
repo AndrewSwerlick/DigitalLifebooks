@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Digital Life Books</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+        <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="css/main.css">
+        <script src="js/modernizr.js"></script>
+    </head>
+    <body class="page">
+        <header id="header">
+            <div id="header-container" class="container">
+                <h1>Digital Lifebooks</h1>
+            </div>
+        </header>
+        <main id="main">
+            <div id="main-container" class="container">
+                <h2>Add an Album</h2>
+                <form id="add-album" action="#" autocomplete="on">
+                    <div class="row">
+                        <div class="col-2">
+                            <label for="album-name">Album Name</label>
+                        </div>
+                        <div class="col-4 suffix-6">
+                            <input name="album-name" id="album-name" type="text" placeholder="Name of the album"  >
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-2">
+                            <label for="event-date">Event Date</label>
+                        </div>
+                        <div class="col-4 suffix-6">
+                            <input name="event-date" id="event-date" type="text" placeholder="Date of the album"  >
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-2">
+                            <label for="album-story">Story</label>
+                        </div>
+                        <div class="col-6 suffix-4">
+                            <textarea name="album-story" id="album-story" placeholder="Description of the album"></textarea>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-2 prefix-6 suffix-4">
+                            <input type="submit" text="Add Album" class="button">
+                        </div>
+                    </div>
+                </form>
+                <!-- Log In Form -->
+                <h2>Login Information</h2>
+                <form id="create-user" action="#" autocomplete="on">
+                    <div class="row">
+                        <div class="col-2">
+                            <label for="user-name">User Name</label>
+                        </div>
+                        <div class="col-3 suffix-7">
+                            <input name="user-name" id="user-name" type="text" placeholder="Name of the user"  >
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-2">
+                            <label for="password">Password</label>
+                        </div>
+                        <div class="col-3 suffix-7">
+                            <input name="password" id="password" type="text" placeholder="Password of the user"  >
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-2">
+                            <label for="display-name">Display Name</label>
+                        </div>
+                        <div class="col-3 suffix-7">
+                            <input name="display-name" id="display-name" placeholder="Display Name of the user"  >
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-2">
+                            <label for="email-address">Email Address</label>
+                        </div>
+                        <div class="col-3 suffix-7">
+                            <input name="email-address" id="email-address" placeholder="Email Address of the user"  >
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-2">
+                            <label for="role">Role</label>
+                        </div>
+                        <div class="col-3 suffix-7">
+                            <input name="role" id="role" placeholder="Caseworker/Foster Family"  >
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-3 suffix-7">
+                            <input type="submit" text="Add Album" class="button">
+                        </div>
+                    </div>
+                </form>
+                <!--Foster Family Information-->
+                <h2>Foster Family Information</h2>
+                <form id="Form2" action="#" autocomplete="on">
+                    <div class="row">
+                        <div class="col-2">
+                            <label for="family-caseworker">Family Caseworker</label>
+                        </div>
+                        <div class="col-3 suffix-7">
+                            <input name="family-caseworker" id="family-caseworker" type="text" placeholder="Family Caseworker"  >
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-2">
+                            <label for="agency">Agency</label>
+                        </div>
+                        <div class="col-3 suffix-7">
+                            <input name="agency" id="agency" type="text" placeholder="Child's Agency"  >
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-2">
+                            <label for="family-address">Family Address</label>
+                        </div>
+                        <div class="col-3 suffix-7">
+                            <input name="family-address" id="family-address" placeholder="Address of the Family"  >
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-2">
+                            <label for="state">State</label>
+                        </div>
+                        <div class="col-3 suffix-7">
+                            <input name="state" id="state" placeholder="State"  >
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-2">
+                            <label for="county">County</label>
+                        </div>
+                        <div class="col-3 suffix-7">
+                            <input name="county" id="county" placeholder="County"  >
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-2">
+                            <label for="phone">Phone Number</label>
+                        </div>
+                        <div class="col-3 suffix-7">
+                            <input name="phone" id="phone" placeholder="Phone Number"  >
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-2">
+                            <label for="email-address">Email Address</label>
+                        </div>
+                        <div class="col-3 suffix-7">
+                            <input name="email-address" id="email-address" placeholder="Email Address"  >
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-3 suffix-7">
+                            <input type="submit" text="Add Album" class="button">
+                        </div>
+                    </div>
+                </form>
+                <!--Caseworker Information-->
+                <h2>Caseworker Information</h2>
+                <form id="Form3" action="#" autocomplete="on">
+                    <div class="row">
+                        <div class="col-2">
+                            <label for="agency-name">Agency Name</label>
+                        </div>
+                        <div class="col-3 suffix-7">
+                            <input name="agency-name" id="agency-name" type="text" placeholder="Agency"  >
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-2">
+                            <label for="supervisor-name">Supervisor Name</label>
+                        </div>
+                        <div class="col-3 suffix-7">
+                            <input name="supervisor-name" id="supervisor-name" type="text" placeholder="Supervisor Name"  >
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-2">
+                            <label for="supervisor-phone">Supervisor Phone</label>
+                        </div>
+                        <div class="col-3 suffix-7">
+                            <input name="supervisor-phone" id="supervisor-phone" placeholder="Supervisor Phone Number"  >
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-2">
+                            <label for="supervisor-email">Supervisor Email</label>
+                        </div>
+                        <div class="col-3 suffix-7">
+                            <input name="supervisor-email" id="supervisor-email" placeholder="Supervisor Email Address"  >
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-2">
+                            <label for="caseworker-phone">Caseworker Phone</label>
+                        </div>
+                        <div class="col-3 suffix-7">
+                            <input name="caseworker-phone" id="caseworker-phone" placeholder="Caseworker Phone Number"  >
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-2">
+                            <label for="agency-address">Agency Address</label>
+                        </div>
+                        <div class="col-3 suffix-7">
+                            <input name="agency-address" id="agency-address" placeholder="Address of the Agency"  >
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-2">
+                            <label for="state">State</label>
+                        </div>
+                        <div class="col-3 suffix-7">
+                            <input name="state" id="state" placeholder="State"  >
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-2">
+                            <label for="county">County</label>
+                        </div>
+                        <div class="col-3 suffix-7">
+                            <input name="county" id="county" placeholder="County"  >
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-2">
+                            <label for="country">Country</label>
+                        </div>
+                        <div class="col-3 suffix-7">
+                            <input name="country" id="country" placeholder="Country"  >
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-3 suffix-7">
+                            <input type="submit" text="Add Album" class="button">
+                        </div>
+                    </div>
+                </form>
+                <!--Foster Family Information-->
+                <h2>Foster Family Information</h2>
+                <form id="foster-family-info" action="#" autocomplete="on">
+                    <div class="row">
+                        <div class="col-2">
+                            <label for="father-name">Father's Name</label>
+                        </div>
+                        <div class="col-3 suffix-7">
+                            <input name="father-name" id="father-name" type="text" placeholder="Father's Name" >
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-2">
+                            <label for="mother-name">Mother's Name</label>
+                        </div>
+                        <div class="col-3 suffix-7">
+                            <input name="mother-name" id="mother-name" type="text" placeholder="Mother's Name" >
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-2">
+                            <label for="foster-sibling">Foster Sibling</label>
+                        </div>
+                        <div class="col-3 suffix-7">
+                            <input name="foster-sibling" id="Text3" placeholder="Foster Sibling Name" >
+                            <a href="#">Add Sibling</a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-2">
+                            <label for="address">Address</label>
+                        </div>
+                        <div class="col-3 suffix-7">
+                            <input name="address" id="Text4" placeholder="Foster Family Address" >
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-2">
+                            <label for="state">State</label>
+                        </div>
+                        <div class="col-3 suffix-7">
+                            <input name="state" id="Text5" placeholder="State" >
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-2">
+                            <label for="country">Country</label>
+                        </div>
+                        <div class="col-3 suffix-7">
+                            <input name="country" id="Text6" placeholder="Country" >
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-2">
+                            <label for="phone">Phone</label>
+                        </div>
+                        <div class="col-3 suffix-7">
+                            <input name="phone" id="Text7" placeholder="Phone Number" >
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-3 suffix-7">
+                            <input type="submit" text="Add Album" class="button">
+                        </div>
+                    </div>
+                </form>
+                <!--School Information-->
+                <h2>School Information</h2>
+                <form id="school-information" action="#" autocomplete="on">
+                    <div class="row">
+                        <div class="col-2">
+                            <label for="school-name">School Name</label>
+                        </div>
+                        <div class="col-3 suffix-7">
+                            <input name="school-name" id="school-name" type="text" placeholder="Child's School" >
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-2">
+                            <label for="school-address">Address</label>
+                        </div>
+                        <div class="col-3 suffix-7">
+                            <input name="school-address" id="school-address" type="text" placeholder="School Address" >
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-2">
+                            <label for="city">City</label>
+                        </div>
+                        <div class="col-3 suffix-7">
+                            <input name="city" id="school-city" placeholder="City" >
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-2">
+                            <label for="state">State</label>
+                        </div>
+                        <div class="col-3 suffix-7">
+                            <input name="state" id="school-state" placeholder="State" >
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-2">
+                            <label for="country">Country</label>
+                        </div>
+                        <div class="col-3 suffix-7">
+                            <input name="country" id="school-country" placeholder="Country" >
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-2">
+                            <label for="phone">Phone</label>
+                        </div>
+                        <div class="col-3 suffix-7">
+                            <input name="phone" id="school-phone" placeholder="Phone Number" >
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-3 suffix-7">
+                            <input type="submit" text="Add Album" class="button">
+                        </div>
+                    </div>
+                </form>
+                <!--Profile-->
+                <h2>Child Profile</h2>
+                <form id="child-profile" action="#" autocomplete="on">
+                    <div class="row">
+                        <div class="col-2">
+                            <label for="child-name">Child's Name</label>
+                        </div>
+                        <div class="col-3 suffix-1">
+                            <input name="child-name" id="child-name" type="text" placeholder="Child's Name" >
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-2">
+                            <label for="caseworker-name">Caseworker's Name</label>
+                        </div>
+                        <div class="col-3 suffix-7">
+                            <input name="caseworker-name" id="caseworker-name" type="text" placeholder="Caseworker's Name" >
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-2">
+                            <label for="birth-date">Birth Date</label>
+                        </div>
+                        <div class="col-3 suffix-7">
+                            <input name="birth-date" id="birth-date" type="text" placeholder="MM/DD/YYYY" >
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-2">
+                            <label for="birth-city">Birth City</label>
+                        </div>
+                        <div class="col-3 suffix-7">
+                            <input name="birth-city" id="birth-city" placeholder="City" >
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-2">
+                            <label for="birth-state">Birth State</label>
+                        </div>
+                        <div class="col-3 suffix-7">
+                            <input name="birth-state" id="birth-state" placeholder="State" >
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-2">
+                            <label for="birth-country">Birth Country</label>
+                        </div>
+                        <div class="col-3 suffix-7">
+                            <input name="birth-country" id="birth-country" placeholder="Country" >
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-2">
+                            <label for="birth-weight">Birth Weight</label>
+                        </div>
+                        <div class="col-3 suffix-7">
+                            <input name="birth-weight" id="birth-weight" placeholder="Birth Weight" >
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-2">
+                            <label for="birth-length">Birth Length</label>
+                        </div>
+                        <div class="col-3 suffix-7">
+                            <input name="birth-length" id="birth-length" placeholder="Birth Length" >
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-2">
+                            <label for="birth-mother">Birth Mother</label>
+                        </div>
+                        <div class="col-3 suffix-7">
+                            <input name="birth-mother" id="birth-mother" placeholder="Birth Mother" >
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-2">
+                            <label for="birth-sibling">Birth Sibling</label>
+                        </div>
+                        <div class="col-3 suffix-7">
+                            <input name="birth-sibling" id="birth-sibling" placeholder="Birth Sibling" >
+                            <a href="#">Add Sibling</a>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-2">
+                            <label for="hospital-name">Hospital Name</label>
+                        </div>
+                        <div class="col-3 suffix-7">
+                            <input name="hospital-name" id="hospital-name" placeholder="Name of Hospital" >
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-2">
+                            <label for="hospital-address">Hospital Address</label>
+                        </div>
+                        <div class="col-3 suffix-7">
+                            <input name="hospital-address" id="hospital-address" placeholder="Street Name" >
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-2">
+                            <label for="hospital-city">Hospital City</label>
+                        </div>
+                        <div class="col-3 suffix-7">
+                            <input name="hospital-city" id="Text1" placeholder="City" >
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-2">
+                            <label for="hospital-state">Hospital State</label>
+                        </div>
+                        <div class="col-3 suffix-7">
+                            <input name="hospital-state" id="hospital-state" placeholder="State" >
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-3 suffix-7">
+                            <input type="submit" text="Add Album" class="button">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </main>
+        <footer id="footer">
+            <div id="footer-container" class="container">
+
+            </div>
+        </footer>
+        <script src="js/jquery.js"></script>
+        <script src="js/plugins.js"></script>
+        <script src="js/main.js"></script>
+        <script>
+        Modernizr.load({
+            test: Modernizr.input.placeholder,
+            nope: [
+                    'css/placeholder-polyfill.css',
+                    'js/placeholder-polyfill.js'
+                  ]
+        });
+        </script>
+    </body>
+</html>
