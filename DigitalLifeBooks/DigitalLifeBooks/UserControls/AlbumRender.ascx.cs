@@ -10,6 +10,14 @@ namespace DigitalLifeBooks.UserControls
 {
     public partial class AlbumRender : System.Web.UI.UserControl
     {
+        public string Title { 
+            get
+            {
+                if (Album != null)
+                    return Album.Title;
+                else return null;
+            } 
+        }
         public Album Album { get; set; }
         public int? PageNumber { get; set; }
         public int? ItemsPerPage { get; set; }
@@ -25,19 +33,23 @@ namespace DigitalLifeBooks.UserControls
 
         public override void DataBind()
         {
-            var numberOfItemsToSkip = PageNumber.Value * ItemsPerPage.Value;
-            var thereAreEnoughItems = Album.Assets.Count >= numberOfItemsToSkip;
+            if (Album != null)
+            {
+                var numberOfItemsToSkip = PageNumber.Value * ItemsPerPage.Value;
+                var thereAreEnoughItems = Album.Assets.Count >= numberOfItemsToSkip;
 
-            if(!thereAreEnoughItems){
-                var numberOfPages = Album.Assets.Count / ItemsPerPage.Value;
-                numberOfItemsToSkip = (numberOfPages - 1) * ItemsPerPage.Value;
+                if (!thereAreEnoughItems)
+                {
+                    var numberOfPages = Album.Assets.Count / ItemsPerPage.Value;
+                    numberOfItemsToSkip = (numberOfPages - 1) * ItemsPerPage.Value;
+                }
+
+
+
+                var assetsForThisPage = Album.Assets.Skip(numberOfItemsToSkip).Take(ItemsPerPage.Value);
+                Assets.DataSource = Album.Assets;
+                Assets.DataBind();
             }
-
-
-
-            var assetsForThisPage = Album.Assets.Skip(numberOfItemsToSkip).Take(ItemsPerPage.Value);
-            Assets.DataSource = Album.Assets;
-            Assets.DataBind();
             base.DataBind();
         }
 

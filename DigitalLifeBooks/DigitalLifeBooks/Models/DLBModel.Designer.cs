@@ -20,7 +20,6 @@ using System.Xml.Serialization;
 #region EDM Relationship Metadata
 
 [assembly: EdmRelationshipAttribute("DigitalLifeBooksModel", "AssetAlbum", "Asset", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DigitalLifeBooks.Models.Asset), "Album", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DigitalLifeBooks.Models.Album))]
-[assembly: EdmRelationshipAttribute("DigitalLifeBooksModel", "FK_UserSibliing_Users", "User", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DigitalLifeBooks.Models.User), "UserSibliing", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DigitalLifeBooks.Models.UserSibliing), true)]
 [assembly: EdmRelationshipAttribute("DigitalLifeBooksModel", "ChildUser", "Child", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DigitalLifeBooks.Models.Child), "User", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DigitalLifeBooks.Models.User))]
 [assembly: EdmRelationshipAttribute("DigitalLifeBooksModel", "ChildAlbum", "Child", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DigitalLifeBooks.Models.Child), "Album", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DigitalLifeBooks.Models.Album), true)]
 [assembly: EdmRelationshipAttribute("DigitalLifeBooksModel", "HospitalChild", "Hospital", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DigitalLifeBooks.Models.Hospital), "Child", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DigitalLifeBooks.Models.Child), true)]
@@ -76,22 +75,6 @@ namespace DigitalLifeBooks.Models
         #endregion
     
         #region ObjectSet Properties
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        public ObjectSet<UserSibliing> UserSibliings
-        {
-            get
-            {
-                if ((_UserSibliings == null))
-                {
-                    _UserSibliings = base.CreateObjectSet<UserSibliing>("UserSibliings");
-                }
-                return _UserSibliings;
-            }
-        }
-        private ObjectSet<UserSibliing> _UserSibliings;
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -210,14 +193,6 @@ namespace DigitalLifeBooks.Models
         #region AddTo Methods
     
         /// <summary>
-        /// Deprecated Method for adding a new object to the UserSibliings EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddToUserSibliings(UserSibliing userSibliing)
-        {
-            base.AddObject("UserSibliings", userSibliing);
-        }
-    
-        /// <summary>
         /// Deprecated Method for adding a new object to the Assets EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
         public void AddToAssets(Asset asset)
@@ -296,11 +271,15 @@ namespace DigitalLifeBooks.Models
         /// </summary>
         /// <param name="id">Initial value of the ID property.</param>
         /// <param name="childId">Initial value of the ChildId property.</param>
-        public static Album CreateAlbum(global::System.Int64 id, global::System.Int64 childId)
+        /// <param name="isImportanDocumentsAlbum">Initial value of the IsImportanDocumentsAlbum property.</param>
+        /// <param name="isProfilePictureAlbum">Initial value of the IsProfilePictureAlbum property.</param>
+        public static Album CreateAlbum(global::System.Int64 id, global::System.Int64 childId, global::System.Boolean isImportanDocumentsAlbum, global::System.Boolean isProfilePictureAlbum)
         {
             Album album = new Album();
             album.ID = id;
             album.ChildId = childId;
+            album.IsImportanDocumentsAlbum = isImportanDocumentsAlbum;
+            album.IsProfilePictureAlbum = isProfilePictureAlbum;
             return album;
         }
 
@@ -454,6 +433,54 @@ namespace DigitalLifeBooks.Models
         private global::System.Int64 _ChildId;
         partial void OnChildIdChanging(global::System.Int64 value);
         partial void OnChildIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Boolean IsImportanDocumentsAlbum
+        {
+            get
+            {
+                return _IsImportanDocumentsAlbum;
+            }
+            set
+            {
+                OnIsImportanDocumentsAlbumChanging(value);
+                ReportPropertyChanging("IsImportanDocumentsAlbum");
+                _IsImportanDocumentsAlbum = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("IsImportanDocumentsAlbum");
+                OnIsImportanDocumentsAlbumChanged();
+            }
+        }
+        private global::System.Boolean _IsImportanDocumentsAlbum;
+        partial void OnIsImportanDocumentsAlbumChanging(global::System.Boolean value);
+        partial void OnIsImportanDocumentsAlbumChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Boolean IsProfilePictureAlbum
+        {
+            get
+            {
+                return _IsProfilePictureAlbum;
+            }
+            set
+            {
+                OnIsProfilePictureAlbumChanging(value);
+                ReportPropertyChanging("IsProfilePictureAlbum");
+                _IsProfilePictureAlbum = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("IsProfilePictureAlbum");
+                OnIsProfilePictureAlbumChanged();
+            }
+        }
+        private global::System.Boolean _IsProfilePictureAlbum;
+        partial void OnIsProfilePictureAlbumChanging(global::System.Boolean value);
+        partial void OnIsProfilePictureAlbumChanged();
 
         #endregion
 
@@ -538,12 +565,10 @@ namespace DigitalLifeBooks.Models
         /// Create a new Asset object.
         /// </summary>
         /// <param name="id">Initial value of the ID property.</param>
-        /// <param name="albumID">Initial value of the AlbumID property.</param>
-        public static Asset CreateAsset(global::System.Int64 id, global::System.Int64 albumID)
+        public static Asset CreateAsset(global::System.Int64 id)
         {
             Asset asset = new Asset();
             asset.ID = id;
-            asset.AlbumID = albumID;
             return asset;
         }
 
@@ -673,30 +698,6 @@ namespace DigitalLifeBooks.Models
         private global::System.String _Caption;
         partial void OnCaptionChanging(global::System.String value);
         partial void OnCaptionChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Int64 AlbumID
-        {
-            get
-            {
-                return _AlbumID;
-            }
-            set
-            {
-                OnAlbumIDChanging(value);
-                ReportPropertyChanging("AlbumID");
-                _AlbumID = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("AlbumID");
-                OnAlbumIDChanged();
-            }
-        }
-        private global::System.Int64 _AlbumID;
-        partial void OnAlbumIDChanging(global::System.Int64 value);
-        partial void OnAlbumIDChanged();
 
         #endregion
 
@@ -1145,6 +1146,7 @@ namespace DigitalLifeBooks.Models
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
+<<<<<<< HEAD
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
@@ -1159,13 +1161,27 @@ namespace DigitalLifeBooks.Models
             {
                 ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Hospital>("DigitalLifeBooksModel.HospitalChild", "Hospital").Value = value;
             }
+=======
+        /// <param name="id">Initial value of the ID property.</param>
+        /// <param name="loginName">Initial value of the LoginName property.</param>
+        public static User CreateUser(global::System.Int64 id, global::System.String loginName)
+        {
+            User user = new User();
+            user.ID = id;
+            user.LoginName = loginName;
+            return user;
+>>>>>>> aefc7d0f84a1ddc11326aa28680665af91816377
         }
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
         [BrowsableAttribute(false)]
         [DataMemberAttribute()]
+<<<<<<< HEAD
         public EntityReference<Hospital> HospitalReference
+=======
+        public global::System.Int64 ID
+>>>>>>> aefc7d0f84a1ddc11326aa28680665af91816377
         {
             get
             {
@@ -1179,12 +1195,22 @@ namespace DigitalLifeBooks.Models
                 }
             }
         }
+<<<<<<< HEAD
+=======
+        private global::System.Int64 _ID;
+        partial void OnIDChanging(global::System.Int64 value);
+        partial void OnIDChanged();
+>>>>>>> aefc7d0f84a1ddc11326aa28680665af91816377
     
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
+<<<<<<< HEAD
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
+=======
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+>>>>>>> aefc7d0f84a1ddc11326aa28680665af91816377
         [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("DigitalLifeBooksModel", "ChildFosterFamily", "FosterFamily")]
         public FosterFamily FosterFamily
@@ -1195,13 +1221,25 @@ namespace DigitalLifeBooks.Models
             }
             set
             {
+<<<<<<< HEAD
                 ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<FosterFamily>("DigitalLifeBooksModel.ChildFosterFamily", "FosterFamily").Value = value;
+=======
+                OnFirstNameChanging(value);
+                ReportPropertyChanging("FirstName");
+                _FirstName = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("FirstName");
+                OnFirstNameChanged();
+>>>>>>> aefc7d0f84a1ddc11326aa28680665af91816377
             }
         }
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
+<<<<<<< HEAD
         [BrowsableAttribute(false)]
+=======
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+>>>>>>> aefc7d0f84a1ddc11326aa28680665af91816377
         [DataMemberAttribute()]
         public EntityReference<FosterFamily> FosterFamilyReference
         {
@@ -1211,18 +1249,30 @@ namespace DigitalLifeBooks.Models
             }
             set
             {
+<<<<<<< HEAD
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<FosterFamily>("DigitalLifeBooksModel.ChildFosterFamily", "FosterFamily", value);
                 }
+=======
+                OnLastNameChanging(value);
+                ReportPropertyChanging("LastName");
+                _LastName = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("LastName");
+                OnLastNameChanged();
+>>>>>>> aefc7d0f84a1ddc11326aa28680665af91816377
             }
         }
     
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
+<<<<<<< HEAD
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
+=======
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+>>>>>>> aefc7d0f84a1ddc11326aa28680665af91816377
         [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("DigitalLifeBooksModel", "ChildSchool", "School")]
         public School School
@@ -1233,7 +1283,15 @@ namespace DigitalLifeBooks.Models
             }
             set
             {
+<<<<<<< HEAD
                 ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<School>("DigitalLifeBooksModel.ChildSchool", "School").Value = value;
+=======
+                OnUserTypeChanging(value);
+                ReportPropertyChanging("UserType");
+                _UserType = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("UserType");
+                OnUserTypeChanged();
+>>>>>>> aefc7d0f84a1ddc11326aa28680665af91816377
             }
         }
         /// <summary>
@@ -2266,28 +2324,6 @@ namespace DigitalLifeBooks.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("DigitalLifeBooksModel", "FK_UserSibliing_Users", "UserSibliing")]
-        public EntityCollection<UserSibliing> UserSibliings
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<UserSibliing>("DigitalLifeBooksModel.FK_UserSibliing_Users", "UserSibliing");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<UserSibliing>("DigitalLifeBooksModel.FK_UserSibliing_Users", "UserSibliing", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("DigitalLifeBooksModel", "ChildUser", "Child")]
         public EntityCollection<Child> Children
         {
@@ -2307,6 +2343,7 @@ namespace DigitalLifeBooks.Models
         #endregion
 
     }
+<<<<<<< HEAD
     
     /// <summary>
     /// No Metadata Documentation available.
@@ -2478,6 +2515,8 @@ namespace DigitalLifeBooks.Models
         #endregion
 
     }
+=======
+>>>>>>> aefc7d0f84a1ddc11326aa28680665af91816377
 
     #endregion
 
