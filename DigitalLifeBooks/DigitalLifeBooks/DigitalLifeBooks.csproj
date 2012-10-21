@@ -59,12 +59,14 @@
     <Content Include="Account\ChangePasswordSuccess.aspx" />
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Register.aspx" />
+    <Content Include="Admin\AdminChildSearch.aspx" />
     <Content Include="Admin\UserManagement\AddChildToUser.aspx" />
     <Content Include="Albums\AlbumLoader.aspx" />
     <Content Include="Albums\EditAsset.aspx" />
     <Content Include="Albums\NewOrEditAlbum.aspx" />
     <Content Include="Albums\Upload.aspx" />
     <Content Include="Admin\Create\NewChild.aspx" />
+    <Content Include="UserControls\UserChildren.ascx" />
     <Content Include="Scripts\init.js" />
     <Content Include="Scripts\initTooltips.js" />
     <Content Include="Scripts\initWidgets.js" />
@@ -107,6 +109,7 @@
     <Content Include="Scripts\jquery-1.4.1.min.js" />
     <Content Include="UserControls\AlbumRender.ascx" />
     <Content Include="UserControls\AssetRender.ascx" />
+    <Content Include="Users\UserProfile.aspx" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -153,6 +156,13 @@
     </Compile>
     <Compile Include="Admin\AdminBasePage.cs">
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\AdminChildSearch.aspx.cs">
+      <DependentUpon>AdminChildSearch.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\AdminChildSearch.aspx.designer.cs">
+      <DependentUpon>AdminChildSearch.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\UserManagement\AddChildToUser.aspx.cs">
       <DependentUpon>AddChildToUser.aspx</DependentUpon>
@@ -204,6 +214,13 @@
     <Compile Include="BaseDLBPage.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="UserControls\UserChildren.ascx.cs">
+      <DependentUpon>UserChildren.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControls\UserChildren.ascx.designer.cs">
+      <DependentUpon>UserChildren.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -247,6 +264,13 @@
     </Compile>
     <Compile Include="UserControls\AssetRender.ascx.designer.cs">
       <DependentUpon>AssetRender.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Users\UserProfile.aspx.cs">
+      <DependentUpon>UserProfile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Users\UserProfile.aspx.designer.cs">
+      <DependentUpon>UserProfile.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

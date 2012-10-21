@@ -1,11 +1,18 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Masterpages/Site.master" AutoEventWireup="true" CodeBehind="NewChild.aspx.cs" Inherits="DigitalLifeBooks.Admin.Create.NewChild" %>
 
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".txtDates").datepick({ showOnFocus: false, showTrigger: "#caltrigger", dateFormat: "mm/d/yyyy" });
+        });
+
+    </script>
 </asp:Content>
 
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
        <asp:Panel runat="server" ID="NewForm">
         <div>
+        <img id="caltrigger" src="/Styles/Images/calendar.gif" alt="Popup" class="trigger"/>
         <table>
             <tr>
                 <td>
@@ -14,6 +21,7 @@
                 <td>
                     <asp:TextBox runat="server" ID="txtFirstName"></asp:TextBox>
                 </td>
+                <td></td>
             </tr>
             <tr>
                 <td>
@@ -22,6 +30,7 @@
                 <td>
                     <asp:TextBox runat="server" ID="txtLastName"></asp:TextBox>
                 </td>
+                <td></td>
             </tr>
             <tr>
                 <td>
@@ -30,6 +39,7 @@
                 <td>
                     <asp:TextBox runat="server" CssClass="txtDates" ID="txtDateOfBirth"></asp:TextBox>
                 </td>
+                <td></td>
             </tr>
             <tr>
                 <td>
@@ -38,6 +48,7 @@
                 <td>
                     <asp:TextBox runat="server" ID="txtCity"></asp:TextBox>
                 </td>
+                <td></td>
             </tr>
             <tr>
                 <td>
@@ -46,6 +57,7 @@
                 <td>
                     <asp:TextBox runat="server" ID="txtState"></asp:TextBox>
                 </td>
+                <td></td>
             </tr>
             <tr>
                 <td>
@@ -57,26 +69,27 @@
             </tr>
             <tr>
                 <td>
-                    <asp:Label ID="Label7" runat="server">HospitalID</asp:Label>
-                </td>
-                <td>
-                    <asp:TextBox runat="server" ID="txtHospitalID"></asp:TextBox>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <asp:Label ID="Label8" runat="server">BirthWeight</asp:Label>
+                    <asp:Label ID="Label8" runat="server">BirthWeight(lbs)</asp:Label>
                 </td>
                 <td>
                     <asp:TextBox runat="server" ID="txtBirthWeight"></asp:TextBox>
+                    
+                </td>
+                <td>
+                    <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="txtBirthWeight"
+                    ErrorMessage="Please Enter Only Numbers" Style="color:red;font-size:12px;" ValidationExpression="^\d+$" ValidationGroup="check"></asp:RegularExpressionValidator>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <asp:Label ID="Label9" runat="server">Birthlength</asp:Label>
+                    <asp:Label ID="Label9" runat="server">Birthlength(in)</asp:Label>
                 </td>
                 <td>
                     <asp:TextBox runat="server" ID="txtBirthLength"></asp:TextBox>
+                </td>
+                <td>
+                    <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ControlToValidate="txtBirthLength"
+                    ErrorMessage="Please Enter Only Numbers" Style="color:red;font-size:12px;" ValidationExpression="^\d+$" ValidationGroup="check"></asp:RegularExpressionValidator>
                 </td>
             </tr>
             <tr>
@@ -85,6 +98,10 @@
                 </td>
                 <td>
                     <asp:TextBox runat="server" ID="txtLast4SSN" MaxLength="4"></asp:TextBox>
+                </td>
+                <td>
+                    <asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server" ControlToValidate="txtLast4SSN"
+                    ErrorMessage="Please Enter Only Numbers" Style="color:red;font-size:12px;" ValidationExpression="^\d+$" ValidationGroup="check"></asp:RegularExpressionValidator>
                 </td>
             </tr>
 

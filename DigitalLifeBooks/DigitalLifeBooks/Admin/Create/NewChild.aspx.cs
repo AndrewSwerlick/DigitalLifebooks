@@ -33,7 +33,6 @@ namespace DigitalLifeBooks.Admin.Create
                 City = txtCity.Text,
                 State = txtState.Text,
                 Country = txtCountry.Text,
-                HospitalID = Convert.ToInt64(txtHospitalID.Text),
                 BirthWeight = txtBirthWeight.Text,
                 BirthLength = txtBirthWeight.Text,
                 Last4SSN = txtLast4SSN.Text,
@@ -50,10 +49,10 @@ namespace DigitalLifeBooks.Admin.Create
                 childuser.City = child.City;
                 childuser.State = child.State;
                 childuser.Country = child.Country;
-                childuser.HospitalID = child.HospitalID;
                 childuser.BirthWeight = child.BirthWeight;
                 childuser.BirthLength = child.BirthLength;
                 childuser.Last4SSN = child.Last4SSN;
+                childuser.Users.Add(_user);
                 DataContext.AddToChildren(childuser);
                 DataContext.SaveChanges();
             }
@@ -65,7 +64,7 @@ namespace DigitalLifeBooks.Admin.Create
             var childId = Request.QueryString["ChildId"];
             var userId = Request.QueryString["UserId"];           
 
-            var confirmationMessageBuilder = new StringBuilder().AppendFormat("A new child {0} was created", child.FirstName + child.LastName);
+            var confirmationMessageBuilder = new StringBuilder().AppendFormat("A new child {0} was created", child.FirstName + " " + child.LastName);
 
             if (_user != null)
                 confirmationMessageBuilder.AppendFormat(" and associated with the user {0}", _user.LoginName);
@@ -77,10 +76,7 @@ namespace DigitalLifeBooks.Admin.Create
 
         private User LoadUser(string userId)
         {
-            using (var context = new DigitalLifeBooksEntities())
-            {
-                return DataContext.Users.Single(a => a.LoginName == userId);
-            }
+            return DataContext.Users.Single(a => a.LoginName == userId); 
         }
     }
 }
