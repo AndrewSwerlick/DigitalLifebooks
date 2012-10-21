@@ -57,7 +57,7 @@
         </div>
         <div class="row">
             <div class="col-2 alpha">
-                <asp:Label ID="Label8" runat="server">BirthWeight(lbs)</asp:Label>
+                <asp:Label ID="Label8" runat="server">Birth Weight(lbs)</asp:Label>
             </div>
             <div class="col-4 omega suffix-3">
                 <asp:TextBox runat="server" CssClass="numberinput" ID="txtBirthWeight"></asp:TextBox>
@@ -67,7 +67,7 @@
         </div>
         <div class="row">
             <div class="col-2 alpha">
-                <asp:Label ID="Label9" runat="server">Birthlength(in)</asp:Label>
+                <asp:Label ID="Label9" runat="server">Birth Length(in)</asp:Label>
             </div>
             <div class="col-4 omega suffix-3">
                  <asp:TextBox runat="server" CssClass="numberinput" ID="txtBirthLength"></asp:TextBox>

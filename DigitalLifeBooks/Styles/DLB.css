@@ -540,4 +540,17 @@ div#content input .numberinput
 {
     width:75px !important;
 }
-
+#divfileupload input.fileUploadbutton
+{
+    width:95px;
+}
+#divfileupload input.fileUpload
+{
+    width:297px;
+    height:25px;
+}
+.col-7
+{
+    width:660px;
+    margin-left:20px;
+}
