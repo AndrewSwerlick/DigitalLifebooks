@@ -27,9 +27,12 @@ namespace DigitalLifeBooks.ChildProfile
 
                     Child = DataContext.Children.FirstOrDefault<Child>(x => x.Id == id);
                     if (Child == null)
-                        Response.Redirect("/ChildProfile/ChildNotFound.aspx");
+                        Response.Redirect("/Child/ChildNotFound.aspx");
                     if (Child != null)
                     {
+                        if (!Child.UserIsAuthorizedForChild(CurrentUser))
+                            Response.Redirect("/UnAuthorized.aspx");
+
                         hdnId.Value = Child.Id.ToString();
 
                         ProfilePicPath = Child.ProfilePickLink;
@@ -83,8 +86,10 @@ namespace DigitalLifeBooks.ChildProfile
                         }
                     }
                 }
-
-
+                else
+                {
+                    Response.Redirect("/Child/ChildNotFound.aspx");
+                }
 
             }
         }

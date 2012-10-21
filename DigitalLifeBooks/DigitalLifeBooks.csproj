@@ -122,6 +122,7 @@
     <Content Include="Scripts\jquery-1.4.1-vsdoc.js" />
     <Content Include="Scripts\jquery-1.4.1.js" />
     <Content Include="Scripts\jquery-1.4.1.min.js" />
+    <Content Include="UnAuthorized.aspx" />
     <Content Include="UserControls\AlbumRender.ascx" />
     <Content Include="UserControls\AssetRender.ascx" />
     <Content Include="UserControls\UserChildren.ascx" />
@@ -315,6 +316,13 @@
     <Compile Include="Services\Delete.asmx.cs">
       <DependentUpon>Delete.asmx</DependentUpon>
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UnAuthorized.aspx.cs">
+      <DependentUpon>UnAuthorized.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UnAuthorized.aspx.designer.cs">
+      <DependentUpon>UnAuthorized.aspx</DependentUpon>
     </Compile>
     <Compile Include="UserControls\AlbumRender.ascx.cs">
       <DependentUpon>AlbumRender.ascx</DependentUpon>
