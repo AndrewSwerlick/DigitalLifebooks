@@ -24,14 +24,20 @@ namespace DigitalLifeBooks.Models
             }
         }
 
-        public string SearchString
+        public string Age
         {
             get
             {
-                return string.Format("{0} {1} {2}", FirstName, LastName, this.DateOfBirth.ToString("mdy") + Last4SSN);
+                int now = int.Parse(DateTime.Today.ToString("yyyyMMdd"));
+                int dob = int.Parse(DateOfBirth.ToString("yyyyMMdd"));
+                string dif = (now - dob).ToString();
+                string age = "0";
+                if (dif.Length > 4)
+                    age = dif.Substring(0, dif.Length - 4);
+                return age;
             }
         }
-
+        
         public bool UserIsAuthorizedForChild(User user)
         {
 #if DEBUG

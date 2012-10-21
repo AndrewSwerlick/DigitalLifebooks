@@ -28,7 +28,7 @@ namespace DigitalLifeBooks.ChildProfile
             if (ImportantDocuments != null)
                 ImportantDocumentsRender.Album = ImportantDocuments;
 
-            Albums.DataSource = Child.Albums.Where(a => !a.IsImportanDocumentsAlbum);
+            Albums.DataSource = Child.Albums.Where(a => !a.IsImportanDocumentsAlbum && !a.IsProfilePictureAlbum);
             DataBind();
         }
 

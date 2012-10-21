@@ -43,34 +43,35 @@
         </dlb:SecurityTrimmedPanel>
     </asp:Panel>
     <asp:Panel runat="server" ID="ProfileEdit" Visible="false">
-            <h1><%= User.DisplayName %></h1><asp:LinkButton ID="LinkButton1" CssClass="editSettings" runat="server" OnClick="On_Edit_Click"></asp:LinkButton>
+        <h1><%= User.DisplayName %></h1><asp:LinkButton ID="LinkButton1" CssClass="editSettings" runat="server" OnClick="On_Edit_Click"></asp:LinkButton>
+        <div>
             <div>
-                <div>
-                    <div><asp:Label ID="Label10" runat="server">First Name</asp:Label></div>
-                    <div><asp:TextBox runat="server" ID="txtFirstName"></asp:TextBox></div>
-                </div>
-                <div>
-                    <div><asp:Label ID="Label11" runat="server">Last Name</asp:Label></div>
-                    <div><asp:TextBox runat="server" ID="txtLastName"></asp:TextBox></div>
-                </div>          
-                <div>
-                    <div><asp:Label ID="Label13" runat="server">Email</asp:Label></div>
-                    <div><div><asp:TextBox runat="server" ID="txtEmail"></asp:TextBox></div>
-                </div>
-                <div>
-                    <div><asp:Label ID="Label14" runat="server">Phone Number</asp:Label></div>
-                    <div><div><asp:TextBox runat="server" ID="txtPhone"></asp:TextBox></div>
-                </div>
-                <div>
-                    <div><asp:Label ID="Label15" runat="server">City</asp:Label></div>
-                    <div><div><asp:TextBox runat="server" ID="txtCity"></asp:TextBox></div>
-                </div>
-                <div>
-                    <div><asp:Label ID="Label16" runat="server">State</asp:Label></div>
-                    <div><div><asp:TextBox runat="server" ID="txtState"></asp:TextBox></div>
-                </div>
-                <asp:LinkButton Text="Save" runat="server" ID="Save" OnClick="On_Save_Click"></asp:LinkButton>
+                <div><asp:Label ID="Label10" runat="server">First Name</asp:Label></div>
+                <div><asp:TextBox runat="server" ID="txtFirstName"></asp:TextBox></div>
             </div>
+            <div>
+                <div><asp:Label ID="Label11" runat="server">Last Name</asp:Label></div>
+                <div><asp:TextBox runat="server" ID="txtLastName"></asp:TextBox></div>
+            </div>          
+            <div>
+                <div><asp:Label ID="Label13" runat="server">Email</asp:Label></div>
+                <div><asp:TextBox runat="server" ID="txtEmail"></asp:TextBox></div>
+            </div>
+            <div>
+                <div><asp:Label ID="Label14" runat="server">Phone Number</asp:Label></div>
+                <div><asp:TextBox runat="server" ID="txtPhone"></asp:TextBox></div>
+            </div>
+            <div>
+                <div><asp:Label ID="Label15" runat="server">City</asp:Label></div>
+                <div><asp:TextBox runat="server" ID="txtCity"></asp:TextBox></div>
+            </div>
+            <div>
+                <div><asp:Label ID="Label16" runat="server">State</asp:Label></div>
+                <div><asp:TextBox runat="server" ID="txtState"></asp:TextBox></div>
+            </div>
+            <asp:LinkButton Text="Save" runat="server" ID="Save" OnClick="On_Save_Click"></asp:LinkButton>
+        </div>
     </asp:Panel>
 </div>
+
 </asp:Content>

@@ -234,10 +234,7 @@ textarea {
    Form Styles
    ========================================================================== */
    input{
-<<<<<<< HEAD
-=======
         color:#444444;
->>>>>>> 1985abc2de39bb8bfc4d4adf82dce5ad4383b1e6
         width:100%;
         margin-bottom:20px;
         height:20px;
@@ -304,6 +301,9 @@ textarea {
     margin-right: 0;
     margin-bottom: 0;
 }
+    a.btn:visited{
+        color:#FFFFFF
+    }
    .btn.big{
     height: 38px;
     font-size: 18px;
@@ -368,6 +368,7 @@ textarea {
     margin-right: 0px;
     margin-top: 0px;
     padding-bottom:10px;
+    text-transform:capitalize;
    }
    .child-dashboard #content #header #foster-child-image-container{
     width:146px;
@@ -391,6 +392,13 @@ textarea {
     margin-left: 0px;
     margin-right: 0px;
     margin-top: 10px;
+    text-transform:capitalize;
+   }
+   .child-dashboard #content .childDelete{
+    float:right;
+   }   
+   .child-dashboard #content .albumDelete{
+    float: right;
    }
    .child-dashboard #content #important-documents .col-document{
     background-color:#909090;
@@ -484,7 +492,16 @@ textarea {
     font-size: 16px;
     word-wrap:break-word;
    }
-
+/*==========================================================================
+    AdminForms
+============================================================================*/
+    div#content div.adminForm input{
+        width:auto;
+    }
+    div#content div.adminForm input[type:radio]{
+        height:5px;
+        margin-left:5px;
+    }
 /* ==========================================================================
    Helper classes
    ========================================================================== */

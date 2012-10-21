@@ -53,6 +53,17 @@ namespace DigitalLifeBooks.Admin.Create
                 childuser.BirthLength = child.BirthLength;
                 childuser.Last4SSN = child.Last4SSN;
                 childuser.Users.Add(ProfileUser);
+                childuser.Albums.Add(new Album()
+                {
+                    Title = "Important Documents",
+                    IsImportanDocumentsAlbum = true
+                });
+
+                childuser.Albums.Add(new Album()
+                {
+                    Title = "ProfilePicture",
+                    IsProfilePictureAlbum = true
+                });
                 DataContext.AddToChildren(childuser);
                 DataContext.SaveChanges();
             }
