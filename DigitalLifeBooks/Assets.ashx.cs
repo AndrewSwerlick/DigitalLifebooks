@@ -49,6 +49,7 @@ namespace DigitalLifeBooks
             context.Response.ContentType = "image/jpg";
             context.Response.BinaryWrite(ReadFully(stream));
             stream.CopyTo(context.Response.OutputStream);
+            stream.Dispose();
             context.Response.Flush();
             context.Response.End();
         }
