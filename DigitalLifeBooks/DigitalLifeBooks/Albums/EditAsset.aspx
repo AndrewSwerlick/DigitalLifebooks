@@ -1,21 +1,15 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="EditAsset.aspx.cs" Inherits="DigitalLifeBooks.Albums.EditAsset" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Masterpages/Dialog.master" CodeBehind="EditAsset.aspx.cs" Inherits="DigitalLifeBooks.Albums.EditAsset" %>
 <%@ Register Src="~/UserControls/AssetRender.ascx" TagPrefix="dlb" TagName="AssetRender" %>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
+</asp:Content>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title></title>
-</head>
-<body>
-    <form id="form1" runat="server">
+<asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
     <div>
         <dlb:AssetRender runat="server" ID="AssetRender" />
 
         <asp:TextBox ID="Caption" runat="server"></asp:TextBox>
 
-        <asp:Button ID="Save" runat="server" Text="Save" OnClick="On_Save_Click" />
+        <asp:Button ID="Save"  CssClass="commitButton" runat="server" Text="Save" OnClick="On_Save_Click" />
     </div>
-    </form>
-</body>
-</html>
+</asp:Content>

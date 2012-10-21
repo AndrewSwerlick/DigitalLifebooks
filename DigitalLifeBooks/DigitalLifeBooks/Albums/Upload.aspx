@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/Masterpages/Site.master" AutoEventWireup="true" CodeBehind="Upload.aspx.cs" Inherits="DigitalLifeBooks.Albums.Upload" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/Masterpages/Dialog.master" AutoEventWireup="true" CodeBehind="Upload.aspx.cs" Inherits="DigitalLifeBooks.Albums.Upload" %>
 
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
 </asp:Content>

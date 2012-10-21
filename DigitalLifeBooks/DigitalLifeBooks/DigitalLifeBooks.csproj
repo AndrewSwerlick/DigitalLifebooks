@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -71,6 +71,8 @@
     <Content Include="UserControls\UserChildren.ascx" />
     <Content Include="ChildProfile\Dashboard.aspx" />
     <Content Include="email.txt" />
+    <Content Include="Scripts\albumControls.js" />
+    <Content Include="Scripts\dialog.js" />
     <Content Include="Scripts\init.js" />
     <Content Include="Scripts\initTooltips.js" />
     <Content Include="Scripts\initWidgets.js" />
@@ -206,9 +208,9 @@
       <DependentUpon>AlbumViewer.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-      <Compile Include="Albums\AlbumViewer.aspx.designer.cs">
-          <DependentUpon>AlbumViewer.aspx</DependentUpon>
-      </Compile>
+    <Compile Include="Albums\AlbumViewer.aspx.designer.cs">
+      <DependentUpon>AlbumViewer.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Albums\NewOrEditAlbum.aspx.cs">
       <DependentUpon>NewOrEditAlbum.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -260,6 +262,13 @@
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Masterpages\Dialog.Master.cs">
+      <DependentUpon>Dialog.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Masterpages\Dialog.Master.designer.cs">
+      <DependentUpon>Dialog.Master</DependentUpon>
     </Compile>
     <Compile Include="Models\Asset.cs" />
     <Compile Include="Models\Child.cs" />
@@ -319,6 +328,9 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>DLBModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Masterpages\Dialog.Master" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
