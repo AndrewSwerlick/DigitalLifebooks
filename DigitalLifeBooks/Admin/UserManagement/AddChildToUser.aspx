@@ -7,7 +7,8 @@
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
     <div class="addChildForm adminForm">
         <asp:Panel ID="EditForm" runat="server">
-            <asp:RadioButtonList runat="server" ID="NewOrExistingRadioChoices">
+            <div id="addchildfrm">
+            <asp:RadioButtonList CssClass="radiobutton" runat="server" ID="NewOrExistingRadioChoices">
                 <asp:ListItem Text="I would like to add a new child" Value="New"></asp:ListItem>
                 <asp:ListItem Text="I would like to add an existing child to this user" Value="Existing"></asp:ListItem>
             </asp:RadioButtonList>
@@ -18,6 +19,7 @@
             
             <div><asp:Literal runat="server" ID="NoResultsFound" Visible="false">No Search Results Found</asp:Literal></div>
             <asp:Button runat="server" ID="Next" Text="Next" OnClick="On_Next_Clicked" />
+            </div>
         </asp:Panel>
         <asp:Panel ID="ConfirmationDialog" Visible="false" runat="server">
             <asp:Literal ID="ConfirmationMessage" runat="server"></asp:Literal>
@@ -25,3 +27,4 @@
         </asp:Panel>
     </div>
 </asp:Content>
+

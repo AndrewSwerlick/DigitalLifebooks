@@ -104,7 +104,6 @@ textarea {
 }
 .col-1, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-10, .col-11, .col-12{
     float: left;
-    margin-left:10px;
     margin-right: 10px;
 }
 .alpha{
@@ -117,13 +116,13 @@ textarea {
     width:80px;
 }
 .col-2{
-    width:180px;
+    width:120px;
 }
 .col-3{
     width:280px;
 }
 .col-4{
-    width:380px;
+    width:400px;
 }
 .col-5{
     width:480px;
@@ -432,9 +431,9 @@ textarea {
         color: rgb(34,34,34);
    }
    
-   div#content input{
+  /* div#content input{
         width: 30em;	
-   }
+   }*/
    
 /* ====================================================================
     User Profile
