@@ -17,10 +17,13 @@
     <header id="header">
         <div class="row">
             <div class="col-7 alpha">
-                <h1 id="foster-child-name" class="header-1"><%= Child.FirstName + " " + Child.LastName %></h1>            
+                <h1 id="foster-child-name" class="header-1"><%= Child.FirstName + " " + Child.LastName %></h1>
+                 <dlb:SecurityTrimmedPanel CssClass="childDelete" ID="SecurityTrimmedPanel1" runat="server" RoleToShowFor="Admin">
+                    <a class="btn big-button delete" data-entityId="<%= Child.Id %>" data-entityType="Child" href="#">Delete</a>            
+                </dlb:SecurityTrimmedPanel>
             </div>
             <div class="col-2 omega">
-                <a class="btn big-button newAlbum" data-childId="<%= Child.Id %>" href="#">Add Album</a>
+                <a class="btn big-button newAlbum" data-childid="<%= Child.Id %>" href="#">Add Album</a>
             </div>
         </div>        
         <div id="foster-child-information" class="row">
@@ -70,8 +73,8 @@
                             </div>
                             <div class="col-2 omega">
                                <a class="btn big-button upload" href="#">Upload</a>
-                            <dlb:SecurityTrimmedPanel ID="SecurityTrimmedPanel1" runat="server" RoleToShowFor="Admin">
-                                <a class="btn big-button upload" href="#">Delete</a>
+                            <dlb:SecurityTrimmedPanel CssClass="albumDelete" ID="SecurityTrimmedPanel1" runat="server" RoleToShowFor="Admin">
+                                <a class="btn big-button delete" data-entityId="<%# (Container.DataItem as Album).ID %>" data-entityType="Album" href="#">Delete</a>
                             </dlb:SecurityTrimmedPanel>
                             </div>
                         </div>                                             

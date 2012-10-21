@@ -26,7 +26,7 @@
 
         $("a.newAlbum").on('click', function (e) {
             var link = $(this);
-            var childId = $(this).data("childId");
+            var childId = $(this).data("childid");
             var iframe = $("<iframe src=/Albums/NewOrEditAlbum.aspx?ChildId=" + childId + "/>");
             window.closeIframe = function () {
                 iframe.dialog('close');
@@ -60,6 +60,7 @@
             var link = $(this);
             var pageToLoad = link.data("page");
             var albumId = $(this).closest("div.album.root").data("albumid");
+
         });
 
     });

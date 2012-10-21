@@ -8,10 +8,9 @@
 //------------------------------------------------------------------------------
 
 namespace DigitalLifeBooks.UserControls {
-
-
-    public partial class AssetRender
-    {
+    
+    
+    public partial class AssetRender {
         
         /// <summary>
         /// ImageRender control.

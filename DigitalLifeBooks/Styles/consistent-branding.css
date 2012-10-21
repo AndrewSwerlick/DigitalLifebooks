@@ -398,6 +398,12 @@ textarea {
     margin-top: 10px;
     text-transform:capitalize;
    }
+   .child-dashboard #content .childDelete{
+    float:right;
+   }   
+   .child-dashboard #content .albumDelete{
+    float: right;
+   }
    .child-dashboard #content #important-documents .col-document{
     background-color:#909090;
     height:161px;

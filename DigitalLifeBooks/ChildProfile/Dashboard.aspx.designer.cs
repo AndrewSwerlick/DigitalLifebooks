@@ -13,6 +13,15 @@ namespace DigitalLifeBooks.ChildProfile {
     public partial class Dashboard {
         
         /// <summary>
+        /// SecurityTrimmedPanel1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DigitalLifeBooks.ServerControls.SecurityTrimmedPanel SecurityTrimmedPanel1;
+        
+        /// <summary>
         /// ImportantDocumentsRender control.
         /// </summary>
         /// <remarks>
