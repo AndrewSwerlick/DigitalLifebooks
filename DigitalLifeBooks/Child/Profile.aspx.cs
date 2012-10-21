@@ -13,6 +13,7 @@ namespace DigitalLifeBooks.ChildProfile
     {
         public Child Child { get; set; }
         public string ProfilePicPath { get; set; }
+        public string AlbumId { get; set; }
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -31,6 +32,8 @@ namespace DigitalLifeBooks.ChildProfile
                         hdnId.Value = Child.Id.ToString();
 
                         ProfilePicPath = Child.ProfilePickLink;
+
+                        AlbumId = Child.ProfileAlbumId.ToString();
 
                         //load child details
                         FullName.Text = Child.FirstName;
