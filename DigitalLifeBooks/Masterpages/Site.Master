@@ -85,7 +85,7 @@
                                 <% else
                                    {  %>
                                 <li>
-                                    <a title="Profile" class="SkinObject" href="/Users/UserProfile.aspx">Profile</a>
+                                    <a title="Profile" class="SkinObject" href="/Users/UserProfile.aspx">User Profile</a>
                                 <!--close registerGroup-->
                                 </li>
                                 <li>
