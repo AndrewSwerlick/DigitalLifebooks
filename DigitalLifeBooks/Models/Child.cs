@@ -32,6 +32,21 @@ namespace DigitalLifeBooks.Models
             }
         }
 
+        public Child()
+        {
+            Albums.Add(new Album()
+            {
+                Title = "Important Documents",
+                IsImportanDocumentsAlbum = true
+            });
+
+            Albums.Add(new Album()
+            {
+                Title = "ProfilePicture",
+                IsProfilePictureAlbum = true
+            });
+        }
+
         public bool UserIsAuthorizedForChild(User user)
         {
 #if DEBUG

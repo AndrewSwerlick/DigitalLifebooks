@@ -47,7 +47,10 @@
         </div>
     </header>
     <div id="main">
-        <div id="important-documents">            
+        <div id="important-documents">     
+            <div class="col-2 omega">
+                <a class="btn big-button" href="#">Add Document</a>
+            </div>       
             <dlb:AlbumRender runat="server" ID="ImportantDocumentsRender" />
         </div>
         <div id="albums">

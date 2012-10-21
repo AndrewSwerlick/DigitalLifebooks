@@ -52,7 +52,7 @@ namespace DigitalLifeBooks.Admin.Create
                 childuser.BirthWeight = child.BirthWeight;
                 childuser.BirthLength = child.BirthLength;
                 childuser.Last4SSN = child.Last4SSN;
-                childuser.Users.Add(ProfileUser);
+                childuser.Users.Add(ProfileUser);                
                 DataContext.AddToChildren(childuser);
                 DataContext.SaveChanges();
             }
