@@ -433,7 +433,7 @@ textarea {
     position: relative;
     text-decoration: none;
    }
-   .child-dashboard #content #albums .col-album .album-asset{
+   /*.child-dashboard #content #albums .col-album */.album-asset{
     display:block;
     width:100%;
     height:auto;
