@@ -6,6 +6,8 @@ using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using DigitalLifeBooks.Models;
+using System.Net.Mail;
+
 
 namespace DigitalLifeBooks.Account
 {
@@ -48,6 +50,20 @@ namespace DigitalLifeBooks.Account
 
             DataContext.Users.AddObject(user);
             DataContext.SaveChanges();
+
+
+			var msg = new MailMessage("noreply@digitallifebooks.org", "webreg@digitallifebooks.org");
+			msg.Subject = "Message from DLB Website: New User Registered";
+			msg.IsBodyHtml = true;
+			msg.Body = "<h1>" + msg.Subject + "</h1>" +
+				"<a href='http://" + Request.ServerVariables["HTTP_HOST"] + "/admin/UserManagement/SearchForUser.aspx?q="+ user.DisplayName.ToString() + "'>Click to review " + user.DisplayName.ToString() + "</a>";
+			;
+
+			var mailer = new SmtpClient();
+			mailer.Send(msg);
+			Response.Write("Your registration has been submitted for review and assignment.");
+
+
         }
 
     }

@@ -23,14 +23,13 @@
                 </dlb:SecurityTrimmedPanel>
             </div>
             <div class="col-2 omega">
-<%--                <a class="btn big-button newAlbum" data-childid="<%= Child.Id %>" href="#">Add Album</a>--%>
             </div>
         </div>        
         <div id="foster-child-information" class="row">
             <div class="col-2 alpha">
                 <div id="foster-child-image-container">
-                    <a href="http://app.digitallifebooks.org/Child/Profile.aspx?Id= <%= Child.Id %>"><img id="foster-child-image" src="<%= ProfilePicLink %>"></a>
-                    <a href="http://app.digitallifebooks.org/Child/Profile.aspx?Id= <%= Child.Id %>">View Profile</a>
+                    <a href="/Child/Profile.aspx?Id= <%= Child.Id %>"><img id="foster-child-image" src="<%= ProfilePicLink %>"></a>
+                    <a href="/Child/Profile.aspx?Id= <%= Child.Id %>">View Profile</a>
                 </div>
             </div>
             <div class="col-7 omega">
@@ -80,8 +79,7 @@
                             </dlb:SecurityTrimmedPanel>
                                 <a class="btn big-button upload" href="#">Upload</a>
                             </div>
-                            <div class="col-2 omega">                   
-                            
+                            <div class="col-2 omega">   
                             </div>
                         </div>                                             
                         <dlb:AlbumRender runat="server" ID="AlbumRender"></dlb:AlbumRender>
