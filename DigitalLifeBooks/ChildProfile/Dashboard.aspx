@@ -28,8 +28,8 @@
         <div id="foster-child-information" class="row">
             <div class="col-2 alpha">
                 <div id="foster-child-image-container">
-                    <a href="/Child/Profile.aspx?Id= <%= Child.Id %>"><img id="foster-child-image" src="<%= ProfilePicLink %>"></a>
-                    <a href="/Child/Profile.aspx?Id= <%= Child.Id %>">View Profile</a>
+                    <a href="/Child/Profile.aspx?Id=<%= Child.Id %>"><img id="foster-child-image" src="<%= ProfilePicLink %>"></a>
+                    <a href="/Child/Profile.aspx?Id=<%= Child.Id %>">View Profile</a>
                 </div>
             </div>
             <div class="col-7 omega">

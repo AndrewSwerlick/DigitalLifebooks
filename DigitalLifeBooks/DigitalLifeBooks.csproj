@@ -334,6 +334,7 @@
     </Compile>
     <Compile Include="testemail.aspx.designer.cs">
       <DependentUpon>testemail.aspx</DependentUpon>
+    </Compile>
     <Compile Include="UnAuthorized.aspx.cs">
       <DependentUpon>UnAuthorized.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
