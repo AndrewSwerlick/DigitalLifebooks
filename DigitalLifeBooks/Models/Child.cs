@@ -20,7 +20,7 @@ namespace DigitalLifeBooks.Models
                 if (profilePic == null)
                     return DEFAULT_PROFILE_LINK;
                 
-                return "/Assets?Id=" + profilePic.ID;
+                return "/Assets.ashx?Id=" + profilePic.ID;
             }
         }
 
@@ -49,9 +49,6 @@ namespace DigitalLifeBooks.Models
         
         public bool UserIsAuthorizedForChild(User user)
         {
-#if DEBUG
-            return true;
-#endif
             return Users.Contains(user);
         }
     }

@@ -359,6 +359,9 @@ textarea {
     font-size: 20px;
     word-wrap:break-word;
    }
+   .child-dashboard #sidebar #contactMessage{
+    margin:10px;
+   }
    .child-dashboard #content #header #foster-child-name{
     color:#F04E30;
     border-bottom:1px solid #F04E30;
@@ -430,15 +433,20 @@ textarea {
     position: relative;
     text-decoration: none;
    }
-   .child-dashboard #content #albums .col-album .album-asset{
+   /*.child-dashboard #content #albums .col-album */.album-asset{
     display:block;
     width:100%;
     height:auto;
    }
-   .child-dashboard #content #albums .col-album .album-caption{
+   /*.child-dashboard #content #albums .col-album */.album-caption{
     display: block;
     word-wrap:break-word;
     color:#909090;
+   }
+   
+   div.assetDelete{
+    margin:0px;
+    float:none;
    }
    div#content{
         color: rgb(34,34,34);

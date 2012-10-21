@@ -22,6 +22,15 @@ namespace DigitalLifeBooks.UserControls {
         protected global::System.Web.UI.WebControls.Panel ImageRender;
         
         /// <summary>
+        /// SecurityTrimmedPanel1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DigitalLifeBooks.ServerControls.SecurityTrimmedPanel SecurityTrimmedPanel1;
+        
+        /// <summary>
         /// DefaultRender control.
         /// </summary>
         /// <remarks>
@@ -29,5 +38,14 @@ namespace DigitalLifeBooks.UserControls {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel DefaultRender;
+        
+        /// <summary>
+        /// SecurityTrimmedPanel2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DigitalLifeBooks.ServerControls.SecurityTrimmedPanel SecurityTrimmedPanel2;
     }
 }

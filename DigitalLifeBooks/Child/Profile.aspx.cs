@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,6 +20,29 @@ namespace DigitalLifeBooks.ChildProfile
         {
             if (!IsPostBack)
             {
+=======
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using DigitalLifeBooks.Models;
+using System.Web.Security;
+
+namespace DigitalLifeBooks.ChildProfile
+{
+    public partial class Profile : BaseDLBPage
+    {
+        public Child Child { get; set; }
+        public string ProfilePicPath { get; set; }
+        public string AlbumId { get; set; }
+
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            if (!IsPostBack)
+            {
+>>>>>>> f40f5442772d2acd4f1b2c8afd4bc2e76aa0309e
                 string profileId = Request.QueryString["Id"];
 
                 if (!string.IsNullOrEmpty(profileId))
@@ -27,9 +51,18 @@ namespace DigitalLifeBooks.ChildProfile
 
                     Child = DataContext.Children.FirstOrDefault<Child>(x => x.Id == id);
                     if (Child == null)
+<<<<<<< HEAD
                         Response.Redirect("/ChildProfile/ChildNotFound.aspx");
                     if (Child != null)
                     {
+=======
+                        Response.Redirect("/Child/ChildNotFound.aspx");
+                    if (Child != null)
+                    {
+                        if (!Child.UserIsAuthorizedForChild(CurrentUser))
+                            Response.Redirect("/UnAuthorized.aspx");
+
+>>>>>>> f40f5442772d2acd4f1b2c8afd4bc2e76aa0309e
                         hdnId.Value = Child.Id.ToString();
 
                         ProfilePicPath = Child.ProfilePickLink;
@@ -83,6 +116,7 @@ namespace DigitalLifeBooks.ChildProfile
                         }
                     }
                 }
+<<<<<<< HEAD
 
 
 
@@ -168,4 +202,93 @@ namespace DigitalLifeBooks.ChildProfile
             Response.Redirect(string.Format("/ChildProfile/Dashboard.aspx?ChildId={0}", id));
         }
     }
+=======
+                else
+                {
+                    Response.Redirect("/Child/ChildNotFound.aspx");
+                }
+
+            }
+        }
+
+        protected void save_Click(object sender, EventArgs e)
+        {
+            Page.Validate();
+
+            if (Page.IsValid)
+            {
+                long id = Convert.ToInt64(hdnId.Value);
+                Child = DataContext.Children.First(x => x.Id == id);
+
+                if (Child != null)
+                {
+                    if (Child.FosterFamily == null)
+                        Child.FosterFamily = new FosterFamily();
+
+                    Child.FosterFamily.FatherName = FatherName.Text;
+                    Child.FosterFamily.MotherName = MotherName.Text;
+                    Child.FosterFamily.Address = FosterAddress.Text;
+                    Child.FosterFamily.City = "cbus";
+                    Child.FosterFamily.State = FosterState.Text;
+                    Child.FosterFamily.Country = FosterCountry.Text;
+                    Child.FosterFamily.Phone = FosterPhone.Text;
+                    Child.FosterFamily.FosterSibling = FosterSibling.Text;
+                    Child.FosterFamily.FosterSiblingRelationship = cboFosterSibling.SelectedValue;
+
+                    if (Child.Hospital == null)
+                        Child.Hospital = new Hospital();
+
+                    Child.Hospital.Name = HospitalName.Text;
+                    Child.Hospital.Address = HospitalAddress.Text;
+                    Child.Hospital.City = HospitalCity.Text;
+                    Child.Hospital.State = HospitalState.Text;
+                    Child.Hospital.Phone = HospitalPhone.Text;
+
+                    if (Child.School == null)
+                        Child.School = new School();
+
+                    Child.School.Name = SchoolName.Text;
+                    Child.School.Address = SchoolAddress.Text;
+                    Child.School.City = SchoolCity.Text;
+                    Child.School.State = SchoolState.Text;
+                    Child.School.Country = SchoolCountry.Text;
+                    Child.School.Phone = SchoolPhone.Text;
+
+                    string[] name = FullName.Text.Split(new string[]{" "}, StringSplitOptions.RemoveEmptyEntries);
+
+                    Child.FirstName = name[0];
+                    Child.LastName = name.Length > 1 ? name[1] : string.Empty;
+                    Child.City = BirthCity.Text;
+                    Child.State = BirthState.Text;
+                    Child.DateOfBirth = Convert.ToDateTime(BirthDate.Text);
+                    Child.Country = BirthCountry.Text;
+                    Child.BirthWeight = BirthWeight.Text;
+                    Child.BirthLength = BirthLength.Text;
+                    Child.BirthSibling = BirthSibling.Text;
+                    Child.BirthSiblingRelationship = cboRelationship.SelectedValue;
+                    Child.CaseWorker = CaseWorker.Text;
+
+                    try
+                    {
+                        DataContext.SaveChanges();
+
+                        Response.Redirect(string.Format("/ChildProfile/Dashboard.aspx?ChildId={0}", Child.Id));
+                    }
+                    catch (Exception ex)
+                    {
+                        //TODO: log error
+
+                        lblStatus.Text = "Unable to save the profile data.";
+                    }
+                }
+            }
+        }
+
+        protected void cancel_Click(object sender, EventArgs e)
+        {
+            long id = Convert.ToInt64(hdnId.Value);
+            Response.Redirect(string.Format("/ChildProfile/Dashboard.aspx?ChildId={0}", id));
+        }
+    }
+>>>>>>> f40f5442772d2acd4f1b2c8afd4bc2e76aa0309e
 }

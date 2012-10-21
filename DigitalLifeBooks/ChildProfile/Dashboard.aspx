@@ -74,7 +74,7 @@
                 <ItemTemplate>
                     <div runat ="server" class="album row" data-albumId='<%# (Container.DataItem as Album).ID %>'>
                         <div class="row">
-                            <div class="col-7 alpha">
+                            <div class="col-9 alpha">
                                 <h3 class="header-3"><%# (Container.DataItem as Album).Title %></h3><dlb:SecurityTrimmedPanel CssClass="albumDelete" ID="SecurityTrimmedPanel1" runat="server" RoleToShowFor="Admin">
                                 <a class="btn big-button delete" data-entityId="<%# (Container.DataItem as Album).ID %>" data-entityType="Album" href="#">Delete</a>
                             </dlb:SecurityTrimmedPanel>
