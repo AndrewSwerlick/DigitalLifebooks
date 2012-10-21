@@ -2,8 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
 -- --------------------------------------------------
--- Date Created: 10/20/2012 23:36:48
--- Generated from EDMX file: C:\Projects\DigitalLifeBooks\DigitalLifebooks\DigitalLifeBooks\DigitalLifeBooks\Models\DLBModel.edmx
+-- Date Created: 10/21/2012 09:42:00
+-- Generated from EDMX file: C:\Users\Administrator\Documents\GitHub\DigitalLifebooks\DigitalLifeBooks\Models\DLBModel.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;

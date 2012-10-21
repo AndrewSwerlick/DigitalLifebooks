@@ -96,7 +96,7 @@
                                 <a href="/Admin/UserManagement/SearchForUser.aspx">Search for User</a>
                             </li> 
                             <li class="menu-item">
-                                <a href="/Admin/UserManagement/SearchForChild.aspx">Search for Child</a>
+                                <a href="/Admin/UserManagement/AdminChildSearch.aspx">Search for Child</a>
                             </li> 
                         </ul>
                     </dlb:SecurityTrimmedPanel>

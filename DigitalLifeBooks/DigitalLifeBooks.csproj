@@ -60,7 +60,7 @@
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\PasswordRecovery.aspx" />
     <Content Include="Account\Register.aspx" />
-    <Content Include="Admin\AdminChildSearch.aspx" />
+    <Content Include="Admin\UserManagement\AdminChildSearch.aspx" />
     <Content Include="Admin\UserManagement\AddChildToUser.aspx" />
     <Content Include="Admin\UserManagement\SearchForUser.aspx" />
     <Content Include="Albums\AlbumLoader.aspx" />
@@ -176,11 +176,11 @@
     <Compile Include="Account\Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Admin\AdminChildSearch.aspx.cs">
+    <Compile Include="Admin\UserManagement\AdminChildSearch.aspx.cs">
       <DependentUpon>AdminChildSearch.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Admin\AdminChildSearch.aspx.designer.cs">
+    <Compile Include="Admin\UserManagement\AdminChildSearch.aspx.designer.cs">
       <DependentUpon>AdminChildSearch.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\UserManagement\AddChildToUser.aspx.cs">
