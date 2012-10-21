@@ -44,11 +44,19 @@ namespace DigitalLifeBooks.Users
     public partial class UserProfile : BaseDLBPage
     {
         string _userId { get; set; }
-        User _user { get; set; }
+        public User User { get; set; }
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            LoadProfileInfo(CurrentUser);
+
+            
+            _userId = Request.QueryString["UserId"];
+            if (!string.IsNullOrEmpty(_userId) && HttpContext.Current.User.IsInRole("Admin"))
+                User = LoadUser(_userId);
+            else
+                User = CurrentUser;
+
+                LoadProfileInfo(User);
         }
 
         private void LoadProfileInfo(User user)
@@ -61,6 +69,11 @@ namespace DigitalLifeBooks.Users
             txtPhone.Text = user.PhoneNumber;
             txtCity.Text = user.City;
             txtState.Text = user.State;
+        }
+
+         private User LoadUser(string userId)
+        {
+            return DataContext.Users.Single(a => a.LoginName == userId);
         }
     }
 }

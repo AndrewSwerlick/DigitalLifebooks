@@ -10,25 +10,11 @@ using DigitalLifeBooks.Admin;
 
 namespace DigitalLifeBooks.Controls
 {
-    //public partial class UserChildren : BaseDLBPage
-    //{
-    //    string _userId { get; set; }
-    //    User _user { get; set; }
-
-    //    protected void Page_Load(object sender, EventArgs e)
-    //    {
-    //        LoadProfileInfo(CurrentUser);
-    //    }
-
-    //    private void LoadProfileInfo(User user)
-    //    {
-    //        rtChildren.DataSource = user.Children;
-    //        rtChildren.DataBind();
-    //    }
-    //}
-
     public partial class UserChildren : System.Web.UI.UserControl
     {
+        public User User {get;set;}
+        public bool DoNotUseCurrentUser { get; set; }
+
         protected DigitalLifeBooksEntities DataContext
         {
             get
@@ -48,6 +34,9 @@ namespace DigitalLifeBooks.Controls
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!DoNotUseCurrentUser)
+                User = CurrentUser;
+
             rtChildren.DataSource = CurrentUser.Children;
             rtChildren.DataBind();
         }

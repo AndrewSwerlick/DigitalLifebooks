@@ -60,7 +60,9 @@
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\PasswordRecovery.aspx" />
     <Content Include="Account\Register.aspx" />
+    <Content Include="Admin\AdminChildSearch.aspx" />
     <Content Include="Admin\UserManagement\AddChildToUser.aspx" />
+    <Content Include="Admin\UserManagement\SearchForUser.aspx" />
     <Content Include="Albums\AlbumLoader.aspx" />
     <Content Include="Albums\EditAsset.aspx" />
     <Content Include="Albums\AlbumViewer.aspx" />
@@ -121,6 +123,7 @@
     <Content Include="UserControls\AlbumRender.ascx" />
     <Content Include="UserControls\AssetRender.ascx" />
     <Content Include="UserControls\UserChildren.ascx" />
+    <Content Include="Users\UserProfile.aspx" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -172,12 +175,26 @@
     <Compile Include="Account\Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Admin\AdminChildSearch.aspx.cs">
+      <DependentUpon>AdminChildSearch.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\AdminChildSearch.aspx.designer.cs">
+      <DependentUpon>AdminChildSearch.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Admin\UserManagement\AddChildToUser.aspx.cs">
       <DependentUpon>AddChildToUser.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Admin\UserManagement\AddChildToUser.aspx.designer.cs">
       <DependentUpon>AddChildToUser.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\UserManagement\SearchForUser.aspx.cs">
+      <DependentUpon>SearchForUser.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\UserManagement\SearchForUser.aspx.designer.cs">
+      <DependentUpon>SearchForUser.aspx</DependentUpon>
     </Compile>
     <Compile Include="Albums\AlbumLoader.aspx.cs">
       <DependentUpon>AlbumLoader.aspx</DependentUpon>
@@ -253,6 +270,13 @@
     <Compile Include="Masterpages\Dialog.Master.designer.cs">
       <DependentUpon>Dialog.Master</DependentUpon>
     </Compile>
+    <Compile Include="Masterpages\OldSite.Master.cs">
+      <DependentUpon>OldSite.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Masterpages\OldSite.Master.designer.cs">
+      <DependentUpon>OldSite.Master</DependentUpon>
+    </Compile>
     <Compile Include="Models\Asset.cs" />
     <Compile Include="Models\Child.cs" />
     <Compile Include="Models\DLBModel.Designer.cs">
@@ -295,6 +319,13 @@
     <Compile Include="UserControls\UserChildren.ascx.designer.cs">
       <DependentUpon>UserChildren.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Users\UserProfile.aspx.cs">
+      <DependentUpon>UserProfile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Users\UserProfile.aspx.designer.cs">
+      <DependentUpon>UserProfile.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -314,6 +345,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Masterpages\Dialog.Master" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Masterpages\OldSite.Master" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

@@ -22,6 +22,15 @@ namespace DigitalLifeBooks.Admin.UserManagement {
         protected global::System.Web.UI.WebControls.TextBox Search;
         
         /// <summary>
+        /// SearchButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button SearchButton;
+        
+        /// <summary>
         /// SearchResults control.
         /// </summary>
         /// <remarks>

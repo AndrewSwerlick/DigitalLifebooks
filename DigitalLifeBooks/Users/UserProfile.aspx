@@ -42,7 +42,8 @@
             </div>
         </div>
         <div id="children">
-            <dlb:UserChildren runat="server" Id="UserChildren"></dlb:UserChildren>
+            <dlb:UserChildren runat="server" DoNotUseCurrentUser="true" Id="UserChildren"></dlb:UserChildren>
+            <a href="<%= "/Admin/UserManagement/AddChildToUser.aspx?UserId=" + User.LoginName  %>"  id="addNewChild">Add new child to this User</a>
         </div>
     </div>
 </asp:Panel>

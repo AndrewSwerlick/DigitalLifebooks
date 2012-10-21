@@ -22,7 +22,7 @@
 
 
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.0/themes/base/jquery-ui.css" />
-    <link rel="Stylesheet" href="~/Styles/DLB.css" />
+    <link rel="Stylesheet" href="/Styles/DLB.css" />
 
 
     <script src="/Scripts/jquery/jquery.min.js?cdv=69" type="text/javascript" ></script>

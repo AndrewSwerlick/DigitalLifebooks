@@ -4,6 +4,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <label>Search For User</label><asp:TextBox ID="Search" runat="server"></asp:TextBox>
+    <asp:Button Text="Search" ID="SearchButton" runat="server" OnClick="On_Search_Click" />
     <div>
         <asp:Repeater runat="server" ID="SearchResults">
             <HeaderTemplate>
@@ -11,8 +12,8 @@
             </HeaderTemplate>
             <ItemTemplate>
                 <div class="search-result">
-                    <a href='<%# ""(Container.DataItem as User) %>'>
-                        <%# (Container.DataItem as User).FirstName + " " + (Container.DataItem as User).LastName%>
+                    <a href='<%# "/Users/UserProfile.aspx?UserId=" +(Container.DataItem as User).LoginName %>'>
+                        <%# (Container.DataItem as User).LoginName + " " + (Container.DataItem as User).FirstName + " " + (Container.DataItem as User).LastName%>
                     </a>    
                 </div>
             </ItemTemplate>
