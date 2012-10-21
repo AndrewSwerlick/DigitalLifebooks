@@ -160,5 +160,11 @@ namespace DigitalLifeBooks.ChildProfile
                 }
             }
         }
+
+        protected void cancel_Click(object sender, EventArgs e)
+        {
+            long id = Convert.ToInt64(hdnId.Value);
+            Response.Redirect(string.Format("/ChildProfile/Dashboard.aspx?ChildId={0}", id));
+        }
     }
 }

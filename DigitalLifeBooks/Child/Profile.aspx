@@ -8,6 +8,8 @@
         $(document).ready(function () {
             $("body").addClass("child-dashboard")
         });
+        
+
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
@@ -301,7 +303,8 @@
 </div>
 <div>
     <asp:Button runat="server" ID="save" Text="save" onclick="save_Click" />
-    <input type="button" id="cancel" value="cancel" />
+    <asp:Button runat="server" ID="cancel" Text="cancel" CausesValidation="false" 
+        UseSubmitBehavior="false" onclick="cancel_Click" />
     <asp:HiddenField ID="hdnId" runat="server" />
 </div>
 
