@@ -38,7 +38,7 @@
         #caltrigger{ display:none;  }
     </style>
 </head>
-<body id="Body">
+<body id="Body" class="child-dashboard">
     <div id="child-dashboard-row" class="row">
 
         <form runat="server">
