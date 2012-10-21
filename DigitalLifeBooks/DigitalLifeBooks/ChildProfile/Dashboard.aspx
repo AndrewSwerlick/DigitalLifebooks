@@ -11,7 +11,6 @@
             $("body").addClass("child-dashboard")
         });
     </script>
-         <link rel="stylesheet" href="/Styles/consistent-branding.css">
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">

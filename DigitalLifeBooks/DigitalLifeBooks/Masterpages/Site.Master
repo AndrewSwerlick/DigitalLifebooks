@@ -21,9 +21,10 @@
     <meta name='viewport' content='width=device-width' />
 
 
-    <link href="~/Styles/DLB.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.0/themes/base/jquery-ui.css" />
-     <link rel="stylesheet" href="/Styles/normalize.css">
+    <link rel="stylesheet" href="/Styles/normalize.css">
+    <link rel="stylesheet" href="/Styles/consistent-branding.css">
+
 
     <script src="/Scripts/jquery/jquery.min.js?cdv=69" type="text/javascript" ></script>
     <script src="/Scripts/jquery/jquery-ui.min.js?cdv=69" type="text/javascript"></script>
