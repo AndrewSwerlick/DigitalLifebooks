@@ -25,7 +25,8 @@ namespace DigitalLifeBooks.ChildProfile
                     long id = Convert.ToInt64(profileId);
 
                     Child = DataContext.Children.FirstOrDefault<Child>(x => x.Id == id);
-
+                    if (Child == null)
+                        Response.Redirect("/ChildProfile/ChildNotFound.aspx");
                     if (Child != null)
                     {
                         hdnId.Value = Child.Id.ToString();

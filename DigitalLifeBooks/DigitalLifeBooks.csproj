@@ -69,6 +69,7 @@
     <Content Include="Albums\NewOrEditAlbum.aspx" />
     <Content Include="Albums\Upload.aspx" />
     <Content Include="Admin\Create\NewChild.aspx" />
+    <Content Include="Child\ChildNotFound.aspx" />
     <Content Include="Child\Profile.aspx" />
     <Content Include="ChildProfile\Dashboard.aspx" />
     <Content Include="email.txt" />
@@ -246,6 +247,13 @@
     </Compile>
     <Compile Include="BaseDLBPage.cs">
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Child\ChildNotFound.aspx.cs">
+      <DependentUpon>ChildNotFound.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Child\ChildNotFound.aspx.designer.cs">
+      <DependentUpon>ChildNotFound.aspx</DependentUpon>
     </Compile>
     <Compile Include="Child\Profile.aspx.cs">
       <DependentUpon>Profile.aspx</DependentUpon>

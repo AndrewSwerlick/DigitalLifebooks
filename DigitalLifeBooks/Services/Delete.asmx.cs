@@ -47,6 +47,7 @@ namespace DigitalLifeBooks.Services
             if (EntityType == "Child")
                 DeleteChild(id);
 
+            DataContext.SaveChanges();
             return "sucess";                        
         }
 
@@ -89,6 +90,11 @@ namespace DigitalLifeBooks.Services
                     DataContext.Assets.DeleteObject(asset);
                 }
                 DataContext.Albums.DeleteObject(album);
+            }
+            for (int i = 0; child.Users.Count != 0; i++)
+            {
+                var user = child.Users.ElementAt(i);
+                child.Users.Remove(user);
             }
             DataContext.Children.DeleteObject(child);
         }
