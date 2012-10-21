@@ -1,16 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="DigitalLifeBooksModelStoreContainer" CdmEntityContainer="DigitalLifeBooksEntities">
-    <EntitySetMapping Name="UserSibliings">
-      <EntityTypeMapping TypeName="IsTypeOf(DigitalLifeBooksModel.UserSibliing)">
-        <MappingFragment StoreEntitySet="UserSibliings">
-          <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="SiblingName" ColumnName="SiblingName" />
-          <ScalarProperty Name="Relationship" ColumnName="Relationship" />
-          <ScalarProperty Name="UserID" ColumnName="UserID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="Assets">
       <EntityTypeMapping TypeName="IsTypeOf(DigitalLifeBooksModel.Asset)">
         <MappingFragment StoreEntitySet="Assets">
@@ -19,7 +9,6 @@
           <ScalarProperty Name="Type" ColumnName="Type" />
           <ScalarProperty Name="Location" ColumnName="Location" />
           <ScalarProperty Name="Caption" ColumnName="Caption" />
-          <ScalarProperty Name="AlbumID" ColumnName="AlbumID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -32,6 +21,8 @@
           <ScalarProperty Name="Description" ColumnName="Description" />
           <ScalarProperty Name="EventDate" ColumnName="EventDate" />
           <ScalarProperty Name="ChildId" ColumnName="ChildId" />
+          <ScalarProperty Name="IsImportanDocumentsAlbum" ColumnName="IsImportanDocumentsAlbum" />
+          <ScalarProperty Name="IsProfilePictureAlbum" ColumnName="IsProfilePictureAlbum" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -66,6 +57,9 @@
           <ScalarProperty Name="Last4SSN" ColumnName="Last4SSN" />
           <ScalarProperty Name="FosterFamilyId" ColumnName="FosterFamilyId" />
           <ScalarProperty Name="SchoolId" ColumnName="SchoolId" />
+          <ScalarProperty Name="BirthSibling" ColumnName="BirthSibling" />
+          <ScalarProperty Name="BirthSiblingRelationship" ColumnName="BirthSiblingRelationship" />
+          <ScalarProperty Name="CaseWorker" ColumnName="CaseWorker" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -93,6 +87,7 @@
           <ScalarProperty Name="Address" ColumnName="Address" />
           <ScalarProperty Name="Country" ColumnName="Country" />
           <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="FosterSiblingRelationship" ColumnName="FosterSiblingRelationship" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

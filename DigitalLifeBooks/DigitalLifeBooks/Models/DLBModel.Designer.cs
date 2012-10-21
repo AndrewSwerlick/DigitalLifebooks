@@ -1093,6 +1093,78 @@ namespace DigitalLifeBooks.Models
         private Nullable<global::System.Int64> _SchoolId;
         partial void OnSchoolIdChanging(Nullable<global::System.Int64> value);
         partial void OnSchoolIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String BirthSibling
+        {
+            get
+            {
+                return _BirthSibling;
+            }
+            set
+            {
+                OnBirthSiblingChanging(value);
+                ReportPropertyChanging("BirthSibling");
+                _BirthSibling = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("BirthSibling");
+                OnBirthSiblingChanged();
+            }
+        }
+        private global::System.String _BirthSibling;
+        partial void OnBirthSiblingChanging(global::System.String value);
+        partial void OnBirthSiblingChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String BirthSiblingRelationship
+        {
+            get
+            {
+                return _BirthSiblingRelationship;
+            }
+            set
+            {
+                OnBirthSiblingRelationshipChanging(value);
+                ReportPropertyChanging("BirthSiblingRelationship");
+                _BirthSiblingRelationship = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("BirthSiblingRelationship");
+                OnBirthSiblingRelationshipChanged();
+            }
+        }
+        private global::System.String _BirthSiblingRelationship;
+        partial void OnBirthSiblingRelationshipChanging(global::System.String value);
+        partial void OnBirthSiblingRelationshipChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String CaseWorker
+        {
+            get
+            {
+                return _CaseWorker;
+            }
+            set
+            {
+                OnCaseWorkerChanging(value);
+                ReportPropertyChanging("CaseWorker");
+                _CaseWorker = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("CaseWorker");
+                OnCaseWorkerChanged();
+            }
+        }
+        private global::System.String _CaseWorker;
+        partial void OnCaseWorkerChanging(global::System.String value);
+        partial void OnCaseWorkerChanged();
 
         #endregion
 
@@ -1146,7 +1218,6 @@ namespace DigitalLifeBooks.Models
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-<<<<<<< HEAD
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
@@ -1161,27 +1232,13 @@ namespace DigitalLifeBooks.Models
             {
                 ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Hospital>("DigitalLifeBooksModel.HospitalChild", "Hospital").Value = value;
             }
-=======
-        /// <param name="id">Initial value of the ID property.</param>
-        /// <param name="loginName">Initial value of the LoginName property.</param>
-        public static User CreateUser(global::System.Int64 id, global::System.String loginName)
-        {
-            User user = new User();
-            user.ID = id;
-            user.LoginName = loginName;
-            return user;
->>>>>>> aefc7d0f84a1ddc11326aa28680665af91816377
         }
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
         [BrowsableAttribute(false)]
         [DataMemberAttribute()]
-<<<<<<< HEAD
         public EntityReference<Hospital> HospitalReference
-=======
-        public global::System.Int64 ID
->>>>>>> aefc7d0f84a1ddc11326aa28680665af91816377
         {
             get
             {
@@ -1195,22 +1252,12 @@ namespace DigitalLifeBooks.Models
                 }
             }
         }
-<<<<<<< HEAD
-=======
-        private global::System.Int64 _ID;
-        partial void OnIDChanging(global::System.Int64 value);
-        partial void OnIDChanged();
->>>>>>> aefc7d0f84a1ddc11326aa28680665af91816377
     
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-<<<<<<< HEAD
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
-=======
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
->>>>>>> aefc7d0f84a1ddc11326aa28680665af91816377
         [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("DigitalLifeBooksModel", "ChildFosterFamily", "FosterFamily")]
         public FosterFamily FosterFamily
@@ -1221,25 +1268,13 @@ namespace DigitalLifeBooks.Models
             }
             set
             {
-<<<<<<< HEAD
                 ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<FosterFamily>("DigitalLifeBooksModel.ChildFosterFamily", "FosterFamily").Value = value;
-=======
-                OnFirstNameChanging(value);
-                ReportPropertyChanging("FirstName");
-                _FirstName = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("FirstName");
-                OnFirstNameChanged();
->>>>>>> aefc7d0f84a1ddc11326aa28680665af91816377
             }
         }
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-<<<<<<< HEAD
         [BrowsableAttribute(false)]
-=======
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
->>>>>>> aefc7d0f84a1ddc11326aa28680665af91816377
         [DataMemberAttribute()]
         public EntityReference<FosterFamily> FosterFamilyReference
         {
@@ -1249,30 +1284,18 @@ namespace DigitalLifeBooks.Models
             }
             set
             {
-<<<<<<< HEAD
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<FosterFamily>("DigitalLifeBooksModel.ChildFosterFamily", "FosterFamily", value);
                 }
-=======
-                OnLastNameChanging(value);
-                ReportPropertyChanging("LastName");
-                _LastName = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("LastName");
-                OnLastNameChanged();
->>>>>>> aefc7d0f84a1ddc11326aa28680665af91816377
             }
         }
     
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-<<<<<<< HEAD
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
-=======
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
->>>>>>> aefc7d0f84a1ddc11326aa28680665af91816377
         [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("DigitalLifeBooksModel", "ChildSchool", "School")]
         public School School
@@ -1283,15 +1306,7 @@ namespace DigitalLifeBooks.Models
             }
             set
             {
-<<<<<<< HEAD
                 ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<School>("DigitalLifeBooksModel.ChildSchool", "School").Value = value;
-=======
-                OnUserTypeChanging(value);
-                ReportPropertyChanging("UserType");
-                _UserType = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("UserType");
-                OnUserTypeChanged();
->>>>>>> aefc7d0f84a1ddc11326aa28680665af91816377
             }
         }
         /// <summary>
@@ -1334,19 +1349,17 @@ namespace DigitalLifeBooks.Models
         /// <param name="id">Initial value of the Id property.</param>
         /// <param name="fatherName">Initial value of the FatherName property.</param>
         /// <param name="motherName">Initial value of the MotherName property.</param>
-        /// <param name="fosterSibling">Initial value of the FosterSibling property.</param>
         /// <param name="city">Initial value of the City property.</param>
         /// <param name="state">Initial value of the State property.</param>
         /// <param name="address">Initial value of the Address property.</param>
         /// <param name="country">Initial value of the Country property.</param>
         /// <param name="phone">Initial value of the Phone property.</param>
-        public static FosterFamily CreateFosterFamily(global::System.Int64 id, global::System.String fatherName, global::System.String motherName, global::System.String fosterSibling, global::System.String city, global::System.String state, global::System.String address, global::System.String country, global::System.String phone)
+        public static FosterFamily CreateFosterFamily(global::System.Int64 id, global::System.String fatherName, global::System.String motherName, global::System.String city, global::System.String state, global::System.String address, global::System.String country, global::System.String phone)
         {
             FosterFamily fosterFamily = new FosterFamily();
             fosterFamily.Id = id;
             fosterFamily.FatherName = fatherName;
             fosterFamily.MotherName = motherName;
-            fosterFamily.FosterSibling = fosterSibling;
             fosterFamily.City = city;
             fosterFamily.State = state;
             fosterFamily.Address = address;
@@ -1437,7 +1450,7 @@ namespace DigitalLifeBooks.Models
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String FosterSibling
         {
@@ -1449,7 +1462,7 @@ namespace DigitalLifeBooks.Models
             {
                 OnFosterSiblingChanging(value);
                 ReportPropertyChanging("FosterSibling");
-                _FosterSibling = StructuralObject.SetValidValue(value, false);
+                _FosterSibling = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("FosterSibling");
                 OnFosterSiblingChanged();
             }
@@ -1577,6 +1590,30 @@ namespace DigitalLifeBooks.Models
         private global::System.String _Phone;
         partial void OnPhoneChanging(global::System.String value);
         partial void OnPhoneChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String FosterSiblingRelationship
+        {
+            get
+            {
+                return _FosterSiblingRelationship;
+            }
+            set
+            {
+                OnFosterSiblingRelationshipChanging(value);
+                ReportPropertyChanging("FosterSiblingRelationship");
+                _FosterSiblingRelationship = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("FosterSiblingRelationship");
+                OnFosterSiblingRelationshipChanged();
+            }
+        }
+        private global::System.String _FosterSiblingRelationship;
+        partial void OnFosterSiblingRelationshipChanging(global::System.String value);
+        partial void OnFosterSiblingRelationshipChanged();
 
         #endregion
 
@@ -2075,17 +2112,11 @@ namespace DigitalLifeBooks.Models
         /// Create a new User object.
         /// </summary>
         /// <param name="id">Initial value of the ID property.</param>
-        /// <param name="firstName">Initial value of the FirstName property.</param>
-        /// <param name="lastName">Initial value of the LastName property.</param>
-        /// <param name="userType">Initial value of the UserType property.</param>
         /// <param name="loginName">Initial value of the LoginName property.</param>
-        public static User CreateUser(global::System.Guid id, global::System.String firstName, global::System.String lastName, global::System.String userType, global::System.String loginName)
+        public static User CreateUser(global::System.Int64 id, global::System.String loginName)
         {
             User user = new User();
             user.ID = id;
-            user.FirstName = firstName;
-            user.LastName = lastName;
-            user.UserType = userType;
             user.LoginName = loginName;
             return user;
         }
@@ -2099,7 +2130,7 @@ namespace DigitalLifeBooks.Models
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.Guid ID
+        public global::System.Int64 ID
         {
             get
             {
@@ -2117,14 +2148,14 @@ namespace DigitalLifeBooks.Models
                 }
             }
         }
-        private global::System.Guid _ID;
-        partial void OnIDChanging(global::System.Guid value);
+        private global::System.Int64 _ID;
+        partial void OnIDChanging(global::System.Int64 value);
         partial void OnIDChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String FirstName
         {
@@ -2136,7 +2167,7 @@ namespace DigitalLifeBooks.Models
             {
                 OnFirstNameChanging(value);
                 ReportPropertyChanging("FirstName");
-                _FirstName = StructuralObject.SetValidValue(value, false);
+                _FirstName = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("FirstName");
                 OnFirstNameChanged();
             }
@@ -2148,7 +2179,7 @@ namespace DigitalLifeBooks.Models
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String LastName
         {
@@ -2160,7 +2191,7 @@ namespace DigitalLifeBooks.Models
             {
                 OnLastNameChanging(value);
                 ReportPropertyChanging("LastName");
-                _LastName = StructuralObject.SetValidValue(value, false);
+                _LastName = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("LastName");
                 OnLastNameChanged();
             }
@@ -2172,7 +2203,7 @@ namespace DigitalLifeBooks.Models
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String UserType
         {
@@ -2184,7 +2215,7 @@ namespace DigitalLifeBooks.Models
             {
                 OnUserTypeChanging(value);
                 ReportPropertyChanging("UserType");
-                _UserType = StructuralObject.SetValidValue(value, false);
+                _UserType = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("UserType");
                 OnUserTypeChanged();
             }
@@ -2343,180 +2374,6 @@ namespace DigitalLifeBooks.Models
         #endregion
 
     }
-<<<<<<< HEAD
-    
-    /// <summary>
-    /// No Metadata Documentation available.
-    /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="DigitalLifeBooksModel", Name="UserSibliing")]
-    [Serializable()]
-    [DataContractAttribute(IsReference=true)]
-    public partial class UserSibliing : EntityObject
-    {
-        #region Factory Method
-    
-        /// <summary>
-        /// Create a new UserSibliing object.
-        /// </summary>
-        /// <param name="id">Initial value of the ID property.</param>
-        public static UserSibliing CreateUserSibliing(global::System.Guid id)
-        {
-            UserSibliing userSibliing = new UserSibliing();
-            userSibliing.ID = id;
-            return userSibliing;
-        }
-
-        #endregion
-
-        #region Primitive Properties
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Guid ID
-        {
-            get
-            {
-                return _ID;
-            }
-            set
-            {
-                if (_ID != value)
-                {
-                    OnIDChanging(value);
-                    ReportPropertyChanging("ID");
-                    _ID = StructuralObject.SetValidValue(value);
-                    ReportPropertyChanged("ID");
-                    OnIDChanged();
-                }
-            }
-        }
-        private global::System.Guid _ID;
-        partial void OnIDChanging(global::System.Guid value);
-        partial void OnIDChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public global::System.String SiblingName
-        {
-            get
-            {
-                return _SiblingName;
-            }
-            set
-            {
-                OnSiblingNameChanging(value);
-                ReportPropertyChanging("SiblingName");
-                _SiblingName = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("SiblingName");
-                OnSiblingNameChanged();
-            }
-        }
-        private global::System.String _SiblingName;
-        partial void OnSiblingNameChanging(global::System.String value);
-        partial void OnSiblingNameChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public global::System.String Relationship
-        {
-            get
-            {
-                return _Relationship;
-            }
-            set
-            {
-                OnRelationshipChanging(value);
-                ReportPropertyChanging("Relationship");
-                _Relationship = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("Relationship");
-                OnRelationshipChanged();
-            }
-        }
-        private global::System.String _Relationship;
-        partial void OnRelationshipChanging(global::System.String value);
-        partial void OnRelationshipChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public Nullable<global::System.Guid> UserID
-        {
-            get
-            {
-                return _UserID;
-            }
-            set
-            {
-                OnUserIDChanging(value);
-                ReportPropertyChanging("UserID");
-                _UserID = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("UserID");
-                OnUserIDChanged();
-            }
-        }
-        private Nullable<global::System.Guid> _UserID;
-        partial void OnUserIDChanging(Nullable<global::System.Guid> value);
-        partial void OnUserIDChanged();
-
-        #endregion
-
-    
-        #region Navigation Properties
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("DigitalLifeBooksModel", "FK_UserSibliing_Users", "User")]
-        public User User
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<User>("DigitalLifeBooksModel.FK_UserSibliing_Users", "User").Value;
-            }
-            set
-            {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<User>("DigitalLifeBooksModel.FK_UserSibliing_Users", "User").Value = value;
-            }
-        }
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [BrowsableAttribute(false)]
-        [DataMemberAttribute()]
-        public EntityReference<User> UserReference
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<User>("DigitalLifeBooksModel.FK_UserSibliing_Users", "User");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<User>("DigitalLifeBooksModel.FK_UserSibliing_Users", "User", value);
-                }
-            }
-        }
-
-        #endregion
-
-    }
-=======
->>>>>>> aefc7d0f84a1ddc11326aa28680665af91816377
 
     #endregion
 

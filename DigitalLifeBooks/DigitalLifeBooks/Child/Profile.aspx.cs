@@ -5,11 +5,15 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using DigitalLifeBooks.Models;
+using System.Web.Security;
 
 namespace DigitalLifeBooks.ChildProfile
 {
     public partial class Profile : BaseDLBPage
     {
+        public Child Child { get; set; }
+        public string ProfilePicPath { get; set; }
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -20,52 +24,58 @@ namespace DigitalLifeBooks.ChildProfile
                 {
                     long id = Convert.ToInt64(profileId);
 
-                    var child = DataContext.Children.FirstOrDefault<Child>(x => x.Id == id);
+                    Child = DataContext.Children.FirstOrDefault<Child>(x => x.Id == id);
 
-                    if (child != null)
+                    if (Child != null)
                     {
-                        hdnId.Value = child.Id.ToString();
+                        hdnId.Value = Child.Id.ToString();
 
-                        
+                        ProfilePicPath = Child.ProfilePickLink;
 
                         //load child details
-                        FullName.Text = child.FirstName;
-                        BirthDate.Text = child.DateOfBirth.ToShortDateString();
-                        BirthCity.Text = child.City;
-                        BirthState.Text = child.State;
-                        BirthCountry.Text = child.Country;
-                        BirthWeight.Text = child.BirthWeight;
-                        BirthLength.Text = child.BirthLength;
+                        FullName.Text = Child.FirstName;
+                        BirthDate.Text = Child.DateOfBirth.ToShortDateString();
+                        BirthCity.Text = Child.City;
+                        BirthState.Text = Child.State;
+                        BirthCountry.Text = Child.Country;
+                        BirthWeight.Text = Child.BirthWeight;
+                        BirthLength.Text = Child.BirthLength;
+                        BirthMother.Text = Child.BirthSiblingRelationship;
+                        BirthSibling.Text = Child.BirthSibling;
+                        cboRelationship.SelectedValue = Child.BirthSiblingRelationship;
+                        CaseWorker.Text = Child.CaseWorker;
                         //TODO: get birth mother
 
-                        if (child.Hospital != null)
+                        if (Child.Hospital != null)
                         {
-                            HospitalName.Text = child.Hospital.Name;
-                            HospitalAddress.Text = child.Hospital.Address;
-                            HospitalCity.Text = child.Hospital.City;
-                            HospitalState.Text = child.Hospital.State;
-                            HospitalPhone.Text = child.Hospital.Phone;
+                            HospitalName.Text = Child.Hospital.Name;
+                            HospitalAddress.Text = Child.Hospital.Address;
+                            HospitalCity.Text = Child.Hospital.City;
+                            HospitalState.Text = Child.Hospital.State;
+                            HospitalPhone.Text = Child.Hospital.Phone;
                         }
 
-                        if (child.FosterFamily != null)
+                        if (Child.FosterFamily != null)
                         {
-                            FatherName.Text = child.FosterFamily.FatherName;
-                            MotherName.Text = child.FosterFamily.MotherName;
-                            FosterAddress.Text = child.FosterFamily.Address;
-                            FosterCity.Text = child.FosterFamily.City;
-                            FosterState.Text = child.FosterFamily.State;
-                            FosterCountry.Text = child.FosterFamily.Country;
-                            FosterPhone.Text = child.FosterFamily.Phone;
+                            FatherName.Text = Child.FosterFamily.FatherName;
+                            MotherName.Text = Child.FosterFamily.MotherName;
+                            FosterAddress.Text = Child.FosterFamily.Address;
+                            FosterCity.Text = Child.FosterFamily.City;
+                            FosterState.Text = Child.FosterFamily.State;
+                            FosterCountry.Text = Child.FosterFamily.Country;
+                            FosterPhone.Text = Child.FosterFamily.Phone;
+                            FosterSibling.Text = Child.FosterFamily.FosterSibling;
+                            cboFosterSibling.SelectedValue = Child.FosterFamily.FosterSiblingRelationship;
                         }
 
-                        if (child.School != null)
+                        if (Child.School != null)
                         {
-                            SchoolName.Text = child.School.Name;
-                            SchoolAddress.Text = child.School.Address;
-                            SchoolCity.Text = child.School.City;
-                            SchoolState.Text = child.School.State;
-                            SchoolCountry.Text = child.School.Country;
-                            SchoolPhone.Text = child.School.Phone;
+                            SchoolName.Text = Child.School.Name;
+                            SchoolAddress.Text = Child.School.Address;
+                            SchoolCity.Text = Child.School.City;
+                            SchoolState.Text = Child.School.State;
+                            SchoolCountry.Text = Child.School.Country;
+                            SchoolPhone.Text = Child.School.Phone;
                         }
                     }
                 }
@@ -82,54 +92,68 @@ namespace DigitalLifeBooks.ChildProfile
             if (Page.IsValid)
             {
                 long id = Convert.ToInt64(hdnId.Value);
-                Child child = DataContext.Children.First(x => x.Id == id);
+                Child = DataContext.Children.First(x => x.Id == id);
 
-                if (child != null)
+                if (Child != null)
                 {
-                    if (child.FosterFamily == null)
-                        child.FosterFamily = new FosterFamily();
+                    if (Child.FosterFamily == null)
+                        Child.FosterFamily = new FosterFamily();
 
-                    child.FosterFamily.FatherName = FatherName.Text;
-                    child.FosterFamily.MotherName = MotherName.Text;
-                    child.FosterFamily.Address = FosterAddress.Text;
-                    child.FosterFamily.City = "cbus";
-                    child.FosterFamily.State = FosterState.Text;
-                    child.FosterFamily.Country = FosterCountry.Text;
-                    child.FosterFamily.Phone = FosterPhone.Text;
-                    child.FosterFamily.FosterSibling = FosterSibling.Text;
+                    Child.FosterFamily.FatherName = FatherName.Text;
+                    Child.FosterFamily.MotherName = MotherName.Text;
+                    Child.FosterFamily.Address = FosterAddress.Text;
+                    Child.FosterFamily.City = "cbus";
+                    Child.FosterFamily.State = FosterState.Text;
+                    Child.FosterFamily.Country = FosterCountry.Text;
+                    Child.FosterFamily.Phone = FosterPhone.Text;
+                    Child.FosterFamily.FosterSibling = FosterSibling.Text;
+                    Child.FosterFamily.FosterSiblingRelationship = cboFosterSibling.SelectedValue;
 
-                    if (child.Hospital == null)
-                        child.Hospital = new Hospital();
+                    if (Child.Hospital == null)
+                        Child.Hospital = new Hospital();
 
-                    child.Hospital.Name = HospitalName.Text;
-                    child.Hospital.Address = HospitalAddress.Text;
-                    child.Hospital.City = HospitalCity.Text;
-                    child.Hospital.State = HospitalState.Text;
-                    child.Hospital.Phone = HospitalPhone.Text;
+                    Child.Hospital.Name = HospitalName.Text;
+                    Child.Hospital.Address = HospitalAddress.Text;
+                    Child.Hospital.City = HospitalCity.Text;
+                    Child.Hospital.State = HospitalState.Text;
+                    Child.Hospital.Phone = HospitalPhone.Text;
 
-                    if (child.School == null)
-                        child.School = new School();
+                    if (Child.School == null)
+                        Child.School = new School();
 
-                    child.School.Name = SchoolName.Text;
-                    child.School.Address = SchoolAddress.Text;
-                    child.School.City = SchoolCity.Text;
-                    child.School.State = SchoolState.Text;
-                    child.School.Country = SchoolCountry.Text;
-                    child.School.Phone = SchoolPhone.Text;
+                    Child.School.Name = SchoolName.Text;
+                    Child.School.Address = SchoolAddress.Text;
+                    Child.School.City = SchoolCity.Text;
+                    Child.School.State = SchoolState.Text;
+                    Child.School.Country = SchoolCountry.Text;
+                    Child.School.Phone = SchoolPhone.Text;
 
                     string[] name = FullName.Text.Split(new string[]{" "}, StringSplitOptions.RemoveEmptyEntries);
 
-                    child.FirstName = name[0];
-                    child.LastName = name.Length > 1 ? name[1] : string.Empty;
-                    child.City = BirthCity.Text;
-                    child.State = BirthState.Text;
-                    child.DateOfBirth = Convert.ToDateTime(BirthDate.Text);
-                    child.Country = BirthCountry.Text;
-                    child.BirthWeight = BirthWeight.Text;
-                    child.BirthLength = BirthLength.Text;
-                    //todo: sibling
+                    Child.FirstName = name[0];
+                    Child.LastName = name.Length > 1 ? name[1] : string.Empty;
+                    Child.City = BirthCity.Text;
+                    Child.State = BirthState.Text;
+                    Child.DateOfBirth = Convert.ToDateTime(BirthDate.Text);
+                    Child.Country = BirthCountry.Text;
+                    Child.BirthWeight = BirthWeight.Text;
+                    Child.BirthLength = BirthLength.Text;
+                    Child.BirthSibling = BirthSibling.Text;
+                    Child.BirthSiblingRelationship = cboRelationship.SelectedValue;
+                    Child.CaseWorker = CaseWorker.Text;
 
-                    DataContext.SaveChanges();
+                    try
+                    {
+                        DataContext.SaveChanges();
+
+                        Response.Redirect(string.Format("/ChildProfile/Dashboard.aspx?ChildId={0}", Child.Id));
+                    }
+                    catch (Exception ex)
+                    {
+                        //TODO: log error
+
+                        lblStatus.Text = "Unable to save the profile data.";
+                    }
                 }
             }
         }

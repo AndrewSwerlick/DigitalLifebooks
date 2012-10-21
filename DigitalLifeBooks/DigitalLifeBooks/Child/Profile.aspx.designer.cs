@@ -13,6 +13,24 @@ namespace DigitalLifeBooks.ChildProfile {
     public partial class Profile {
         
         /// <summary>
+        /// lblStatus control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblStatus;
+        
+        /// <summary>
+        /// SecurityTrimmedPanel1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DigitalLifeBooks.ServerControls.SecurityTrimmedPanel SecurityTrimmedPanel1;
+        
+        /// <summary>
         /// FullName control.
         /// </summary>
         /// <remarks>
@@ -128,6 +146,15 @@ namespace DigitalLifeBooks.ChildProfile {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox BirthMother;
+        
+        /// <summary>
+        /// CaseWorker control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox CaseWorker;
         
         /// <summary>
         /// BirthSibling control.

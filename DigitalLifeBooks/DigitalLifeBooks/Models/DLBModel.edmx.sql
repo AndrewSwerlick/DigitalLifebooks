@@ -2,13 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
 -- --------------------------------------------------
-<<<<<<< HEAD
--- Date Created: 10/20/2012 20:03:14
+-- Date Created: 10/20/2012 23:36:48
 -- Generated from EDMX file: C:\Projects\DigitalLifeBooks\DigitalLifebooks\DigitalLifeBooks\DigitalLifeBooks\Models\DLBModel.edmx
-=======
--- Date Created: 10/20/2012 19:22:48
--- Generated from EDMX file: C:\Projects\DigitalLifebooks\DigitalLifebooks\DigitalLifeBooks\DigitalLifeBooks\Models\DLBModel.edmx
->>>>>>> aefc7d0f84a1ddc11326aa28680665af91816377
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -34,15 +29,15 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_ChildAlbum]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Albums] DROP CONSTRAINT [FK_ChildAlbum];
 GO
-<<<<<<< HEAD
 IF OBJECT_ID(N'[dbo].[FK_HospitalChild]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Children] DROP CONSTRAINT [FK_HospitalChild];
 GO
 IF OBJECT_ID(N'[dbo].[FK_ChildFosterFamily]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Children] DROP CONSTRAINT [FK_ChildFosterFamily];
 GO
-=======
->>>>>>> aefc7d0f84a1ddc11326aa28680665af91816377
+IF OBJECT_ID(N'[dbo].[FK_ChildSchool]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Children] DROP CONSTRAINT [FK_ChildSchool];
+GO
 
 -- --------------------------------------------------
 -- Dropping existing tables
@@ -65,6 +60,9 @@ IF OBJECT_ID(N'[dbo].[Hospitals]', 'U') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[FosterFamilies]', 'U') IS NOT NULL
     DROP TABLE [dbo].[FosterFamilies];
+GO
+IF OBJECT_ID(N'[dbo].[Schools]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Schools];
 GO
 IF OBJECT_ID(N'[dbo].[ChildUser]', 'U') IS NOT NULL
     DROP TABLE [dbo].[ChildUser];
@@ -126,7 +124,10 @@ CREATE TABLE [dbo].[Children] (
     [BirthLength] nvarchar(max)  NULL,
     [Last4SSN] nvarchar(max)  NOT NULL,
     [FosterFamilyId] bigint  NULL,
-    [SchoolId] bigint  NULL
+    [SchoolId] bigint  NULL,
+    [BirthSibling] nvarchar(60)  NULL,
+    [BirthSiblingRelationship] nvarchar(15)  NULL,
+    [CaseWorker] nvarchar(60)  NULL
 );
 GO
 
@@ -146,12 +147,13 @@ CREATE TABLE [dbo].[FosterFamilies] (
     [Id] bigint IDENTITY(1,1) NOT NULL,
     [FatherName] nvarchar(max)  NOT NULL,
     [MotherName] nvarchar(max)  NOT NULL,
-    [FosterSibling] nvarchar(max)  NOT NULL,
+    [FosterSibling] nvarchar(60)  NULL,
     [City] nvarchar(max)  NOT NULL,
     [State] nvarchar(max)  NOT NULL,
     [Address] nvarchar(max)  NOT NULL,
     [Country] nvarchar(max)  NOT NULL,
-    [Phone] nvarchar(max)  NOT NULL
+    [Phone] nvarchar(max)  NOT NULL,
+    [FosterSiblingRelationship] nvarchar(15)  NULL
 );
 GO
 

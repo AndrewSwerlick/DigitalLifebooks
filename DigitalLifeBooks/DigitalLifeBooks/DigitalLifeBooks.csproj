@@ -67,11 +67,8 @@
     <Content Include="Albums\NewOrEditAlbum.aspx" />
     <Content Include="Albums\Upload.aspx" />
     <Content Include="Admin\Create\NewChild.aspx" />
-<<<<<<< HEAD
     <Content Include="Child\Profile.aspx" />
-=======
     <Content Include="ChildProfile\Dashboard.aspx" />
->>>>>>> aefc7d0f84a1ddc11326aa28680665af91816377
     <Content Include="email.txt" />
     <Content Include="Scripts\init.js" />
     <Content Include="Scripts\initTooltips.js" />
@@ -229,21 +226,19 @@
     <Compile Include="BaseDLBPage.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-<<<<<<< HEAD
     <Compile Include="Child\Profile.aspx.cs">
       <DependentUpon>Profile.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Child\Profile.aspx.designer.cs">
       <DependentUpon>Profile.aspx</DependentUpon>
-=======
+    </Compile>
     <Compile Include="ChildProfile\Dashboard.aspx.cs">
       <DependentUpon>Dashboard.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="ChildProfile\Dashboard.aspx.designer.cs">
       <DependentUpon>Dashboard.aspx</DependentUpon>
->>>>>>> aefc7d0f84a1ddc11326aa28680665af91816377
     </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
