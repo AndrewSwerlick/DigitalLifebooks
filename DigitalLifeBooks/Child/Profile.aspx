@@ -19,7 +19,7 @@
     <div>
     <h1>Profile</h1>
     <img src='<%= ProfilePicPath %>' alt=<%= Child.FirstName + Child.LastName %> /> 
-    <div class="album root" data-albumid='<%=AlbumId%>'>
+    <div class="album row" data-albumid='<%=AlbumId%>'>
         <a href="#" class="upload">update profile pic</a>
 
     </div>

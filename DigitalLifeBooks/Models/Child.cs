@@ -20,7 +20,7 @@ namespace DigitalLifeBooks.Models
                 if (profilePic == null)
                     return DEFAULT_PROFILE_LINK;
                 
-                return "/Assets?Id=" + profilePic.ID;
+                return "/Assets.ashx?Id=" + profilePic.ID;
             }
         }
 
