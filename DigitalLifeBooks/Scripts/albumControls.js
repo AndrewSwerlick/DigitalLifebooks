@@ -22,9 +22,11 @@
 
 
             e.preventDefault();
+            return false;
         });
 
         $("a.newAlbum").on('click', function (e) {
+            e.preventDefault();
             var link = $(this);
             var childId = $(this).data("childid");
             var iframe = $("<iframe src=/Albums/NewOrEditAlbum.aspx?ChildId=" + childId + "/>");
@@ -43,17 +45,22 @@
                 title: 'Edit'
             });
 
-            e.preventDefault();
+            return false;
         });
 
         $("a.delete").on('click', function (e) {
-            var id = $(this).data("entityId");
-            var type = $(this).data("entityType");
+            e.preventDefault();
+            if (!confirm("Are you sure you want to delete this item")) {
+                return false;
+            }
+
+            var id = $(this).data("entityid");
+            var type = $(this).data("entitytype");
 
             $.post('/Services/Delete.asmx/DeleteEntity', "EntityType=" + type + "&EnityID=" + id, function (data) {
                 document.location.reload(true);
             });
-            e.preventDefault();
+            return false;
         });
 
         $("a.next").on('click', function (e) {

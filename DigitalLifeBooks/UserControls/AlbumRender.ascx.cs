@@ -20,6 +20,7 @@ namespace DigitalLifeBooks.UserControls
         }
         public Album Album { get; set; }
         public int? PageNumber { get; set; }
+        public bool EnablePaging { get; set; }
         public int? ItemsPerPage { get; set; }
 
         protected override void OnInit(EventArgs e)
@@ -40,14 +41,18 @@ namespace DigitalLifeBooks.UserControls
 
                 if (!thereAreEnoughItems)
                 {
-                    var numberOfPages = Album.Assets.Count / ItemsPerPage.Value;
-                    numberOfItemsToSkip = (numberOfPages - 1) * ItemsPerPage.Value;
+                    double quotient = Album.Assets.Count / ItemsPerPage.Value;
+                    var numberOfPages = Convert.ToInt32(Math.Floor(quotient));
+                    numberOfItemsToSkip = (numberOfPages) * ItemsPerPage.Value;
                 }
 
+                IEnumerable<Asset> assetsForThisPage;
+                if (EnablePaging)
+                    assetsForThisPage = Album.Assets.Skip(numberOfItemsToSkip).Take(ItemsPerPage.Value);
+                else
+                    assetsForThisPage = Album.Assets;
 
-
-                var assetsForThisPage = Album.Assets.Skip(numberOfItemsToSkip).Take(ItemsPerPage.Value);
-                Assets.DataSource = Album.Assets;
+                Assets.DataSource = assetsForThisPage;
                 Assets.DataBind();
             }
             base.DataBind();

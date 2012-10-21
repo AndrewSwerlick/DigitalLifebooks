@@ -104,7 +104,6 @@ textarea {
 }
 .col-1, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-10, .col-11, .col-12{
     float: left;
-    margin-left:10px;
     margin-right: 10px;
 }
 .alpha{
@@ -117,13 +116,13 @@ textarea {
     width:80px;
 }
 .col-2{
-    width:180px;
+    width:120px;
 }
 .col-3{
     width:280px;
 }
 .col-4{
-    width:380px;
+    width:400px;
 }
 .col-5{
     width:480px;
@@ -372,8 +371,8 @@ textarea {
     text-transform:capitalize;
    }
    .child-dashboard #content #header #foster-child-image-container{
-    width:146px;
-    height:146px;
+    width:120px;
+    height:120px;
    }
    .child-dashboard #content #header #foster-child-image-container img{
     width:100%;
@@ -389,7 +388,19 @@ textarea {
     font-weight: 300;
     color:#F04E30;
     font-size:2.5em;
-    margin-bottom: 10px;
+    margin-bottom: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-top: 10px;
+    text-transform:capitalize;
+    border-bottom: 1px solid #F04E30;
+   }
+   
+   .child-dashboard #content .header-3{
+    font-weight: 300;
+    color:#F04E30;
+    font-size:2em;
+    margin-bottom: 0px;
     margin-left: 0px;
     margin-right: 0px;
     margin-top: 10px;
@@ -397,6 +408,7 @@ textarea {
    }
    .child-dashboard #content .childDelete{
     float:right;
+    margin-top:-120px;
    }   
    .child-dashboard #content .albumDelete{
     float: right;
@@ -432,9 +444,9 @@ textarea {
         color: rgb(34,34,34);
    }
    
-   div#content input{
+  /* div#content input{
         width: 30em;	
-   }
+   }*/
    
 /* ====================================================================
     User Profile
@@ -493,7 +505,16 @@ textarea {
     font-size: 16px;
     word-wrap:break-word;
    }
-
+/*==========================================================================
+    AdminForms
+============================================================================*/
+    div#content div.adminForm input{
+        width:auto;
+    }
+    div#content div.adminForm input[type:radio]{
+        height:5px;
+        margin-left:5px;
+    }
 /* ==========================================================================
    Helper classes
    ========================================================================== */

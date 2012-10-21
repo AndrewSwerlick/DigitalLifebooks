@@ -2,9 +2,16 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-<asp:Panel runat="server" ID="NewForm">
-        <div>
-            <table>
+<%--<asp:Panel runat="server" ID="NewForm">--%>
+
+                        <Label>Search Children</Label>
+                    
+                        <asp:TextBox ID="txtSeachChildren" CssClass="inputsearch" runat="server"></asp:TextBox>
+                 
+                        <asp:Button runat="server" ID="SearchButton" CssClass="SearchButton" Text="Search" OnClick="On_Search_Click" />
+        
+
+<%--            <table>
                 <tr>
                     <td>
                         <asp:Label ID="Label1" runat="server">Search Children</asp:Label>
@@ -17,7 +24,7 @@
                     </td>
                 </tr>
             </table>         
-        </div>
+        </div>--%>
         <div>
             <asp:Repeater ID="rtChildren" runat="server">            
                 <HeaderTemplate>
@@ -29,7 +36,7 @@
                         <ItemTemplate>
                             <tr>
                                 <td>
-                                   <a href="#"><%#Eval("FirstName")  %> + " " + <%#Eval("LastName") %></a>
+                                   <a href="/ChildProfile/Dashboard.aspx?ChildId=<%#Eval("Id") %>"><%#Eval("FirstName")  %> <%#Eval("LastName") %></a>
                                 </td>
                             </tr>
                         </ItemTemplate>
@@ -38,5 +45,7 @@
                 </FooterTemplate>
             </asp:Repeater>   
         </div>
-    </asp:Panel>
+  <%--  </asp:Panel>--%>
 </asp:Content>
+
+

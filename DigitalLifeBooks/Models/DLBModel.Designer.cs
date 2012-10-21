@@ -8,13 +8,12 @@
 //------------------------------------------------------------------------------
 
 using System;
-using System.ComponentModel;
-using System.Data.EntityClient;
 using System.Data.Objects;
 using System.Data.Objects.DataClasses;
-using System.Linq;
-using System.Runtime.Serialization;
+using System.Data.EntityClient;
+using System.ComponentModel;
 using System.Xml.Serialization;
+using System.Runtime.Serialization;
 
 [assembly: EdmSchemaAttribute()]
 #region EDM Relationship Metadata
@@ -189,7 +188,6 @@ namespace DigitalLifeBooks.Models
         private ObjectSet<School> _Schools;
 
         #endregion
-
         #region AddTo Methods
     
         /// <summary>
@@ -249,11 +247,11 @@ namespace DigitalLifeBooks.Models
         }
 
         #endregion
-
     }
+    
 
     #endregion
-
+    
     #region Entities
     
     /// <summary>
@@ -284,7 +282,6 @@ namespace DigitalLifeBooks.Models
         }
 
         #endregion
-
         #region Primitive Properties
     
         /// <summary>
@@ -483,7 +480,6 @@ namespace DigitalLifeBooks.Models
         partial void OnIsProfilePictureAlbumChanged();
 
         #endregion
-
     
         #region Navigation Properties
     
@@ -548,7 +544,6 @@ namespace DigitalLifeBooks.Models
         }
 
         #endregion
-
     }
     
     /// <summary>
@@ -573,7 +568,6 @@ namespace DigitalLifeBooks.Models
         }
 
         #endregion
-
         #region Primitive Properties
     
         /// <summary>
@@ -700,7 +694,6 @@ namespace DigitalLifeBooks.Models
         partial void OnCaptionChanged();
 
         #endregion
-
     
         #region Navigation Properties
     
@@ -743,7 +736,6 @@ namespace DigitalLifeBooks.Models
         }
 
         #endregion
-
     }
     
     /// <summary>
@@ -776,7 +768,6 @@ namespace DigitalLifeBooks.Models
         }
 
         #endregion
-
         #region Primitive Properties
     
         /// <summary>
@@ -1167,7 +1158,6 @@ namespace DigitalLifeBooks.Models
         partial void OnCaseWorkerChanged();
 
         #endregion
-
     
         #region Navigation Properties
     
@@ -1330,7 +1320,6 @@ namespace DigitalLifeBooks.Models
         }
 
         #endregion
-
     }
     
     /// <summary>
@@ -1369,7 +1358,6 @@ namespace DigitalLifeBooks.Models
         }
 
         #endregion
-
         #region Primitive Properties
     
         /// <summary>
@@ -1616,7 +1604,6 @@ namespace DigitalLifeBooks.Models
         partial void OnFosterSiblingRelationshipChanged();
 
         #endregion
-
     
         #region Navigation Properties
     
@@ -1643,7 +1630,6 @@ namespace DigitalLifeBooks.Models
         }
 
         #endregion
-
     }
     
     /// <summary>
@@ -1678,7 +1664,6 @@ namespace DigitalLifeBooks.Models
         }
 
         #endregion
-
         #region Primitive Properties
     
         /// <summary>
@@ -1829,7 +1814,6 @@ namespace DigitalLifeBooks.Models
         partial void OnPhoneChanged();
 
         #endregion
-
     
         #region Navigation Properties
     
@@ -1856,7 +1840,6 @@ namespace DigitalLifeBooks.Models
         }
 
         #endregion
-
     }
     
     /// <summary>
@@ -1893,7 +1876,6 @@ namespace DigitalLifeBooks.Models
         }
 
         #endregion
-
         #region Primitive Properties
     
         /// <summary>
@@ -2068,7 +2050,6 @@ namespace DigitalLifeBooks.Models
         partial void OnPhoneChanged();
 
         #endregion
-
     
         #region Navigation Properties
     
@@ -2095,7 +2076,6 @@ namespace DigitalLifeBooks.Models
         }
 
         #endregion
-
     }
     
     /// <summary>
@@ -2122,7 +2102,6 @@ namespace DigitalLifeBooks.Models
         }
 
         #endregion
-
         #region Primitive Properties
     
         /// <summary>
@@ -2345,7 +2324,6 @@ namespace DigitalLifeBooks.Models
         partial void OnLoginNameChanged();
 
         #endregion
-
     
         #region Navigation Properties
     
@@ -2372,10 +2350,8 @@ namespace DigitalLifeBooks.Models
         }
 
         #endregion
-
     }
 
     #endregion
-
     
 }

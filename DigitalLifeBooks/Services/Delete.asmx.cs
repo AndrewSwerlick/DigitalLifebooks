@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Services;
 using DigitalLifeBooks.Models;
 using DigitalLifeBooks.AssetManagement;
+using System.Web.Security;
 
 namespace DigitalLifeBooks.Services
 {
@@ -47,6 +48,7 @@ namespace DigitalLifeBooks.Services
             if (EntityType == "Child")
                 DeleteChild(id);
 
+            DataContext.SaveChanges();
             return "sucess";                        
         }
 
@@ -66,7 +68,16 @@ namespace DigitalLifeBooks.Services
         private void DeleteUser(long EnityID)
         {
             var user = DataContext.Users.Single(u => u.ID == EnityID);
+            if (user.LoginName == HttpContext.Current.User.Identity.Name)
+                throw new InvalidOperationException("cannot delete yourself");
+                
+            for (int i = 0; user.Children.Count != 0; i++)
+            {
+                var child = user.Children.ElementAt(i);
+                user.Children.Remove(child);
+            }
             DataContext.Users.DeleteObject(user);
+            Membership.DeleteUser(user.LoginName);
         }
 
         private void DeleteAsset(long EnityID)
@@ -89,6 +100,11 @@ namespace DigitalLifeBooks.Services
                     DataContext.Assets.DeleteObject(asset);
                 }
                 DataContext.Albums.DeleteObject(album);
+            }
+            for (int i = 0; child.Users.Count != 0; i++)
+            {
+                var user = child.Users.ElementAt(i);
+                child.Users.Remove(user);
             }
             DataContext.Children.DeleteObject(child);
         }

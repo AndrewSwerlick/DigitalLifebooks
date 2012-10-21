@@ -24,6 +24,15 @@ namespace DigitalLifeBooks.Models
             }
         }
 
+        public long ProfileAlbumId
+        {
+            get
+            {
+                var profilePicAlbum = Albums.SingleOrDefault(a => a.IsProfilePictureAlbum);
+                return profilePicAlbum.ID;
+            }
+        }
+
         public string Age
         {
             get
@@ -37,22 +46,7 @@ namespace DigitalLifeBooks.Models
                 return age;
             }
         }
-
-        public Child()
-        {
-            Albums.Add(new Album()
-            {
-                Title = "Important Documents",
-                IsImportanDocumentsAlbum = true
-            });
-
-            Albums.Add(new Album()
-            {
-                Title = "ProfilePicture",
-                IsProfilePictureAlbum = true
-            });
-        }
-
+        
         public bool UserIsAuthorizedForChild(User user)
         {
 #if DEBUG

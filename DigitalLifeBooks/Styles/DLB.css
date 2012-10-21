@@ -507,3 +507,37 @@ button.datepick-cmd {
     width: 100px;
     height: 100px;
 }
+#content label, #content .inputsearch
+{
+    display:block;
+}
+#addchildfrm label
+{
+    display:inline;
+    margin-left:10px;
+}
+#content .SearchButton,.SaveButton
+{
+    width:90px;
+}
+.SaveButton
+{
+    padding:0 !important;
+}
+th
+{
+    text-align:left;
+}
+div#content input .textinput
+{
+    width:150px !important;
+}
+div#content input .dateinput
+{
+    width:100px !important;
+}
+div#content input .numberinput
+{
+    width:75px !important;
+}
+

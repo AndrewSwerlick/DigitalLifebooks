@@ -22,8 +22,14 @@ namespace DigitalLifeBooks.Users
                 User = LoadUser(_userId);
             else
                 User = CurrentUser;
+
+            if (User == null)
+                Response.Redirect("/Users/UserNotFound.aspx");
+            
             if (!IsPostBack)
                 LoadProfileInfo(User);
+
+
 
             UserChildren.DoNotUseCurrentUser = true;
             UserChildren.User = User;
@@ -63,7 +69,7 @@ namespace DigitalLifeBooks.Users
 
         private User LoadUser(string userId)
         {
-            return DataContext.Users.Single(a => a.LoginName == userId);
+            return DataContext.Users.SingleOrDefault(a => a.LoginName == userId);
         }
     }
 }
