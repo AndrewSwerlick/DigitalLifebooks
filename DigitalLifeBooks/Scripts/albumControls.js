@@ -22,9 +22,11 @@
 
 
             e.preventDefault();
+            return false;
         });
 
         $("a.newAlbum").on('click', function (e) {
+            e.preventDefault();
             var link = $(this);
             var childId = $(this).data("childid");
             var iframe = $("<iframe src=/Albums/NewOrEditAlbum.aspx?ChildId=" + childId + "/>");
@@ -43,7 +45,7 @@
                 title: 'Edit'
             });
 
-            e.preventDefault();
+            return false;
         });
 
         $("a.delete").on('click', function (e) {
@@ -54,6 +56,7 @@
                 document.location.reload(true);
             });
             e.preventDefault();
+            return false;
         });
 
         $("a.next").on('click', function (e) {
