@@ -44,8 +44,10 @@ namespace DigitalLifeBooks.Admin.UserManagement
                 Text = string.Format("{0} {1} {2} {3}", c.FirstName, c.LastName, c.DateOfBirth.ToShortDateString(), c.Last4SSN),
                 Value = c.Id.ToString()
             });
-
-            ChildSearchResultChoices.Items.AddRange(childrenListItems.ToArray());
+            if (childrenListItems.Count() > 0)
+                ChildSearchResultChoices.Items.AddRange(childrenListItems.ToArray());
+            else
+                NoResultsFound.Visible = true;
         }
 
         private void UpdateConfirmationMessageWithInformationAboutUpdatedChild(Child updatedChild)

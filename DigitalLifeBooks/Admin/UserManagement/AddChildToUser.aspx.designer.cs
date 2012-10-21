@@ -49,6 +49,15 @@ namespace DigitalLifeBooks.Admin.UserManagement {
         protected global::System.Web.UI.WebControls.RadioButtonList ChildSearchResultChoices;
         
         /// <summary>
+        /// NoResultsFound control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal NoResultsFound;
+        
+        /// <summary>
         /// Next control.
         /// </summary>
         /// <remarks>
