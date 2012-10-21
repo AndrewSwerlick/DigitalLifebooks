@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Register" Language="C#" MasterPageFile="~/Masterpages/Site.master" AutoEventWireup="true"
+﻿<%@ Page Title="Register" Language="C#" MasterPageFile="~/Masterpages/OldSite.master" AutoEventWireup="true"
     CodeBehind="Register.aspx.cs" Inherits="DigitalLifeBooks.Account.Register" %>
 
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">

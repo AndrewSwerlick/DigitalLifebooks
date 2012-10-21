@@ -11,7 +11,7 @@
             </HeaderTemplate>
             <ItemTemplate>
                 <div class="search-result">
-                    <a href="#">
+                    <a href='<%# ""(Container.DataItem as User) %>'>
                         <%# (Container.DataItem as User).FirstName + " " + (Container.DataItem as User).LastName%>
                     </a>    
                 </div>

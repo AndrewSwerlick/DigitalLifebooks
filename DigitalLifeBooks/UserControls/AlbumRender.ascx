@@ -2,11 +2,12 @@
 <%@ Import Namespace="DigitalLifeBooks.UserControls" %>
 <%@ Import Namespace="DigitalLifeBooks.Models" %>
 <%@ Register Src="~/UserControls/AssetRender.ascx" TagPrefix="dlb" TagName="AssetRender" %>
+<div class="album row">
+    
 
-<span><%= Album.Title %></span>
-
-<asp:Repeater runat="server" ID="Assets" OnItemCreated="On_AssetsRender_Created">
-    <ItemTemplate>
-        <dlb:AssetRender runat="server" ID="AssetRender"></dlb:AssetRender>
-    </ItemTemplate>
-</asp:Repeater>
+    <asp:Repeater runat="server" ID="Assets" OnItemCreated="On_AssetsRender_Created">
+        <ItemTemplate>   
+            <dlb:AssetRender runat="server" ID="AssetRender"></dlb:AssetRender>
+        </ItemTemplate>
+    </asp:Repeater>
+ </div>

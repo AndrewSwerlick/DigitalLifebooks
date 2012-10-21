@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Masterpages/Site.master" AutoEventWireup="true"
+﻿<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Masterpages/OldSite.master" AutoEventWireup="true"
     CodeBehind="Default.aspx.cs" Inherits="DigitalLifeBooks._Default" %>
 
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
