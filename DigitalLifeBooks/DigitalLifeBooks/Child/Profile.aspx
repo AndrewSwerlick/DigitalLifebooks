@@ -1,13 +1,10 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Masterpages/Site.Master" AutoEventWireup="true" CodeBehind="Profile.aspx.cs" Inherits="DigitalLifeBooks.Child.Profile" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Masterpages/Site.Master" AutoEventWireup="true" CodeBehind="Profile.aspx.cs" Inherits="DigitalLifeBooks.ChildProfile.Profile" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 <div>
     <h1>Profile</h1>
     <%--<img src="/Assets.ashx"--%>
-
-    <a href="#" id="update">update</a>
-    <a href="#" id="delete">delete</a>
 
     <label for="FullName">Name:</label>
     <asp:TextBox ID="FullName" runat="server"></asp:TextBox>
@@ -36,6 +33,9 @@
     <label for="HospitalState">Hospital State:</label>
     <asp:TextBox ID="HospitalState" runat="server"></asp:TextBox>
 
+    <label for="HospitalPhone">Hospital Phone:</label>
+    <asp:TextBox ID="HospitalPhone" runat="server"></asp:TextBox>
+
     <label for="BirthWeight">Birth Weight:</label>
     <asp:TextBox ID="BirthWeight" runat="server"></asp:TextBox>
 
@@ -49,8 +49,8 @@
     <asp:TextBox ID="BirthSibling" runat="server"></asp:TextBox>
     <asp:DropDownList ID="cboRelationship" runat="server">
         <asp:ListItem Text="Relationship" Value=""></asp:ListItem>
-        <asp:ListItem Text="Relationship" Value="brother"></asp:ListItem>
-        <asp:ListItem Text="Relationship" Value="sister"></asp:ListItem>
+        <asp:ListItem Text="brother" Value="brother"></asp:ListItem>
+        <asp:ListItem Text="sister" Value="sister"></asp:ListItem>
     </asp:DropDownList>
     <a href="#" id="addsibling">Add Sibling</a>
 </div>
@@ -60,20 +60,23 @@
     <label for="FatherName">Father's Name:</label>
     <asp:TextBox ID="FatherName" runat="server"></asp:TextBox>
 
-    <label for="FatherName">Mother's Name:</label>
-    <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+    <label for="MotherName">Mother's Name:</label>
+    <asp:TextBox ID="MotherName" runat="server"></asp:TextBox>
 
-    <label for="FatherName">Foster Sibling:</label>
-    <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
-    <asp:DropDownList ID="DropDownList1" runat="server">
+    <label for="FosterSibling">Foster Sibling:</label>
+    <asp:TextBox ID="FosterSibling" runat="server"></asp:TextBox>
+    <asp:DropDownList ID="cboFosterSibling" runat="server">
         <asp:ListItem Text="Relationship" Value=""></asp:ListItem>
-        <asp:ListItem Text="Relationship" Value="brother"></asp:ListItem>
-        <asp:ListItem Text="Relationship" Value="sister"></asp:ListItem>
+        <asp:ListItem Text="brother" Value="brother"></asp:ListItem>
+        <asp:ListItem Text="sister" Value="sister"></asp:ListItem>
     </asp:DropDownList>
     <a href="#" id="a1">Add Sibling</a>
 
     <label for="FosterAddress">Address:</label>
     <asp:TextBox ID="FosterAddress" runat="server"></asp:TextBox>
+
+    <label for="FosterCity">City:</label>
+    <asp:TextBox ID="FosterCity" runat="server"></asp:TextBox>
 
     <label for="FosterState">State:</label>
     <asp:TextBox ID="FosterState" runat="server"></asp:TextBox>
@@ -106,8 +109,9 @@
     <a href="#" id="addschool">Add School</a>
 </div>
 <div>
-    <input type="submit" id="edit" value="edit" />
-    <input type="submit" id="save" value="save" />
+    <asp:Button runat="server" ID="save" Text="save" onclick="save_Click" />
+    <input type="button" id="cancel" value="cancel" />
+    <asp:HiddenField ID="hdnId" runat="server" />
 </div>
 
 </asp:Content>

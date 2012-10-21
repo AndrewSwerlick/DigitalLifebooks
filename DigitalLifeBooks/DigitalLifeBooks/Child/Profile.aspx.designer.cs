@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DigitalLifeBooks.Child {
+namespace DigitalLifeBooks.ChildProfile {
     
     
     public partial class Profile {
@@ -94,6 +94,15 @@ namespace DigitalLifeBooks.Child {
         protected global::System.Web.UI.WebControls.TextBox HospitalState;
         
         /// <summary>
+        /// HospitalPhone control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox HospitalPhone;
+        
+        /// <summary>
         /// BirthWeight control.
         /// </summary>
         /// <remarks>
@@ -148,31 +157,31 @@ namespace DigitalLifeBooks.Child {
         protected global::System.Web.UI.WebControls.TextBox FatherName;
         
         /// <summary>
-        /// TextBox1 control.
+        /// MotherName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+        protected global::System.Web.UI.WebControls.TextBox MotherName;
         
         /// <summary>
-        /// TextBox2 control.
+        /// FosterSibling control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox2;
+        protected global::System.Web.UI.WebControls.TextBox FosterSibling;
         
         /// <summary>
-        /// DropDownList1 control.
+        /// cboFosterSibling control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList1;
+        protected global::System.Web.UI.WebControls.DropDownList cboFosterSibling;
         
         /// <summary>
         /// FosterAddress control.
@@ -182,6 +191,15 @@ namespace DigitalLifeBooks.Child {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox FosterAddress;
+        
+        /// <summary>
+        /// FosterCity control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox FosterCity;
         
         /// <summary>
         /// FosterState control.
@@ -263,5 +281,23 @@ namespace DigitalLifeBooks.Child {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox SchoolPhone;
+        
+        /// <summary>
+        /// save control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button save;
+        
+        /// <summary>
+        /// hdnId control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hdnId;
     }
 }

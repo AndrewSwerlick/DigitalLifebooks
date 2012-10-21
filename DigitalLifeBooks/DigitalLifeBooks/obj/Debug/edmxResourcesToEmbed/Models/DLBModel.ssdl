@@ -1,0 +1,251 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DigitalLifeBooksModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="DigitalLifeBooksModelStoreContainer">
+    <EntitySet Name="UserSibliings" EntityType="DigitalLifeBooksModel.Store.UserSibliings" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Assets" EntityType="DigitalLifeBooksModel.Store.Assets" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Albums" EntityType="DigitalLifeBooksModel.Store.Albums" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Users" EntityType="DigitalLifeBooksModel.Store.Users" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Children" EntityType="DigitalLifeBooksModel.Store.Children" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Hospitals" EntityType="DigitalLifeBooksModel.Store.Hospitals" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="FosterFamilies" EntityType="DigitalLifeBooksModel.Store.FosterFamilies" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Schools" EntityType="DigitalLifeBooksModel.Store.Schools" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ChildUser" EntityType="DigitalLifeBooksModel.Store.ChildUser" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="AssetAlbum" Association="DigitalLifeBooksModel.Store.AssetAlbum">
+      <End Role="Asset" EntitySet="Assets" />
+      <End Role="Album" EntitySet="Albums" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserSibliing_Users" Association="DigitalLifeBooksModel.Store.FK_UserSibliing_Users">
+      <End Role="User" EntitySet="Users" />
+      <End Role="UserSibliing" EntitySet="UserSibliings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ChildUser_Child" Association="DigitalLifeBooksModel.Store.FK_ChildUser_Child">
+      <End Role="Child" EntitySet="Children" />
+      <End Role="ChildUser" EntitySet="ChildUser" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ChildUser_User" Association="DigitalLifeBooksModel.Store.FK_ChildUser_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="ChildUser" EntitySet="ChildUser" />
+    </AssociationSet>
+    <AssociationSet Name="ChildAlbum" Association="DigitalLifeBooksModel.Store.ChildAlbum">
+      <End Role="Child" EntitySet="Children" />
+      <End Role="Album" EntitySet="Albums" />
+    </AssociationSet>
+    <AssociationSet Name="HospitalChild" Association="DigitalLifeBooksModel.Store.HospitalChild">
+      <End Role="Hospital" EntitySet="Hospitals" />
+      <End Role="Child" EntitySet="Children" />
+    </AssociationSet>
+    <AssociationSet Name="ChildFosterFamily" Association="DigitalLifeBooksModel.Store.ChildFosterFamily">
+      <End Role="Child" EntitySet="Children" />
+      <End Role="FosterFamily" EntitySet="FosterFamilies" />
+    </AssociationSet>
+    <AssociationSet Name="ChildSchool" Association="DigitalLifeBooksModel.Store.ChildSchool">
+      <End Role="Child" EntitySet="Children" />
+      <End Role="School" EntitySet="Schools" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="UserSibliings">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="SiblingName" Type="varchar(max)" Nullable="true" />
+    <Property Name="Relationship" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="UserID" Type="uniqueidentifier" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Assets">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="URL" Type="varchar" Nullable="true" MaxLength="255" />
+    <Property Name="Type" Type="varchar" Nullable="true" MaxLength="20" />
+    <Property Name="Location" Type="varchar" Nullable="true" MaxLength="255" />
+    <Property Name="Caption" Type="varchar(max)" Nullable="true" />
+    <Property Name="AlbumID" Type="bigint" Nullable="false" />
+    <Property Name="Album_ID" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Albums">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="varchar" Nullable="true" MaxLength="255" />
+    <Property Name="DateCreated" Type="datetime" Nullable="true" />
+    <Property Name="Description" Type="varchar(max)" Nullable="true" />
+    <Property Name="EventDate" Type="datetime" Nullable="true" />
+    <Property Name="ChildId" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="FirstName" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="LastName" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="UserType" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="Email" Type="varchar(max)" Nullable="true" />
+    <Property Name="PhoneNumber" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="City" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="State" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="LoginName" Type="varchar" Nullable="false" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Children">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="LastName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="DateOfBirth" Type="datetime" Nullable="false" />
+    <Property Name="City" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="State" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Country" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="HospitalID" Type="bigint" Nullable="true" />
+    <Property Name="BirthWeight" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="BirthLength" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Last4SSN" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="FosterFamilyId" Type="bigint" Nullable="true" />
+    <Property Name="SchoolId" Type="bigint" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Hospitals">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="City" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="State" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Address" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Phone" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="FosterFamilies">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FatherName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="MotherName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="FosterSibling" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="City" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="State" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Address" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Country" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Phone" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Schools">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Address" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="City" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="State" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Country" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Phone" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ChildUser">
+    <Key>
+      <PropertyRef Name="Children_Id" />
+      <PropertyRef Name="Users_ID" />
+    </Key>
+    <Property Name="Children_Id" Type="bigint" Nullable="false" />
+    <Property Name="Users_ID" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <Association Name="AssetAlbum">
+    <End Role="Asset" Type="DigitalLifeBooksModel.Store.Assets" Multiplicity="*" />
+    <End Role="Album" Type="DigitalLifeBooksModel.Store.Albums" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Album">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Asset">
+        <PropertyRef Name="Album_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserSibliing_Users">
+    <End Role="User" Type="DigitalLifeBooksModel.Store.Users" Multiplicity="0..1" />
+    <End Role="UserSibliing" Type="DigitalLifeBooksModel.Store.UserSibliings" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="UserSibliing">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ChildAlbum">
+    <End Role="Child" Type="DigitalLifeBooksModel.Store.Children" Multiplicity="1" />
+    <End Role="Album" Type="DigitalLifeBooksModel.Store.Albums" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Child">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Album">
+        <PropertyRef Name="ChildId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="HospitalChild">
+    <End Role="Hospital" Type="DigitalLifeBooksModel.Store.Hospitals" Multiplicity="0..1" />
+    <End Role="Child" Type="DigitalLifeBooksModel.Store.Children" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Hospital">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Child">
+        <PropertyRef Name="HospitalID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ChildFosterFamily">
+    <End Role="Child" Type="DigitalLifeBooksModel.Store.Children" Multiplicity="*" />
+    <End Role="FosterFamily" Type="DigitalLifeBooksModel.Store.FosterFamilies" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="FosterFamily">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Child">
+        <PropertyRef Name="FosterFamilyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ChildSchool">
+    <End Role="Child" Type="DigitalLifeBooksModel.Store.Children" Multiplicity="*" />
+    <End Role="School" Type="DigitalLifeBooksModel.Store.Schools" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="School">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Child">
+        <PropertyRef Name="SchoolId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ChildUser_Child">
+    <End Role="Child" Type="DigitalLifeBooksModel.Store.Children" Multiplicity="1" />
+    <End Role="ChildUser" Type="DigitalLifeBooksModel.Store.ChildUser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Child">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ChildUser">
+        <PropertyRef Name="Children_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ChildUser_User">
+    <End Role="ChildUser" Type="DigitalLifeBooksModel.Store.ChildUser" Multiplicity="*" />
+    <End Role="User" Type="DigitalLifeBooksModel.Store.Users" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ChildUser">
+        <PropertyRef Name="Users_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

@@ -2,8 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
 -- --------------------------------------------------
--- Date Created: 10/20/2012 16:00:10
--- Generated from EDMX file: C:\Users\Administrator\Documents\GitHub\DigitalLifebooks\DigitalLifeBooks\DigitalLifeBooks\Models\DLBModel.edmx
+-- Date Created: 10/20/2012 20:03:14
+-- Generated from EDMX file: C:\Projects\DigitalLifeBooks\DigitalLifebooks\DigitalLifeBooks\DigitalLifeBooks\Models\DLBModel.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -29,6 +29,15 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_ChildUser_User]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[ChildUser] DROP CONSTRAINT [FK_ChildUser_User];
 GO
+IF OBJECT_ID(N'[dbo].[FK_ChildAlbum]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Albums] DROP CONSTRAINT [FK_ChildAlbum];
+GO
+IF OBJECT_ID(N'[dbo].[FK_HospitalChild]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Children] DROP CONSTRAINT [FK_HospitalChild];
+GO
+IF OBJECT_ID(N'[dbo].[FK_ChildFosterFamily]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Children] DROP CONSTRAINT [FK_ChildFosterFamily];
+GO
 
 -- --------------------------------------------------
 -- Dropping existing tables
@@ -48,6 +57,12 @@ IF OBJECT_ID(N'[dbo].[Users]', 'U') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[Children]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Children];
+GO
+IF OBJECT_ID(N'[dbo].[Hospitals]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Hospitals];
+GO
+IF OBJECT_ID(N'[dbo].[FosterFamilies]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[FosterFamilies];
 GO
 IF OBJECT_ID(N'[dbo].[ChildUser]', 'U') IS NOT NULL
     DROP TABLE [dbo].[ChildUser];
@@ -115,7 +130,46 @@ CREATE TABLE [dbo].[Children] (
     [HospitalID] bigint  NULL,
     [BirthWeight] nvarchar(max)  NULL,
     [BirthLength] nvarchar(max)  NULL,
-    [Last4SSN] nvarchar(max)  NOT NULL
+    [Last4SSN] nvarchar(max)  NOT NULL,
+    [FosterFamilyId] bigint  NULL,
+    [SchoolId] bigint  NULL
+);
+GO
+
+-- Creating table 'Hospitals'
+CREATE TABLE [dbo].[Hospitals] (
+    [Id] bigint IDENTITY(1,1) NOT NULL,
+    [Name] nvarchar(max)  NOT NULL,
+    [City] nvarchar(max)  NOT NULL,
+    [State] nvarchar(max)  NOT NULL,
+    [Address] nvarchar(max)  NOT NULL,
+    [Phone] nvarchar(max)  NOT NULL
+);
+GO
+
+-- Creating table 'FosterFamilies'
+CREATE TABLE [dbo].[FosterFamilies] (
+    [Id] bigint IDENTITY(1,1) NOT NULL,
+    [FatherName] nvarchar(max)  NOT NULL,
+    [MotherName] nvarchar(max)  NOT NULL,
+    [FosterSibling] nvarchar(max)  NOT NULL,
+    [City] nvarchar(max)  NOT NULL,
+    [State] nvarchar(max)  NOT NULL,
+    [Address] nvarchar(max)  NOT NULL,
+    [Country] nvarchar(max)  NOT NULL,
+    [Phone] nvarchar(max)  NOT NULL
+);
+GO
+
+-- Creating table 'Schools'
+CREATE TABLE [dbo].[Schools] (
+    [Id] bigint IDENTITY(1,1) NOT NULL,
+    [Name] nvarchar(max)  NOT NULL,
+    [Address] nvarchar(max)  NOT NULL,
+    [City] nvarchar(max)  NOT NULL,
+    [State] nvarchar(max)  NOT NULL,
+    [Country] nvarchar(max)  NOT NULL,
+    [Phone] nvarchar(max)  NOT NULL
 );
 GO
 
@@ -157,6 +211,24 @@ GO
 -- Creating primary key on [Id] in table 'Children'
 ALTER TABLE [dbo].[Children]
 ADD CONSTRAINT [PK_Children]
+    PRIMARY KEY CLUSTERED ([Id] ASC);
+GO
+
+-- Creating primary key on [Id] in table 'Hospitals'
+ALTER TABLE [dbo].[Hospitals]
+ADD CONSTRAINT [PK_Hospitals]
+    PRIMARY KEY CLUSTERED ([Id] ASC);
+GO
+
+-- Creating primary key on [Id] in table 'FosterFamilies'
+ALTER TABLE [dbo].[FosterFamilies]
+ADD CONSTRAINT [PK_FosterFamilies]
+    PRIMARY KEY CLUSTERED ([Id] ASC);
+GO
+
+-- Creating primary key on [Id] in table 'Schools'
+ALTER TABLE [dbo].[Schools]
+ADD CONSTRAINT [PK_Schools]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
@@ -233,6 +305,48 @@ ADD CONSTRAINT [FK_ChildAlbum]
 CREATE INDEX [IX_FK_ChildAlbum]
 ON [dbo].[Albums]
     ([ChildId]);
+GO
+
+-- Creating foreign key on [HospitalID] in table 'Children'
+ALTER TABLE [dbo].[Children]
+ADD CONSTRAINT [FK_HospitalChild]
+    FOREIGN KEY ([HospitalID])
+    REFERENCES [dbo].[Hospitals]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_HospitalChild'
+CREATE INDEX [IX_FK_HospitalChild]
+ON [dbo].[Children]
+    ([HospitalID]);
+GO
+
+-- Creating foreign key on [FosterFamilyId] in table 'Children'
+ALTER TABLE [dbo].[Children]
+ADD CONSTRAINT [FK_ChildFosterFamily]
+    FOREIGN KEY ([FosterFamilyId])
+    REFERENCES [dbo].[FosterFamilies]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_ChildFosterFamily'
+CREATE INDEX [IX_FK_ChildFosterFamily]
+ON [dbo].[Children]
+    ([FosterFamilyId]);
+GO
+
+-- Creating foreign key on [SchoolId] in table 'Children'
+ALTER TABLE [dbo].[Children]
+ADD CONSTRAINT [FK_ChildSchool]
+    FOREIGN KEY ([SchoolId])
+    REFERENCES [dbo].[Schools]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_ChildSchool'
+CREATE INDEX [IX_FK_ChildSchool]
+ON [dbo].[Children]
+    ([SchoolId]);
 GO
 
 -- --------------------------------------------------
