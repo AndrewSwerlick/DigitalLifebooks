@@ -16,6 +16,14 @@ namespace DigitalLifeBooks.Albums
             if (albumId == null)
                 return;
 
+            var page = Request.QueryString["p"];
+            if(!string.IsNullOrEmpty(page))
+                AlbumRender.PageNumber = int.Parse(page);
+
+            var number =Request.QueryString["num"];
+            if(!string.IsNullOrEmpty(number))
+                AlbumRender.ItemsPerPage = int.Parse(number);
+
             var album = LoadAlbum(long.Parse(albumId));
             AlbumRender.Album = album;
             AlbumRender.DataBind();

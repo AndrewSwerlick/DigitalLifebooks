@@ -4,7 +4,6 @@
 <asp:Panel ID="ImageRender" runat="server" Visible="false">
     <a href="#" class="col-album">
         <img class="album-asset" alt="<%= Asset.Caption %>" src='<%= "/Assets.ashx?Id=" + Asset.ID %>' />
-        <span class="album-caption"><%= Asset.Caption %></span>
     </a>
 </asp:Panel>
 <asp:Panel ID="DefaultRender" runat="server" Visible="false">

@@ -3,7 +3,7 @@
 (function () {
     $(document).ready(function () {
         $("div.album a.upload").on('click', function (e) {
-            var albumId = $(this).closest("div.album.root").data("albumid");
+            var albumId = $(this).closest("div.album.row").data("albumid");
             var iframe = $("<iframe src=/Albums/Upload.aspx?AlbumId=" + albumId + "/>");
             window.closeIframe = function () {
                 iframe.dialog('close');
@@ -20,7 +20,7 @@
                 title: 'Upload'
             });
 
-            
+
             e.preventDefault();
         });
 
@@ -42,7 +42,7 @@
                 resizable: false,
                 title: 'Edit'
             });
-            
+
             e.preventDefault();
         });
 
@@ -54,6 +54,12 @@
                 document.location.reload(true);
             });
             e.preventDefault();
+        });
+
+        $("a.next").on('click', function (e) {
+            var link = $(this);
+            var pageToLoad = link.data("page");
+            var albumId = $(this).closest("div.album.root").data("albumid");
         });
 
     });

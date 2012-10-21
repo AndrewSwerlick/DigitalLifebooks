@@ -16,11 +16,13 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <header id="header">
         <div class="row">
-            <div class="col-9 alpha omega">
-                <h1 id="foster-child-name" class="header-1"><%= Child.FirstName + " " + Child.LastName %><a href="#" class="newAlbum" data-childId='<%= Child.Id %>'>Create New Album</a></h1>            
-                
+            <div class="col-7 alpha">
+                <h1 id="foster-child-name" class="header-1"><%= Child.FirstName + " " + Child.LastName %></h1>            
             </div>
-        </div>
+            <div class="col-2 omega">
+                <a class="btn big-button newAlbum" data-childId="<%= Child.Id %>" href="#">Add Album</a>
+            </div>
+        </div>        
         <div id="foster-child-information" class="row">
             <div class="col-2 alpha">
                 <div id="foster-child-image-container">
@@ -30,42 +32,49 @@
             <div class="col-7 omega">
                 <div class="row">
                     <div class="col-7 alpha omega">
-                        <p>Age 11</p>
+                        <p><%= Child.Age %></p>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-7 alpha omega">
-                        <p>Born on Augest 1, 1999</p>
+                        <p>Born on <%= Child.DateOfBirth.ToLongDateString() %></p>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-7 alpha omega">
-                        <p>Columbus, Ohio</p>
+                        <p><%= Child.City + ", " + Child.State %></p>
                     </div>
                 </div>
             </div>
         </div>
     </header>
     <div id="main">
-        <div id="important-documents">     
-            <div class="col-2 omega">
-                <a class="btn big-button" href="#">Add Document</a>
-            </div>       
+        <div id="important-documents" class="album root" data-albumId='<%= (ImportantDocuments != null) ? ImportantDocuments.ID : -1 %>'>     
+            <div class="row">
+                <div class="col-7 alpha">
+                    <h2 class="header-2">Important Documents<h2>
+                </div>
+                <div class="col-2 omega">
+                    <a class="btn big-button upload" href="#">Add Document</a>
+                </div>
+            </div>      
             <dlb:AlbumRender runat="server" ID="ImportantDocumentsRender" />
         </div>
         <div id="albums">
             <asp:Repeater runat="server" ID="Albums"  OnItemCreated="On_AlbumRender_Created">
                 <ItemTemplate>
-                    <div runat ="server" class="album root" data-albumId='<%# (Container.DataItem as Album).ID %>'>
+                    <div runat ="server" class="album row" data-albumId='<%# (Container.DataItem as Album).ID %>'>
                         <div class="row">
-                            <div class="col-9 alpha omega">
+                            <div class="col-7 alpha">
                                 <h2 class="header-2"><%# (Container.DataItem as Album).Title %></h2>
                             </div>
-                        </div>
-                        <dlb:SecurityTrimmedPanel runat="server" RoleToShowFor="Admin">
-                            <a href="#" class="delete" data-entityId='<%# (Container.DataItem as Album).ID%>' data-entityType="Album">Delete</a>
-                        </dlb:SecurityTrimmedPanel>
-                        <a href="#" class="upload">Upload</a>
+                            <div class="col-2 omega">
+                               <a class="btn big-button upload" href="#">Upload</a>
+                            <dlb:SecurityTrimmedPanel ID="SecurityTrimmedPanel1" runat="server" RoleToShowFor="Admin">
+                                <a class="btn big-button upload" href="#">Delete</a>
+                            </dlb:SecurityTrimmedPanel>
+                            </div>
+                        </div>                                             
                         <dlb:AlbumRender runat="server" ID="AlbumRender"></dlb:AlbumRender>
                         <div class="pagingButtons">
                             <a href="#" class="next">Next</a>

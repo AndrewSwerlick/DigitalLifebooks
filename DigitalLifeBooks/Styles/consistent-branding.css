@@ -305,6 +305,9 @@ textarea {
     margin-right: 0;
     margin-bottom: 0;
 }
+    a.btn:visited{
+        color:#FFFFFF
+    }
    .btn.big{
     height: 38px;
     font-size: 18px;
@@ -369,6 +372,7 @@ textarea {
     margin-right: 0px;
     margin-top: 0px;
     padding-bottom:10px;
+    text-transform:capitalize;
    }
    .child-dashboard #content #header #foster-child-image-container{
     width:146px;
@@ -392,6 +396,7 @@ textarea {
     margin-left: 0px;
     margin-right: 0px;
     margin-top: 10px;
+    text-transform:capitalize;
    }
    .child-dashboard #content #important-documents .col-document{
     background-color:#909090;
