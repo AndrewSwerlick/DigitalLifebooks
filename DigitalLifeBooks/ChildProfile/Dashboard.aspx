@@ -23,7 +23,6 @@
                 </dlb:SecurityTrimmedPanel>
             </div>
             <div class="col-2 omega">
-<%--                <a class="btn big-button newAlbum" data-childid="<%= Child.Id %>" href="#">Add Album</a>--%>
             </div>
         </div>        
         <div id="foster-child-information" class="row">
@@ -80,8 +79,7 @@
                             </dlb:SecurityTrimmedPanel>
                                 <a class="btn big-button upload" href="#">Upload</a>
                             </div>
-                            <div class="col-2 omega">                   
-                            
+                            <div class="col-2 omega">   
                             </div>
                         </div>                                             
                         <dlb:AlbumRender runat="server" ID="AlbumRender"></dlb:AlbumRender>

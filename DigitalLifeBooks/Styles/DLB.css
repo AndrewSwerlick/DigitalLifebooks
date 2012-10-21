@@ -540,4 +540,29 @@ div#content input .numberinput
 {
     width:75px !important;
 }
-
+#divfileupload input.fileUploadbutton, #diveditasset input.commitButton
+{
+    width: 95px;
+    height: 25px;
+    margin-left: 20px;
+    display:block;
+}
+#divfileupload input.fileUpload
+{
+    width:400px;
+    height:25px;
+}
+#diveditasset input.commitasset
+{
+   width:400px;
+    height:100px;
+}
+.col-7
+{
+    width:660px;
+    margin-left:20px;
+}
+#divfileupload, #diveditasset, iframe
+{
+    width:965px !important;
+}
