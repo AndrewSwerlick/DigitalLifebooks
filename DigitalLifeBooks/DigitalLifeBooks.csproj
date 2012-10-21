@@ -73,6 +73,7 @@
     <Content Include="Child\Profile.aspx" />
     <Content Include="ChildProfile\Dashboard.aspx" />
     <Content Include="email.txt" />
+    <Content Include="images\profile.jpg" />
     <Content Include="Scripts\albumControls.js" />
     <Content Include="Scripts\dialog.js" />
     <Content Include="Scripts\init.js" />
