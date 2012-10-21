@@ -19,6 +19,7 @@ namespace DigitalLifeBooks.Albums
             var user = CurrentUser;
             var albumId = long.Parse(Request.QueryString["AlbumId"]);
             album = LoadAlbum(albumId);
+                        
             if(!album.Child.UserIsAuthorizedForChild(user))
                 throw new UnauthorizedAccessException();           
         }
@@ -46,6 +47,20 @@ namespace DigitalLifeBooks.Albums
         private Asset CreateAsset(Album album, string fileName)
         {
             var extension = fileName.Split('.')[1];
+
+            if (album != null && album.IsProfilePictureAlbum)
+            {
+                //if the profile pic album, delete all images before saving to 
+                int i = album.Assets.Count - 1;
+                while (album.Assets.Count > 0)
+                {
+                    DataContext.Assets.DeleteObject(album.Assets.ElementAt(i));
+                    i--;
+                }
+
+                DataContext.SaveChanges();
+            }
+
             var asset = new Asset()
             {
                 Album = album,
