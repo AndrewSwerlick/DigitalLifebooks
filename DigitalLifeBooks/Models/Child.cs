@@ -7,7 +7,7 @@ namespace DigitalLifeBooks.Models
 {
     public partial class Child
     {
-        public static readonly string DEFAULT_PROFILE_LINK = "http://placehold.it/30x30";
+        public static readonly string DEFAULT_PROFILE_LINK = "/images/profile.jpg";
 
         public string ProfilePickLink
         {
